@@ -39,7 +39,6 @@
          x-data="{ 
              isAuthPage: false,
              init() {
-                 // Check if this is an auth page based on URL or content
                  this.isAuthPage = window.location.pathname.includes('/login') || 
                                   window.location.pathname.includes('/register') ||
                                   document.querySelector('.min-h-screen.flex') !== null;
@@ -47,7 +46,6 @@
          }"
          :class="isAuthPage ? '' : 'flex flex-col sm:justify-center items-center pt-6 sm:pt-0'">
         
-        <!-- Regular Page Container (for non-auth pages) -->
         <div x-show="!isAuthPage" 
              x-transition
              class="w-full max-w-2xl px-8 py-8 
@@ -58,14 +56,12 @@
             {{ $slot }}
         </div>
 
-        <!-- Auth Page Container (full width) -->
         <div x-show="isAuthPage" 
              x-transition
              class="w-full">
             {{ $slot }}
         </div>
 
-        <!-- 🌾 Footer (only for non-auth pages) -->
         <footer x-show="!isAuthPage" 
                 x-transition
                 class="mt-6 text-xs text-slate-500/80 text-center">
