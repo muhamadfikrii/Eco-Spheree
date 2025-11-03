@@ -59,6 +59,7 @@ class LoginRequest extends FormRequest
                 'id_user' => trans('auth.failed'),
             ]);
         }
+        
 
         RateLimiter::clear($this->throttleKey());
     }
