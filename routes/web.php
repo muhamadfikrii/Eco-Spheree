@@ -1,12 +1,8 @@
 <?php
 
-use App\Http\Controllers\CekController;
-use App\Http\Controllers\OnboardingController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
-
-
 
 Route::get('/', function () {
     return view('welcome');

@@ -2,14 +2,17 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class OnboardingWizard extends Component
 {
     public $step = 1;
+
     public $interest;
+
     public $lifestyle;
+
     public $commitment;
 
     public function nextStep()
@@ -24,7 +27,7 @@ class OnboardingWizard extends Component
                     'interest' => $this->interest,
                     'lifestyle' => $this->lifestyle,
                     'commitment' => $this->commitment,
-                ])
+                ]),
             ]);
 
             return redirect()->route('dashboard');
@@ -41,6 +44,6 @@ class OnboardingWizard extends Component
     public function render()
     {
         return view('livewire.onboarding-wizard')
-        ->layout('layouts.onboarding');
+            ->layout('layouts.onboarding');
     }
 }
