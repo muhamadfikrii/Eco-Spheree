@@ -12,17 +12,19 @@ use Illuminate\Validation\ValidationException;
 class LoginRequest extends FormRequest
 {
     protected $id_type;
+
     protected function prepareForValidation()
     {
-        if(filter_var($this->input('id_user'),FILTER_VALIDATE_EMAIL)){
+        if (filter_var($this->input('id_user'), FILTER_VALIDATE_EMAIL)) {
             $this->id_type = 'email';
-        }else {
+        } else {
             $this->id_type = 'username';
         }
         $this->merge([
-            $this->id_type => $this->input('id_user')
+            $this->id_type => $this->input('id_user'),
         ]);
     }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -59,7 +61,6 @@ class LoginRequest extends FormRequest
                 'id_user' => trans('auth.failed'),
             ]);
         }
-        
 
         RateLimiter::clear($this->throttleKey());
     }
