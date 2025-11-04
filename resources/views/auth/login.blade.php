@@ -136,7 +136,7 @@
         <!-- Right Side -->
         <div class="hidden lg:block lg:w-1/2 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/20 to-slate-900/40 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1740&q=80" alt="Nature" class="w-full h-full object-cover">
+            <img src="{{ asset('image/auth.jpeg') }}" alt="Nature" class="w-full h-full object-cover">
             <div class="absolute inset-0 flex flex-col justify-center items-center z-20 p-12 text-center">
                 <h2 class="text-4xl font-bold text-white mb-4">Make a Difference</h2>
                 <p class="text-xl text-gray-200 max-w-md">Join thousands of people making sustainable choices for a better future</p>
