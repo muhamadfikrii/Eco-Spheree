@@ -13,7 +13,7 @@
             @include('components.icon')
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex items-center space-x-6 bg-slate-900 px-8 py-2 rounded-full backdrop-blur-sm border border-slate-800/50 font-medium text-[15px]">
+            <div class="hidden md:flex items-center space-x-6 bg-slate-800 px-8 py-2 rounded-full backdrop-blur-sm border border-slate-800/50 font-medium text-[15px]">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Home</x-nav-link>
                 <x-nav-link :href="route('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Eksplor</x-nav-link>
                 <x-nav-link :href="route('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Challenge</x-nav-link>
