@@ -28,8 +28,8 @@ class EcoChallenge extends Model
 
     public function isActive(): bool
     {
-        return $this->status === 'active' && 
-               $this->start_date->isPast() && 
+        return $this->status === 'active' &&
+               $this->start_date->isPast() &&
                $this->end_date->isFuture();
     }
 
@@ -40,35 +40,41 @@ class EcoChallenge extends Model
 
     public function getProgressPercentage(): float|int
     {
-        if ($this->target_participants == 0) return 0;
+        if ($this->target_participants == 0) {
+            return 0;
+        }
+
         return min(100, ($this->current_participants / $this->target_participants) * 100);
     }
 
     public function getCo2ProgressPercentage(): float|int
     {
-        if ($this->target_co2_reduction == 0) return 0;
+        if ($this->target_co2_reduction == 0) {
+            return 0;
+        }
+
         return min(100, ($this->current_co2_reduction / $this->target_co2_reduction) * 100);
     }
-    
+
     public function getTimeLeft(): string
     {
         if ($this->isExpired()) {
             return 'Expired';
         }
-        
+
         return $this->end_date->diffForHumans();
     }
 
     public function scopeActive($query)
     {
         return $query->where('status', 'active')
-                    ->where('start_date', '<=', now())
-                    ->where('end_date', '>=', now());
+            ->where('start_date', '<=', now())
+            ->where('end_date', '>=', now());
     }
-    
+
     public function scopeUpcoming($query)
     {
         return $query->where('start_date', '>', now())
-                    ->where('status', 'active');
+            ->where('status', 'active');
     }
 }

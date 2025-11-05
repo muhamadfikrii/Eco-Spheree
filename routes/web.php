@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Livewire\EcoDashboard;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/', function () {
     return view('Home');

@@ -53,13 +53,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(UserActivity::class);
     }
-    
+
     // Relasi ke challenge participations
     public function challengeParticipations(): HasMany
     {
         return $this->hasMany(UserChallengeParticipation::class);
     }
-    
+
     // Relasi ke challenges yang diikuti user
     public function challenges()
     {
@@ -67,45 +67,45 @@ class User extends Authenticatable implements MustVerifyEmail
             ->withPivot('joined_at', 'completed_at', 'progress', 'earned_points')
             ->withTimestamps();
     }
-    
+
     // Get total CO2 impact
     public function getTotalCo2Impact($startDate = null, $endDate = null)
     {
         $query = $this->activities();
-        
+
         if ($startDate && $endDate) {
             $query->whereBetween('activity_date', [$startDate, $endDate]);
         }
-        
+
         return $query->sum('co2_impact');
     }
-    
+
     // Get total points earned
     public function getTotalPoints()
     {
-        return $this->challengeParticipations()->sum('earned_points') + 
+        return $this->challengeParticipations()->sum('earned_points') +
                $this->activities()->sum('points_earned');
     }
-    
+
     // Join a challenge
     public function joinChallenge(EcoChallenge $challenge)
     {
         if ($this->challenges()->where('eco_challenge_id', $challenge->id)->exists()) {
             return false;
         }
-        
+
         // Tambahkan partisipasi
         $participation = $this->challengeParticipations()->create([
             'eco_challenge_id' => $challenge->id,
             'joined_at' => now(),
-            'progress' => 0
+            'progress' => 0,
         ]);
-        
+
         $challenge->increment('current_participants');
-        
+
         return $participation;
     }
-    
+
     // Log activity
     public function logActivity($data)
     {

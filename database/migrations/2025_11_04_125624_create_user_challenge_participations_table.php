@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('earned_points')->default(0);
             $table->boolean('badge_earned')->default(false);
             $table->json('progress_data')->nullable();
-            
+
             $table->unique(['user_id', 'eco_challenge_id']);
             $table->index(['user_id', 'joined_at']);
             $table->timestamps();

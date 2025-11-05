@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('category'); 
+            $table->string('category');
             $table->integer('target_participants')->default(0);
             $table->integer('current_participants')->default(0);
-            $table->decimal('target_co2_reduction', 8, 2)->nullable(); 
+            $table->decimal('target_co2_reduction', 8, 2)->nullable();
             $table->decimal('current_co2_reduction', 8, 2)->default(0);
             $table->integer('points_reward')->default(0);
             $table->string('badge_reward')->nullable();
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('image_url')->nullable();
             $table->json('requirements')->nullable(); // Syarat khusus untuk menyelesaikan challenge
             $table->timestamps();
-            
+
             $table->index(['status', 'start_date', 'end_date']);
         });
     }

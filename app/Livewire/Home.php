@@ -10,25 +10,37 @@ use Livewire\WithPagination;
 class Home extends Component
 {
     use WithPagination;
-    
+
     // Data Properties
     public $challenges = [];
+
     public $activities = [];
+
     public $recentReports = [];
+
     public $userStats = [];
+
     public $sustainabilityScore = 7.8;
+
     public $region = 'Jakarta, Indonesia';
-    
+
     // Modal Properties
     public $showReportModal = false;
+
     public $showChallengeModal = false;
+
     public $showActivityModal = false;
+
     public $selectedChallenge = null;
+
     public $selectedActivity = null;
 
     public $impactStories = [];
+
     public $ecoTips = [];
+
     public $sustainabilityMetrics = [];
+
     public $leaderboard = [];
 
     public $layers = [
@@ -36,60 +48,63 @@ class Home extends Component
         ['id' => 'hotspots', 'name' => 'Fire Hotspots', 'visible' => false, 'color' => '#f97316'],
         ['id' => 'water-quality', 'name' => 'Water Quality', 'visible' => false, 'color' => '#3b82f6'],
         ['id' => 'recycling', 'name' => 'Recycling Centers', 'visible' => false, 'color' => '#8b5cf6'],
-        ['id' => 'user-reports', 'name' => 'User Reports', 'visible' => true, 'color' => '#eab308']
+        ['id' => 'user-reports', 'name' => 'User Reports', 'visible' => true, 'color' => '#eab308'],
     ];
-    
+
     // Form Properties
     public $reportForm = [
         'issueType' => 'Air Pollution',
         'description' => '',
         'location' => '',
-        'photo' => null
+        'photo' => null,
     ];
-    
+
     public $activityForm = [
         'type' => 'transport',
         'description' => '',
-        'co2_impact' => 0
+        'co2_impact' => 0,
     ];
-    
+
     // Loading States
     public $isLoading = false;
+
     public $notificationMessage = '';
+
     public $notificationType = 'success';
-    
+
     // Filter Properties
     public $activeFilter = 'all';
+
     public $timeRange = 'week';
-    
+
     protected $listeners = [
         'refreshData' => '$refresh',
         'challengeJoined' => '$refresh',
         'activityLogged' => '$refresh',
-        'locationUpdated' => 'updateLocation'
+        'locationUpdated' => 'updateLocation',
     ];
-    
+
     public function mount()
     {
         $this->loadData();
     }
-    
+
     public function loadData()
     {
         $this->isLoading = true;
-        
+
         $this->loadChallenges();
         $this->loadActivities();
         $this->loadRecentReports();
-        $this->loadImpactStories();  
-        $this->loadEcoTips();         
-        $this->loadSustainabilityMetrics(); 
+        $this->loadImpactStories();
+        $this->loadEcoTips();
+        $this->loadSustainabilityMetrics();
         $this->loadLeaderboard();
         $this->calculateUserStats();
-        
+
         $this->isLoading = false;
     }
-    
+
     private function loadChallenges()
     {
         // Load active challenges
@@ -115,16 +130,16 @@ class Home extends Component
                         ->exists() : false,
                     'user_progress' => auth()->check() ? auth()->user()->challengeParticipations()
                         ->where('eco_challenge_id', $challenge->id)
-                        ->value('progress') ?? 0 : 0
+                        ->value('progress') ?? 0 : 0,
                 ];
             })->toArray();
-            
+
         // Jika tidak ada data di database, gunakan dummy data
         if (empty($this->challenges)) {
             $this->challenges = $this->getDummyChallenges();
         }
     }
-    
+
     private function loadActivities()
     {
         // Load user activities
@@ -145,19 +160,19 @@ class Home extends Component
                         'activity_date' => $activity->activity_date->format('M j, Y H:i'),
                         'points_earned' => $activity->points_earned,
                         'type' => $activity->type,
-                        'location' => $activity->location ?? null
+                        'location' => $activity->location ?? null,
                     ];
                 })->toArray();
         } else {
             $this->activities = [];
         }
-            
+
         // Jika tidak ada data, gunakan dummy data
         if (empty($this->activities)) {
             $this->activities = $this->getDummyActivities();
         }
     }
-    
+
     private function loadRecentReports()
     {
         $this->recentReports = EnvironmentalReport::with('user')
@@ -177,12 +192,12 @@ class Home extends Component
                     'icon_class' => $this->getIconClass($report->type),
                     'user' => [
                         'name' => $report->user->name,
-                        'avatar' => $report->user->avatar_url ?? null
+                        'avatar' => $report->user->avatar_url ?? null,
                     ],
-                    'verified' => $report->verified ?? false
+                    'verified' => $report->verified ?? false,
                 ];
             })->toArray();
-            
+
         // Dummy data jika kosong
         if (empty($this->recentReports)) {
             $this->recentReports = $this->getDummyReports();
@@ -203,44 +218,46 @@ class Home extends Component
 
     public function toggleLayer($layerId)
     {
-        $layerIndex = collect($this->layers)->search(function($layer) use ($layerId) {
+        $layerIndex = collect($this->layers)->search(function ($layer) use ($layerId) {
             return $layer['id'] === $layerId;
         });
-        
+
         if ($layerIndex !== false) {
-            $this->layers[$layerIndex]['visible'] = !$this->layers[$layerIndex]['visible'];
-            
+            $this->layers[$layerIndex]['visible'] = ! $this->layers[$layerIndex]['visible'];
+
             $this->dispatchBrowserEvent('layer-toggled', [
                 'layerId' => $layerId,
                 'visible' => $this->layers[$layerIndex]['visible'],
-                'color' => $this->layers[$layerIndex]['color']
+                'color' => $this->layers[$layerIndex]['color'],
             ]);
         }
     }
-    
-    
+
     // Challenge Methods
     public function joinChallenge($challengeId)
     {
         $challenge = EcoChallenge::find($challengeId);
-        
-        if (!$challenge) {
+
+        if (! $challenge) {
             $this->showNotification('Challenge not found', 'error');
+
             return;
         }
-        
-        if (!$challenge->isActive()) {
+
+        if (! $challenge->isActive()) {
             $this->showNotification('This challenge is no longer active', 'warning');
+
             return;
         }
-        
+
         if (auth()->check()) {
             $participation = auth()->user()->joinChallenge($challenge);
         } else {
             $this->showNotification('You must be logged in to join challenges', 'error');
+
             return;
         }
-        
+
         if ($participation) {
             $this->showNotification('Successfully joined the challenge!', 'success');
             $this->dispatch('challengeJoined');
@@ -249,18 +266,19 @@ class Home extends Component
             $this->showNotification('You have already joined this challenge', 'info');
         }
     }
-    
+
     public function viewChallengeDetails($challengeId)
     {
         $this->selectedChallenge = collect($this->challenges)->firstWhere('id', $challengeId);
         $this->showChallengeModal = true;
     }
-    
+
     // Activity Methods
     public function logActivity($activityData)
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             $this->showNotification('You must be logged in to log activities', 'error');
+
             return;
         }
 
@@ -270,7 +288,7 @@ class Home extends Component
             'icon' => $activityData['icon'] ?? null,
             'co2_impact' => $activityData['co2_impact'] ?? 0,
             'points_earned' => $activityData['points_earned'] ?? 0,
-            'metadata' => $activityData['metadata'] ?? []
+            'metadata' => $activityData['metadata'] ?? [],
         ]);
 
         $this->showNotification('Activity logged successfully!', 'success');
@@ -278,21 +296,22 @@ class Home extends Component
         $this->loadActivities();
         $this->calculateUserStats();
     }
-    
+
     public function showActivityForm()
     {
         $this->showActivityModal = true;
     }
-    
+
     public function submitActivity()
     {
         $this->validate([
             'activityForm.type' => 'required',
             'activityForm.description' => 'required|min:5',
         ]);
-        
-        if (!auth()->check()) {
+
+        if (! auth()->check()) {
             $this->showNotification('You must be logged in to log activities', 'error');
+
             return;
         }
 
@@ -301,26 +320,27 @@ class Home extends Component
             'description' => $this->activityForm['description'],
             'co2_impact' => $this->activityForm['co2_impact'],
             'points_earned' => $this->calculateActivityPoints($this->activityForm['type'], $this->activityForm['co2_impact']),
-            'icon' => $this->getActivityIcon($this->activityForm['type'])
+            'icon' => $this->getActivityIcon($this->activityForm['type']),
         ];
-        
+
         $this->logActivity($activityData);
-        
+
         $this->resetActivityForm();
         $this->showActivityModal = false;
     }
-    
+
     // Report Methods
     public function submitReport()
     {
         $this->validate([
             'reportForm.issueType' => 'required',
             'reportForm.description' => 'required|min:10',
-            'reportForm.location' => 'required'
+            'reportForm.location' => 'required',
         ]);
-        
-        if (!auth()->check()) {
+
+        if (! auth()->check()) {
             $this->showNotification('You must be logged in to submit reports', 'error');
+
             return;
         }
 
@@ -331,15 +351,15 @@ class Home extends Component
             'location' => $this->reportForm['location'],
             'user_id' => auth()->id(),
             'status' => 'pending',
-            'verified' => false
+            'verified' => false,
         ]);
-        
+
         $this->resetReportForm();
         $this->showReportModal = false;
         $this->showNotification('Report submitted successfully!', 'success');
         $this->loadRecentReports();
     }
-    
+
     public function upvoteReport($reportId)
     {
         $report = EnvironmentalReport::find($reportId);
@@ -349,12 +369,12 @@ class Home extends Component
             $this->loadRecentReports();
         }
     }
-    
+
     public function updateLocation($location)
     {
         $this->reportForm['location'] = $location;
     }
-    
+
     // Utility Methods
     private function showNotification($message, $type = 'success')
     {
@@ -362,29 +382,29 @@ class Home extends Component
         $this->notificationType = $type;
         $this->dispatchBrowserEvent('showNotification', [
             'message' => $message,
-            'type' => $type
+            'type' => $type,
         ]);
     }
-    
+
     private function resetReportForm()
     {
         $this->reportForm = [
             'issueType' => 'Air Pollution',
             'description' => '',
             'location' => '',
-            'photo' => null
+            'photo' => null,
         ];
     }
-    
+
     private function resetActivityForm()
     {
         $this->activityForm = [
             'type' => 'transport',
             'description' => '',
-            'co2_impact' => 0
+            'co2_impact' => 0,
         ];
     }
-    
+
     private function getIconClass($type)
     {
         $icons = [
@@ -394,10 +414,10 @@ class Home extends Component
             'deforestation' => 'fas fa-tree text-green-400',
             'wildlife' => 'fas fa-paw text-yellow-600',
         ];
-        
+
         return $icons[$type] ?? 'fas fa-exclamation-circle text-gray-400';
     }
-    
+
     private function getActivityIcon($type)
     {
         $icons = [
@@ -407,10 +427,10 @@ class Home extends Component
             'waste' => '♻️',
             'water' => '💧',
         ];
-        
+
         return $icons[$type] ?? '🌱';
     }
-    
+
     private function calculateActivityPoints($type, $co2Impact)
     {
         $basePoints = [
@@ -420,26 +440,35 @@ class Home extends Component
             'waste' => 8,
             'water' => 6,
         ];
-        
+
         $points = $basePoints[$type] ?? 5;
-        
+
         // Bonus points for positive CO2 impact
         if ($co2Impact < 0) {
             $points += abs($co2Impact) * 2;
         }
-        
+
         return $points;
     }
-    
+
     private function calculateUserLevel($points)
     {
-        if ($points < 100) return ['level' => 1, 'title' => 'Eco Beginner', 'color' => '#10b981'];
-        if ($points < 500) return ['level' => 2, 'title' => 'Eco Enthusiast', 'color' => '#3b82f6'];
-        if ($points < 1000) return ['level' => 3, 'title' => 'Eco Warrior', 'color' => '#8b5cf6'];
-        if ($points < 2000) return ['level' => 4, 'title' => 'Eco Champion', 'color' => '#f59e0b'];
+        if ($points < 100) {
+            return ['level' => 1, 'title' => 'Eco Beginner', 'color' => '#10b981'];
+        }
+        if ($points < 500) {
+            return ['level' => 2, 'title' => 'Eco Enthusiast', 'color' => '#3b82f6'];
+        }
+        if ($points < 1000) {
+            return ['level' => 3, 'title' => 'Eco Warrior', 'color' => '#8b5cf6'];
+        }
+        if ($points < 2000) {
+            return ['level' => 4, 'title' => 'Eco Champion', 'color' => '#f59e0b'];
+        }
+
         return ['level' => 5, 'title' => 'Eco Master', 'color' => '#ef4444'];
     }
-    
+
     // Dummy Data Methods (untuk testing)
     private function getDummyChallenges()
     {
@@ -458,7 +487,7 @@ class Home extends Component
                 'image_url' => 'https://picsum.photos/seed/plastic/400/300.jpg',
                 'is_joined' => true,
                 'user_progress' => 40,
-                'difficulty' => 'medium'
+                'difficulty' => 'medium',
             ],
             [
                 'id' => 2,
@@ -474,7 +503,7 @@ class Home extends Component
                 'image_url' => 'https://picsum.photos/seed/bike/400/300.jpg',
                 'is_joined' => false,
                 'user_progress' => 0,
-                'difficulty' => 'hard'
+                'difficulty' => 'hard',
             ],
             [
                 'id' => 3,
@@ -490,11 +519,11 @@ class Home extends Component
                 'image_url' => 'https://picsum.photos/seed/meatless/400/300.jpg',
                 'is_joined' => true,
                 'user_progress' => 60,
-                'difficulty' => 'easy'
-            ]
+                'difficulty' => 'easy',
+            ],
         ];
     }
-    
+
     private function getDummyActivities()
     {
         return [
@@ -507,7 +536,7 @@ class Home extends Component
                 'activity_date' => 'Dec 15, 2023 09:30',
                 'points_earned' => 10,
                 'type' => 'transport',
-                'location' => 'Jakarta, Indonesia'
+                'location' => 'Jakarta, Indonesia',
             ],
             [
                 'id' => 2,
@@ -518,7 +547,7 @@ class Home extends Component
                 'activity_date' => 'Dec 15, 2023 12:45',
                 'points_earned' => 5,
                 'type' => 'food',
-                'location' => 'Jakarta, Indonesia'
+                'location' => 'Jakarta, Indonesia',
             ],
             [
                 'id' => 3,
@@ -529,11 +558,11 @@ class Home extends Component
                 'activity_date' => 'Dec 14, 2023 18:20',
                 'points_earned' => 0,
                 'type' => 'transport',
-                'location' => 'Jakarta, Indonesia'
-            ]
+                'location' => 'Jakarta, Indonesia',
+            ],
         ];
     }
-    
+
     private function getDummyReports()
     {
         return [
@@ -548,7 +577,7 @@ class Home extends Component
                 'created_at' => '2 hours ago',
                 'icon_class' => 'fas fa-exclamation-triangle text-yellow-400',
                 'user' => ['name' => 'John Doe', 'avatar' => null],
-                'verified' => false
+                'verified' => false,
             ],
             [
                 'id' => 2,
@@ -561,8 +590,8 @@ class Home extends Component
                 'created_at' => '5 hours ago',
                 'icon_class' => 'fas fa-tree text-green-400',
                 'user' => ['name' => 'Jane Smith', 'avatar' => null],
-                'verified' => true
-            ]
+                'verified' => true,
+            ],
         ];
     }
 
@@ -579,7 +608,7 @@ class Home extends Component
                 'likes' => 234,
                 'shares' => 56,
                 'published_at' => '2 days ago',
-                'featured' => true
+                'featured' => true,
             ],
             [
                 'id' => 2,
@@ -591,12 +620,12 @@ class Home extends Component
                 'likes' => 189,
                 'shares' => 42,
                 'published_at' => '1 week ago',
-                'featured' => false
-            ]
+                'featured' => false,
+            ],
         ];
     }
 
-     private function loadEcoTips()
+    private function loadEcoTips()
     {
         // Untuk sekarang, gunakan dummy data
         // Nanti bisa diganti dengan data dari database atau API
@@ -605,23 +634,23 @@ class Home extends Component
                 'id' => 1,
                 'text' => 'Try a meat-free menu for dinner tonight.',
                 'category' => 'food',
-                'icon' => '🥗'
+                'icon' => '🥗',
             ],
             [
                 'id' => 2,
                 'text' => 'Unplug chargers for unused electronic devices.',
                 'category' => 'energy',
-                'icon' => '🔌'
+                'icon' => '🔌',
             ],
             [
                 'id' => 3,
                 'text' => 'Use cloth bags for shopping.',
                 'category' => 'waste',
-                'icon' => '🛍️'
-            ]
+                'icon' => '🛍️',
+            ],
         ];
     }
-    
+
     private function loadSustainabilityMetrics()
     {
         // Untuk sekarang, gunakan dummy data
@@ -634,7 +663,7 @@ class Home extends Component
                 'percentage' => 65,
                 'trend' => 'up', // up, down, stable
                 'icon' => '💨',
-                'color' => '#10b981'
+                'color' => '#10b981',
             ],
             [
                 'id' => 2,
@@ -643,7 +672,7 @@ class Home extends Component
                 'percentage' => 45,
                 'trend' => 'up',
                 'icon' => '🌳',
-                'color' => '#3b82f6'
+                'color' => '#3b82f6',
             ],
             [
                 'id' => 3,
@@ -652,7 +681,7 @@ class Home extends Component
                 'percentage' => 80,
                 'trend' => 'stable',
                 'icon' => '♻️',
-                'color' => '#8b5cf6'
+                'color' => '#8b5cf6',
             ],
             [
                 'id' => 4,
@@ -661,11 +690,11 @@ class Home extends Component
                 'percentage' => 70,
                 'trend' => 'down',
                 'icon' => '💧',
-                'color' => '#06b6d4'
-            ]
+                'color' => '#06b6d4',
+            ],
         ];
     }
-    
+
     public function refreshTips()
     {
         // Refresh eco tips
@@ -690,13 +719,13 @@ class Home extends Component
         // Handle story share
         $this->showNotification('Story shared!', 'success');
     }
-    
+
     public function setFilter($filter)
     {
         $this->activeFilter = $filter;
         $this->loadData();
     }
-    
+
     public function setTimeRange($range)
     {
         $this->timeRange = $range;
@@ -709,77 +738,77 @@ class Home extends Component
     }
 
     private function calculateUserStats()
-{
-    if (auth()->check()) {
-        $user = auth()->user();
+    {
+        if (auth()->check()) {
+            $user = auth()->user();
 
-        // Gunakan null coalescing operator untuk metode yang mungkin tidak ada
-        $this->userStats = [
-            'total_co2_saved' => method_exists($user, 'getTotalCo2Impact') ? abs($user->getTotalCo2Impact()) : 12.5,
-            'total_points' => method_exists($user, 'getTotalPoints') ? $user->getTotalPoints() : 450,
-            'active_challenges' => $user->challengeParticipations()
-                ->whereHas('challenge', function($query) {
-                    $query->active();
-                })->count(),
-            'completed_challenges' => $user->challengeParticipations()
-                ->whereNotNull('completed_at')->count(),
-            'activities_this_week' => $user->activities()
-                ->whereBetween('activity_date', [now()->startOfWeek(), now()->endOfWeek()])->count(),
-            'rank' => 42, // Ini bisa dihitung dari database
-            'level' => $this->calculateUserLevel(
-                method_exists($user, 'getTotalPoints') ? $user->getTotalPoints() : 450
-            ),
-            'streak' => method_exists($user, 'getActivityStreak') ? $user->getActivityStreak() : $this->calculateStreak($user),
-            'badges' => method_exists($user, 'getBadges') ? $user->getBadges() : $this->getDefaultBadges()
-        ];
-    } else {
-        $this->userStats = [
-            'total_co2_saved' => 0,
-            'total_points' => 0,
-            'active_challenges' => 0,
-            'completed_challenges' => 0,
-            'activities_this_week' => 0,
-            'rank' => 0,
-            'level' => ['level' => 1, 'title' => 'Eco Beginner', 'color' => '#10b981'],
-            'streak' => 0,
-            'badges' => []
-        ];
-    }
-}
-
-// Metode helper untuk menghitung streak jika metode tidak ada di model
-private function calculateStreak($user)
-{
-    // Hitung streak berdasarkan aktivitas harian
-    $streak = 0;
-    $currentDate = now();
-    
-    // Cek 30 hari terakhir
-    for ($i = 0; $i < 30; $i++) {
-        $date = $currentDate->copy()->subDays($i);
-        $hasActivity = $user->activities()
-            ->whereDate('activity_date', $date->toDateString())
-            ->exists();
-            
-        if ($hasActivity) {
-            $streak++;
-        } else if ($i > 0) {
-            // Hanya break jika bukan hari ini
-            break;
+            // Gunakan null coalescing operator untuk metode yang mungkin tidak ada
+            $this->userStats = [
+                'total_co2_saved' => method_exists($user, 'getTotalCo2Impact') ? abs($user->getTotalCo2Impact()) : 12.5,
+                'total_points' => method_exists($user, 'getTotalPoints') ? $user->getTotalPoints() : 450,
+                'active_challenges' => $user->challengeParticipations()
+                    ->whereHas('challenge', function ($query) {
+                        $query->active();
+                    })->count(),
+                'completed_challenges' => $user->challengeParticipations()
+                    ->whereNotNull('completed_at')->count(),
+                'activities_this_week' => $user->activities()
+                    ->whereBetween('activity_date', [now()->startOfWeek(), now()->endOfWeek()])->count(),
+                'rank' => 42, // Ini bisa dihitung dari database
+                'level' => $this->calculateUserLevel(
+                    method_exists($user, 'getTotalPoints') ? $user->getTotalPoints() : 450
+                ),
+                'streak' => method_exists($user, 'getActivityStreak') ? $user->getActivityStreak() : $this->calculateStreak($user),
+                'badges' => method_exists($user, 'getBadges') ? $user->getBadges() : $this->getDefaultBadges(),
+            ];
+        } else {
+            $this->userStats = [
+                'total_co2_saved' => 0,
+                'total_points' => 0,
+                'active_challenges' => 0,
+                'completed_challenges' => 0,
+                'activities_this_week' => 0,
+                'rank' => 0,
+                'level' => ['level' => 1, 'title' => 'Eco Beginner', 'color' => '#10b981'],
+                'streak' => 0,
+                'badges' => [],
+            ];
         }
     }
-    
-    return $streak;
-}
 
-// Metode helper untuk badge default
-private function getDefaultBadges()
-{
-    return [
-        ['name' => 'Eco Starter', 'icon' => '🌱', 'earned' => true],
-        ['name' => 'First Week', 'icon' => '🗓️', 'earned' => true],
-        ['name' => 'Tree Hugger', 'icon' => '🌳', 'earned' => false],
-        ['name' => 'Water Saver', 'icon' => '💧', 'earned' => false],
-    ];
-}
+    // Metode helper untuk menghitung streak jika metode tidak ada di model
+    private function calculateStreak($user)
+    {
+        // Hitung streak berdasarkan aktivitas harian
+        $streak = 0;
+        $currentDate = now();
+
+        // Cek 30 hari terakhir
+        for ($i = 0; $i < 30; $i++) {
+            $date = $currentDate->copy()->subDays($i);
+            $hasActivity = $user->activities()
+                ->whereDate('activity_date', $date->toDateString())
+                ->exists();
+
+            if ($hasActivity) {
+                $streak++;
+            } elseif ($i > 0) {
+                // Hanya break jika bukan hari ini
+                break;
+            }
+        }
+
+        return $streak;
+    }
+
+    // Metode helper untuk badge default
+    private function getDefaultBadges()
+    {
+        return [
+            ['name' => 'Eco Starter', 'icon' => '🌱', 'earned' => true],
+            ['name' => 'First Week', 'icon' => '🗓️', 'earned' => true],
+            ['name' => 'Tree Hugger', 'icon' => '🌳', 'earned' => false],
+            ['name' => 'Water Saver', 'icon' => '💧', 'earned' => false],
+        ];
+    }
 }
