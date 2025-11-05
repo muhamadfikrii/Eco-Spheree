@@ -5,7 +5,7 @@ use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('Home');
 })->name('dashboard');
 
 // Route::get('/dashboard', function () {
