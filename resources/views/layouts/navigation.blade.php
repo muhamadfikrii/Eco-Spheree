@@ -10,11 +10,7 @@
         <div class="flex justify-between items-center h-16">
             
             <!-- Logo -->
-            <a href="{{ route('dashboard') }}">
-                <span class="font-bold text-2xl tracking-wide text-slate-700 shadow-sm shadow-white">
-                    Eco-Track
-                </span>
-            </a>
+            @include('components.icon')
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex items-center space-x-6 bg-slate-900 px-8 py-2 rounded-full backdrop-blur-sm border border-slate-800/50 font-medium text-[15px]">
