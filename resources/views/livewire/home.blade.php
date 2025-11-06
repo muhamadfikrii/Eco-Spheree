@@ -35,7 +35,6 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 lg:p-8 gap-6 lg:gap-8 bg-slate-900">
             <section class="lg:col-span-2 space-y-6">
                 @include('livewire.components.map-section')
-                @include('livewire.components.eco-tips')
                 {{-- @include('livewire.components.recent-activities') --}}
             </section>
 
@@ -43,9 +42,7 @@
             <aside class="space-y-6">
                 {{-- @include('livewire.components.user-stats') --}}
                 @include('livewire.components.sustainability-score')
-                @include('livewire.components.recent-reports')
                 {{-- @include('livewire.components.challenges') --}}
-                @include('livewire.components.leaderboard')
             </aside>
         </div>
 
@@ -53,7 +50,6 @@
     </div>
 
     @include('livewire.components.impact-stories')
-    @include('livewire.components.modals')
 </div>
 
 @push('scripts')
