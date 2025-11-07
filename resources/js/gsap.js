@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tl.from(featureItems, {
         opacity: 0,
         x: 50,                
-        duration: 0.8,
+        duration: 1.0,
         ease: "power2.out",
         stagger: 0.3          
     });
