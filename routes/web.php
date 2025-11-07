@@ -15,6 +15,9 @@ Route::get('/', function () {
 Route::get('/report', function () {
     return view('report');
 })->name('report');
+Route::get('/eco_track', function () {
+    return view('eco_track');
+})->name('eco_track');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
