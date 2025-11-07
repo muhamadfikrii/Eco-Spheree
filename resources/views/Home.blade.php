@@ -1,7 +1,9 @@
 <x-app-layout>
     <div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <!-- Header -->
         <livewire:components.header />
 
+        <!-- Purpose Section -->
         <livewire:components.purpose />
 
         <!-- Divider -->
@@ -32,30 +34,45 @@
             </div>
         </section>
 
+        <!-- Main Grid Section -->
         <div class="mx-auto pb-10">
             <div class="grid grid-cols-1 lg:grid-cols-3 lg:p-8 gap-6 lg:gap-8 bg-slate-900">
+                <!-- Kolom kiri (konten utama) -->
                 <section class="lg:col-span-2 space-y-6">
+                    <!-- Di sini kamu bisa tambahkan konten utama lain -->
                     <livewire:components.map-section />
+
+                    {{-- <livewire:components.activity-feed /> --}}
                 </section>
 
-                <!-- Right Column -->
+                <!-- Kolom kanan -->
                 <aside class="space-y-6">
-                    <!-- Tambahkan komponen lain di sini -->
+                    <!-- Cuaca -->
+                    <livewire:components.weather-widget />
 
+                    <!-- Peta -->
+
+                    <!-- Tips -->
                     <div class="bg-gray-800/30 rounded-2xl p-6 border border-gray-700/50">
                         <h3 class="text-lg font-semibold text-white mb-4">Sustainability Tips</h3>
                         <div class="space-y-3">
                             <div class="flex items-start gap-3">
                                 <i class="fas fa-bicycle text-green-400 mt-1"></i>
-                                <p class="text-sm text-gray-300">Use bicycle for short distances to reduce carbon emissions</p>
+                                <p class="text-sm text-gray-300">
+                                    Use bicycle for short distances to reduce carbon emissions
+                                </p>
                             </div>
                             <div class="flex items-start gap-3">
                                 <i class="fas fa-recycle text-blue-400 mt-1"></i>
-                                <p class="text-sm text-gray-300">Recycle plastic and paper products whenever possible</p>
+                                <p class="text-sm text-gray-300">
+                                    Recycle plastic and paper products whenever possible
+                                </p>
                             </div>
                             <div class="flex items-start gap-3">
                                 <i class="fas fa-leaf text-emerald-400 mt-1"></i>
-                                <p class="text-sm text-gray-300">Plant trees in your community to improve air quality</p>
+                                <p class="text-sm text-gray-300">
+                                    Plant trees in your community to improve air quality
+                                </p>
                             </div>
                         </div>
                     </div>
