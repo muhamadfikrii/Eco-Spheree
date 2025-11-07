@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\Home;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/', function() {
     return view('Home');
 })->name('dashboard');
 
