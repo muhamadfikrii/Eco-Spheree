@@ -1,18 +1,18 @@
 <div class="w-full" id="map-section" wire:ignore>
     
     <!-- Header dengan Filter dan Info -->
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4 flex-wrap overflow-x-auto">
         <div class="flex items-center">
             <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3 shadow-lg">
                 <i class="fas fa-leaf text-white"></i>
             </div>
             <div>
-                <h2 class="text-xl font-semibold text-white">Eco-Track Indonesia Map</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl">Eco-Track Indonesia Map</h2>
                 <p class="text-sm text-gray-400">Environmental data across Indonesia</p>
             </div>
         </div>
         
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 overflow-x-auto pb-1">
             <!-- Region Filter -->
             <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 flex border border-gray-700">
                 <select id="region-filter" onchange="filterByRegion(this.value)" 
@@ -74,19 +74,19 @@
 
     <!-- Main Map Container -->
     <div class="relative bg-gray-800/30 rounded-2xl border border-gray-700/50 overflow-hidden shadow-xl">
-        <!-- Map Legend -->
-        <div class="absolute top-4 left-4 z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[200px]">
+        <!-- Legend -->
+        <div class="absolute top-4 left-4 z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[150px] sm:min-w-[200px]">
             <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
                 <i class="fas fa-layer-group text-green-400"></i>
                 <span id="legend-title">Carbon Footprint</span>
             </h3>
             <div id="legend-content">
-                <!-- Legend akan diupdate oleh JavaScript -->
+                
             </div>
         </div>
 
-        <!-- Regional Stats Card -->
-        <div class="absolute top-4 right-4 z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[220px]">
+       <!-- Regional Stats -->
+        <div class="absolute top-4 right-4 z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[180px] sm:min-w-[220px]">
             <div class="flex items-center justify-between mb-3">
                 <span class="text-sm text-gray-300" id="region-name">Indonesia</span>
                 <div class="flex items-center bg-green-900/30 px-2 py-1 rounded-full">
@@ -110,7 +110,7 @@
         </div>
 
         <!-- Map Controls -->
-        <div class="absolute top-20 right-4 z-10 flex flex-col gap-2">
+        <div class="absolute top-20 sm:top-16 right-4 sm:right-2 z-10 flex flex-col space-y-2">
             <button 
                 onclick="toggleSatelliteView()"
                 id="satellite-btn"
@@ -139,9 +139,8 @@
         </div>
 
         <!-- Main Map -->
-        <div id="ecoMainMap" class="w-full h-[500px] rounded-xl bg-gray-700"></div>
-
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex gap-2">
+        <div id="ecoMainMap" class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl bg-gray-700"></div>
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex flex-wrap gap-2">
             <button 
                 onclick="useCurrentLocation()"
                 class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
@@ -180,9 +179,9 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-4 md:gap-6 lg:mt-5">
         <div class="bg-gradient-to-br from-green-500/10 to-emerald-600/10 backdrop-blur-sm rounded-xl p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer" onclick="focusOnRegion('sumatra')">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-1 items-center justify-between">
                 <div>
                     <p class="text-xs text-green-400 font-medium">Sumatra</p>
                     <p class="text-white font-bold text-lg">128.5k tons CO₂</p>
@@ -629,10 +628,10 @@ function addSampleData() {
 
 function createPopupContent(point) {
     return `
-        <div class="p-3 min-w-[250px]">
-            <div class="flex items-center gap-2 mb-2">
-                <div class="w-3 h-3 rounded-full" style="background-color: ${getImpactColor(point.impact)}"></div>
-                <strong class="text-gray-800">${point.city}</strong>
+        <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg p-4 bg-white rounded-lg shadow-lg">
+            <div class="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+                <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style="background-color: ${getImpactColor(point.impact)}"></div>
+                <strong class="text-gray-800 text-xs sm:text-sm">${point.city}</strong>
             </div>
             <p class="text-sm text-gray-600 mb-2">${point.description}</p>
             <div class="grid grid-cols-2 gap-2 text-xs">
