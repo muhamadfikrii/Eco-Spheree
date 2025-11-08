@@ -8,9 +8,9 @@ Route::get('/', function () {
     return view('Home');
 })->name('dashboard');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/report', function () {
     return view('report');
@@ -18,6 +18,9 @@ Route::get('/report', function () {
 Route::get('/eco_track', function () {
     return view('eco_track');
 })->name('eco_track');
+Route::get('/leaderboard', function () {
+    return view('leaderboard');
+})->name('leaderboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
