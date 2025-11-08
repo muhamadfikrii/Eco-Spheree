@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('Home');
-})->name('dashboard');
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
+Route::get('/learn', function() {
+    return view('learn-more');
+})->name('learnmore');
 Route::get('/report', function () {
     return view('report');
 })->name('report');

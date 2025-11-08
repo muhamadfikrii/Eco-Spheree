@@ -1,4 +1,4 @@
-<div class="bg-[#f0fdf4]">
+<div class="bg-[#f0fdf4]" id="purpose">
     <div x-data="ecotrackApp()">
         <!-- Hero Section -->
         <section class="pt-20 pb-16 px-6 lg:px-12 z-0 eco-gradient text-white">
@@ -14,15 +14,9 @@
                         <div class="flex flex-wrap gap-4">
                             <button 
                                 @click="showDashboard = true" 
-                                class="px-6 py-3 bg-white text-[#166534] font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                                class="px-6 py-3 bg-emerald-500 text-white border border-white hover:bg-transparent font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                             >
                                 Explore Dashboard
-                            </button>
-                            <button 
-                                @click="scrollToFeatures" 
-                                class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#166534] transition-all duration-300"
-                            >
-                                Learn More
                             </button>
                         </div>
                     </div>
@@ -375,40 +369,11 @@
                             <h3 class="text-2xl font-bold mb-4">Ready to Make a Difference?</h3>
                             <p class="mb-6 opacity-90">Join our community and help protect Indonesia's environment.</p>
                             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button class="px-6 py-3 bg-white text-[#166534] font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                <a href="{{ route('register') }}" class="px-6 py-3 bg-white text-[#166534] font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                                     Sign Up Now
-                                </button>
-                                <button class="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#166534] transition-all duration-300">
-                                    View Demo
-                                </button>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Partners Section -->
-        <section class="py-12 bg-white">
-            <div class="max-w-[1300px] mx-auto px-6 lg:px-12">
-                <div class="text-center mb-10">
-                    <h3 class="text-2xl font-bold text-[#14532d] mb-4">Trusted By</h3>
-                </div>
-                <div class="flex flex-wrap justify-center items-center gap-10 opacity-60">
-                    <div class="w-32 h-16 bg-[#dcfce7] rounded-lg flex items-center justify-center">
-                        <span class="font-bold text-[#166534]">Govt Agency</span>
-                    </div>
-                    <div class="w-32 h-16 bg-[#dcfce7] rounded-lg flex items-center justify-center">
-                        <span class="font-bold text-[#166534]">NGO Partner</span>
-                    </div>
-                    <div class="w-32 h-16 bg-[#dcfce7] rounded-lg flex items-center justify-center">
-                        <span class="font-bold text-[#166534]">University</span>
-                    </div>
-                    <div class="w-32 h-16 bg-[#dcfce7] rounded-lg flex items-center justify-center">
-                        <span class="font-bold text-[#166534]">Research Inst</span>
-                    </div>
-                    <div class="w-32 h-16 bg-[#dcfce7] rounded-lg flex items-center justify-center">
-                        <span class="font-bold text-[#166534]">Corporate</span>
                     </div>
                 </div>
             </div>

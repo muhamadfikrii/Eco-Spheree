@@ -159,3 +159,123 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #475569;
 }
+
+/* impact stories */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Smooth scrolling for the carousel */
+.carousel-container {
+    scroll-behavior: smooth;
+}
+
+/* Image zoom effect on slide change */
+.carousel-image {
+    transition: transform 0.7s ease-in-out;
+}
+
+/* Gradient text effect */
+.gradient-text {
+    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Ensure images cover properly */
+.object-cover {
+    object-fit: cover;
+}
+
+/* Backdrop blur support for older browsers */
+@supports not (backdrop-filter: blur(10px)) {
+    .backdrop-blur-sm {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Focus styles for accessibility */
+button:focus {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, [role="button"] {
+    transition: all 0.3s ease;
+}
+
+/* Hover effects for cards */
+.hover-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Animation for notification */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+
+/* Partners */
+
+.logo-clontainer {
+    background: white;
+    border-radius: 1rem;
+    padding: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure logos maintain aspect ratio and look crisp */
+.logo-img {
+    object-fit: contain;
+    filter: brightness(1);
+    transition: filter 0.3s ease;
+}
+
+.logo-img:hover {
+    filter: brightness(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .logo-container {
+        padding: 0.5rem;
+    }
+}
