@@ -2,21 +2,30 @@
 
 namespace App\Livewire\Components;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use Livewire\Component;
 
 class WeatherWidget extends Component
 {
     public $weatherData;
+
     public $loading = true;
+
     public $error = null;
+
     public $city = 'Lokasi Anda';
+
     public $latitude = -6.2088;
+
     public $longitude = 106.8456;
+
     public $lastUpdated;
+
     public $currentAnimation = 'clear';
+
     public $autoRefresh = true;
+
     public $componentId;
 
     protected $listeners = ['updateLocation' => 'setLocation'];
@@ -34,7 +43,7 @@ class WeatherWidget extends Component
 
         // Ambil nama kota berdasarkan koordinat
         try {
-            $geoResponse = Http::get("https://nominatim.openstreetmap.org/reverse", [
+            $geoResponse = Http::get('https://nominatim.openstreetmap.org/reverse', [
                 'lat' => $this->latitude,
                 'lon' => $this->longitude,
                 'format' => 'json',
@@ -44,14 +53,14 @@ class WeatherWidget extends Component
 
             if ($geoResponse->ok()) {
                 $geoData = $geoResponse->json();
-                $this->city = $geoData['address']['city'] 
-                ?? $geoData['address']['town'] 
-                ?? $geoData['address']['village'] 
+                $this->city = $geoData['address']['city']
+                ?? $geoData['address']['town']
+                ?? $geoData['address']['village']
                 ?? 'Lokasi Tidak Dikenal';
-                logger()->info('User location city: ' . $this->city);
+                logger()->info('User location city: '.$this->city);
             }
         } catch (\Exception $e) {
-            logger()->warning('Gagal ambil nama kota: ' . $e->getMessage());
+            logger()->warning('Gagal ambil nama kota: '.$e->getMessage());
             $this->city = 'Lokasi Tidak Dikenal';
         }
 
@@ -69,7 +78,7 @@ class WeatherWidget extends Component
             $this->setWeatherAnimation();
         } catch (\Exception $e) {
             $this->error = 'Gagal mengambil data cuaca. Silakan refresh.';
-            logger()->error('Weather API Error: ' . $e->getMessage());
+            logger()->error('Weather API Error: '.$e->getMessage());
         }
 
         $this->loading = false;
@@ -77,16 +86,16 @@ class WeatherWidget extends Component
 
     private function fetchFromOpenMeteo()
     {
-        $cacheKey = 'weather_' . md5($this->latitude . '_' . $this->longitude);
+        $cacheKey = 'weather_'.md5($this->latitude.'_'.$this->longitude);
 
         return Cache::remember($cacheKey, 300, function () {
             $response = Http::timeout(10)
                 ->retry(3, 1000)
-                ->get("https://api.open-meteo.com/v1/forecast", [
+                ->get('https://api.open-meteo.com/v1/forecast', [
                     'latitude' => $this->latitude,
                     'longitude' => $this->longitude,
                     'current_weather' => 'true',
-                    'timezone' => 'Asia/Jakarta'
+                    'timezone' => 'Asia/Jakarta',
                 ]);
 
             if ($response->failed()) {
@@ -94,13 +103,14 @@ class WeatherWidget extends Component
             }
 
             $data = $response->json();
+
             return $this->transformData($data);
         });
     }
 
     private function transformData($data)
     {
-        if (!isset($data['current_weather'])) {
+        if (! isset($data['current_weather'])) {
             throw new \Exception('Data tidak valid');
         }
 
@@ -113,7 +123,7 @@ class WeatherWidget extends Component
                 [
                     'main' => $weatherInfo['main'],
                     'description' => $weatherInfo['description'],
-                ]
+                ],
             ],
             'main' => [
                 'temp' => round($current['temperature']),
@@ -132,13 +142,19 @@ class WeatherWidget extends Component
             61 => ['main' => 'Rain', 'description' => 'Hujan', 'animation' => 'rainy'],
             95 => ['main' => 'Storm', 'description' => 'Badai Petir', 'animation' => 'storm'],
         ];
+
         return $map[$code] ?? $map[0];
     }
 
     private function getFeelsLikeAdjustment($temp)
     {
-        if ($temp > 30) return rand(3, 5);
-        if ($temp > 25) return rand(2, 4);
+        if ($temp > 30) {
+            return rand(3, 5);
+        }
+        if ($temp > 25) {
+            return rand(2, 4);
+        }
+
         return rand(1, 2);
     }
 
@@ -156,13 +172,13 @@ class WeatherWidget extends Component
 
     public function refreshWeather()
     {
-        Cache::forget('weather_' . md5($this->latitude . '_' . $this->longitude));
+        Cache::forget('weather_'.md5($this->latitude.'_'.$this->longitude));
         $this->fetchWeatherData();
     }
 
     public function toggleAutoRefresh()
     {
-        $this->autoRefresh = !$this->autoRefresh;
+        $this->autoRefresh = ! $this->autoRefresh;
     }
 
     public function render()
