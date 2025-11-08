@@ -1,6 +1,5 @@
-<div class="w-full" id="map-section" wire:ignore>
+<div class="w-full" wire:ignore>
     
-    <!-- Header dengan Filter dan Info -->
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4 flex-wrap overflow-x-auto">
         <div class="flex items-center">
             <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3 shadow-lg">
@@ -75,7 +74,7 @@
     <!-- Main Map Container -->
     <div class="relative bg-gray-800/30 rounded-2xl border border-gray-700/50 overflow-hidden shadow-xl">
         <!-- Legend -->
-        <div class="absolute top-4 left-4 z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[150px] sm:min-w-[200px]">
+        <div class="absolute top-4 left-4 -z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[150px] sm:min-w-[200px]">
             <h3 class="text-sm font-semibold text-white mb-3 flex items-center gap-2">
                 <i class="fas fa-layer-group text-green-400"></i>
                 <span id="legend-title">Carbon Footprint</span>
@@ -184,7 +183,7 @@
             <div class="flex flex-1 items-center justify-between">
                 <div>
                     <p class="text-xs text-green-400 font-medium">Sumatra</p>
-                    <p class="text-white font-bold text-lg">128.5k tons CO₂</p>
+                    <p class="text-white font-bold text-lg">172.5k tons CO₂</p>
                     <p class="text-xs text-green-300 mt-1">↓ 8% from 2023</p>
                 </div>
                 <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
@@ -197,7 +196,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-xs text-blue-400 font-medium">Java</p>
-                    <p class="text-white font-bold text-lg">245.7k tons CO₂</p>
+                    <p class="text-white font-bold text-lg">245.0k tons CO₂</p>
                     <p class="text-xs text-blue-300 mt-1">↓ 12% from 2023</p>
                 </div>
                 <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
@@ -210,7 +209,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-xs text-purple-400 font-medium">Kalimantan</p>
-                    <p class="text-white font-bold text-lg">89.3k tons CO₂</p>
+                    <p class="text-white font-bold text-lg">138.4k tons CO₂</p>
                     <p class="text-xs text-purple-300 mt-1">↓ 15% from 2023</p>
                 </div>
                 <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
@@ -223,7 +222,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-xs text-orange-400 font-medium">Sulawesi</p>
-                    <p class="text-white font-bold text-lg">67.8k tons CO₂</p>
+                    <p class="text-white font-bold text-lg">78.6k tons CO₂</p>
                     <p class="text-xs text-orange-300 mt-1">↓ 5% from 2023</p>
                 </div>
                 <div class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center">
@@ -241,7 +240,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div class="bg-gray-800/30 rounded-xl p-6 border border-gray-700/50">
                 <h4 class="text-md font-semibold text-white mb-4">Top 5 Cities by Carbon Reduction</h4>
-                <div class="space-y-3" id="top-cities">
+                <div class="space-y-6" id="top-cities">
                 </div>
             </div>
             <div class="bg-gray-800/30 rounded-xl p-6 border border-gray-700/50">
@@ -325,13 +324,13 @@ const layerData = {
 };
 
 const regionStats = {
-    sumatra: { score: 72, projects: 89, carbonReduced: "128.5k", forestCoverage: "48%" },
-    java: { score: 65, projects: 156, carbonReduced: "245.7k", forestCoverage: "24%" },
-    kalimantan: { score: 68, projects: 67, carbonReduced: "89.3k", forestCoverage: "65%" },
-    sulawesi: { score: 71, projects: 45, carbonReduced: "67.8k", forestCoverage: "52%" },
-    bali: { score: 78, projects: 38, carbonReduced: "23.4k", forestCoverage: "41%" },
-    papua: { score: 75, projects: 29, carbonReduced: "34.6k", forestCoverage: "82%" },
-    all: { score: 68, projects: 247, carbonReduced: "45.2k", forestCoverage: "52%" }
+    sumatra: { score: 74, projects: 120, carbonReduced: "172.5k", forestCoverage: "49%" },
+    java: { score: 67, projects: 210, carbonReduced: "245.7k", forestCoverage: "24%" },
+    kalimantan: { score: 70, projects: 95, carbonReduced: "138.4k", forestCoverage: "64%" },
+    sulawesi: { score: 72, projects: 60, carbonReduced: "78.6k", forestCoverage: "52%" },
+    bali: { score: 80, projects: 40, carbonReduced: "25.2k", forestCoverage: "39%" },
+    papua: { score: 76, projects: 35, carbonReduced: "83.5k", forestCoverage: "82%" },
+    all: { score: 70, projects: 560, carbonReduced: "743.2k", forestCoverage: "52%" }
 };
 
 // =============================================
@@ -924,22 +923,33 @@ function getValueUnit() {
 
 function loadTopCities() {
     const container = document.getElementById('top-cities');
-    const carbonData = [...layerData.carbon].sort((a, b) => a.value - b.value).slice(0, 5);
-    
-    carbonData.forEach((city, index) => {
-        const cityEl = document.createElement('div');
-        cityEl.className = 'flex items-center justify-between py-2 border-b border-gray-700/50 last:border-b-0';
-        cityEl.innerHTML = `
-            <div class="flex items-center gap-3">
-                <span class="text-xs font-medium text-gray-400 w-4">${index + 1}</span>
-                <div>
-                    <p class="text-sm text-white">${city.city}</p>
-                    <p class="text-xs text-gray-400 capitalize">${city.region}</p>
+    container.innerHTML = '';
+
+    // Data tetap untuk 5 kota
+    const topCities = [
+        { city: 'Jakarta', value: 1200 },
+        { city: 'Surabaya', value: 950 },
+        { city: 'Bandung', value: 870 },
+        { city: 'Semarang', value: 720 },
+        { city: 'Denpasar', value: 610 },
+    ];
+
+    topCities.forEach((city, index) => {
+        const item = document.createElement('div');
+        item.className =
+            'flex items-center justify-between bg-gray-900/70 hover:bg-gray-800 transition-colors p-3 rounded-xl border border-gray-700/50 shadow-sm';
+
+        item.innerHTML = `
+            <div class="flex items-center gap-5">
+                <div class="w-6 h-6 flex items-center justify-center rounded-full bg-green-600 text-white text-xs font-bold">
+                    ${index + 1}
                 </div>
+                <span class="text-gray-200 text-sm font-medium">${city.city}</span>
             </div>
-            <span class="text-sm font-semibold text-green-400">${city.value} tons</span>
+            <span class="text-green-400 text-sm font-semibold">${city.value.toLocaleString()} tons</span>
         `;
-        container.appendChild(cityEl);
+
+        container.appendChild(item);
     });
 }
 
