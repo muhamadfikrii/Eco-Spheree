@@ -26,6 +26,10 @@ Route::get('/report', function () {
     return view('report');
 })->name('report');
 
+Route::get('/challenge', function () {
+    return view('challenge');
+})->name('challenge');
+
 Route::get('/eco_track', function () {
     return view('eco_track');
 })->name('eco_track');
