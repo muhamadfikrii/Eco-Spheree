@@ -15,10 +15,10 @@ Route::get('/dashboard', function () {
 Route::get('/learn', function () {
     return view('learn-more');
 })->name('learnmore');
-Route::get('/partner', function() {
+Route::get('/partner', function () {
     return view('become-partner');
 })->name('become');
-Route::get('/learn/contact', function() {
+Route::get('/learn/contact', function () {
     return view('contact-partner');
 })->name('contact-partner');
 

@@ -57,10 +57,10 @@ class WeatherWidget extends Component
                     ?? $geoData['address']['town']
                     ?? $geoData['address']['village']
                     ?? 'Unknown Location';
-                logger()->info('User location city: ' . $this->city);
+                logger()->info('User location city: '.$this->city);
             }
         } catch (\Exception $e) {
-            logger()->warning('Failed to get city name: ' . $e->getMessage());
+            logger()->warning('Failed to get city name: '.$e->getMessage());
             $this->city = 'Unknown Location';
         }
 
@@ -78,7 +78,7 @@ class WeatherWidget extends Component
             $this->setWeatherAnimation();
         } catch (\Exception $e) {
             $this->error = 'Failed to fetch weather data. Please refresh.';
-            logger()->error('Weather API Error: ' . $e->getMessage());
+            logger()->error('Weather API Error: '.$e->getMessage());
         }
 
         $this->loading = false;
@@ -86,7 +86,7 @@ class WeatherWidget extends Component
 
     private function fetchFromOpenMeteo()
     {
-        $cacheKey = 'weather_' . md5($this->latitude . '_' . $this->longitude);
+        $cacheKey = 'weather_'.md5($this->latitude.'_'.$this->longitude);
 
         return Cache::remember($cacheKey, 300, function () {
             $response = Http::timeout(10)
@@ -110,7 +110,7 @@ class WeatherWidget extends Component
 
     private function transformData($data)
     {
-        if (!isset($data['current_weather'])) {
+        if (! isset($data['current_weather'])) {
             throw new \Exception('Invalid data structure');
         }
 
@@ -172,13 +172,13 @@ class WeatherWidget extends Component
 
     public function refreshWeather()
     {
-        Cache::forget('weather_' . md5($this->latitude . '_' . $this->longitude));
+        Cache::forget('weather_'.md5($this->latitude.'_'.$this->longitude));
         $this->fetchWeatherData();
     }
 
     public function toggleAutoRefresh()
     {
-        $this->autoRefresh = !$this->autoRefresh;
+        $this->autoRefresh = ! $this->autoRefresh;
     }
 
     public function render()
