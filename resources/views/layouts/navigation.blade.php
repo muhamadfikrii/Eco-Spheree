@@ -26,10 +26,11 @@
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8 font-medium text-[15px] transition-all duration-500 ease-in-out">
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">Home</x-nav-link>
-                <x-nav-link :href="route('dashboard')" class="hover:text-emerald-400">Eksplor</x-nav-link>
-                <x-nav-link :href="route('dashboard')" class="hover:text-emerald-400">Challenge</x-nav-link>
-                <x-nav-link :href="route('dashboard')" class="hover:text-emerald-400">Eco‑Track</x-nav-link>
-                <x-nav-link :href="route('dashboard')" class="hover:text-emerald-400">Leaderboard</x-nav-link>
+                <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" class="hover:text-emerald-400">Explore</x-nav-link>
+                <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="hover:text-emerald-400">Challenge</x-nav-link>
+                <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="hover:text-emerald-400">Report</x-nav-link>
+                <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="hover:text-emerald-400">Eco‑Track</x-nav-link>
+                <x-nav-link :href="route('leaderboard')" :active="request()->routeIs('leaderboard')" class="hover:text-emerald-400">Leaderboard</x-nav-link>
             </div>
 
             <!-- Auth Buttons / User Menu -->
@@ -77,11 +78,12 @@
 
     <!-- Mobile Menu -->
     <div x-show="open" x-transition.origin.top.duration.300ms class="md:hidden bg-slate-900/95 border-t border-slate-800 backdrop-blur-md px-6 py-5 space-y-3 transition-all duration-500 ease-in-out">
-        <a href="{{ route('home') }}" class="block text-slate-200 hover:text-emerald-400 transition">Home</a>
-        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Eksplor</a>
-        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Challenge</a>
-        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Eco‑Track</a>
-        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Leaderboard</a>
+        <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="block text-slate-200 hover:text-emerald-400 transition">Home</x-nav-link>
+        <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" class="block text-slate-200 hover:text-emerald-400 transition">Eksplor</x-nav-link>
+        <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="block text-slate-200 hover:text-emerald-400 transition">Challenge</x-nav-link>
+        <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="hover:text-emerald-400">Report</x-nav-link>
+        <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="block text-slate-200 hover:text-emerald-400 transition">Eco‑Track</x-nav-link>
+        <x-nav-link :href="route('leaderboard')" :active="request()->routeIs('leaderboard')" class="block text-slate-200 hover:text-emerald-400 transition">Leaderboard</x-nav-link>
 
         <div class="border-t border-slate-800 pt-4 mt-3">
             @auth
