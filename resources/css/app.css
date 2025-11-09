@@ -279,3 +279,84 @@ button, a, [role="button"] {
         padding: 0.5rem;
     }
 }
+
+
+/* Partnership Type Cards */
+.partnership-type-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.partnership-type-card:hover {
+    transform: translateY(-5px);
+}
+
+.partnership-type-card .border {
+    transition: all 0.3s ease;
+}
+
+/* Form Input Enhancements */
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+textarea {
+    transition: all 0.3s ease;
+}
+
+input:focus, 
+textarea:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Button Animation */
+button {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+
+/* Partner Cards Hover Effects */
+.group:hover .transform {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Star Rating Animation */
+.fa-star {
+    transition: all 0.3s ease;
+}
+
+.group:hover .fa-star {
+    color: #fbbf24;
+    transform: scale(1.2);
+}
+
+/* Logo Container Animation */
+.w-16.h-16 {
+    transition: all 0.3s ease;
+}
+
+/* Stats Counter Animation */
+.text-3xl {
+    transition: all 0.5s ease;
+}
+
+/* Additional hover effects */
+.group:hover .border-gray-700\/50 {
+    border-color: rgba(59, 130, 246, 0.3);
+}

@@ -1,6 +1,6 @@
 <div class="w-full" wire:ignore>
     
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6 gap-4 flex-wrap overflow-x-auto">
+    <div class="flex flex-col p-2 lg:flex-row lg:items-center lg:justify-between mb-6 gap-4 flex-wrap overflow-x-auto">
         <div class="flex items-center">
             <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center mr-3 shadow-lg">
                 <i class="fas fa-leaf text-white"></i>
@@ -11,11 +11,11 @@
             </div>
         </div>
         
-        <div class="flex items-center gap-3 overflow-x-auto pb-1">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3">
             <!-- Region Filter -->
-            <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 flex border border-gray-700">
+            <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 flex border border-gray-700 w-full sm:w-auto">
                 <select id="region-filter" onchange="filterByRegion(this.value)" 
-                    class="bg-transparent border-0 text-xs text-gray-300 focus:ring-0 px-2">
+                    class="bg-transparent border-0 text-xs text-gray-300 focus:ring-0 px-2 w-full sm:w-auto">
                     <option value="all">All Indonesia</option>
                     <option value="sumatra">Sumatra</option>
                     <option value="java">Java</option>
@@ -27,42 +27,43 @@
             </div>
 
             <!-- Layer Toggle -->
-            <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 flex border border-gray-700">
+            <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 gap-5 text-center flex border border-gray-700 w-full sm:w-full">
                 <button 
                     onclick="switchLayer('carbon')" 
                     id="carbon-btn"
-                    class="px-3 py-1.5 text-xs rounded-md font-medium transition-colors bg-green-600/20 text-green-400"
+                    class="layer-btn flex-1 px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
                 >
                     Carbon
                 </button>
                 <button 
                     onclick="switchLayer('transport')"
                     id="transport-btn"
-                    class="px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
+                    class="layer-btn flex-1 px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
                 >
                     Transport
                 </button>
                 <button 
                     onclick="switchLayer('energy')"
                     id="energy-btn"
-                    class="px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
+                    class="layer-btn flex-1 px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
                 >
                     Energy
                 </button>
                 <button 
                     onclick="switchLayer('biodiversity')"
                     id="biodiversity-btn"
-                    class="px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
+                    class="layer-btn flex-1 px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
                 >
                     Biodiversity
                 </button>
             </div>
 
-            <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 flex border border-gray-700">
+            <!-- View Mode Toggle -->
+            <div class="bg-gray-800/70 backdrop-blur-md rounded-lg p-1 flex border border-gray-700 w-full sm:w-auto">
                 <button 
                     onclick="toggleViewMode()" 
                     id="view-mode-btn"
-                    class="px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
+                    class="w-full px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
                     title="Toggle between markers and heatmap"
                 >
                     <i class="fas fa-layer-group mr-1"></i>Markers
@@ -85,10 +86,10 @@
         </div>
 
        <!-- Regional Stats -->
-        <div class="absolute top-4 right-4 z-10 bg-gray-900/90 backdrop-blur-md p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[180px] sm:min-w-[220px]">
-            <div class="flex items-center justify-between mb-3">
-                <span class="text-sm text-gray-300" id="region-name">Indonesia</span>
-                <div class="flex items-center bg-green-900/30 px-2 py-1 rounded-full">
+        <div class="absolute top-4 right-4 z-[999] bg-gray-900/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[160px] sm:min-w-[220px]">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                <span class="text-sm text-gray-300 truncate" id="region-name">Indonesia</span>
+                <div class="flex items-center bg-green-900/30 px-2 py-1 rounded-full sm:ml-auto">
                     <span class="text-sm text-green-400 font-bold" id="region-score">68/100</span>
                 </div>
             </div>
@@ -99,7 +100,7 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-xs text-gray-400">Carbon Reduced</span>
-                    <span class="text-xs text-green-400 font-medium" id="carbon-reduced">45.2 tons</span>
+                    <span class="text-xs text-green-400 font-medium" id="carbon-reduced">45.2t</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-xs text-gray-400">Forest Coverage</span>
@@ -109,7 +110,7 @@
         </div>
 
         <!-- Map Controls -->
-        <div class="absolute top-20 sm:top-16 right-4 sm:right-2 z-10 flex flex-col space-y-2">
+        <div class="absolute top-20 sm:top-16 right-4 sm:right-2 z-[99] flex flex-col space-y-2">
             <button 
                 onclick="toggleSatelliteView()"
                 id="satellite-btn"
@@ -139,46 +140,49 @@
 
         <!-- Main Map -->
         <div id="ecoMainMap" class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl bg-gray-700"></div>
-        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex flex-wrap gap-2">
-            <button 
-                onclick="useCurrentLocation()"
-                class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
-                title="Find My Location"
-            >
-                <i class="fas fa-crosshairs"></i>
-            </button>
-            <button 
-                onclick="toggleHeatmap()"
-                id="heatmap-btn"
-                class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
-                title="Toggle Heatmap"
-            >
-                <i class="fas fa-fire"></i>
-            </button>
-            <button 
-                onclick="resetView()"
-                class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
-                title="Reset View"
-            >
-                <i class="fas fa-home"></i>
-            </button>
-            <button 
-                onclick="toggleFullscreen()"
-                class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
-                title="Fullscreen"
-            >
-                <i class="fas fa-expand"></i>
-            </button>
-        </div>
-
-        <div class="absolute bottom-4 left-4 z-10 bg-gray-900/90 backdrop-blur-md px-3 py-2 rounded-xl shadow-xl border border-gray-700/50">
-            <div class="text-xs text-gray-400">
-                <span id="coordinates">Lat: -2.5489, Lng: 118.0149</span>
+            <!-- Group of Control Buttons (Right on Mobile, Center on Larger Screens) -->
+            <div class="absolute bottom-4 right-4 z-[999] flex flex-wrap justify-end gap-2 px-4
+                    sm:right-auto sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:justify-center">
+                <button 
+                    onclick="useCurrentLocation()"
+                    class="bg-gray-900/90 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
+                    title="Find My Location"
+                >
+                    <i class="fas fa-crosshairs text-sm sm:text-base"></i>
+                </button>
+                <button 
+                    onclick="toggleHeatmap()"
+                    id="heatmap-btn"
+                    class="bg-gray-900/90 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
+                    title="Toggle Heatmap"
+                >
+                    <i class="fas fa-fire text-sm sm:text-base"></i>
+                </button>
+                <button 
+                    onclick="resetView()"
+                    class="bg-gray-900/90 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
+                    title="Reset View"
+                >
+                    <i class="fas fa-home text-sm sm:text-base"></i>
+                </button>
+                <button 
+                    onclick="toggleFullscreen()"
+                    class="bg-gray-900/90 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300 transform hover:scale-105"
+                    title="Fullscreen"
+                >
+                    <i class="fas fa-expand text-sm sm:text-base"></i>
+                </button>
             </div>
-        </div>
+
+            <!-- Coordinates Display (Bottom Left on All Screens) -->
+            <div class="absolute bottom-4 left-4 z-[999] bg-gray-900/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 rounded-xl shadow-xl border border-gray-700/50">
+                <div class="text-xs text-gray-400">
+                    <span id="coordinates">Lat: -2.5489, Lng: 118.0149</span>
+                </div>
+            </div>
     </div>
 
-   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-4 md:gap-6 lg:mt-5">
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 m-5">
         <div class="bg-gradient-to-br from-green-500/10 to-emerald-600/10 backdrop-blur-sm rounded-xl p-4 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 cursor-pointer" onclick="focusOnRegion('sumatra')">
             <div class="flex flex-1 items-center justify-between">
                 <div>
@@ -233,7 +237,7 @@
     </div>
 
     <div class="mt-8">
-        <h3 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+        <h3 class="text-lg ml-1 sm:ml-2 font-semibold text-white mb-4 flex items-center gap-2">
             <i class="fas fa-chart-line text-green-400"></i>
             Regional Data Insights
         </h3>
@@ -715,23 +719,28 @@ function createCustomIcon(impact, type) {
 function switchLayer(layer) {
     activeLayer = layer;
     
-    // Update tombol layer...
+    const baseClasses = 'layer-btn flex-1 px-3 py-1.5 text-xs rounded-md font-medium transition-colors';
+    const inactiveClasses = 'text-gray-400 hover:text-white';
+    
     ['carbon', 'transport', 'energy', 'biodiversity'].forEach(l => {
         const btn = document.getElementById(`${l}-btn`);
         if (btn) {
-            btn.className = 'px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white';
+            // Terapkan class dasar + class tidak aktif
+            btn.className = `${baseClasses} ${inactiveClasses}`;
         }
     });
     
     const activeBtn = document.getElementById(`${layer}-btn`);
     if (activeBtn) {
+        // Hapus warna latar, hanya gunakan warna teks untuk menandakan tombol aktif
         const colors = {
-            carbon: ['green', 'bg-green-600/20', 'text-green-400'],
-            transport: ['blue', 'bg-blue-600/20', 'text-blue-400'],
-            energy: ['yellow', 'bg-yellow-600/20', 'text-yellow-400'],
-            biodiversity: ['emerald', 'bg-emerald-600/20', 'text-emerald-400']
+            carbon: 'text-green-400 bg-green-100/10',
+            transport: 'text-blue-400 bg-blue-100/10',
+            energy: 'text-yellow-400 bg-yellow-100/10',
+            biodiversity: 'text-emerald-400 bg-emerald-100/10'
         };
-        activeBtn.className = `px-3 py-1.5 text-xs rounded-md font-medium transition-colors ${colors[layer][1]} ${colors[layer][2]}`;
+        // Terapkan class dasar + class warna teks aktif
+        activeBtn.className = `${baseClasses} ${colors[layer]}`;
     }
     
     updateLegend();

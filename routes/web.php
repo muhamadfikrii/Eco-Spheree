@@ -11,18 +11,29 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 Route::get('/learn', function () {
     return view('learn-more');
 })->name('learnmore');
+Route::get('/partner', function () {
+    return view('become-partner');
+})->name('become');
+Route::get('/learn/contact', function () {
+    return view('contact-partner');
+})->name('contact-partner');
+
 Route::get('/report', function () {
     return view('report');
 })->name('report');
+
 Route::get('/challenge', function () {
     return view('challenge');
 })->name('challenge');
+
 Route::get('/eco_track', function () {
     return view('eco_track');
 })->name('eco_track');
+
 Route::get('/leaderboard', function () {
     return view('leaderboard');
 })->name('leaderboard');

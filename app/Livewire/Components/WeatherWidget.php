@@ -14,7 +14,7 @@ class WeatherWidget extends Component
 
     public $error = null;
 
-    public $city = 'Lokasi Anda';
+    public $city = 'Your Location';
 
     public $latitude = -6.2088;
 
@@ -41,7 +41,7 @@ class WeatherWidget extends Component
         $this->latitude = $data['latitude'];
         $this->longitude = $data['longitude'];
 
-        // Ambil nama kota berdasarkan koordinat
+        // Get city name based on coordinates
         try {
             $geoResponse = Http::get('https://nominatim.openstreetmap.org/reverse', [
                 'lat' => $this->latitude,
@@ -54,14 +54,14 @@ class WeatherWidget extends Component
             if ($geoResponse->ok()) {
                 $geoData = $geoResponse->json();
                 $this->city = $geoData['address']['city']
-                ?? $geoData['address']['town']
-                ?? $geoData['address']['village']
-                ?? 'Lokasi Tidak Dikenal';
+                    ?? $geoData['address']['town']
+                    ?? $geoData['address']['village']
+                    ?? 'Unknown Location';
                 logger()->info('User location city: '.$this->city);
             }
         } catch (\Exception $e) {
-            logger()->warning('Gagal ambil nama kota: '.$e->getMessage());
-            $this->city = 'Lokasi Tidak Dikenal';
+            logger()->warning('Failed to get city name: '.$e->getMessage());
+            $this->city = 'Unknown Location';
         }
 
         $this->fetchWeatherData();
@@ -77,7 +77,7 @@ class WeatherWidget extends Component
             $this->lastUpdated = now()->format('H:i:s');
             $this->setWeatherAnimation();
         } catch (\Exception $e) {
-            $this->error = 'Gagal mengambil data cuaca. Silakan refresh.';
+            $this->error = 'Failed to fetch weather data. Please refresh.';
             logger()->error('Weather API Error: '.$e->getMessage());
         }
 
@@ -99,7 +99,7 @@ class WeatherWidget extends Component
                 ]);
 
             if ($response->failed()) {
-                throw new \Exception('API gagal diakses');
+                throw new \Exception('API request failed');
             }
 
             $data = $response->json();
@@ -111,7 +111,7 @@ class WeatherWidget extends Component
     private function transformData($data)
     {
         if (! isset($data['current_weather'])) {
-            throw new \Exception('Data tidak valid');
+            throw new \Exception('Invalid data structure');
         }
 
         $current = $data['current_weather'];
@@ -135,12 +135,12 @@ class WeatherWidget extends Component
     private function mapWeatherCode($code)
     {
         $map = [
-            0 => ['main' => 'Clear', 'description' => 'Cerah', 'animation' => 'sunny'],
-            1 => ['main' => 'Clear', 'description' => 'Sebagian Cerah', 'animation' => 'sunny'],
-            2 => ['main' => 'Clouds', 'description' => 'Berawan', 'animation' => 'cloudy'],
-            3 => ['main' => 'Clouds', 'description' => 'Mendung', 'animation' => 'cloudy'],
-            61 => ['main' => 'Rain', 'description' => 'Hujan', 'animation' => 'rainy'],
-            95 => ['main' => 'Storm', 'description' => 'Badai Petir', 'animation' => 'storm'],
+            0 => ['main' => 'Clear', 'description' => 'Clear', 'animation' => 'sunny'],
+            1 => ['main' => 'Clear', 'description' => 'Mainly Clear', 'animation' => 'sunny'],
+            2 => ['main' => 'Clouds', 'description' => 'Partly Cloudy', 'animation' => 'cloudy'],
+            3 => ['main' => 'Clouds', 'description' => 'Overcast', 'animation' => 'cloudy'],
+            61 => ['main' => 'Rain', 'description' => 'Rain', 'animation' => 'rainy'],
+            95 => ['main' => 'Storm', 'description' => 'Thunderstorm', 'animation' => 'storm'],
         ];
 
         return $map[$code] ?? $map[0];

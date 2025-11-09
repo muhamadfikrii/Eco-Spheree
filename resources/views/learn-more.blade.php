@@ -87,13 +87,13 @@
     <!-- Learn More Hero Section -->
     <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700">
         <!-- Background Elements -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 w-56 h-56 bg-[#4a8c6d]/10 rounded-full filter blur-3xl animate-float-slow"></div>
+        <div class="absolute inset-0 overflow-hidden ">
+            <div class="absolute top-20 left-10 w-56 h-60 bg-[#4a8c6d]/10 rounded-full filter blur-3xl animate-float-slow"></div>
             <div class="absolute bottom-24 right-10 w-72 h-72 bg-[#e6b325]/5 rounded-full filter blur-3xl animate-float-medium"></div>
             <div class="absolute top-1/2 left-1/3 w-96 h-96 bg-[#0f2a3d]/20 rounded-full filter blur-3xl animate-float-slow"></div>
         </div>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 text-center">
+        <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 mt-16 text-center">
             <div class="inline-flex items-center bg-[#4a8c6d]/20 text-[#e6b325] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-[#4a8c6d]/30 animate-fade-in">
                 <i class="fas fa-leaf mr-2"></i>
                 Digital Innovation for Sustainable Nature
@@ -115,28 +115,34 @@
                     Explore Features
                 </button>
                 <button @click="scrollToSection('how-it-works')" class="px-8 py-4 bg-transparent border-2 border-[#4a8c6d] hover:border-[#e6b325] text-text-[#e8f4f0] rounded-lg transition-all duration-300 font-semibold hover:bg-[#4a8c6d]/10 flex items-center justify-center group">
-                    <i class="fas fa-play-circle mr-3 group-hover:scale-110 transition-transform"></i>
+                    <i class="fa-solid fa-briefcase mr-3 group-hover:scale-110 transition-transform"></i>
                     How It Works
                 </button>
             </div>
         </div>
     </section>
 
-    <!-- Mission & Vision Section -->
-    <section class="py-20 bg-[#0f2a3d]/80">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div x-data="{ expanded: null }">
-                    <h2 class="text-3xl font-bold mb-6 text-text-[#e8f4f0]">Our Mission & Vision</h2>
-                    <p class="text-[#a0b8b0] text-lg mb-6 leading-relaxed">
+   <!-- Mission & Vision Section -->
+    <section x-data="{ 
+        expanded: null, 
+        activeFeature: 0, 
+        setActiveFeature(index) { this.activeFeature = index; } 
+    }" class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <!-- Left Column: Text and Accordion -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-[#e8f4f0]">Our Mission & Vision</h2>
+                    <p class="text-[#a0b8b0] text-base sm:text-lg mb-6 leading-relaxed">
                         Eco-Sphere exists to bridge the gap between complex environmental data and the general public 
                         who want to contribute to nature conservation.
                     </p>
-                    <p class="text-[#a0b8b0] text-lg mb-8 leading-relaxed">
+                    <p class="text-[#a0b8b0] text-base sm:text-lg mb-8 leading-relaxed">
                         We believe that by presenting environmental information in an accessible and engaging format, 
                         we can encourage more people to get involved in real actions to protect biodiversity.
                     </p>
                     
+                    <!-- Accordion Triggers -->
                     <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
                         <div class="flex items-center text-[#a0b8b0] cursor-pointer hover:text-[#e6b325] transition-colors" @click="expanded = expanded === 'realtime' ? null : 'realtime'">
                             <i class="fas fa-check-circle text-[#e6b325] mr-2"></i>
@@ -152,7 +158,8 @@
                         </div>
                     </div>
                     
-                    <div x-show="expanded" x-transition class="mt-4 p-4 bg-[#1a3c34]/50 rounded-lg border border-[#4a8c6d]/20">
+                    <!-- Accordion Content -->
+                    <div x-show="expanded" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" class="mt-4 p-4 bg-[#1a3c34]/50 rounded-lg border border-[#4a8c6d]/20">
                         <div x-show="expanded === 'realtime'" class="text-[#a0b8b0]">
                             <p class="font-semibold text-[#e8f4f0] mb-2">Real-Time Data</p>
                             <p>Our platform provides up-to-the-minute environmental data from thousands of sensors across Indonesia, ensuring you always have the latest information at your fingertips.</p>
@@ -168,37 +175,42 @@
                     </div>
                 </div>
                 
-                <div class="bg-emerald-500 rounded-2xl p-8 border border-[#4a8c6d]/20">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(0)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 0}">
-                            <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-bullseye text-[#e6b325] text-2xl"></i>
+                <!-- Right Column: Feature Cards Grid -->
+                <div class="bg-emerald-500 rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#4a8c6d]/20">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        <!-- Mission Card -->
+                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(0)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 0}">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
+                                <i class="fas fa-bullseye text-[#e6b325] text-xl sm:text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-text-[#e8f4f0] mb-2">Mission</h3>
+                            <h3 class="font-bold text-[#e8f4f0] mb-2">Mission</h3>
                             <p class="text-gray-300 text-sm">To democratize access to environmental data through an interactive and user-friendly digital platform.</p>
                         </div>
                         
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(1)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 1}">
-                            <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-eye text-[#e6b325] text-2xl"></i>
+                        <!-- Vision Card -->
+                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(1)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 1}">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
+                                <i class="fas fa-eye text-[#e6b325] text-xl sm:text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-text-[#e8f4f0] mb-2">Vision</h3>
+                            <h3 class="font-bold text-[#e8f4f0] mb-2">Vision</h3>
                             <p class="text-gray-300 text-sm">To create an environmentally conscious society with tools to monitor and protect biodiversity.</p>
                         </div>
                         
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(2)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 2}">
-                            <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-hand-holding-heart text-[#e6b325] text-2xl"></i>
+                        <!-- Values Card -->
+                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(2)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 2}">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
+                                <i class="fas fa-hand-holding-heart text-[#e6b325] text-xl sm:text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-text-[#e8f4f0] mb-2">Values</h3>
+                            <h3 class="font-bold text-[#e8f4f0] mb-2">Values</h3>
                             <p class="text-gray-300 text-sm">Transparency, collaboration, innovation, and sustainability in every aspect of our platform.</p>
                         </div>
                         
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(3)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 3}">
-                            <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-chart-line text-[#e6b325] text-2xl"></i>
+                        <!-- Impact Card -->
+                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(3)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 3}">
+                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
+                                <i class="fas fa-chart-line text-[#e6b325] text-xl sm:text-2xl"></i>
                             </div>
-                            <h3 class="font-bold text-text-[#e8f4f0] mb-2">Impact</h3>
+                            <h3 class="font-bold text-[#e8f4f0] mb-2">Impact</h3>
                             <p class="text-gray-300 text-sm">Driving policy changes and community actions based on accurate data.</p>
                         </div>
                     </div>
