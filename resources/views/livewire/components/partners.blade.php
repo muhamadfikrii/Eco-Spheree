@@ -1,28 +1,28 @@
 <div>
     <!-- Partners Section with Eco-Sphere Theme -->
-    <section class="py-16 lg:py-20 bg-[#0f2a3d] ">
+    <section class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-12 lg:mb-16">
+            <div class="text-center mb-10 sm:mb-12 lg:mb-16">
                 <span class="inline-block bg-[#4a8c6d]/20 text-[#e6b325] px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-lg border border-[#4a8c6d]/30">
                     <i class="fas fa-seedling mr-2"></i>Our Ecosystem
                 </span>
                 <h2 class="text-3xl lg:text-4xl font-bold text-[#e8f4f0] mb-4">
                     Trusted by <span class="text-[#e6b325]">Global Leaders</span>
                 </h2>
-                <p class="text-lg text-[#a0b8b0] max-w-2xl mx-auto">
+                <p class="text-base sm:text-lg text-[#a0b8b0] max-w-2xl mx-auto">
                     We collaborate with forward-thinking organizations committed to environmental sustainability 
                     and technological innovation for a better planet.
                 </p>
             </div>
 
             <!-- Logo Grid -->
-            <div class="bg-[#0f2a3d]/80 rounded-2xl shadow-2xl border border-[#4a8c6d]/20 p-8 lg:p-12 mb-12 backdrop-blur-sm">
+            <div class="bg-[#0f2a3d]/80 rounded-2xl shadow-2xl border border-[#4a8c6d]/20 p-6 sm:p-8 lg:p-12 mb-12 backdrop-blur-sm">
                 <!-- Main Partners -->
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
                     <!-- Government Logo -->
-                    <div class="group flex flex-col items-center justify-center p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
-                        <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
+                    <div class="group flex flex-col items-center justify-center p-4 sm:p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
                             <img 
                                 src="{{ asset('image/ministry.png') }}" 
                                 alt="Kementerian Lingkungan Hidup dan Kehutanan"
@@ -35,8 +35,8 @@
                     </div>
 
                     <!-- NGO Logo -->
-                    <div class="group flex flex-col items-center justify-center p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
-                        <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
+                    <div class="group flex flex-col items-center justify-center p-4 sm:p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
                             <img 
                                 src="{{ asset('image/wwf.png') }}" 
                                 alt="WWF Indonesia"
@@ -49,8 +49,8 @@
                     </div>
 
                     <!-- University Logo -->
-                    <div class="group flex flex-col items-center justify-center p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
-                        <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
+                    <div class="group flex flex-col items-center justify-center p-4 sm:p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
                             <img 
                                 src="{{ asset('image/ui.webp') }}" 
                                 alt="University of Indonesia"
@@ -63,8 +63,8 @@
                     </div>
 
                     <!-- Corporate Logo -->
-                    <div class="group flex flex-col items-center justify-center p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
-                        <div class="w-20 h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
+                    <div class="group flex flex-col items-center justify-center p-4 sm:p-6 hover:scale-105 transition-all duration-300 bg-white/5 rounded-xl border border-[#4a8c6d]/10 hover:border-[#e6b325]/30 hover:bg-white/10">
+                        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/40 p-3">
                             <img 
                                 src="{{ asset('image/eco.webp') }}" 
                                 alt="Eco Corporation"
@@ -78,10 +78,10 @@
                 </div>
 
                 <!-- Additional Logos -->
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-12 pt-12 border-t border-[#4a8c6d]/20">
+                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 mt-10 sm:mt-12 pt-8 sm:pt-12 border-t border-[#4a8c6d]/20">
                     <!-- Additional Partner 1 -->
-                    <div class="group flex flex-col items-center justify-between p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
-                        <div class="w-16 h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
+                    <div class="group flex flex-col items-center justify-between p-3 sm:p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
                             <img 
                                 src="https://www.preventionweb.net/sites/default/files/styles/large_no_crop/public/2025-10/image001.png?itok=T9pnjW5s" 
                                 alt="UNDP"
@@ -93,8 +93,8 @@
                     </div>
 
                     <!-- Additional Partner 2 -->
-                    <div class="group flex flex-col items-center justify-between p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
-                        <div class="w-16 h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
+                    <div class="group flex flex-col items-center justify-between p-3 sm:p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
                             <img 
                                 src="{{ asset('image/World-Bank.webp') }}" 
                                 alt="World Bank"
@@ -106,8 +106,8 @@
                     </div>
 
                     <!-- Additional Partner 3 -->
-                    <div class="group flex flex-col items-center justify-between p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
-                        <div class="w-16 h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
+                    <div class="group flex flex-col items-center justify-between p-3 sm:p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
                             <img 
                                 src="{{ asset('image/google.webp') }}" 
                                 alt="Google"
@@ -119,8 +119,8 @@
                     </div>
 
                     <!-- Additional Partner 4 -->
-                    <div class="group flex flex-col items-center justify-between p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
-                        <div class="w-16 h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
+                    <div class="group flex flex-col items-center justify-between p-3 sm:p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
                             <img 
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/240px-Amazon_logo.svg.png" 
                                 alt="Amazon"
@@ -132,8 +132,8 @@
                     </div>
 
                     <!-- Additional Partner 5 -->
-                    <div class="group flex flex-col items-center justify-between p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
-                        <div class="w-16 h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
+                    <div class="group flex flex-col items-center justify-between p-3 sm:p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
                             <img 
                                 src="{{ asset('image/social.png') }}" 
                                 alt="Apple"
@@ -145,8 +145,8 @@
                     </div>
 
                     <!-- Additional Partner 6 -->
-                    <div class="group flex flex-col items-center justify-between p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
-                        <div class="w-16 h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
+                    <div class="group flex flex-col items-center justify-between p-3 sm:p-4 hover:scale-105 transition-all duration-300 h-full bg-white/5 rounded-lg border border-[#4a8c6d]/10 hover:border-[#e6b325]/20 hover:bg-white/10">
+                        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 border-2 border-[#4a8c6d]/20 group-hover:border-[#e6b325]/30 p-2">
                             <img 
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/240px-IBM_logo.svg.png" 
                                 alt="IBM"
@@ -160,8 +160,8 @@
             </div>
 
             <!-- Partnership Stats -->
-            <div class="bg-[#0f2a3d] rounded-2xl shadow-2xl p-8 lg:p-12 text-[#e8f4f0] mb-12 border border-[#4a8c6d]">
-                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 text-center">
+            <div class="bg-[#0f2a3d] rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-12 text-[#e8f4f0] mb-12 border border-[#4a8c6d]">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
                     <div class="group hover:scale-105 transition-transform duration-300">
                         <div class="text-2xl lg:text-3xl font-bold mb-2 text-[#e6b325]">50+</div>
                         <div class="text-[#a0b8b0] text-sm">Strategic Partners</div>
@@ -182,7 +182,7 @@
             </div>
 
             <!-- Partnership Benefits -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div class="text-center lg:text-left group hover:transform hover:-translate-y-2 transition-all duration-300 bg-[#0f2a3d]/60 p-6 rounded-2xl border border-[#4a8c6d]/20 hover:border-[#e6b325]/30">
                     <div class="w-12 h-12 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto lg:mx-0 mb-4 group-hover:bg-[#e6b325]/20 transition-colors duration-300 border border-[#4a8c6d]/30">
                         <i class="fas fa-shield-alt text-[#e6b325] text-xl"></i>
@@ -215,15 +215,15 @@
             </div>
 
             <!-- CTA Section -->
-            <div class="text-center mt-16 pt-12 border-t border-[#4a8c6d]/20">
+            <div class="text-center mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-[#4a8c6d]/20">
                 <h3 class="text-2xl font-bold text-[#e8f4f0] mb-4">Join Our Mission</h3>
                 <p class="text-[#a0b8b0] mb-8 max-w-2xl mx-auto">
                     Become part of the global movement towards sustainable environmental monitoring and conservation.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="px-8 py-3 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
+                    <a href="{{ route('become') }}" class="px-8 py-3 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
                         <i class="fas fa-handshake mr-2"></i>Become a Partner
-                    </button>
+                    </a>
                     <a href="{{ route('learnmore') }}" class="px-8 py-3 bg-transparent border-2 border-[#4a8c6d] hover:border-[#e6b325] text-[#e8f4f0] rounded-lg transition-all duration-300 font-semibold hover:bg-[#4a8c6d]/10 flex items-center justify-center">
                         <i class="fas fa-info-circle mr-2"></i>Learn More
                     </a>

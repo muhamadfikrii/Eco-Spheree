@@ -1,7 +1,7 @@
 <footer class="bg-gradient-to-b from-[#102a43] to-[#081826] border-t border-white pt-14 pb-10 px-4 md:px-8 text-[#e8f4f0]">
     <div class="max-w-7xl mx-auto">
         <!-- Top Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-14">
             
             <!-- Column 1: About -->
             <div class="space-y-4">
@@ -16,7 +16,7 @@
                     <a href="#" class="text-[#a0b8b0] hover:text-[#e6b325] transition-all duration-300 transform hover:scale-110">
                         <i class="fab fa-twitter text-lg"></i>
                     </a>
-                    <a href="#" class="text-[#a0b8b0] hover:text-[#e6b325] transition-all duration-300 transform hover:scal e-110">
+                    <a href="#" class="text-[#a0b8b0] hover:text-[#e6b325] transition-all duration-300 transform hover:scale-110">
                         <i class="fab fa-facebook-f text-lg"></i>
                     </a>
                     <a href="#" class="text-[#a0b8b0] hover:text-[#e6b325] transition-all duration-300 transform hover:scale-110">
@@ -115,15 +115,15 @@
         <!-- Divider -->
         <div class="border-t border-[#4a8c6d]/20 pt-8 space-y-6">
             <!-- Main bottom section -->
-            <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
                 <!-- Copyright -->
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <div class="flex items-center space-x-2">
                     <i class="fas fa-leaf text-[#4a8c6d]"></i>
                     <p class="text-sm text-[#a0b8b0]">&copy; 2025 Eco-Sphere. All rights reserved.</p>
                 </div>
                 
                 <!-- Quick links -->
-                <div class="flex flex-wrap justify-center gap-6 text-sm text-[#a0b8b0]">
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-[#a0b8b0]">
                     <a href="#" class="hover:text-[#e6b325] transition-colors flex items-center">
                         <i class="fas fa-shield-alt mr-1 text-xs"></i> Privacy Policy
                     </a>
@@ -149,7 +149,7 @@
                 </p>
                 
                 <!-- Additional badges -->
-                <div class="flex justify-center space-x-6 mt-4">
+                <div class="flex flex-wrap justify-center gap-4 sm:gap-6 mt-4">
                     <div class="flex items-center text-xs text-[#8aa49b]">
                         <i class="fas fa-tree mr-1 text-[#4a8c6d]"></i>
                         <span>Carbon Neutral</span>

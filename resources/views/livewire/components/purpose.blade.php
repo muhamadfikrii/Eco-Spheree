@@ -12,12 +12,12 @@
                             EcoTrack turns Indonesia's environmental data into a living digital map — visualizing air quality, biodiversity, and forest health in real time.
                         </p>
                         <div class="flex flex-wrap gap-4">
-                            <button 
-                                @click="showDashboard = true" 
+                            <a href="#" 
+                                
                                 class="px-6 py-3 bg-emerald-500 text-white border border-white hover:bg-transparent font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                             >
-                                Explore Dashboard
-                            </button>
+                                Explore EcoSpheree
+                            </a>
                         </div>
                     </div>
                     <div class="lg:w-1/2 flex justify-center">
@@ -48,7 +48,7 @@
                     <span class="inline-block eco-badge text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
                         Our Solutions
                     </span>
-                    <h2 class="text-3xl lg:text-5xl font-serif text-[#14532d] font-bold mb-6">
+                    <h2 class="text-3xl lg:text-5xl font-serif text-[#14532d] font-bold  leading-tight mb-6">
                         What We Do?
                     </h2>
                     <p class="text-gray-600 max-w-2xl mx-auto text-lg">
@@ -312,56 +312,6 @@
                                     Get Involved
                                 </a>
                             </div>
-                        </div>
-
-                        <!-- Dashboard Preview -->
-                        <div 
-                            x-show="showDashboard" 
-                            x-transition:enter="feature-detail-enter"
-                            x-transition:enter-start="feature-detail-enter"
-                            x-transition:enter-end="feature-detail-enter-to"
-                            class="bg-white rounded-2xl shadow-lg p-8"
-                        >
-                            <div class="flex justify-between items-start mb-6">
-                                <h3 class="text-2xl font-bold text-[#14532d]">Live Environmental Dashboard</h3>
-                                <button @click="showDashboard = false" class="text-gray-500 hover:text-gray-700">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                            
-                            <div class="mb-6">
-                                <div class="flex gap-4 mb-4">
-                                    <span class="px-3 py-1 bg-[#dcfce7] text-[#166534] rounded-full text-sm">Air Quality</span>
-                                    <span class="px-3 py-1 bg-[#dcfce7] text-[#166534] rounded-full text-sm">Water Quality</span>
-                                    <span class="px-3 py-1 bg-[#dcfce7] text-[#166534] rounded-full text-sm">Forest Cover</span>
-                                </div>
-                                
-                                <div class="bg-gray-100 h-48 rounded-lg flex items-center justify-center mb-4">
-                                    <div class="text-center">
-                                        <i class="fas fa-map-marked-alt text-4xl text-[#16a34a] mb-2"></i>
-                                        <p class="text-gray-600">Interactive Map Visualization</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="grid grid-cols-3 gap-4 text-center">
-                                    <div class="p-3 bg-[#f0fdf4] rounded-lg">
-                                        <div class="text-lg font-bold text-[#166534]">85%</div>
-                                        <div class="text-sm text-[#15803d]">Good Air</div>
-                                    </div>
-                                    <div class="p-3 bg-[#fef7cd] rounded-lg">
-                                        <div class="text-lg font-bold text-[#ca8a04]">12%</div>
-                                        <div class="text-sm text-[#a16207]">Moderate</div>
-                                    </div>
-                                    <div class="p-3 bg-[#fecaca] rounded-lg">
-                                        <div class="text-lg font-bold text-[#dc2626]">3%</div>
-                                        <div class="text-sm text-[#b91c1c]">Poor</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button class="w-full py-3 bg-[#166534] text-white rounded-lg hover:bg-[#14532d] transition-colors">
-                                Access Full Dashboard
-                            </button>
                         </div>
 
                         <!-- CTA Card -->

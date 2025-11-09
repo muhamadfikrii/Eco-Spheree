@@ -55,12 +55,11 @@
     </section>
 
     <!-- Main Grid Section -->
-    <div class="mx-auto pb-10 px-8 sm:px-6 lg:px-10">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 lg:p-5 bg-slate-900 rounded-xl overflow-hidden">
+    <div class="mx-auto pb-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 lg:p-5 bg-slate-900  overflow-hidden">
             <!-- Kolom kiri (konten utama) -->
-            <section class="lg:col-span-2 space-y-6">
+            <section class="lg:col-span-2 w-full space-y-6">
                 <livewire:components.map-section />
-                {{-- <livewire:components.activity-feed /> --}}
             </section>
 
             <!-- Kolom kanan -->

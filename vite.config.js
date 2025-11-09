@@ -8,8 +8,4 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    fontFamily: {
-            'serif': ['Playfair Display', 'serif'],
-            'sans': ['Inter', 'sans-serif']
-        }
 });
