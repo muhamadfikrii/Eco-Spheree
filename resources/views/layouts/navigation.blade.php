@@ -16,9 +16,9 @@
             <div class="hidden md:flex items-center space-x-6 bg-slate-800 px-8 py-2 rounded-full backdrop-blur-sm border border-slate-800/50 font-medium text-[15px]">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Home</x-nav-link>
                 <x-nav-link :href="route('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Eksplor</x-nav-link>
-                <x-nav-link :href="route('challenge')" class="text-slate-300 hover:text-emerald-400 transition">Challenge</x-nav-link>
-                <x-nav-link :href="route('eco_track')" class="text-slate-300 hover:text-emerald-400 transition">Eco-Track</x-nav-link>
-                <x-nav-link :href="route('leaderboard')" class="text-slate-300 hover:text-emerald-400 transition">Leaderboard</x-nav-link>
+                <x-nav-link :href="route('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Challenge</x-nav-link>
+                <x-nav-link :href="route('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Eco-Track</x-nav-link>
+                <x-nav-link :href="route('dashboard')" class="text-slate-300 hover:text-emerald-400 transition">Leaderboard</x-nav-link>
             </div>
 
             <!-- Auth Buttons -->
@@ -82,9 +82,9 @@
     >
         <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Dashboard</a>
         <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Eksplor</a>
-        <a href="{{ route('challenge') }}" class="block text-slate-200 hover:text-emerald-400 transition">Challenge</a>
-        <a href="{{ route('eco_track') }}" class="block text-slate-200 hover:text-emerald-400 transition">Eco-Track</a>
-        <a href="{{ route('leaderboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Leaderboard</a>
+        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Challenge</a>
+        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Eco-Track</a>
+        <a href="{{ route('dashboard') }}" class="block text-slate-200 hover:text-emerald-400 transition">Leaderboard</a>
 
         <div class="border-t border-slate-800 pt-4 mt-3">
             @auth
