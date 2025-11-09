@@ -1,9 +1,30 @@
 <x-app-layout>
   <div class="min-h-screen bg-slate-900 text-white pt-24 px-6" x-data="reportPage">
+
+    <!-- 🌍 Introduction Modal -->
+    <div 
+      x-show="showIntro" 
+      x-transition.opacity 
+      class="fixed inset-0 bg-slate-950/70 flex items-center justify-center z-50">
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 max-w-lg text-center shadow-2xl">
+        <h2 class="text-3xl font-bold mb-4 text-green-400">Welcome to Eco-Report Hub 🌿</h2>
+        <p class="text-slate-300 mb-6 leading-relaxed">
+          Join our mission to protect the environment!  
+          You can discuss issues in the <strong>Community Forum</strong>  
+          or directly report real-world conditions through the <strong>Report Form</strong>.
+        </p>
+        <button 
+          @click="closeIntro" 
+          class="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold">
+          Let’s Get Started
+        </button>
+      </div>
+    </div>
+
     <!-- Header -->
     <div class="flex justify-between items-center mb-6">
       <h1 class="text-4xl font-extrabold tracking-tight">📢 Eco-Report Hub</h1>
-      <p class="text-slate-400">Bersama menjaga bumi 🌍</p>
+      <p class="text-slate-400">Together we protect the Earth 🌍</p>
     </div>
 
     <!-- Tab Switch -->
@@ -12,13 +33,13 @@
         class="px-4 py-2 rounded-t-lg font-semibold transition"
         :class="tab === 'forum' ? 'bg-slate-800 text-green-400' : 'text-slate-400 hover:text-white'"
         @click="tab = 'forum'">
-        💬 Forum Komunitas
+        💬 Community Forum
       </button>
       <button 
         class="px-4 py-2 rounded-t-lg font-semibold transition"
         :class="tab === 'report' ? 'bg-slate-800 text-green-400' : 'text-slate-400 hover:text-white'"
         @click="tab = 'report'">
-        📸 Laporkan Kondisi
+        📸 Report Condition
       </button>
     </div>
 
@@ -39,10 +60,9 @@
 
       <!-- Chat Area -->
       <div class="flex-1 flex flex-col">
-        <!-- Header -->
         <div class="px-5 py-3 border-b border-slate-700 flex justify-between items-center">
           <h3 class="text-lg font-bold"># <span x-text="activeChannel"></span></h3>
-          <p class="text-slate-400 text-sm">Diskusi dan laporan terkini</p>
+          <p class="text-slate-400 text-sm">Discussion and latest updates</p>
         </div>
 
         <!-- Chat Messages -->
@@ -66,7 +86,7 @@
 
         <!-- Input -->
         <div class="border-t border-slate-700 p-4 flex items-center space-x-3">
-          <input type="text" placeholder="Ketik pesan atau laporan kamu..." 
+          <input type="text" placeholder="Type your message..." 
             class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-green-500"
             x-model="newMessage" 
             @keydown.enter="sendMessage">
@@ -79,37 +99,37 @@
 
     <!-- Report Form Section -->
     <div x-show="tab === 'report'" x-cloak class="bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-lg">
-      <h2 class="text-2xl font-bold mb-6">📝 Laporkan Kondisi Lingkungan</h2>
+      <h2 class="text-2xl font-bold mb-6">📝 Report Environmental Condition</h2>
       <form @submit.prevent="submitReport" class="space-y-5">
         <div>
-          <label class="block text-slate-300 mb-2">Judul Laporan</label>
+          <label class="block text-slate-300 mb-2">Report Title</label>
           <input type="text" x-model="report.title" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-green-500">
         </div>
 
         <div>
-          <label class="block text-slate-300 mb-2">Deskripsi</label>
+          <label class="block text-slate-300 mb-2">Description</label>
           <textarea x-model="report.desc" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-green-500"></textarea>
         </div>
 
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-slate-300 mb-2">Lokasi (Koordinat / Alamat)</label>
+            <label class="block text-slate-300 mb-2">Location (Coordinates / Address)</label>
             <input type="text" x-model="report.location" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white">
           </div>
           <div>
-            <label class="block text-slate-300 mb-2">Kategori</label>
+            <label class="block text-slate-300 mb-2">Category</label>
             <select x-model="report.category" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white">
-              <option value="">Pilih kategori...</option>
-              <option value="Sampah">Sampah</option>
+              <option value="">Select category...</option>
+              <option value="Waste">Waste</option>
+              <option value="Water">Water</option>
               <option value="Air">Air</option>
-              <option value="Udara">Udara</option>
-              <option value="Energi">Energi</option>
+              <option value="Energy">Energy</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label class="block text-slate-300 mb-2">Unggah Foto (opsional)</label>
+          <label class="block text-slate-300 mb-2">Upload Photo (optional)</label>
           <input type="file" x-ref="reportImage" @change="uploadReportImage" class="w-full text-slate-300">
           <template x-if="report.image">
             <img :src="report.image" class="mt-3 w-56 rounded-lg border border-slate-700">
@@ -117,38 +137,52 @@
         </div>
 
         <button type="submit" class="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold">
-          Kirim Laporan
+          Submit Report
         </button>
       </form>
     </div>
   </div>
 
+  <!-- 🌱 Alpine.js Logic -->
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.data('reportPage', () => ({
+        showIntro: false,
         tab: 'forum',
         username: 'Admin',
         channels: [
-          { name: 'sampah' },
+          { name: 'waste' },
+          { name: 'water' },
           { name: 'air' },
-          { name: 'udara' },
-          { name: 'energi' },
-          { name: 'edukasi' }
+          { name: 'energy' },
+          { name: 'education' }
         ],
-        activeChannel: 'sampah',
+        activeChannel: 'waste',
         messages: {
-          sampah: [
-            { user: 'Fikri', text: 'Sampah plastik menumpuk di sungai 😢', time: '09:10', avatar: 'https://i.pravatar.cc/100?img=12' },
-            { user: 'Mia', text: 'Kita bisa buat aksi bersih minggu depan!', time: '09:15', avatar: 'https://i.pravatar.cc/100?img=5' }
+          waste: [
+            { user: 'Fikri', text: 'Plastic waste is piling up in the river 😢', time: '09:10', avatar: 'https://i.pravatar.cc/100?img=12' },
+            { user: 'Mia', text: 'We should organize a cleanup next week!', time: '09:15', avatar: 'https://i.pravatar.cc/100?img=5' }
           ],
+          water: [],
           air: [],
-          udara: [],
-          energi: [],
-          edukasi: []
+          energy: [],
+          education: []
         },
         newMessage: '',
         newImage: null,
         report: { title: '', desc: '', location: '', category: '', image: null },
+
+        init() {
+          // Show intro only on first visit
+          if (!localStorage.getItem('ecoReportIntroShown')) {
+            this.showIntro = true;
+          }
+        },
+
+        closeIntro() {
+          this.showIntro = false;
+          localStorage.setItem('ecoReportIntroShown', 'true');
+        },
 
         setChannel(name) { this.activeChannel = name; },
 
@@ -182,10 +216,10 @@
 
         submitReport() {
           if (!this.report.title || !this.report.desc) {
-            alert('Mohon lengkapi judul dan deskripsi laporan.');
+            alert('Please complete the title and description.');
             return;
           }
-          alert(`Laporan "${this.report.title}" berhasil dikirim!`);
+          alert(`Report "${this.report.title}" has been submitted successfully!`);
           this.report = { title: '', desc: '', location: '', category: '', image: null };
           this.$refs.reportImage.value = '';
         }
