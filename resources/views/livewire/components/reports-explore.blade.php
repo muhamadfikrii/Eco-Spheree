@@ -1,4 +1,4 @@
-<div id="report-section" class="relative bg-gradient-to-br from-dark-bg to-[#0f2b42] text-white font-['Inter'] overflow-hidden py-24">
+<div id="report-section" class="relative bg-gradient-to-br from-dark-bg to-[#0f2b42] text-white font-['Inter'] overflow-hidden py-32">
 
   <!-- Background glowing blobs -->
   <div class="absolute inset-0 overflow-hidden">
