@@ -132,7 +132,7 @@
                                 <line x1="50%" y1="50%" 
                                       :x2="getNodePosition(index).x" 
                                       :y2="getNodePosition(index).y"
-                                      :stroke="node.status === 'optimal' ? 'url(#gradient-optimal)' : 'url(#gradient-warning)'" 
+                                      :stroke="node.status === 'optimal' ? 'url(#trusted)' : 'url(#gradient-warning)'" 
                                       stroke-width="2" 
                                       opacity="0.3"
                                       :class="viewMode === '3d' ? 'connection-line-3d' : 'connection-line'"/>
@@ -151,7 +151,7 @@
                                     <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.5" />
                                     <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
                                 </linearGradient>
-                                <linearGradient id="gradient-optimal" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <linearGradient id="trusted " x1="0%" y1="0%" x2="100%" y2="100%">
                                     <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.8" />
                                     <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.4" />
                                 </linearGradient>

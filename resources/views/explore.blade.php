@@ -77,166 +77,42 @@
     <livewire:components.environmental-data />
 
     <livewire:components.reports-explore />
-    <div>
 
-
+    <livewire:ecological-marvels />
 <style>
-/* Background Pattern */
-.bg-grid-pattern {
-    background-image: 
-        linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+        
+.pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite alternate;
 }
 
-/* Smooth transitions for all interactive elements */
-.group {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Custom scrollbar for webkit browsers */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(30, 41, 59, 0.5);
-    border-radius: 3px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(71, 85, 105, 0.5);
-    border-radius: 3px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(71, 85, 105, 0.7);
-}
-
-/* Backdrop blur support fallback */
-@supports not (backdrop-filter: blur(12px)) {
-    .backdrop-blur-sm {
-        background-color: rgba(30, 41, 59, 0.95);
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 20px rgba(72, 187, 120, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(72, 187, 120, 0.8), 0 0 40px rgba(72, 187, 120, 0.4);
     }
 }
 
-/* Responsive design improvements */
-@media (max-width: 640px) {
-    #explore-indonesia {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-    }
+.float-animation {
+    animation: float 6s ease-in-out infinite;
 }
 
-/* Animation for card hover effects */
-@keyframes fade-in-up {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
+@keyframes float {
+    0%, 100% {
         transform: translateY(0);
     }
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
-.animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out;
-}
-
-/* Ensure smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Progress bar animations */
-.progress-bar {
-    transition: width 1s ease-in-out;
+.bg-pattern {
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(72, 187, 120, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(5, 150, 105, 0.1) 0%, transparent 50%);
 }
 </style>
-
-<script>
-// Simple interactivity for the explore page
-document.addEventListener('DOMContentLoaded', function() {
-    // Add smooth appearance animation to sections
-    const sections = document.querySelectorAll('.bg-slate-800\\/40');
-    
-    sections.forEach((section, index) => {
-        section.style.animationDelay = `${index * 0.1}s`;
-        section.classList.add('animate-fade-in-up');
-    });
-    
-    // Animate progress bars when they come into view
-    const progressBars = document.querySelectorAll('.progress-bar');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const width = entry.target.style.width;
-                entry.target.style.width = '0%';
-                setTimeout(() => {
-                    entry.target.style.width = width;
-                }, 300);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    progressBars.forEach(bar => observer.observe(bar));
-    
-    // Add click handlers for buttons
-    const buttons = document.querySelectorAll('button');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            const text = this.textContent;
-            if (text.includes('Explore Ecosystems')) {
-                // Navigate to ecosystems page
-                console.log('Navigating to ecosystems exploration');
-            } else if (text.includes('Learn About Conservation')) {
-                // Navigate to conservation page
-                console.log('Navigating to conservation information');
-            }
-        });
-    });
-});
-</script>
-
-<style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .pulse-glow {
-            animation: pulse-glow 4s ease-in-out infinite alternate;
-        }
-        
-        @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 20px rgba(72, 187, 120, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 30px rgba(72, 187, 120, 0.8), 0 0 40px rgba(72, 187, 120, 0.4);
-            }
-        }
-        
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-        
-        .bg-pattern {
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(72, 187, 120, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(5, 150, 105, 0.1) 0%, transparent 50%);
-        }
-    </style>
 </div>
 </x-app-layout>
