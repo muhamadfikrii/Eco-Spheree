@@ -149,7 +149,7 @@
       Alpine.data('reportPage', () => ({
         showIntro: false,
         tab: 'forum',
-        username: 'Admin',
+        username: @json(Auth::user()->name ?? 'Guest'),
         channels: [
           { name: 'waste' },
           { name: 'water' },
