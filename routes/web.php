@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Route::get('/report', function () {
     return view('report');
-})->name('report');
+})->name('report')->middleware(['auth']);
 
 Route::get('/challenge', function () {
     return view('challenge');
