@@ -8,9 +8,9 @@ Route::get('/', function () {
     return view('Home');
 })->name('dashboard');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/report', function () {
     return view('report');
