@@ -8,7 +8,7 @@
     <title>{{ config('app.name', 'Eco-Track') }}</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:400,600&display=swap" rel="stylesheet" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
@@ -21,12 +21,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    {{-- AOS --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-
-    {{-- LottieFiles --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
-
     {{-- Particle Js --}}
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
@@ -35,12 +29,17 @@
     @livewireStyles()
 </head>
 
-<body class="font-sans antialiased text-slate-100 bg-gray-900">
+<body class="font-sans antialiased text-slate-100 bg-slate-900">
+    
     <!-- Navbar -->
     @include('layouts.navigation')
 
     <!-- Main Content -->
     <main class="relative">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/5 to-slate-900"></div>
+            <div class="absolute inset-0 bg-grid-pattern opacity-3"></div>
+        </div>
         {{ $slot }}
     </main>
 
@@ -52,26 +51,23 @@
     
     @stack('scripts')
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a.smooth-scroll').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     });
-});
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
   AOS.init({
     duration: 800,
     easing: 'ease-out',
@@ -79,6 +75,11 @@
     mirror: false
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+
 
     @livewireScripts()
 </script>

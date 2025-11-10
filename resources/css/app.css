@@ -278,6 +278,18 @@ button, a, [role="button"] {
     .logo-container {
         padding: 0.5rem;
     }
+    #report-mockup {
+      transform: scale(0.9);
+    }
+}
+
+@media (max-width: 640px) {
+    #report-mockup {
+        transform: scale(0.85);
+    }
+    .float-card {
+      transform: scale(0.9);
+    }
 }
 
 
@@ -331,7 +343,7 @@ button:hover::before {
 }
 
 
-/* Partner Cards Hover Effects */
+/* Partner Cards  Effects */
 .group:hover .transform {
     transform: translateY(-8px) scale(1.02);
 }
@@ -359,4 +371,377 @@ button:hover::before {
 /* Additional hover effects */
 .group:hover .border-gray-700\/50 {
     border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Report Explore */
+:root {
+--forest-green: #0a5c36;
+--deep-ocean: #1a535c;
+--sunshine-yellow: #ffd166;
+--light-green: #06d6a0;
+--dark-bg: #0a1929;
+--card-bg: #132f4c;
+}
+
+.bg-dark-bg { background-color: var(--dark-bg); }
+.bg-card-bg { background-color: var(--card-bg); }
+.bg-sunshine-yellow { background-color: var(--sunshine-yellow); }
+.bg-light-green { background-color: var(--light-green); }
+
+.glass {
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+}
+
+.float-card, #report-mockup, #report-text {
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+transform: translateZ(0);
+-webkit-transform: translateZ(0);
+}
+
+
+/* Environmental data Explore */
+.bg-grid-pattern {
+    background-image: 
+        linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+/* Enhanced Animations */
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up-delay {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-10px) translateX(5px); }
+    50% { transform: translateY(5px) translateX(-5px); }
+    75% { transform: translateY(-5px) translateX(10px); }
+}
+
+@keyframes pulse-slow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes slide-in {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.8s ease-out 0.2s both;
+}
+
+.animate-slide-up-delay {
+    animation: slide-up-delay 0.8s ease-out 0.4s both;
+}
+
+.animate-scale-in {
+    animation: scale-in 0.6s ease-out 0.3s both;
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite;
+}
+
+.animate-slide-in {
+    animation: slide-in 0.5s ease-out both;
+}
+
+/* Enhanced 3D Effects */
+.earth-3d {
+    transform-style: preserve-3d;
+    animation: earth-3d-rotate 40s linear infinite;
+}
+
+.node-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-3d:hover {
+    transform: scale(1.1) translateZ(50px);
+}
+
+.orbit-ring-3d-1 {
+    transform-style: preserve-3d;
+    animation: orbit-ring-3d-rotate 60s linear infinite;
+}
+
+.orbit-ring-3d-2 {
+    transform-style: preserve-3d;
+    animation: orbit-ring-3d-rotate 80s linear infinite reverse;
+}
+
+.orbit-ring-3d-3 {
+    transform-style: preserve-3d;
+    animation: orbit-ring-3d-rotate 100s linear infinite;
+}
+
+.connection-line-3d {
+    stroke-dasharray: 5, 5;
+    animation: connection-3d-dash 20s linear infinite;
+}
+
+.atmosphere-3d {
+    background: radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.4), transparent 70%);
+    animation: atmosphere-3d-pulse 8s ease-in-out infinite;
+}
+
+/* Enhanced Cloud Animations */
+.cloud-1 {
+    animation: cloud-drift-1 25s ease-in-out infinite;
+    will-change: transform;
+}
+
+.cloud-2 {
+    animation: cloud-drift-2 30s ease-in-out infinite;
+    will-change: transform;
+}
+
+.cloud-3 {
+    animation: cloud-drift-3 35s ease-in-out infinite;
+    will-change: transform;
+}
+
+.cloud-4 {
+    animation: cloud-drift-4 20s ease-in-out infinite;
+    will-change: transform;
+}
+
+/* Enhanced Keyframes */
+@keyframes earth-3d-rotate {
+    from { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    to { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes earth-texture-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes earth-shine-pulse {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(1.02); }
+}
+
+@keyframes cloud-drift-1 {
+    0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+    25% { transform: translateX(10px) translateY(-3px) scale(1.05); }
+    50% { transform: translateX(5px) translateY(2px) scale(0.95); }
+    75% { transform: translateX(-5px) translateY(-1px) scale(1.02); }
+}
+
+@keyframes cloud-drift-2 {
+    0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+    33% { transform: translateX(-8px) translateY(2px) scale(1.03); }
+    66% { transform: translateX(4px) translateY(-2px) scale(0.97); }
+}
+
+@keyframes cloud-drift-3 {
+    0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+    20% { transform: translateX(6px) translateY(1px) scale(1.02); }
+    40% { transform: translateX(-3px) translateY(-1px) scale(0.98); }
+    60% { transform: translateX(-3px) translateY(-1px) scale(1.01); }
+    80% { transform: translateX(-4px) translateY(-2px) scale(0.99); }
+}
+
+@keyframes cloud-drift-4 {
+    0%, 100% { transform: translateX(0px) translateY(0px) scale(1); }
+    50% { transform: translateX(-6px) translateY(3px) scale(1.04); }
+}
+
+/* Enhanced Node Positioning */
+.orbit-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    will-change: transform;
+    transform-origin: center;
+    backface-visibility: hidden;
+    z-index: 5;
+    contain: layout style paint;
+}
+
+/* Enhanced Connection Line Animation */
+.connection-line-3d {
+    stroke-dasharray: 5, 5;
+    animation: connection-3d-dash 20s linear infinite;
+}
+
+@keyframes connection-3d-dash {
+    to {
+        stroke-dashoffset: -100;
+    }
+}
+
+/* Enhanced Performance Optimizations */
+.orbit-node, .earth-container, .node-3d {
+    will-change: transform;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    contain: layout style paint;
+}
+
+/* Enhanced Smooth Transitions */
+.node-container, .control-btn, .stream-item, .data-stream, .analytics-panel {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced Hover Effects */
+.node-container:hover {
+    transform: scale(1.1) translateZ(10px);
+    filter: drop-shadow(0 10px 20px rgba(16, 185, 129, 0.3));
+}
+
+.control-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Enhanced Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(71, 85, 105, 0.5);
+    border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(71, 85, 105, 0.7);
+}
+
+/* Backdrop Blur Support */
+@supports not (backdrop-filter: blur(12px)) {
+    .backdrop-blur-md {
+        background-color: rgba(30, 41, 59, 0.95);
+    }
+}
+
+/* Enhanced Responsive Adjustments */
+@media (max-width: 640px) {
+    .earth-container {
+        animation-duration: 35s;
+    }
+    
+    .orbit-path-1 {
+        animation-duration: 40s;
+    }
+    
+    .orbit-path-2 {
+        animation-duration: 50s;
+    }
+    
+    .orbit-path-3 {
+        animation-duration: 60s;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+    .earth-container {
+        animation-duration: 37s;
+    }
+    
+    .orbit-path-1 {
+        animation-duration: 50s;
+    }
+    
+    .orbit-path-2 {
+        animation-duration: 65s;
+    }
+}
+
+@media (min-width: 1024px) {
+    .earth-container {
+        animation-duration: 40s;
+    }
+    
+    .orbit-path-1 {
+        animation-duration: 50s;
+    }
+    
+    .orbit-path-2 {
+        animation-duration: 80s;
+    }
+}
+
+/* Enhanced Performance for Animation */
+@media (prefers-reduced-motion: reduce) {
+    .animate-gradient-shift,
+    .animate-float,
+    .animate-pulse-slow,
+    .animate-shimmer,
+    .orbit-path-1,
+    .orbit-path-2,
+    .orbit-path-3,
+    .earth-container,
+    .earth-texture,
+    .earth-shine,
+    .cloud-1,
+    .cloud-2,
+    .cloud-3,
+    .cloud-4,
+    .earth-3d,
+    .orbit-ring-3d-1,
+    .orbit-ring-3d-2,
+    .orbit-ring-3d-3 {
+        animation: none !important;
+    }
+}
+
+/* Enhanced GPU Acceleration */
+@media (min-width: 1024px) {
+    .orbit-node,
+    .earth-container,
+    .node-3d {
+        transform: translateZ(0);
+    }
 }
