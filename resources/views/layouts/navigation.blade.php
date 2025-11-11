@@ -1,10 +1,26 @@
 <nav
-    x-data="{ 
-        open: false, 
+    x-data="{
+        open: false,
         scrolled: false,
-        profileOpen: false
+        userProfile: {
+            level: 1,
+            rank: 'Eco Warrior',
+            levelProgress: 25,
+            stats: {
+                points: 150,
+                trees: 3,
+                plastic: 1.2
+            }
+        }
     }"
-    x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 10)"
+    x-init="
+        const handleScroll = () => {
+            window.requestAnimationFrame(() => {
+                scrolled = window.scrollY > 10;
+            });
+        };
+        window.addEventListener('scroll', handleScroll);
+    "
     :class="scrolled 
         ? 'backdrop-blur-lg bg-emerald-600/20 border-b border-slate-200 shadow-lg py-3' 
         : 'backdrop-blur-md py-5'"
