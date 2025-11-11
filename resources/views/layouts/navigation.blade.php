@@ -83,7 +83,7 @@
         <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="block text-slate-200 hover:text-emerald-400 transition">Challenge</x-nav-link>
         <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="hover:text-emerald-400">Report</x-nav-link>
         <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="block text-slate-200 hover:text-emerald-400 transition">Eco‑Track</x-nav-link>
-        <x-nav-link :href="route('leaderboard')" :active="request()->routeIs('leaderboard')" class="block text-slate-200 hover:text-emerald-400 transition">Leaderboard</x-nav-link>
+        <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" class="block text-slate-200 hover:text-emerald-400 transition">Contact</x-nav-link>
 
         <div class="border-t border-slate-800 pt-4 mt-3">
             @auth
