@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <div class="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-gray-900 dark:via-blue-900 dark:to-emerald-900 min-h-screen">
         <!-- Loading Overlay -->
         <div x-data="loadingOverlay()" x-show="isLoading" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-white dark:bg-gray-900 z-50 flex items-center justify-center">
@@ -149,286 +148,33 @@
                         </div>
                     </div>
 
-  <script>
-    document.addEventListener('alpine:init', () => {
-      Alpine.data('challengeCenter', () => ({
-        // User data
-        userName: '{{ auth()->user()->name ?? "EcoHero" }}',
-        userAvatar: 'https://cdn-icons-png.flaticon.com/512/219/219983.png',
-        userLocation: 'Jakarta',
-        currentUserId: 1,
-        
-        // Navigation
-        currentPage: 'challenges',
-        
-        // Progress tracking
-        totalPoints: 0,
-        completedMissions: 0,
-        totalMissions: 6,
-        userLevel: 'Beginner',
-        progressPercentage: 0,
-        
-        // Leaderboard
-        selectedLocation: 'all',
-        locations: ['Jakarta', 'Bandung', 'Surabaya', 'Bali', 'Yogyakarta', 'Medan'],
-        leaderboard: [],
-        filteredLeaderboard: [],
-        currentUserRank: 1,
-        currentPageNum: 1,
-        
-        showAchievementsModal: false,
-        
-        missions: [
-          { 
-            id: 1, 
-            title: 'Clean Up Your Neighborhood', 
-            description: 'Collect plastic waste and properly dispose of it in recycling bins. Take before and after photos of the cleaned area.', 
-            points: 20, 
-            difficulty: 2,
-            status: 'pending',
-            completedDate: null
-          },
-          { 
-            id: 2, 
-            title: 'Plant a Tree', 
-            description: 'Plant at least one tree in your community or backyard. Document the planting process and share its growth progress.', 
-            points: 40, 
-            difficulty: 3,
-            status: 'pending',
-            completedDate: null
-          },
-          { 
-            id: 3, 
-            title: 'Meat-Free Week Challenge', 
-            description: 'Go completely meat-free for 7 consecutive days. Explore plant-based recipes and share your favorite meat-free meals.', 
-            points: 30, 
-            difficulty: 4,
-            status: 'pending',
-            completedDate: null
-          },
-          { 
-            id: 4, 
-            title: 'Sustainable Commute', 
-            description: 'Use public transportation, bike, or walk instead of driving for all your trips over 3 days. Track your reduced carbon footprint.', 
-            points: 25, 
-            difficulty: 3,
-            status: 'pending',
-            completedDate: null
-          },
-          { 
-            id: 5, 
-            title: 'Environmental Education', 
-            description: 'Create and share educational content about environmental conservation on your social media platforms. Reach at least 50 people.', 
-            points: 15, 
-            difficulty: 1,
-            status: 'pending',
-            completedDate: null
-          },
-          { 
-            id: 6, 
-            title: 'Water Conservation', 
-            description: 'Reduce your daily water consumption by 25% for one week. Implement water-saving habits like shorter showers and fixing leaks.', 
-            points: 35, 
-            difficulty: 3,
-            status: 'pending',
-            completedDate: null
-          },
-        ],
-        
-        // Achievements data
-        achievements: [
-          { id: 1, title: 'Green Beginner', description: 'Complete your first mission', icon: '🌱', unlocked: false },
-          { id: 2, title: 'Point Collector', description: 'Collect 50 points', icon: '🪙', unlocked: false },
-          { id: 3, title: 'Eco Warrior', description: 'Complete 3 missions', icon: '🛡️', unlocked: false },
-          { id: 4, title: 'Environmental Master', description: 'Complete all missions', icon: '🏆', unlocked: false },
-          { id: 5, title: 'Community Leader', description: 'Reach top 10 in leaderboard', icon: '⭐', unlocked: false },
-        ],
-
-        // Initialize component
-        init() {
-          console.log('🚀 Challenge Center initialized');
-          
-          // Load saved data from localStorage
-          const savedPoints = localStorage.getItem('ecoPoints');
-          const savedMissions = localStorage.getItem('missions');
-          const savedAchievements = localStorage.getItem('achievements');
-          
-          if (savedPoints) this.totalPoints = parseInt(savedPoints);
-          
-          // Force update mission texts to English while preserving status
-          if (savedMissions) {
-            const parsedMissions = JSON.parse(savedMissions);
-            // Update mission texts while preserving status and completion data
-            this.missions = this.missions.map(newMission => {
-              const savedMission = parsedMissions.find(m => m.id === newMission.id);
-              if (savedMission) {
-                return {
-                  ...savedMission,
-                  title: newMission.title,
-                  description: newMission.description,
-                  points: newMission.points,
-                  difficulty: newMission.difficulty
-                };
-              }
-              return newMission;
-            });
-            
-            // Save the updated missions back to localStorage
-            localStorage.setItem('missions', JSON.stringify(this.missions));
-          }
-          
-          if (savedAchievements) this.achievements = JSON.parse(savedAchievements);
-          
-          // Calculate progress
-          this.calculateProgress();
-          
-          // Update achievements based on current progress
-          this.updateAchievements();
-          
-          // Initialize leaderboard
-          this.initializeLeaderboard();
-          this.filterLeaderboard();
-
-          // Force enable all inputs
-          this.$nextTick(() => {
-            document.querySelectorAll('input, select, button').forEach(el => {
-              el.style.pointerEvents = 'auto';
-              el.disabled = false;
-            });
-          });
-        },
-        
-        // Initialize leaderboard with sample data
-        initializeLeaderboard() {
-          // Create sample leaderboard data with multiple users
-          this.leaderboard = [
-            // Current user
-            { 
-              id: this.currentUserId, 
-              name: this.userName, 
-              points: this.totalPoints, 
-              location: this.userLocation, 
-              avatar: this.userAvatar, 
-              level: this.userLevel, 
-              completedMissions: this.completedMissions, 
-              totalMissions: this.totalMissions 
-            },
-            // Other users
-            { id: 2, name: 'Budi Santoso', points: 145, location: 'Bandung', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', level: 'Eco Warrior', completedMissions: 4, totalMissions: 6 },
-            { id: 3, name: 'Sari Indah', points: 132, location: 'Surabaya', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Eco Warrior', completedMissions: 4, totalMissions: 6 },
-            { id: 4, name: 'Ahmad Rizki', points: 118, location: 'Jakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Nature Lover', completedMissions: 3, totalMissions: 6 },
-            { id: 5, name: 'Dewi Lestari', points: 95, location: 'Bali', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997456.png', level: 'Nature Lover', completedMissions: 3, totalMissions: 6 },
-            { id: 6, name: 'Rizky Pratama', points: 87, location: 'Yogyakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png', level: 'Nature Lover', completedMissions: 2, totalMissions: 6 },
-            { id: 7, name: 'Maya Sari', points: 76, location: 'Medan', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997926.png', level: 'Beginner', completedMissions: 2, totalMissions: 6 },
-            { id: 8, name: 'Fajar Nugroho', points: 65, location: 'Jakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Beginner', completedMissions: 2, totalMissions: 6 },
-            { id: 9, name: 'Citra Dewi', points: 54, location: 'Bandung', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
-            { id: 10, name: 'Hendra Wijaya', points: 42, location: 'Surabaya', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
-            { id: 11, name: 'John Green', points: 38, location: 'Bali', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
-            { id: 12, name: 'Sarah Eco', points: 35, location: 'Yogyakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
-          ];
-          
-          // Sort by points (descending)
-          this.leaderboard.sort((a, b) => b.points - a.points);
-        },
-        
-        // Filter leaderboard by location
-        filterLeaderboard() {
-          if (this.selectedLocation === 'all') {
-            this.filteredLeaderboard = [...this.leaderboard];
-          } else {
-            this.filteredLeaderboard = this.leaderboard.filter(user => 
-              user.location === this.selectedLocation
-            );
-          }
-          
-          // Update current user rank
-          const currentUserIndex = this.filteredLeaderboard.findIndex(user => user.id === this.currentUserId);
-          this.currentUserRank = currentUserIndex !== -1 ? currentUserIndex + 1 : this.filteredLeaderboard.length + 1;
-          
-          // Reset to first page when filtering
-          this.currentPageNum = 1;
-        },
-        
-        // Refresh leaderboard data
-        refreshLeaderboard() {
-          // Update current user data in leaderboard
-          const currentUserIndex = this.leaderboard.findIndex(user => user.id === this.currentUserId);
-          if (currentUserIndex !== -1) {
-            this.leaderboard[currentUserIndex].points = this.totalPoints;
-            this.leaderboard[currentUserIndex].level = this.userLevel;
-            this.leaderboard[currentUserIndex].completedMissions = this.completedMissions;
-          }
-          
-          // Re-sort leaderboard
-          this.leaderboard.sort((a, b) => b.points - a.points);
-          this.filterLeaderboard();
-          
-          this.showToast('Leaderboard updated!');
-        },
-        
-        // Get badge class for rank
-        getRankBadgeClass(rank) {
-          if (rank === 1) return 'bg-yellow-500 text-yellow-900';
-          if (rank === 2) return 'bg-gray-400 text-gray-900';
-          if (rank === 3) return 'bg-amber-700 text-amber-100';
-          return 'bg-slate-700 text-gray-300';
-        },
-        
-        // Pagination methods
-        nextPage() {
-          if (this.currentPageNum * 10 < this.filteredLeaderboard.length) {
-            this.currentPageNum++;
-          }
-        },
-        
-        prevPage() {
-          if (this.currentPageNum > 1) {
-            this.currentPageNum--;
-          }
-        },
-        
-        // Calculate user progress
-        calculateProgress() {
-          this.completedMissions = this.missions.filter(m => m.status === 'completed').length;
-          this.totalMissions = this.missions.length;
-          this.progressPercentage = (this.completedMissions / this.totalMissions) * 100;
-          
-          // Update user level based on points
-          if (this.totalPoints >= 150) {
-            this.userLevel = 'Eco Master';
-          } else if (this.totalPoints >= 80) {
-            this.userLevel = 'Eco Warrior';
-          } else if (this.totalPoints >= 40) {
-            this.userLevel = 'Nature Lover';
-          } else {
-            this.userLevel = 'Beginner';
-          }
-        },
-        
-        // Complete a mission
-        completeMission(id) {
-          const mission = this.missions.find(m => m.id === id);
-          if (mission && mission.status === 'pending') {
-            mission.status = 'completed';
-            mission.completedDate = new Date().toLocaleDateString('en-US');
-            this.totalPoints += mission.points;
-            
-            // Update progress
-            this.calculateProgress();
-            
-            // Update achievements
-            this.updateAchievements();
+                    <!-- Community Stats -->
+                    <div class="max-w-3xl mx-auto">
+                        <div class="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">12</div>
+                                    <div class="text-sm text-slate-500 dark:text-slate-400">Active Challenges</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-1">28,456</div>
+                                    <div class="text-sm text-slate-500 dark:text-slate-400">Community Members</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-amber-600 dark:text-amber-400 mb-1">1,248,509</div>
+                                    <div class="text-sm text-slate-500 dark:text-slate-400">Points Earned</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl md:text-3xl font-bold text-slate-700 dark:text-slate-300 mb-1">342t</div>
+                                    <div class="text-sm text-slate-500 dark:text-slate-400">CO₂ Reduced</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script>
         // Single Alpine.js component to handle both loading and challenge
@@ -559,4 +305,5 @@
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }
+    </style>
 </x-app-layout>
