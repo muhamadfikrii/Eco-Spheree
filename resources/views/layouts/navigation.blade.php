@@ -30,7 +30,7 @@
                 <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="hover:text-emerald-400">Challenge</x-nav-link>
                 <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="hover:text-emerald-400">Report</x-nav-link>
                 <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="hover:text-emerald-400">Eco‑Track</x-nav-link>
-                <x-nav-link :href="route('leaderboard')" :active="request()->routeIs('leaderboard')" class="hover:text-emerald-400">Leaderboard</x-nav-link>
+                <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" class="hover:text-emerald-400">Contact</x-nav-link>
             </div>
 
             <!-- Auth Buttons / User Menu -->
