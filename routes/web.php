@@ -28,9 +28,9 @@ Route::get('/eco_track', function () {
     return view('eco_track');
 })->name('eco_track');
 
-Route::get('/leaderboard', function () {
-    return view('leaderboard');
-})->name('leaderboard');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Route::get('/explore', function() {
     return view('explore');
