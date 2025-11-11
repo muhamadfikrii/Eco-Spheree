@@ -606,11 +606,255 @@
                 </button>
               </div>
             </div>
-          </template>
+
+  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-emerald-900/50 to-slate-900 pt-24 pb-16 px-6 sm:px-10 text-white relative overflow-hidden" x-data="ecoTrack">
+
+    <!-- Animated Background Elements -->
+    <div class="absolute inset-0 bg-pattern"></div>
+    
+    <!-- Floating Particles -->
+    <div class="absolute top-1/4 left-1/4 w-6 h-6 rounded-full bg-green-400/30 float-animation"></div>
+    <div class="absolute top-1/3 right-1/4 w-10 h-10 rounded-full bg-emerald-500/20 float-animation" style="animation-delay: 1s;"></div>
+    <div class="absolute bottom-1/4 left-1/3 w-8 h-8 rounded-full bg-teal-400/25 float-animation" style="animation-delay: 2s;"></div>
+    <div class="absolute top-3/4 right-1/3 w-12 h-12 rounded-full bg-green-300/15 float-animation" style="animation-delay: 1.5s;"></div>
+    
+    <!-- Geometric Shapes -->
+    <div class="absolute top-10 right-10 w-32 h-32 border-2 border-green-500/30 rotate-45 opacity-40"></div>
+    <div class="absolute bottom-20 left-10 w-24 h-24 border-2 border-emerald-400/20 rotate-12 opacity-30"></div>
+    <div class="absolute top-40 left-20 w-16 h-16 border border-green-300/25 rotate-30 opacity-25"></div>
+
+    <!-- Header Section with Enhanced Design -->
+    <div class="text-center mb-16 relative z-10">
+      <div class="overflow-hidden mb-4">
+        <h1 class="text-6xl md:text-7xl font-black leading-tight">
+          <span class="block bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent drop-shadow-lg transform transition-all duration-1000">
+            Eco-Track
+          </span>
+        </h1>
+      </div>
+      
+      <div class="overflow-hidden max-w-3xl mx-auto">
+        <p class="text-xl md:text-2xl font-light opacity-90 leading-relaxed transform transition-all duration-1000 delay-300 bg-gradient-to-r from-gray-300 to-emerald-200 bg-clip-text text-transparent">
+          Calculate, understand, and reduce your carbon footprint with our intelligent environmental tracker
+        </p>
+      </div>
+
+      <!-- Progress Indicator -->
+      <div class="mt-8 max-w-md mx-auto">
+        <div class="flex items-center justify-between text-sm text-gray-400 mb-2">
+          <span>Environmental Impact</span>
+          <span x-text="totalCarbon > 0 ? totalCarbon.toFixed(1) + ' kg CO₂' : 'Not Calculated'"></span>
+        </div>
+        <div class="w-full bg-slate-700/50 rounded-full h-2">
+          <div class="bg-gradient-to-r from-green-500 to-emerald-400 h-2 rounded-full transition-all duration-1000 ease-out" 
+               :style="'width: ' + Math.min((totalCarbon / 100) * 100, 100) + '%'"></div>
         </div>
       </div>
     </div>
 
+    <!-- Main Grid with Enhanced Cards -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+      
+      <!-- Left Section: Input Card -->
+      <div class="group relative">
+        <!-- Card Background with Gradient Border -->
+        <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+        
+        <div class="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-slate-700/50 hover:border-green-500/30 transition-all duration-500 hover:shadow-green-500/10">
+          <!-- Card Header -->
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-400 rounded-2xl mb-4 shadow-lg">
+              <span class="text-2xl">💡</span>
+            </div>
+            <h2 class="text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
+              Your Environmental Profile
+            </h2>
+            <p class="text-gray-400 mt-2">Fill out your daily activities to calculate your carbon impact</p>
+          </div>
+
+          <!-- Enhanced Form -->
+          <form @submit.prevent="calculateFootprint" class="space-y-6">
+            <!-- Transportation Input -->
+            <div class="group/input">
+              <label class="block text-gray-300 mb-3 text-lg font-medium">🚗 Daily Transportation</label>
+              <select 
+                x-model.number="inputs.transport" 
+                class="w-full bg-slate-900/50 border-2 border-slate-600 rounded-xl px-4 py-4 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all duration-300 hover:border-slate-500 group-hover/input:shadow-lg"
+                x-ref="transportSelect">
+                <option value="0" class="bg-slate-800">Select your transportation...</option>
+                <option value="1.2" class="bg-slate-800">🏍️ Motorbike (gasoline)</option>
+                <option value="2.5" class="bg-slate-800">🚗 Car (gasoline)</option>
+                <option value="0.8" class="bg-slate-800">⚡ Electric car</option>
+                <option value="0.3" class="bg-slate-800">🚲 Bicycle</option>
+                <option value="0" class="bg-slate-800">🚶 Walking / Public transport</option>
+              </select>
+            </div>
+
+            <!-- Electricity Input -->
+            <div class="group/input">
+              <label class="block text-gray-300 mb-3 text-lg font-medium">💡 Electricity Consumption</label>
+              <div class="relative">
+                <input 
+                  type="number" 
+                  x-model.number="inputs.electric" 
+                  min="0" 
+                  class="w-full bg-slate-900/50 border-2 border-slate-600 rounded-xl px-4 py-4 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all duration-300 hover:border-slate-500 group-hover/input:shadow-lg pr-16"
+                  placeholder="Enter weekly kWh"
+                  x-ref="electricInput">
+                <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">kWh/week</span>
+              </div>
+            </div>
+
+            <!-- Meat Consumption Input -->
+            <div class="group/input">
+              <label class="block text-gray-300 mb-3 text-lg font-medium">🍖 Meat Consumption</label>
+              <div class="relative">
+                <input 
+                  type="number" 
+                  x-model.number="inputs.meat" 
+                  min="0" 
+                  class="w-full bg-slate-900/50 border-2 border-slate-600 rounded-xl px-4 py-4 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all duration-300 hover:border-slate-500 group-hover/input:shadow-lg pr-16"
+                  placeholder="Enter weekly servings"
+                  x-ref="meatInput">
+                <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">servings/week</span>
+              </div>
+            </div>
+
+            <!-- Plastic Usage Input -->
+            <div class="group/input">
+              <label class="block text-gray-300 mb-3 text-lg font-medium">🥤 Single-use Plastic Usage</label>
+              <div class="relative">
+                <input 
+                  type="number" 
+                  x-model.number="inputs.plastic" 
+                  min="0" 
+                  class="w-full bg-slate-900/50 border-2 border-slate-600 rounded-xl px-4 py-4 text-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all duration-300 hover:border-slate-500 group-hover/input:shadow-lg pr-16"
+                  placeholder="Enter weekly items"
+                  x-ref="plasticInput">
+                <span class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">items/week</span>
+              </div>
+            </div>
+
+            <!-- Calculate Button -->
+            <button 
+              type="submit" 
+              class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl pulse-glow flex items-center justify-center gap-3 text-lg group/btn mt-8"
+              x-ref="calculateButton">
+              <span class="group-hover/btn:scale-110 transition-transform duration-300">🌱</span>
+              <span>Calculate Carbon Footprint</span>
+              <svg class="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Section: Visualization Card -->
+      <div class="group relative">
+        <!-- Card Background with Gradient Border -->
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-400 rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+        
+        <div class="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-slate-700/50 hover:border-emerald-500/30 transition-all duration-500 hover:shadow-emerald-500/10 h-full flex flex-col justify-center">
+          
+          <!-- Animated Background -->
+          <div class="absolute inset-0 bg-gradient-to-tr from-green-500/10 via-transparent to-emerald-400/10 animate-pulse rounded-2xl"></div>
+
+          <!-- Default State -->
+          <template x-if="totalCarbon === 0">
+            <div class="text-center relative z-10 space-y-8">
+              <div class="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-slate-600 to-slate-700 rounded-3xl mb-4 shadow-inner">
+                <span class="text-4xl opacity-60">🌿</span>
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-gray-300 mb-4">Ready to Discover Your Impact?</h3>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                  Fill out the form to see your personalized carbon footprint analysis and get actionable tips to reduce your environmental impact.
+                </p>
+              </div>
+              <div class="flex justify-center space-x-4">
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-bounce"></div>
+                <div class="w-3 h-3 bg-emerald-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                <div class="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+              </div>
+            </div>
+          </template>
+
+          <!-- Results State -->
+          <template x-if="totalCarbon > 0">
+            <div class="relative z-10 space-y-8 animate-fade-in">
+              <!-- Circular Progress with Enhanced Design -->
+              <div class="relative flex items-center justify-center">
+                <div class="absolute w-48 h-48 bg-gradient-to-br from-green-500/20 to-emerald-400/20 rounded-full blur-xl"></div>
+                <svg class="w-48 h-48 transform -rotate-90 drop-shadow-2xl">
+                  <circle cx="96" cy="96" r="84" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none" />
+                  <circle cx="96" cy="96" r="84" 
+                          stroke="url(#grad)" 
+                          stroke-width="8" fill="none" 
+                          stroke-dasharray="528"
+                          :stroke-dashoffset="528 - (totalCarbon / 100 * 528)" 
+                          stroke-linecap="round"
+                          class="transition-all duration-1000 ease-out drop-shadow-lg" />
+                  <defs>
+                    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#22c55e" />
+                      <stop offset="50%" stop-color="#10b981" />
+                      <stop offset="100%" stop-color="#34d399" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div class="absolute text-center">
+                  <p class="text-5xl font-black text-green-400 mb-2 drop-shadow-lg" x-text="totalCarbon.toFixed(1)"></p>
+                  <p class="text-gray-400 text-sm font-medium">kg CO₂ / week</p>
+                </div>
+              </div>
+
+              <!-- Text Feedback with Enhanced Design -->
+              <div class="text-center">
+                <p class="text-xl font-semibold text-gray-200 leading-relaxed px-4" x-text="footprintMessage"></p>
+              </div>
+
+              <!-- Breakdown Cards -->
+              <div class="grid grid-cols-2 gap-4">
+                <template x-for="metric in metrics" :key="metric.name">
+                  <div class="bg-slate-900/60 backdrop-blur-sm rounded-xl p-4 border border-slate-700/50 hover:border-green-500/50 transition-all duration-300 hover:transform hover:scale-105 group/card">
+                    <p class="text-green-400 font-bold text-2xl mb-1 text-center group-hover/card:scale-110 transition-transform duration-300" x-text="metric.value.toFixed(1)"></p>
+                    <p class="text-gray-400 text-sm text-center font-medium" x-text="metric.name"></p>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Tips Section -->
+              <div class="bg-slate-900/40 backdrop-blur-sm rounded-xl p-6 border border-slate-700/50">
+                <h3 class="text-green-400 font-bold text-lg mb-4 flex items-center justify-center gap-2">
+                  <span class="text-xl">💚</span>
+                  Tips to Reduce Your Footprint
+                </h3>
+                <ul class="text-sm text-gray-300 space-y-3">
+                  <template x-for="(tip, index) in ecoTips" :key="index">
+                    <li class="flex items-start gap-3 p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-colors duration-300">
+                      <span class="text-green-400 mt-0.5 flex-shrink-0">🌿</span>
+                      <span x-text="tip" class="leading-relaxed"></span>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="flex gap-3">
+                <button @click="resetForm" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-medium py-3 rounded-xl transition-all duration-300 transform hover:scale-[1.02]">
+                  Reset Form
+                </button>
+                <button @click="shareResults" class="flex-1 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-medium py-3 rounded-xl transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                  <span>📤</span>
+                  Share Results
+                </button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
   <script>
     document.addEventListener('alpine:init', () => {
       // Hero Section Alpine Component
@@ -703,6 +947,7 @@
         init() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           console.log('🚀 Enhanced Eco-Track initialized');
           // Load saved data if exists
           this.loadSavedData();
@@ -723,6 +968,8 @@
         calculateFootprint() {
           console.log('📊 Calculating enhanced carbon footprint...', this.inputs);
 =======
+=======
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
           console.log('🚀 Eco-Track Enhanced initialized');
@@ -752,6 +999,9 @@
         calculateFootprint() {
           console.log('📊 Calculating enhanced footprint...', this.inputs);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
@@ -936,6 +1186,9 @@
           
           console.log('✅ Enhanced calculation complete:', this.totalCarbon);
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
@@ -945,6 +1198,7 @@
           const data = {
             inputs: this.inputs,
             totalCarbon: this.totalCarbon,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             carbonBreakdown: this.carbonBreakdown,
@@ -964,6 +1218,8 @@
 =======
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
             metrics: this.metrics,
             ecoTips: this.ecoTips,
             footprintMessage: this.footprintMessage,
@@ -981,6 +1237,9 @@
           localStorage.removeItem('ecoTrackData');
           this.showNotification('Form reset successfully!', 'success');
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
@@ -988,6 +1247,7 @@
 
         shareResults() {
           if (this.totalCarbon === 0) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             this.showNotification('Please calculate your carbon footprint first!', 'warning');
@@ -998,12 +1258,17 @@
 =======
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
             this.showNotification('Please calculate your footprint first!', 'warning');
             return;
           }
 
           const shareText = `My carbon footprint is ${this.totalCarbon.toFixed(1)} kg CO₂ per week. Calculate yours at Eco-Track! 🌍`;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
@@ -1169,6 +1434,9 @@
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
+=======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
 >>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
@@ -1178,6 +1446,7 @@
     }
 
     /* Backdrop blur support */
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     @@supports (backdrop-filter: blur(10px)) {
@@ -1239,6 +1508,13 @@
       -webkit-appearance: none;
       -moz-appearance: textfield;
     }
+=======
+    @supports (backdrop-filter: blur(10px)) {
+      .backdrop-blur-sm {
+        backdrop-filter: blur(8px);
+      }
+    }
+>>>>>>> 968373e (Merge pull request #34 from muhamadfikrii/update-report)
 =======
     @supports (backdrop-filter: blur(10px)) {
       .backdrop-blur-sm {
