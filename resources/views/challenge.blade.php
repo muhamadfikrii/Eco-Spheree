@@ -1,8 +1,8 @@
 <x-app-layout>
-  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-6 sm:px-10 pt-24 pb-16" x-data="challengeCenter">
+  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-6 sm:px-10 pt-24 pb-16 relative" x-data="challengeCenter" style="pointer-events: auto;">
     
-    <!-- Header with Navigation -->
-    <div class="text-center mb-10">
+    <!-- Header with Navigation - PERBAIKAN: Tambah z-index lebih tinggi -->
+    <div class="text-center mb-10 relative z-20">
       <h1 class="text-5xl font-extrabold text-green-400 mb-3" x-text="currentPage === 'challenges' ? '⚡ Challenge Center' : '🏆 Leaderboard'"></h1>
       <p class="text-gray-300 text-lg" x-text="currentPage === 'challenges' ? 'Complete missions, collect points, and climb to the top of the leaderboard!' : 'Check your ranking and compete with other EcoHeroes!'"></p>
       
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Challenge Center Content -->
-    <div x-show="currentPage === 'challenges'">
+    <div x-show="currentPage === 'challenges'" class="relative z-10">
       <!-- User Stats -->
       <div class="flex flex-col sm:flex-row justify-between items-center mb-10 bg-slate-800 rounded-2xl p-5 border border-slate-700 shadow-lg">
         <div class="flex items-center gap-3">
@@ -113,7 +113,12 @@
                 <template x-if="mission.status === 'pending'">
                   <div>
                     <label class="block text-gray-400 text-sm mb-1">Upload Proof:</label>
-                    <input type="file" @change="completeMission(mission.id)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    <input 
+                      type="file" 
+                      @change="completeMission(mission.id)" 
+                      class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+                      style="pointer-events: auto;"
+                      accept="image/*">
                   </div>
                 </template>
 
@@ -130,12 +135,16 @@
     </div>
 
     <!-- Leaderboard Content -->
-    <div x-show="currentPage === 'leaderboard'" class="space-y-6">
+    <div x-show="currentPage === 'leaderboard'" class="space-y-6 relative z-10">
       <!-- Filter Controls -->
       <div class="flex flex-col sm:flex-row justify-between items-center bg-slate-800 rounded-2xl p-5 border border-slate-700">
         <h2 class="text-xl font-bold text-green-400 mb-4 sm:mb-0">EcoHero Rankings</h2>
         <div class="flex gap-2">
-          <select x-model="selectedLocation" @change="filterLeaderboard" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+          <select 
+            x-model="selectedLocation" 
+            @change="filterLeaderboard" 
+            class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+            style="pointer-events: auto;">
             <option value="all">All Locations</option>
             <template x-for="location in locations" :key="location">
               <option x-text="location" :value="location"></option>
@@ -242,29 +251,37 @@
       </div>
     </div>
 
-    <!-- Achievements Modal -->
-    <div x-show="showAchievementsModal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4" @click="showAchievementsModal = false">
-      <div class="bg-slate-800 rounded-2xl p-6 max-w-md w-full border border-slate-700 max-h-[90vh] overflow-y-auto" @click.stop>
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-bold text-green-400">🏆 Your Achievements</h3>
-          <button @click="showAchievementsModal = false" class="text-gray-400 hover:text-white">✕</button>
-        </div>
-        
-        <div class="space-y-4">
-          <template x-for="achievement in achievements" :key="achievement.id">
-            <div class="flex items-center gap-3 p-3 bg-slate-700/50 rounded-lg"
-                 :class="{'opacity-100': achievement.unlocked, 'opacity-50': !achievement.unlocked}">
-              <div class="text-2xl" x-text="achievement.icon"></div>
-              <div class="flex-1">
-                <h4 class="font-semibold" x-text="achievement.title"></h4>
-                <p class="text-xs text-gray-400" x-text="achievement.description"></p>
+    <!-- Achievements Modal - PERBAIKAN: Pastikan modal tidak mengganggu konten utama -->
+    <template x-if="showAchievementsModal">
+      <div 
+        x-show="showAchievementsModal" 
+        x-transition.opacity
+        class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4" 
+        @click="showAchievementsModal = false"
+        style="display: none;"
+        x-cloak>
+        <div class="bg-slate-800 rounded-2xl p-6 max-w-md w-full border border-slate-700 max-h-[90vh] overflow-y-auto" @click.stop>
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-green-400">🏆 Your Achievements</h3>
+            <button @click="showAchievementsModal = false" class="text-gray-400 hover:text-white">✕</button>
+          </div>
+          
+          <div class="space-y-4">
+            <template x-for="achievement in achievements" :key="achievement.id">
+              <div class="flex items-center gap-3 p-3 bg-slate-700/50 rounded-lg"
+                   :class="{'opacity-100': achievement.unlocked, 'opacity-50': !achievement.unlocked}">
+                <div class="text-2xl" x-text="achievement.icon"></div>
+                <div class="flex-1">
+                  <h4 class="font-semibold" x-text="achievement.title"></h4>
+                  <p class="text-xs text-gray-400" x-text="achievement.description"></p>
+                </div>
+                <div x-show="achievement.unlocked" class="text-green-400 text-lg">✓</div>
               </div>
-              <div x-show="achievement.unlocked" class="text-green-400 text-lg">✓</div>
-            </div>
-          </template>
+            </template>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 
   <script>
@@ -366,6 +383,8 @@
 
         // Initialize component
         init() {
+          console.log('🚀 Challenge Center initialized');
+          
           // Load saved data from localStorage
           const savedPoints = localStorage.getItem('ecoPoints');
           const savedMissions = localStorage.getItem('missions');
@@ -406,6 +425,14 @@
           // Initialize leaderboard
           this.initializeLeaderboard();
           this.filterLeaderboard();
+
+          // Force enable all inputs
+          this.$nextTick(() => {
+            document.querySelectorAll('input, select, button').forEach(el => {
+              el.style.pointerEvents = 'auto';
+              el.disabled = false;
+            });
+          });
         },
         
         // Initialize leaderboard with sample data
@@ -630,5 +657,33 @@
     
     .animate-fade-in { animation: fade-in 0.5s ease-out; }
     .animate-fade-out { animation: fade-out 0.5s ease-out; }
+
+    /* PERBAIKAN: Pastikan konten utama selalu terlihat */
+    .relative.z-10 {
+      position: relative;
+      z-index: 10 !important;
+    }
+
+    .relative.z-20 {
+      position: relative;
+      z-index: 20 !important;
+    }
+
+    /* Pastikan modal benar-benar tersembunyi saat tidak aktif */
+    .fixed[style*="display: none"] {
+      display: none !important;
+    }
+
+    /* Pastikan semua input bisa diakses */
+    input, select, button, textarea {
+      pointer-events: auto !important;
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      button, input, select, textarea {
+        min-height: 44px;
+      }
+    }
   </style>
 </x-app-layout>
