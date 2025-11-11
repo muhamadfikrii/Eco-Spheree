@@ -113,12 +113,7 @@
                 <template x-if="mission.status === 'pending'">
                   <div>
                     <label class="block text-gray-400 text-sm mb-1">Upload Proof:</label>
-                    <div class="flex gap-2">
-                      <input type="file" @change="completeMission(mission.id)" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
-                      <button @click="skipMission(mission.id)" class="bg-slate-700 hover:bg-slate-600 px-3 py-2 rounded-lg text-sm">
-                        Skip
-                      </button>
-                    </div>
+                    <input type="file" @change="completeMission(mission.id)" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
                   </div>
                 </template>
 
@@ -287,7 +282,7 @@
         // Progress tracking
         totalPoints: 0,
         completedMissions: 0,
-        totalMissions: 5,
+        totalMissions: 6,
         userLevel: 'Beginner',
         progressPercentage: 0,
         
@@ -302,12 +297,12 @@
         // UI State
         showAchievementsModal: false,
         
-        // Missions data
+        // Missions data - ALL IN ENGLISH
         missions: [
           { 
             id: 1, 
-            title: 'Clean Up Around Your Home', 
-            description: 'Collect plastic waste and dispose of it in recycling bins.', 
+            title: 'Clean Up Your Neighborhood', 
+            description: 'Collect plastic waste and properly dispose of it in recycling bins. Take before and after photos of the cleaned area.', 
             points: 20, 
             difficulty: 2,
             status: 'pending',
@@ -316,7 +311,7 @@
           { 
             id: 2, 
             title: 'Plant a Tree', 
-            description: 'Plant at least one tree in your neighborhood.', 
+            description: 'Plant at least one tree in your community or backyard. Document the planting process and share its growth progress.', 
             points: 40, 
             difficulty: 3,
             status: 'pending',
@@ -324,8 +319,8 @@
           },
           { 
             id: 3, 
-            title: 'Reduce Meat for a Week', 
-            description: 'Replace meat dishes with vegetables or plant-based proteins.', 
+            title: 'Meat-Free Week Challenge', 
+            description: 'Go completely meat-free for 7 consecutive days. Explore plant-based recipes and share your favorite meat-free meals.', 
             points: 30, 
             difficulty: 4,
             status: 'pending',
@@ -333,8 +328,8 @@
           },
           { 
             id: 4, 
-            title: 'Use Public Transportation', 
-            description: 'Use public transport or bicycle for 3 consecutive days.', 
+            title: 'Sustainable Commute', 
+            description: 'Use public transportation, bike, or walk instead of driving for all your trips over 3 days. Track your reduced carbon footprint.', 
             points: 25, 
             difficulty: 3,
             status: 'pending',
@@ -342,10 +337,19 @@
           },
           { 
             id: 5, 
-            title: 'Educate Friends', 
-            description: 'Share environmental posts on social media.', 
+            title: 'Environmental Education', 
+            description: 'Create and share educational content about environmental conservation on your social media platforms. Reach at least 50 people.', 
             points: 15, 
             difficulty: 1,
+            status: 'pending',
+            completedDate: null
+          },
+          { 
+            id: 6, 
+            title: 'Water Conservation', 
+            description: 'Reduce your daily water consumption by 25% for one week. Implement water-saving habits like shorter showers and fixing leaks.', 
+            points: 35, 
+            difficulty: 3,
             status: 'pending',
             completedDate: null
           },
@@ -357,6 +361,7 @@
           { id: 2, title: 'Point Collector', description: 'Collect 50 points', icon: '🪙', unlocked: false },
           { id: 3, title: 'Eco Warrior', description: 'Complete 3 missions', icon: '🛡️', unlocked: false },
           { id: 4, title: 'Environmental Master', description: 'Complete all missions', icon: '🏆', unlocked: false },
+          { id: 5, title: 'Community Leader', description: 'Reach top 10 in leaderboard', icon: '⭐', unlocked: false },
         ],
 
         // Initialize component
@@ -367,7 +372,29 @@
           const savedAchievements = localStorage.getItem('achievements');
           
           if (savedPoints) this.totalPoints = parseInt(savedPoints);
-          if (savedMissions) this.missions = JSON.parse(savedMissions);
+          
+          // Force update mission texts to English while preserving status
+          if (savedMissions) {
+            const parsedMissions = JSON.parse(savedMissions);
+            // Update mission texts while preserving status and completion data
+            this.missions = this.missions.map(newMission => {
+              const savedMission = parsedMissions.find(m => m.id === newMission.id);
+              if (savedMission) {
+                return {
+                  ...savedMission,
+                  title: newMission.title,
+                  description: newMission.description,
+                  points: newMission.points,
+                  difficulty: newMission.difficulty
+                };
+              }
+              return newMission;
+            });
+            
+            // Save the updated missions back to localStorage
+            localStorage.setItem('missions', JSON.stringify(this.missions));
+          }
+          
           if (savedAchievements) this.achievements = JSON.parse(savedAchievements);
           
           // Calculate progress
@@ -383,28 +410,42 @@
         
         // Initialize leaderboard with sample data
         initializeLeaderboard() {
-          // Sample leaderboard data - in a real app, this would come from your backend
+          // Create sample leaderboard data with multiple users
           this.leaderboard = [
-            { id: 1, name: this.userName, points: this.totalPoints, location: this.userLocation, 
-              avatar: this.userAvatar, level: this.userLevel, completedMissions: this.completedMissions, totalMissions: this.totalMissions },
+            // Current user
+            { 
+              id: this.currentUserId, 
+              name: this.userName, 
+              points: this.totalPoints, 
+              location: this.userLocation, 
+              avatar: this.userAvatar, 
+              level: this.userLevel, 
+              completedMissions: this.completedMissions, 
+              totalMissions: this.totalMissions 
+            },
+            // Other users
             { id: 2, name: 'Budi Santoso', points: 145, location: 'Bandung', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', level: 'Eco Warrior', completedMissions: 4, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png', level: 'Eco Warrior', completedMissions: 4, totalMissions: 6 },
             { id: 3, name: 'Sari Indah', points: 132, location: 'Surabaya', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Eco Warrior', completedMissions: 4, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Eco Warrior', completedMissions: 4, totalMissions: 6 },
             { id: 4, name: 'Ahmad Rizki', points: 118, location: 'Jakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Nature Lover', completedMissions: 3, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Nature Lover', completedMissions: 3, totalMissions: 6 },
             { id: 5, name: 'Dewi Lestari', points: 95, location: 'Bali', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997456.png', level: 'Nature Lover', completedMissions: 3, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997456.png', level: 'Nature Lover', completedMissions: 3, totalMissions: 6 },
             { id: 6, name: 'Rizky Pratama', points: 87, location: 'Yogyakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png', level: 'Nature Lover', completedMissions: 2, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png', level: 'Nature Lover', completedMissions: 2, totalMissions: 6 },
             { id: 7, name: 'Maya Sari', points: 76, location: 'Medan', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997926.png', level: 'Beginner', completedMissions: 2, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997926.png', level: 'Beginner', completedMissions: 2, totalMissions: 6 },
             { id: 8, name: 'Fajar Nugroho', points: 65, location: 'Jakarta', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Beginner', completedMissions: 2, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Beginner', completedMissions: 2, totalMissions: 6 },
             { id: 9, name: 'Citra Dewi', points: 54, location: 'Bandung', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Beginner', completedMissions: 1, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
             { id: 10, name: 'Hendra Wijaya', points: 42, location: 'Surabaya', 
-              avatar: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png', level: 'Beginner', completedMissions: 1, totalMissions: 5 },
+              avatar: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
+            { id: 11, name: 'John Green', points: 38, location: 'Bali', 
+              avatar: 'https://cdn-icons-png.flaticon.com/512/4333/4333609.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
+            { id: 12, name: 'Sarah Eco', points: 35, location: 'Yogyakarta', 
+              avatar: 'https://cdn-icons-png.flaticon.com/512/6997/6997662.png', level: 'Beginner', completedMissions: 1, totalMissions: 6 },
           ];
           
           // Sort by points (descending)
@@ -470,14 +511,15 @@
         // Calculate user progress
         calculateProgress() {
           this.completedMissions = this.missions.filter(m => m.status === 'completed').length;
+          this.totalMissions = this.missions.length;
           this.progressPercentage = (this.completedMissions / this.totalMissions) * 100;
           
           // Update user level based on points
-          if (this.totalPoints >= 100) {
+          if (this.totalPoints >= 150) {
             this.userLevel = 'Eco Master';
-          } else if (this.totalPoints >= 60) {
+          } else if (this.totalPoints >= 80) {
             this.userLevel = 'Eco Warrior';
-          } else if (this.totalPoints >= 30) {
+          } else if (this.totalPoints >= 40) {
             this.userLevel = 'Nature Lover';
           } else {
             this.userLevel = 'Beginner';
@@ -511,16 +553,6 @@
           }
         },
         
-        // Skip a mission
-        skipMission(id) {
-          const mission = this.missions.find(m => m.id === id);
-          if (mission && mission.status === 'pending') {
-            if (confirm(`Are you sure you want to skip mission "${mission.title}"?`)) {
-              this.showToast(`Mission "${mission.title}" skipped`);
-            }
-          }
-        },
-        
         // Update achievements status
         updateAchievements() {
           // Achievement 1: Complete first mission
@@ -534,6 +566,9 @@
           
           // Achievement 4: Complete all missions
           this.achievements[3].unlocked = this.completedMissions === this.totalMissions;
+          
+          // Achievement 5: Reach top 10 in leaderboard
+          this.achievements[4].unlocked = this.currentUserRank <= 10;
         },
         
         // Show achievements modal
