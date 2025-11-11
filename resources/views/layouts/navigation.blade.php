@@ -1,5 +1,18 @@
-<nav 
-    x-data="{ open: false, scrolled: false }"
+<nav
+    x-data="{
+        open: false,
+        scrolled: false,
+        userProfile: {
+            level: 1,
+            rank: 'Eco Warrior',
+            levelProgress: 25,
+            stats: {
+                points: 150,
+                trees: 3,
+                plastic: 1.2
+            }
+        }
+    }"
     x-init="
         const handleScroll = () => {
             window.requestAnimationFrame(() => {
@@ -64,11 +77,11 @@
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="text-slate-400 capitalize font-bold text-lg">{{ Auth::user()->name }}</h3>
-                                    {{-- <div class="flex items-center text-sm text-gray-400">
+                                    <div class="flex items-center text-sm text-gray-400">
                                         <span class="text-primary font-medium mr-2" x-text="'Level ' + userProfile.level"></span>
                                         <span>•</span>
                                         <span class="ml-2" x-text="userProfile.rank"></span>
-                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
 

@@ -1,10 +1,9 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { TextPlugin } from "gsap/TextPlugin";
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(TextPlugin) 
-    // Initialize GSAP and ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
     
     // Background Animation
     const canvas = document.getElementById('bg-animation');

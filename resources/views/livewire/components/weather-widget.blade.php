@@ -134,7 +134,7 @@ document.addEventListener('alpine:init', () => {
         init() {
             const locationDenied = localStorage.getItem('location_denied');
             if (locationDenied === 'true') {
-                console.log('Location permission was previously denied. Skipping request.');
+
                 return;
             }
 

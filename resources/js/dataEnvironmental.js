@@ -208,7 +208,7 @@ export const orbitingNodes = [
 // ==========================================
 // 2. FUNGSI UTAMA ALPINEJS UNTUK KOMPONEN
 // ==========================================
-function modernEcosphere() {
+export function modernEcosphere() {
     return {
         // Enhanced State Management
         selectedNode: null,
