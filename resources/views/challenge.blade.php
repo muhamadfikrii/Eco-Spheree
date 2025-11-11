@@ -1,7 +1,7 @@
 <x-app-layout>
   <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white px-6 sm:px-10 pt-24 pb-16 relative" x-data="challengeCenter" style="pointer-events: auto;">
     
-    <!-- Header with Navigation - PERBAIKAN: Tambah z-index lebih tinggi -->
+    <!-- Header with Navigation -->
     <div class="text-center mb-10 relative z-20">
       <h1 class="text-5xl font-extrabold text-green-400 mb-3" x-text="currentPage === 'challenges' ? '⚡ Challenge Center' : '🏆 Leaderboard'"></h1>
       <p class="text-gray-300 text-lg" x-text="currentPage === 'challenges' ? 'Complete missions, collect points, and climb to the top of the leaderboard!' : 'Check your ranking and compete with other EcoHeroes!'"></p>
@@ -251,7 +251,7 @@
       </div>
     </div>
 
-    <!-- Achievements Modal - PERBAIKAN: Pastikan modal tidak mengganggu konten utama -->
+    <!-- Achievements Modal -->
     <template x-if="showAchievementsModal">
       <div 
         x-show="showAchievementsModal" 
@@ -287,7 +287,7 @@
   <script>
     document.addEventListener('alpine:init', () => {
       Alpine.data('challengeCenter', () => ({
-        // User data - in a real app, this would come from your backend
+        // User data
         userName: '{{ auth()->user()->name ?? "EcoHero" }}',
         userAvatar: 'https://cdn-icons-png.flaticon.com/512/219/219983.png',
         userLocation: 'Jakarta',
@@ -311,10 +311,8 @@
         currentUserRank: 1,
         currentPageNum: 1,
         
-        // UI State
         showAchievementsModal: false,
         
-        // Missions data - ALL IN ENGLISH
         missions: [
           { 
             id: 1, 
@@ -658,7 +656,6 @@
     .animate-fade-in { animation: fade-in 0.5s ease-out; }
     .animate-fade-out { animation: fade-out 0.5s ease-out; }
 
-    /* PERBAIKAN: Pastikan konten utama selalu terlihat */
     .relative.z-10 {
       position: relative;
       z-index: 10 !important;
@@ -668,13 +665,11 @@
       position: relative;
       z-index: 20 !important;
     }
-
-    /* Pastikan modal benar-benar tersembunyi saat tidak aktif */
+ak aktif */
     .fixed[style*="display: none"] {
       display: none !important;
     }
 
-    /* Pastikan semua input bisa diakses */
     input, select, button, textarea {
       pointer-events: auto !important;
     }

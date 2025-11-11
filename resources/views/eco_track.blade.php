@@ -208,7 +208,7 @@
           console.log('📊 Calculating footprint...', this.inputs);
           
           const { transport, electric, meat, plastic } = this.inputs;
-          const transportCarbon = transport * 7; // weekly
+          const transportCarbon = transport * 7;
           const electricCarbon = electric * 0.8;
           const meatCarbon = meat * 2.5;
           const plasticCarbon = plastic * 0.1;
@@ -257,7 +257,6 @@
       pointer-events: auto !important;
     }
     
-    /* Ensure inputs are always accessible */
     input:not([disabled]), 
     select:not([disabled]), 
     textarea:not([disabled]) {
