@@ -8,7 +8,7 @@
             levelProgress: 25,
             stats: {
                 points: 150,
-                trees: 3,
+                trees: 3,challenge-center
                 plastic: 1.2
             }
         }
@@ -26,13 +26,13 @@
         : 'bg-transparent border-b border-transparent py-5'"
     class="top-0 fixed left-0 w-full z-[9999] transition-all duration-500 ease-in-out text-slate-200"
 >
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="flex justify-between items-center transition-all duration-500 ease-in-out">
 
             <!-- Logo -->
             <div class="flex items-center justify-center">
                 @include('components.icon')
-                <h1 class=" pl-3 text-xl font-semibold"
+                <h1 class="pl-3 text-xl font-semibold"
                 :class="scrolled ? 'text-slate-900' : 'text-white'">Eco-Spheree</h1>
             </div>
 
@@ -78,9 +78,9 @@
                                 <div class="flex-1">
                                     <h3 class="text-slate-400 capitalize font-bold text-lg">{{ Auth::user()->name }}</h3>
                                     <div class="flex items-center text-sm text-gray-400">
-                                        <span class="text-primary font-medium mr-2" x-text="'Level ' + userProfile.level"></span>
+                                        <span class="text-primary font-medium mr-2">{{ auth()->user()->eco_level ?? 'Beginner' }}</span>
                                         <span>•</span>
-                                        <span class="ml-2" x-text="userProfile.rank"></span>
+                                        <span class="ml-2">{{ auth()->user()->eco_points ?? 0 }} pts</span>
                                     </div>
                                 </div>
                             </div>
@@ -88,28 +88,28 @@
                             <!-- Profile Stats -->
                             <div class="grid grid-cols-3 gap-4 text-center">
                                 <div>
-                                    <div class="text-2xl font-bold text-primary" x-text="userProfile.stats.points"></div>
+                                    <div class="text-2xl font-bold text-primary">{{ auth()->user()->eco_points ?? 0 }}</div>
                                     <div class="text-xs text-gray-400">Poin</div>
                                 </div>
                                 <div>
-                                    <div class="text-2xl font-bold text-primary" x-text="userProfile.stats.trees"></div>
-                                    <div class="text-xs text-gray-400">Pohon</div>
+                                    <div class="text-2xl font-bold text-primary">{{ auth()->user()->challenges_completed ?? 0 }}</div>
+                                    <div class="text-xs text-gray-400">Missions</div>
                                 </div>
                                 <div>
-                                    <div class="text-2xl font-bold text-primary" x-text="userProfile.stats.plastic + 'kg'"></div>
-                                    <div class="text-xs text-gray-400">Plastik</div>
+                                    <div class="text-2xl font-bold text-primary">{{ auth()->user()->eco_level ?? 'Beginner' }}</div>
+                                    <div class="text-xs text-gray-400">Level</div>
                                 </div>
                             </div>
 
                             <!-- Level Progress -->
                             <div>
                                 <div class="flex justify-between text-sm text-gray-400 mb-1">
-                                    <span>Progress ke Level <span x-text="userProfile.level + 1"></span></span>
-                                    <span x-text="userProfile.levelProgress + '%'"></span>
+                                    <span>Challenge Progress</span>
+                                    <span>{{ auth()->user()->challenges_completed ?? 0 }}/6 Missions</span>
                                 </div>
                                 <div class="w-full h-2 bg-dark rounded-full overflow-hidden">
                                     <div class="h-full bg-primary transition-all duration-700"
-                                        :style="`width: ${userProfile.levelProgress}%`"></div>
+                                        style="width: {{ (auth()->user()->challenges_completed ?? 0) / 6 * 100 }}%"></div>
                                 </div>
                             </div>
 
@@ -119,10 +119,21 @@
                                     class="flex-1 bg-primary hover:bg-primary-light text-white text-center py-2 px-4 rounded-lg transition text-sm">
                                     <i class="fas fa-user mr-1"></i> Settings
                                 </a>
-                                <button
-                                    class="flex-1 bg-dark-lighter hover:bg-dark border border-dark-lighter text-gray-400 hover:text-white py-2 px-4 rounded-lg transition text-sm">
-                                    <i class="fas fa-sign-out-alt mr-1"></i> Log Out
-                                </button>
+
+                                @if(Auth::user()->is_admin ?? false)
+                                    <a href="{{ route('admin.mission-reviews.index') }}"
+                                        class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition text-sm">
+                                        <i class="fas fa-clipboard-check mr-1"></i> Review Submissions
+                                    </a>
+                                @endif
+
+                                <form method="POST" action="{{ route('logout') }}" class="flex-1">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-full bg-dark-lighter hover:bg-dark border border-dark-lighter text-gray-400 hover:text-white py-2 px-4 rounded-lg transition text-sm">
+                                        <i class="fas fa-sign-out-alt mr-1"></i> Log Out
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
