@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="min-h-screen bg-slate-900 text-white pt-20 md:pt-24 px-4 md:px-6" x-data="reportPage">
 
-        <!-- 🌍 Introduction Modal - PERBAIKAN: Pastikan modal tertutup saat pertama load -->
+        <!-- 🌍 Introduction Modal -->
         <template x-if="showIntro">
             <div 
                 x-show="showIntro" 
@@ -25,7 +25,7 @@
             </div>
         </template>
 
-        <!-- Header - PERBAIKAN: Tambah z-index dan pastikan visible -->
+        <!-- Header -->
         <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4 relative z-10">
             <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-center md:text-left">📢 Eco-Report Hub</h1>
             <p class="text-slate-400 text-center md:text-left text-sm md:text-base">Together we protect the Earth 🌍</p>
@@ -181,11 +181,10 @@
         </div>
     </div>
 
-    <!-- 🌱 Alpine.js Logic - PERBAIKAN: Pastikan modal tertutup saat pertama load -->
     <script>
         document.addEventListener('alpine:init', () => {
             Alpine.data('reportPage', () => ({
-                showIntro: false, // UBAH: Default false, bukan true
+                showIntro: false,
                 tab: 'forum',
                 mobileSidebarOpen: false,
                 username: @json(Auth::user()->name ?? 'Guest'),
@@ -213,10 +212,9 @@
 
                 init() {
                     console.log('🚀 Eco-Report Hub initialized');
-                    
-                    // PERBAIKAN: Hanya tampilkan modal jika benar-benar pertama kali
+
                     if (!localStorage.getItem('ecoReportIntroShown')) {
-                        // Tunggu sebentar agar konten utama render dulu, baru tampilkan modal
+
                         setTimeout(() => {
                             this.showIntro = true;
                             console.log('📢 Showing intro modal');
@@ -311,19 +309,17 @@
         });
     </script>
 
-    <!-- Tambah CSS untuk responsivitas dan pointer events -->
     <style>
         [x-cloak] { 
             display: none !important; 
         }
         
-        /* PERBAIKAN: Pastikan header dan konten utama selalu visible */
+        
         .relative.z-10 {
             position: relative;
             z-index: 10 !important;
         }
-        
-        /* Pastikan modal benar-benar tersembunyi saat tidak aktif */
+
         .fixed[style*="display: none"] {
             display: none !important;
         }
