@@ -12,10 +12,8 @@
                             EcoTrack turns Indonesia's environmental data into a living digital map — visualizing air quality, biodiversity, and forest health in real time.
                         </p>
                         <div class="flex flex-wrap gap-4">
-                            <a href="#" 
-                                
-                                class="px-6 py-3 bg-emerald-500 text-white border border-white hover:bg-transparent font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                            >
+                            <a href="{{ route('explore') }}" 
+                                class="px-6 py-3 bg-emerald-700 text-white border border-white hover:bg-transparent font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                                 Explore EcoSpheree
                             </a>
                         </div>

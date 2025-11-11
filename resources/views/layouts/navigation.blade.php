@@ -33,46 +33,114 @@
                 <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" class="hover:text-emerald-400">Contact</x-nav-link>
             </div>
 
-            <!-- Auth Buttons / User Menu -->
-            <div class="hidden md:flex items-center space-x-4">
+            <div class="hidden md:flex items-center space-x-4 relative" x-data="{ showMenu: false }">
                 @auth
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <button class="flex items-center space-x-2 px-4 py-2 rounded-full bg-slate-700 hover:bg-slate-700/80 transition">
-                                <span>{{ Auth::user()->name }}</span>
-                                <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"></path>
-                                </svg>
-                            </button>
-                        </x-slot>
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">Profile</x-dropdown-link>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    Logout
-                                </x-dropdown-link>
-                            </form>
-                        </x-slot>
-                    </x-dropdown>
+                    <!-- Avatar Trigger -->
+                    <button @click="showMenu = !showMenu"
+                        class="flex items-center space-x-2 bg-dark-lighter hover:bg-dark-light px-3 py-2 rounded-lg transition duration-300 border border-dark">
+                        <div class="w-8 h-8 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+                            <i class="fas fa-user text-primary text-sm"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-black up capitalize"><span>{{ Auth::user()->name }}</span></span>
+                        <i class="fas fa-chevron-down text-black text-xs ml-1 transition-transform"
+                            :class="showMenu ? 'rotate-180' : ''"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div x-show="showMenu" x-transition.origin.top.right @click.away="showMenu = false"
+                        class="absolute right-0 top-12 w-80 bg-dark-light rounded-xl bg-slate-600 shadow-2xl border border-dark-lighter z-50 overflow-hidden">
+                        <div class="p-6 space-y-6">
+
+                            <!-- Profile Header -->
+                            <div class="flex items-center space-x-4">
+                                <div class="relative">
+                                    <div class="w-16 h-16 rounded-full bg-primary bg-opacity-20 flex items-center justify-center avatar-pulse">
+                                        <i class="fas fa-user text-primary text-2xl"></i>
+                                    </div>
+                                    <div
+                                        class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-dark-light flex items-center justify-center">
+                                        <i class="fas fa-crown text-xs text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-slate-400 capitalize font-bold text-lg">{{ Auth::user()->name }}</h3>
+                                    {{-- <div class="flex items-center text-sm text-gray-400">
+                                        <span class="text-primary font-medium mr-2" x-text="'Level ' + userProfile.level"></span>
+                                        <span>•</span>
+                                        <span class="ml-2" x-text="userProfile.rank"></span>
+                                    </div> --}}
+                                </div>
+                            </div>
+
+                            <!-- Profile Stats -->
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-primary" x-text="userProfile.stats.points"></div>
+                                    <div class="text-xs text-gray-400">Poin</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary" x-text="userProfile.stats.trees"></div>
+                                    <div class="text-xs text-gray-400">Pohon</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary" x-text="userProfile.stats.plastic + 'kg'"></div>
+                                    <div class="text-xs text-gray-400">Plastik</div>
+                                </div>
+                            </div>
+
+                            <!-- Level Progress -->
+                            <div>
+                                <div class="flex justify-between text-sm text-gray-400 mb-1">
+                                    <span>Progress ke Level <span x-text="userProfile.level + 1"></span></span>
+                                    <span x-text="userProfile.levelProgress + '%'"></span>
+                                </div>
+                                <div class="w-full h-2 bg-dark rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary transition-all duration-700"
+                                        :style="`width: ${userProfile.levelProgress}%`"></div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="flex space-x-3">
+                                <a href="{{ route('profile.edit') }}"
+                                    class="flex-1 bg-primary hover:bg-primary-light text-white text-center py-2 px-4 rounded-lg transition text-sm">
+                                    <i class="fas fa-user mr-1"></i> Settings
+                                </a>
+                                <button
+                                    class="flex-1 bg-dark-lighter hover:bg-dark border border-dark-lighter text-gray-400 hover:text-white py-2 px-4 rounded-lg transition text-sm">
+                                    <i class="fas fa-sign-out-alt mr-1"></i> Log Out
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                 @else
-                    <a href="{{ route('login') }}" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-semibold text-white transition duration-300">Login</a>
-                    <a href="{{ route('register') }}" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-slate-200 transition duration-300 border border-slate-700">Sign Up</a>
+                    <!-- Guest -->
+                    <a href="{{ route('login') }}"
+                        class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg font-semibold text-white transition duration-300">
+                        Login
+                    </a>
+                    <a href="{{ route('register') }}"
+                        class="px-5 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-slate-200 transition duration-300 border border-slate-700">
+                        Sign Up
+                    </a>
                 @endauth
             </div>
 
             <!-- Mobile Toggle Button -->
             <div class="md:hidden">
-                <button @click="open = !open" class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-800/50 transition duration-300">
-                    <svg x-show="!open" class="h-6 w-6 text-slate-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                <button @click="open = !open"
+                    class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-slate-800/50 transition duration-300">
+                    <svg x-show="!open" class="h-6 w-6 text-slate-300" fill="none" stroke="currentColor" stroke-width="2"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <svg x-show="open" x-cloak class="h-6 w-6 text-emerald-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    <svg x-show="open" x-cloak class="h-6 w-6 text-emerald-400" fill="none" stroke="currentColor"
+                        stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
-
         </div>
     </div>
 

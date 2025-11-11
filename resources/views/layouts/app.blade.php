@@ -10,6 +10,8 @@
   <!-- Fonts -->
   <link href="https://fonts.bunny.net/css?family=inter:400,600&display=swap" rel="stylesheet" />
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
   <!-- Leaflet CSS -->
@@ -32,10 +34,10 @@
 
   @include('layouts.navigation')
 
-  <main class="relative">
+  <main class="-z-10">
     <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/5 to-slate-900"></div>
-      <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+      <div class="absolute inset-0"></div>
+      <div class="absolute inset-0 bg-grid-pattern opacity-70"></div>
     </div>
     {{ $slot }}
   </main>
