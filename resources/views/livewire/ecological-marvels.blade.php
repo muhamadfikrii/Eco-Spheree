@@ -227,9 +227,9 @@
                     
                     <div class="mt-12 pt-8 border-t border-[#e2e8e6] text-center">
                         <p class="text-[#5a7c74] mb-6">Want to learn more about the ecological wonders of Indonesia?</p>
-                        <button class="px-6 py-3 bg-gradient-to-r from-[#7c9a92] to-[#5a7c74] text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        <a href="{{ route('deeper') }}" class="px-6 py-3 bg-gradient-to-r from-[#7c9a92] to-[#5a7c74] text-white rounded-xl font-medium hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
                             <i class="fas fa-book-open mr-2"></i> Explore Deeper
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

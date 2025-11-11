@@ -14,7 +14,6 @@
         
         <!-- Main Content -->
         <div class="relative z-10 text-center text-white px-6 max-w-4xl">
-            <!-- Tagline with subtle animation -->
             <div class="overflow-hidden">
                 <p class="text-lg font-light tracking-widest uppercase mb-6 opacity-80 transform translate-y-0 transition-transform duration-700">
                     The Adventure Begins
@@ -57,7 +56,7 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                     </svg>
-                </a>
+                </div>
             </div>
         </div>
     </section>
@@ -79,8 +78,53 @@
     <livewire:components.reports-explore />
 
     <livewire:ecological-marvels />
-<style>
-        
+
+    <livewire:components.nature-conservation />
+
+</div>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#10b981',
+                            light: '#34d399',
+                            dark: '#059669',
+                        },
+                        dark: {
+                            DEFAULT: '#0f172a',
+                            light: '#1e293b',
+                            lighter: '#334155',
+                        },
+                        accent: '#0ea5e9',
+                        bronze: '#cd7f32',
+                        silver: '#c0c0c0',
+                        gold: '#ffd700',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 2s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%': { boxShadow: '0 0 5px rgba(16, 185, 129, 0.5)' },
+                            '50%': { boxShadow: '0 0 20px rgba(16, 185, 129, 0.8)' },
+                            '100%': { boxShadow: '0 0 5px rgba(16, 185, 129, 0.5)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
 .pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite alternate;
 }

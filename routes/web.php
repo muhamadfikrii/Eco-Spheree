@@ -12,10 +12,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-
-
-
-
 Route::get('/report', function () {
     return view('report');
 })->name('report')->middleware(['auth']);
@@ -32,7 +28,7 @@ Route::get('/leaderboard', function () {
     return view('leaderboard');
 })->name('leaderboard');
 
-Route::get('/explore', function() {
+Route::get('/explore', function () {
     return view('explore');
 })->name('explore');
 
@@ -57,3 +53,6 @@ Route::get('/partner', function () {
 Route::get('/learn/contact', function () {
     return view('contact-partner');
 })->name('contact-partner');
+Route::get('/explore/deeper', function () {
+    return view('explore-deeper');
+})->name('deeper');
