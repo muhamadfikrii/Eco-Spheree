@@ -124,14 +124,14 @@
                  class="p-0">
                 
                 <div class="relative h-64 md:h-80 overflow-hidden">
-                    <div class="absolute inset-0 flex items-center justify-center bg-cover bg-center" :style="`background-image: url('${navItems[activeIndex].image}')`">
+                    <div class="absolute inset-0 flex items-center justify-center bg-cover bg-center" :style="activeIndex !== null ? `background-image: url('${navItems[activeIndex].image}')` : ''">
                         <div class="absolute inset-0 image-overlay"></div>
                         <div class="text-center text-white p-4 z-10">
-                            <h2 class="heading-font text-4xl md:text-5xl font-medium mb-2" x-text="navItems[activeIndex].title"></h2>
-                            <p class="text-xl opacity-90 max-w-2xl mx-auto" x-text="navItems[activeIndex].subtitle"></p>
+                            <h2 class="heading-font text-4xl md:text-5xl font-medium mb-2" x-text="activeIndex !== null ? navItems[activeIndex].title : ''"></h2>
+                            <p class="text-xl opacity-90 max-w-2xl mx-auto" x-text="activeIndex !== null ? navItems[activeIndex].subtitle : ''"></p>
                             <div class="mt-4 flex justify-center items-center gap-2">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span x-text="navItems[activeIndex].province"></span>
+                                <span x-text="activeIndex !== null ? navItems[activeIndex].province : ''"></span>
                             </div>
                         </div>
                     </div>
@@ -144,14 +144,14 @@
                             <div>
                                 <h3 class="heading-font text-2xl text-[#3a5a53] mb-4 border-l-4 border-[#7c9a92] pl-4">Description</h3>
                                 <div class="space-y-4 text-[#4a6a62] leading-relaxed">
-                                    <template x-for="(paragraph, pIndex) in navItems[activeIndex].content" :key="pIndex">
+                                    <template x-for="(paragraph, pIndex) in (activeIndex !== null ? navItems[activeIndex].content : [])" :key="pIndex">
                                         <p x-text="paragraph" class="stagger-item" :style="`animation-delay: ${pIndex * 0.1}s`"></p>
                                     </template>
                                 </div>
                             </div>
                             
                             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-                                <template x-for="(stat, sIndex) in navItems[activeIndex].stats" :key="sIndex">
+                                <template x-for="(stat, sIndex) in (activeIndex !== null ? navItems[activeIndex].stats : [])" :key="sIndex">
                                     <div class="eco-card bg-white/50 rounded-xl p-4 text-center border border-[#e2e8e6]">
                                         <div class="text-2xl font-bold text-[#3a5a53] mb-1" x-text="stat.value"></div>
                                         <div class="text-sm text-[#7c9a92]" x-text="stat.label"></div>
@@ -162,7 +162,7 @@
                             <div class="mt-8">
                                 <h3 class="heading-font text-2xl text-[#3a5a53] mb-4 border-l-4 border-[#7c9a92] pl-4">Photo Gallery</h3>
                                 <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                    <template x-for="(photo, pIndex) in navItems[activeIndex].gallery" :key="pIndex">
+                                    <template x-for="(photo, pIndex) in (activeIndex !== null ? navItems[activeIndex].gallery : [])" :key="pIndex">
                                         <div class="eco-card rounded-xl overflow-hidden h-32 md:h-40 bg-gray-200 bg-cover bg-center" :style="`background-image: url('${photo}')`"></div>
                                     </template>
                                 </div>
@@ -176,7 +176,7 @@
                                     <span>Uniqueness</span>
                                 </h3>
                                 <ul class="space-y-3">
-                                    <template x-for="(feature, fIndex) in navItems[activeIndex].features" :key="fIndex">
+                                    <template x-for="(feature, fIndex) in (activeIndex !== null ? navItems[activeIndex].features : [])" :key="fIndex">
                                         <li class="flex items-start stagger-item" :style="`animation-delay: ${0.5 + fIndex * 0.1}s`">
                                             <i class="fas fa-check text-sm text-[#7c9a92] mt-1.5 mr-3 flex-shrink-0"></i>
                                             <span class="text-[#4a6a62]" x-text="feature"></span>
@@ -191,7 +191,7 @@
                                     <span>Threats</span>
                                 </h3>
                                 <ul class="space-y-3">
-                                    <template x-for="(threat, tIndex) in navItems[activeIndex].threats" :key="tIndex">
+                                    <template x-for="(threat, tIndex) in (activeIndex !== null ? navItems[activeIndex].threats : [])" :key="tIndex">
                                         <li class="flex items-start stagger-item" :style="`animation-delay: ${0.7 + tIndex * 0.1}s`">
                                             <i class="fas fa-times text-sm text-[#c97a6a] mt-1.5 mr-3 flex-shrink-0"></i>
                                             <span class="text-[#4a6a62]" x-text="threat"></span>
@@ -206,7 +206,7 @@
                                     <span>Location in Indonesia</span>
                                 </h3>
                                 <div class="space-y-2">
-                                    <template x-for="(location, lIndex) in navItems[activeIndex].locations" :key="lIndex">
+                                    <template x-for="(location, lIndex) in (activeIndex !== null ? navItems[activeIndex].locations : [])" :key="lIndex">
                                         <div class="text-[#4a6a62] stagger-item flex items-center" :style="`animation-delay: ${0.9 + lIndex * 0.1}s`">
                                             <i class="fas fa-map-pin text-xs text-[#7c9a92] mr-2"></i>
                                             <span x-text="location"></span>
@@ -220,7 +220,7 @@
                                     <i class="fas fa-calendar-alt text-[#7c9a92]"></i>
                                     <span>Best Time to Visit</span>
                                 </h3>
-                                <div class="text-[#4a6a62] stagger-item" :style="`animation-delay: 1.1s`" x-text="navItems[activeIndex].bestTime"></div>
+                                <div class="text-[#4a6a62] stagger-item" :style="`animation-delay: 1.1s`" x-text="activeIndex !== null ? navItems[activeIndex].bestTime : ''"></div>
                             </div>
                         </div>
                     </div>

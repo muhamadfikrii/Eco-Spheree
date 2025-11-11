@@ -509,7 +509,7 @@ function generateBiodiversityData() {
 // =============================================
 
 function initMap() {
-    console.log('🗺️ Initializing Indonesia map...');
+
     
     if (typeof L === 'undefined') {
         console.error('❌ Leaflet not available');
@@ -554,7 +554,7 @@ function initMap() {
         setTimeout(() => {
             if (mainMap) {
                 mainMap.invalidateSize();
-                console.log('✅ Indonesia map initialized successfully!');
+
                 
                 // Load insights data
                 loadTopCities();
@@ -1162,7 +1162,7 @@ function toggleFullscreen() {
     const mapContainer = document.getElementById('ecoMainMap');
     if (!document.fullscreenElement) {
         mapContainer.requestFullscreen?.().catch(err => {
-            console.log('Error attempting to enable fullscreen:', err);
+
         });
     } else {
         document.exitFullscreen?.();
@@ -1170,12 +1170,12 @@ function toggleFullscreen() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('📄 DOM fully loaded');
+
     setTimeout(initMap, 1000);
 });
 
 document.addEventListener('livewire:load', function() {
-    console.log('⚡ Livewire loaded');
+
     setTimeout(initMap, 1500);
 });
 </script>

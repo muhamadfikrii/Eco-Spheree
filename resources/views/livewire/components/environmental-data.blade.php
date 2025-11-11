@@ -128,15 +128,7 @@
                             <circle cx="50%" cy="50%" :r="getOrbitRadius(3)" fill="none" stroke="url(#gradient3)" stroke-width="1" opacity="0.2" stroke-dasharray="20,10" 
                                     :class="viewMode === '3d' ? 'orbit-ring-3d-3' : 'orbit-path-3'"/>
                             
-                            <template x-for="(node, index) in orbitingNodes" :key="index">
-                                <line x1="50%" y1="50%" 
-                                      :x2="getNodePosition(index).x" 
-                                      :y2="getNodePosition(index).y"
-                                      :stroke="node.status === 'optimal' ? 'url(#trusted)' : 'url(#gradient-warning)'" 
-                                      stroke-width="2" 
-                                      opacity="0.3"
-                                      :class="viewMode === '3d' ? 'connection-line-3d' : 'connection-line'"/>
-                            </template>
+
                             
                             <defs>
                                 <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -205,34 +197,34 @@
                         <!-- Enhanced Orbiting Nodes with 3D Effects -->
                         <template x-for="(node, index) in orbitingNodes" :key="index">
                             <div class="absolute orbit-node" :class="`orbit-${index}`" style="z-index: 5;">
-                                <div class="relative group cursor-pointer orbit-node-content" 
+                                <div class="relative group cursor-pointer orbit-node-content"
                                      @click="selectNode(index)"
                                      @mouseenter="hoverNode(index)"
                                      @mouseleave="unhoverNode(index)">
-                                    
+
                                     <!-- Enhanced Node Container with 3D Effects -->
                                     <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-2xl flex flex-col items-center justify-center p-3 sm:p-4 transition-all duration-300 transform backdrop-blur-sm border-2 shadow-xl node-container"
-                                         :class="node.active ? 
-                                                'scale-110 sm:scale-125 border-emerald-400/80 bg-slate-800/90 shadow-2xl shadow-emerald-500/40 animate-pulse-slow z-20' : 
+                                         :class="node.active ?
+                                                'scale-110 sm:scale-125 border-emerald-400/80 bg-slate-800/90 shadow-2xl shadow-emerald-500/40 animate-pulse-slow z-20' :
                                                 'scale-100 border-emerald-600/50 bg-slate-800/70 group-hover:scale-105 sm:group-hover:scale-110 group-hover:bg-slate-800/80 group-hover:border-emerald-500/70 group-hover:shadow-2xl'"
                                          :class="viewMode === '3d' ? 'node-3d transform-gpu' : ''">
-                                        
+
                                         <div class="relative">
                                             <span class="text-xl sm:text-2xl md:text-3xl filter drop-shadow-sm" x-text="node.icon"></span>
                                             <div class="absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 border-slate-800 node-status animate-pulse shadow-lg"
-                                                 :class="node.status === 'optimal' ? 'bg-emerald-400 shadow-emerald-400/50' : 
+                                                 :class="node.status === 'optimal' ? 'bg-emerald-400 shadow-emerald-400/50' :
                                                         node.status === 'warning' ? 'bg-amber-400 shadow-amber-400/50' : 'bg-red-400 shadow-red-400/50'"></div>
                                         </div>
-                                        
+
                                         <!-- Node Title -->
-                                        <span class="text-xs font-bold text-slate-200 text-center leading-tight mt-1 sm:mt-2 hidden sm:block" 
+                                        <span class="text-xs font-bold text-slate-200 text-center leading-tight mt-1 sm:mt-2 hidden sm:block"
                                               x-text="node.title"></span>
-                                        
+
                                         <!-- Enhanced Real-time Value -->
                                         <div class="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 bg-slate-800/90 border border-emerald-500/50 rounded-full px-2 py-1 sm:px-3 text-xs font-bold text-emerald-400 shadow-lg node-value backdrop-blur-sm"
                                              x-text="node.value"></div>
                                     </div>
-                                    
+
                                     <!-- Enhanced Advanced Tooltip -->
                                     <div x-show="node.hover" x-transition:enter="transition ease-out duration-300"
                                          x-transition:enter-start="opacity-0 transform scale-90"
@@ -251,9 +243,9 @@
                                                 <p class="text-sm text-slate-400" x-text="node.subtitle"></p>
                                             </div>
                                         </div>
-                                        
+
                                         <p class="text-sm text-slate-300 mb-3 sm:mb-4" x-text="node.description"></p>
-                                        
+
                                         <div class="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
                                             <div class="bg-slate-700/50 rounded-xl sm:rounded-2xl p-3 sm:p-4">
                                                 <span class="text-slate-400 block mb-1 sm:mb-2">Coverage</span>
@@ -261,12 +253,12 @@
                                             </div>
                                             <div class="bg-slate-700/50 rounded-xl sm:rounded-2xl p-3 sm:p-4">
                                                 <span class="text-slate-400 block mb-1 sm:mb-2">Status</span>
-                                                <span class="font-bold text-lg sm:text-lg" 
+                                                <span class="font-bold text-lg sm:text-lg"
                                                       :class="node.trend === 'stable' ? 'text-emerald-400' : 'text-amber-400'"
                                                       x-text="node.trend === 'stable' ? 'Stable' : 'At Risk'"></span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-slate-700">
                                             <p class="text-xs text-slate-400 mb-2">Key Metrics</p>
                                             <div class="flex items-center gap-2">
@@ -717,17 +709,20 @@ function modernEcosphere() {
 
         // Enhanced Methods
         init() {
-            this.startDataStream();
-            this.startPerfectOrbit();
-            this.updateTime();
-            this.initParticles();
-            this.initFloatingParticles();
-            
-            // Add resize listener for responsive adjustments
-            window.addEventListener('resize', this.handleResize.bind(this));
-            
-            // Add keyboard navigation
-            document.addEventListener('keydown', this.handleKeyboard.bind(this));
+            // Wait for DOM to be ready
+            this.$nextTick(() => {
+                this.startDataStream();
+                this.startPerfectOrbit();
+                this.updateTime();
+                this.initParticles();
+                this.initFloatingParticles();
+
+                // Add resize listener for responsive adjustments
+                window.addEventListener('resize', this.handleResize.bind(this));
+
+                // Add keyboard navigation
+                document.addEventListener('keydown', this.handleKeyboard.bind(this));
+            });
         },
 
         handleResize() {
