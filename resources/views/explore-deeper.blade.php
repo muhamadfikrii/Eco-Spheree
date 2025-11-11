@@ -75,12 +75,7 @@
         }
     </script>
     <style>
-        .hero-bg {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%), 
-                        url('https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-        }
+
         .section-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
@@ -965,16 +960,9 @@
         <div class="loading-bar" id="loading-bar"></div>
 
         <!-- Hero Section -->
-        <section id="home" class="hero-bg h-screen flex items-center justify-center text-center text-white pt-20 relative overflow-hidden">
+        <section id="home" class="h-screen flex items-center justify-center text-center text-white pt-20 relative overflow-hidden">
             <div id="particles-js"></div>
             <div class="absolute inset-0 dark-overlay"></div>
-            
-            <!-- Animated Background Shapes -->
-            <div class="absolute inset-0 overflow-hidden z-0">
-                <div class="absolute top-20 left-10 w-72 h-72 bg-teal-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-                <div class="absolute top-40 right-10 w-72 h-72 bg-yellow-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
-                <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
-            </div>
             
             <div class="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
                 <div class="floating-element mb-6">
@@ -1163,7 +1151,7 @@
                     <p class="text-gray-400">Discover Indonesia's natural beauty with in-depth analysis of positive and negative impacts.</p>
                 </div>
                 
-                {{-- <!-- Interactive Navigation -->
+                <!-- Interactive Navigation -->
                 <div class="mb-16">
                     <div class="bg-dark-light rounded-2xl p-8 shadow-lg border border-dark-lighter">
                         <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
@@ -1177,7 +1165,7 @@
                             </template>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 
                 <!-- Wonder Details -->
                 <div class="grid lg:grid-cols-2 gap-12 items-center" id="image">

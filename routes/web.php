@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\ChallengeCenter;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('Home');
@@ -20,6 +22,21 @@ Route::get('/report', function () {
 Route::get('/challenge', function () {
     return view('challenge');
 })->name('challenge');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/challenge',function (){
+        return view('challenge');
+    })->name('challenge');
+    Route::get('/challenge-center', ChallengeCenter::class)->name('challenge.center');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/mission-reviews', [App\Http\Controllers\Admin\MissionReviewController::class, 'index'])->name('admin.mission-reviews.index');
+    Route::get('/admin/mission-reviews/{submission}', [App\Http\Controllers\Admin\MissionReviewController::class, 'show'])->name('admin.mission-reviews.show');
+    Route::post('/admin/mission-reviews/{submission}/approve', [App\Http\Controllers\Admin\MissionReviewController::class, 'approve'])->name('admin.mission-reviews.approve');
+    Route::post('/admin/mission-reviews/{submission}/reject', [App\Http\Controllers\Admin\MissionReviewController::class, 'reject'])->name('admin.mission-reviews.reject');
+    Route::post('/admin/mission-reviews/bulk-approve', [App\Http\Controllers\Admin\MissionReviewController::class, 'bulkApprove'])->name('admin.mission-reviews.bulk-approve');
+});
 
 Route::get('/eco_track', function () {
     return view('eco_track');
