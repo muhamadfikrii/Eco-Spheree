@@ -1,5 +1,6 @@
 <x-app-layout>
-  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-24 pb-16 px-6 sm:px-10 text-white" x-data="ecoTrack">
+  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-24 pb-16 px-6 sm:px-10 text-white relative" x-data="ecoTrack" style="pointer-events: auto;">
+
     <!-- Header -->
     <div class="text-center mb-10">
       <h1 class="text-5xl font-extrabold text-green-400 mb-3 tracking-tight">🌎 Eco-Track</h1>
@@ -7,18 +8,22 @@
     </div>
 
     <!-- Main Grid -->
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10" style="pointer-events: auto; position: relative; z-index: 10;">
       
       <!-- Left Section: Input -->
-      <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700 space-y-6">
+      <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700 space-y-6" style="pointer-events: auto;">
         <h2 class="text-2xl font-semibold text-green-400">💡 Your Daily Activities</h2>
         <p class="text-gray-400 text-sm">Fill this form to see your environmental impact</p>
 
         <!-- Form -->
-        <form @submit.prevent="calculateFootprint" class="space-y-5">
+        <form @submit.prevent="calculateFootprint" class="space-y-5" style="pointer-events: auto;">
           <div>
             <label class="block text-gray-300 mb-2">Daily Transportation</label>
-            <select x-model.number="inputs.transport" class="w-full bg-slate-900 rounded-lg border border-slate-700 px-3 py-2 focus:ring-2 focus:ring-green-500">
+            <select 
+              x-model.number="inputs.transport" 
+              class="w-full bg-slate-900 rounded-lg border border-slate-700 px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none transition-colors"
+              style="pointer-events: auto;"
+              x-ref="transportSelect">
               <option value="0">Select type...</option>
               <option value="1.2">Motorbike (gasoline)</option>
               <option value="2.5">Car (gasoline)</option>
@@ -30,33 +35,58 @@
 
           <div>
             <label class="block text-gray-300 mb-2">Electricity Consumption (kWh / week)</label>
-            <input type="number" x-model.number="inputs.electric" min="0" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500">
+            <input 
+              type="number" 
+              x-model.number="inputs.electric" 
+              min="0" 
+              class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none transition-colors"
+              style="pointer-events: auto;"
+              x-ref="electricInput"
+              placeholder="Enter kWh">
           </div>
 
           <div>
             <label class="block text-gray-300 mb-2">Meat Consumption (servings / week)</label>
-            <input type="number" x-model.number="inputs.meat" min="0" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500">
+            <input 
+              type="number" 
+              x-model.number="inputs.meat" 
+              min="0" 
+              class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none transition-colors"
+              style="pointer-events: auto;"
+              x-ref="meatInput"
+              placeholder="Enter servings">
           </div>
 
           <div>
             <label class="block text-gray-300 mb-2">Single-use Plastic Usage (items / week)</label>
-            <input type="number" x-model.number="inputs.plastic" min="0" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500">
+            <input 
+              type="number" 
+              x-model.number="inputs.plastic" 
+              min="0" 
+              class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:outline-none transition-colors"
+              style="pointer-events: auto;"
+              x-ref="plasticInput"
+              placeholder="Enter items">
           </div>
 
-          <button type="submit" class="w-full bg-green-600 hover:bg-green-500 rounded-lg px-4 py-3 font-semibold transition-all duration-300">
+          <button 
+            type="submit" 
+            class="w-full bg-green-600 hover:bg-green-500 rounded-lg px-4 py-3 font-semibold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+            style="pointer-events: auto;"
+            x-ref="calculateButton">
             Calculate Carbon Footprint 🌱
           </button>
         </form>
       </div>
 
       <!-- Right Section: Visualization -->
-      <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700 flex flex-col items-center justify-center text-center relative overflow-hidden">
+      <div class="bg-slate-800 rounded-2xl p-6 shadow-xl border border-slate-700 flex flex-col items-center justify-center text-center relative overflow-hidden" style="pointer-events: auto;">
         
         <!-- Animated Background -->
         <div class="absolute inset-0 bg-gradient-to-tr from-green-500/10 via-transparent to-green-400/10 animate-pulse"></div>
 
         <template x-if="totalCarbon === 0">
-          <div class="text-gray-400">
+          <div class="text-gray-400 relative z-10">
             <p class="text-lg">Fill out the form to see your results 🌿</p>
           </div>
         </template>
@@ -124,7 +154,59 @@
         ecoTips: [],
         footprintMessage: '',
 
+        init() {
+          console.log('🚀 Eco-Track initialized');
+          
+          // Force enable all interactive elements
+          this.$nextTick(() => {
+            // Enable all inputs and selects
+            const interactiveElements = document.querySelectorAll('input, select, button, textarea');
+            interactiveElements.forEach(el => {
+              el.style.pointerEvents = 'auto';
+              el.disabled = false;
+              el.readOnly = false;
+            });
+            
+            // Test if we can focus on first input
+            setTimeout(() => {
+              if (this.$refs.transportSelect) {
+                this.$refs.transportSelect.focus();
+                console.log('✅ First input is focusable');
+              }
+            }, 100);
+            
+            console.log(`✅ Enabled ${interactiveElements.length} interactive elements`);
+          });
+
+          // Additional safety check after a short delay
+          setTimeout(() => {
+            this.forceEnableInputs();
+          }, 500);
+        },
+
+        forceEnableInputs() {
+          const elements = document.querySelectorAll('input, select, button, textarea, form, [x-data] > div');
+          elements.forEach(el => {
+            el.style.pointerEvents = 'auto';
+            el.style.userSelect = 'auto';
+            el.style.webkitUserSelect = 'auto';
+            el.disabled = false;
+            el.readOnly = false;
+            
+            // Remove any overlay that might be blocking
+            if (el.classList.contains('fixed') || el.classList.contains('absolute')) {
+              const computedStyle = window.getComputedStyle(el);
+              if (computedStyle.pointerEvents === 'none') {
+                el.style.pointerEvents = 'auto';
+              }
+            }
+          });
+          console.log('🔧 Force-enabled all elements');
+        },
+
         calculateFootprint() {
+          console.log('📊 Calculating footprint...', this.inputs);
+          
           const { transport, electric, meat, plastic } = this.inputs;
           const transportCarbon = transport * 7; // weekly
           const electricCarbon = electric * 0.8;
@@ -140,7 +222,7 @@
           ];
 
           if (this.totalCarbon < 20) {
-            this.footprintMessage = 'Your footprint is very low 🌱 – You’re already eco-friendly!';
+            this.footprintMessage = 'Your footprint is very low 🌱 – You\'re already eco-friendly!';
             this.ecoTips = ['Use public transportation', 'Eat less meat', 'Turn off unused electronics'];
           } else if (this.totalCarbon < 50) {
             this.footprintMessage = 'Moderate footprint ⚖️ – You can still go greener!';
@@ -149,13 +231,66 @@
             this.footprintMessage = 'High carbon footprint 🚨 – Time to make a change!';
             this.ecoTips = ['Cycle more often', 'Cut down on red meat', 'Switch to renewable energy'];
           }
+          
+          console.log('✅ Calculation complete:', this.totalCarbon);
         }
       }))
-    })
+    });
   </script>
 
   <style>
-    @keyframes fade-in { from {opacity:0; transform: translateY(10px);} to {opacity:1; transform: translateY(0);} }
+    @keyframes fade-in { 
+      from { opacity: 0; transform: translateY(10px); } 
+      to { opacity: 1; transform: translateY(0); } 
+    }
     .animate-fade-in { animation: fade-in 0.6s ease-out; }
+    
+    /* Force enable all interactive elements */
+    input, select, textarea, button, form, [x-data] > div {
+      pointer-events: auto !important;
+      user-select: auto !important;
+      -webkit-user-select: auto !important;
+    }
+    
+    /* Remove any potential overlays */
+    body * {
+      pointer-events: auto !important;
+    }
+    
+    /* Ensure inputs are always accessible */
+    input:not([disabled]), 
+    select:not([disabled]), 
+    textarea:not([disabled]) {
+      pointer-events: auto !important;
+      cursor: text !important;
+    }
+    button:not([disabled]) {
+      pointer-events: auto !important;
+      cursor: pointer !important;
+    }
+    
+    input:focus, select:focus {
+      outline: 2px solid #22c55e !important;
+      outline-offset: 2px !important;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+    }
+    
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      input, select, button {
+        min-height: 48px !important;
+        font-size: 16px !important; /* Prevent zoom on iOS */
+      }
+      
+      /* Ensure touch targets are large enough */
+      .bg-slate-800 {
+        padding: 1rem !important;
+      }
+    }
+    
+    /* Debug borders - remove in production */
+    /* input, select {
+      border: 1px solid #22c55e !important;
+    } */
   </style>
 </x-app-layout>
