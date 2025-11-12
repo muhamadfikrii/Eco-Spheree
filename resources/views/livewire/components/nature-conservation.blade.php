@@ -325,7 +325,7 @@
                         <p class="text-gray-400 mb-4 text-sm sm:text-base">Embrace eco-friendly practices that reduce your environmental footprint and promote harmony with nature.</p>
                         <div class="flex items-center text-green-400 font-medium">
                             <span></span>
-                            <span><a href="{{ route('learn') }}">Learn More</a></span>
+                            <span><a href="{{ route('learnmore') }}">Learn More</a></span>
                             <svg class="w-4 h-4 ml-2 transform transition-transform" :class="{'translate-x-1': card3Hover}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>

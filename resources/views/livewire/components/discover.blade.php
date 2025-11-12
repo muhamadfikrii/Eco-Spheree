@@ -607,19 +607,21 @@
             <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
                 Join our discovery community and contribute to documenting Earth's incredible biodiversity through research and exploration.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="{{ route('register') }}" class="px-8 py-3 bg-white text-blue-700 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                    Join Discovery Missions
-                </a>
-                <a href="#exploration-areas" class="px-8 py-3 bg-transparent text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300 border-2 border-white flex items-center justify-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    Explore Research Areas
-                </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">                        
+                    <a href="#exploration-areas" class="px-8 py-3 bg-transparent text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300 border-2 border-white flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Explore Research Areas
+                    </a>
+                @if (Auth::check())                    
+                    <a href="{{ route('register') }}" class="px-8 py-3 bg-white text-blue-700 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Join Discovery Missions
+                    </a>
+                @endif
             </div>
         </div>
     </section>

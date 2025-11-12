@@ -26,7 +26,7 @@
                 Access environmental data, monitor biodiversity, and take action alongside thousands of advocates worldwide.  
                 Every insight you explore helps protect our planet for future generations.
             </p>
-            <a href="#dashboard"
+            <a href="{{ route('register') }}"
             class="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-green-800 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-semibold rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
             style="font-family: 'Inter', sans-serif;">
             🌿 Explore Data & Take Action

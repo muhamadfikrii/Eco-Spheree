@@ -2,7 +2,7 @@
     x-data="{
         open: false,
         scrolled: false,
-        profileOpen: false, // ✅ Tambahkan ini agar dropdown profile berfungsi
+        profileOpen: false,
         userProfile: {
             level: 1,
             rank: 'Eco Warrior',
@@ -43,12 +43,30 @@
 
             <!-- Desktop Navigation -->
             <div class="hidden lg:flex items-center space-x-2">
-                @foreach (['home', 'explore', 'challenge', 'report', 'eco_track', 'contact'] as $page)
-                    <x-nav-link :href="route($page)" :active="request()->routeIs($page)" 
-                        class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
-                        {{ ucfirst(str_replace('_', ' ', $page)) }}
-                    </x-nav-link>
-                @endforeach
+                <x-nav-link :href="route('home')" :active="request()->routeIs('home')" 
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
+                    Home
+                </x-nav-link>
+                <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" 
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
+                    Explore
+                </x-nav-link>
+                <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" 
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
+                    Challenge
+                </x-nav-link>
+                <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" 
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
+                    Eco-Track
+                </x-nav-link>
+                <x-nav-link :href="route('report')" :active="request()->routeIs('report')" 
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
+                    Report
+                </x-nav-link>
+                <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" 
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-300 group capitalize">
+                    Contact
+                </x-nav-link>
             </div>
 
             <!-- User Section -->

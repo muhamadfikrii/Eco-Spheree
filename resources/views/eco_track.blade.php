@@ -68,12 +68,6 @@
               </svg>
             </button>
             
-            <button 
-              @click="scrollToFeatures" 
-              class="group bg-slate-800/80 backdrop-blur-sm border border-slate-600 hover:border-emerald-500/50 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3">
-              <span>✨</span>
-              <span>Learn Features</span>
-            </button>
           </div>
         </div>
 
