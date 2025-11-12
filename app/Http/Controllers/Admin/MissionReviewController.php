@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MissionSubmission;
-use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class MissionReviewController extends Controller
@@ -37,6 +37,7 @@ class MissionReviewController extends Controller
     public function show(MissionSubmission $submission): View
     {
         $submission->load(['user', 'ecoChallenge']);
+
         return view('admin.mission-reviews.show', compact('submission'));
     }
 
@@ -75,6 +76,6 @@ class MissionReviewController extends Controller
             $submission->approve('Bulk approved by admin');
         }
 
-        return redirect()->back()->with('success', count($submissions) . ' submissions approved successfully!');
+        return redirect()->back()->with('success', count($submissions).' submissions approved successfully!');
     }
 }

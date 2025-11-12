@@ -6,7 +6,6 @@ use App\Livewire\ChallengeCenter;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
     return view('Home');
 })->name('home');
@@ -23,11 +22,11 @@ Route::get('/challenge', function () {
     return view('challenge');
 })->name('challenge');
 
-Route::get('/challenge',function (){
+Route::get('/challenge', function () {
     return view('challenge');
 })->name('challenge');
 Route::get('/challenge-center', ChallengeCenter::class)
-->name('challenge.center')->middleware('auth');
+    ->name('challenge.center')->middleware('auth');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/mission-reviews', [App\Http\Controllers\Admin\MissionReviewController::class, 'index'])->name('admin.mission-reviews.index');
