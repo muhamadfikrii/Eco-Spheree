@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'challenges_completed',
         'challenge_progress',
         'achievements_unlocked',
+        'profile_photo',
     ];
 
     /**
@@ -54,11 +55,6 @@ class User extends Authenticatable implements MustVerifyEmail
             'challenge_progress' => 'array',
             'achievements_unlocked' => 'array',
         ];
-    }
-
-    public function activities(): HasMany
-    {
-        return $this->hasMany(UserActivity::class);
     }
 
     // Relasi ke challenge participations
@@ -98,9 +94,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $points = $this->eco_points;
 
-        if ($points >= 150) return 'Eco Master';
-        if ($points >= 80) return 'Eco Warrior';
-        if ($points >= 40) return 'Nature Lover';
+        if ($points >= 150) {
+            return 'Eco Master';
+        }
+        if ($points >= 80) {
+            return 'Eco Warrior';
+        }
+        if ($points >= 40) {
+            return 'Nature Lover';
+        }
+
         return 'Beginner';
     }
 
@@ -115,12 +118,12 @@ class User extends Authenticatable implements MustVerifyEmail
         $progress[$missionId] = [
             'completed' => true,
             'points_earned' => $points,
-            'completed_at' => $completedDate ?? now()->toDateString()
+            'completed_at' => $completedDate ?? now()->toDateString(),
         ];
         $this->challenge_progress = $progress;
 
         // Update challenges completed count
-        $this->challenges_completed = count(array_filter($progress, fn($p) => $p['completed'] ?? false));
+        $this->challenges_completed = count(array_filter($progress, fn ($p) => $p['completed'] ?? false));
 
         // Update level
         $this->eco_level = $this->getEcoLevel();
@@ -137,22 +140,22 @@ class User extends Authenticatable implements MustVerifyEmail
         $achievements = $this->achievements_unlocked ?? [];
 
         // Achievement 1: Complete first mission
-        if ($this->challenges_completed >= 1 && !isset($achievements['first_mission'])) {
+        if ($this->challenges_completed >= 1 && ! isset($achievements['first_mission'])) {
             $achievements['first_mission'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
         // Achievement 2: Collect 50 points
-        if ($this->eco_points >= 50 && !isset($achievements['point_collector'])) {
+        if ($this->eco_points >= 50 && ! isset($achievements['point_collector'])) {
             $achievements['point_collector'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
         // Achievement 3: Complete 3 missions
-        if ($this->challenges_completed >= 3 && !isset($achievements['eco_warrior'])) {
+        if ($this->challenges_completed >= 3 && ! isset($achievements['eco_warrior'])) {
             $achievements['eco_warrior'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
         // Achievement 4: Complete all missions (6 missions)
-        if ($this->challenges_completed >= 6 && !isset($achievements['eco_master'])) {
+        if ($this->challenges_completed >= 6 && ! isset($achievements['eco_master'])) {
             $achievements['eco_master'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 

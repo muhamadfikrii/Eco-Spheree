@@ -23,11 +23,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn([
                 'total_lifetime_points',
-                'today_earned_points', 
+                'today_earned_points',
                 'daily_streak',
                 'daily_missions_completed',
                 'last_mission_reset',
-                'daily_challenge_progress'
+                'daily_challenge_progress',
             ]);
         });
     }

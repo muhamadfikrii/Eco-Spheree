@@ -97,11 +97,11 @@
                 <p class="text-[#a0b8b0] text-sm mb-4 leading-relaxed">
                     Subscribe to our newsletter for environmental data updates and sustainability tips.
                 </p>
-                <form class="flex flex-col sm:flex-row gap-3">
+                <form class="flex flex-col md:grid lg:flex md:flex-row gap-3">
                     <input type="email" placeholder="Your email address" 
                         class="flex-1 px-4 py-3 bg-[#0f2a3d] border border-[#4a8c6d]/30 rounded-lg text-[#e8f4f0] text-sm focus:outline-none focus:ring-2 focus:ring-[#e6b325] transition-all">
                     <button type="submit" 
-                        class="px-5 py-3 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 flex items-center justify-center font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        class="px-5 py-3 lg:py-3 lg:px-24 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 flex items-center justify-center font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                         <span>Subscribe</span>
                         <i class="fas fa-paper-plane ml-2"></i>
                     </button>
