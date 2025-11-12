@@ -134,7 +134,6 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
     }
 
-    // Update achievements
     public function updateAchievements()
     {
         $achievements = $this->achievements_unlocked ?? [];
