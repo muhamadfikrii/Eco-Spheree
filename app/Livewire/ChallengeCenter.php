@@ -2,53 +2,76 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Livewire\WithFileUploads;
 use App\Models\EcoChallenge;
 use App\Models\MissionSubmission;
 use Carbon\Carbon;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ChallengeCenter extends Component
 {
     use WithFileUploads;
 
     public $currentPage = 'challenges';
+
     public $showAchievementsModal = false;
+
     public $showUploadModal = false;
+
     public $selectedMission = null;
+
     public $uploadedPhotos = [];
+
     public $completionDescription = '';
+
     public $showReviewModal = false;
+
     public $reviewSubmission = null;
+
     public $reviewNotes = '';
+
     public $submissionRating = 5;
+
     public $reviewSubmissionId = null;
 
     // Tambahkan properti untuk reset harian
     public $lastResetDate;
+
     public $nextResetTime;
+
     public $dailyResetCompleted = false;
 
     public function setSubmissionRating($rating)
     {
         $this->submissionRating = $rating;
     }
+
     public $pendingSubmissions = [];
 
     // User data
     public $userName;
+
     public $userAvatar = 'https://cdn-icons-png.flaticon.com/512/219/219983.png';
+
     public $userLocation = 'Jakarta';
+
     public $totalPoints = 0;
+
     public $challengesCompleted = 0;
+
     public $userLevel = 'Beginner';
+
     public $progressPercentage = 0;
 
     // Leaderboard
     public $selectedLocation = 'all';
+
     public $locations = ['Jakarta', 'Bandung', 'Surabaya', 'Bali', 'Yogyakarta', 'Medan'];
+
     public $leaderboard = [];
+
     public $filteredLeaderboard = [];
+
     public $currentUserRank = 1;
 
     // Missions data
@@ -81,20 +104,22 @@ class ChallengeCenter extends Component
     public function checkDailyReset()
     {
         $user = auth()->user();
-        if (!$user) return;
+        if (! $user) {
+            return;
+        }
 
         $today = Carbon::now()->format('Y-m-d');
         $lastReset = $user->last_mission_reset ?? null;
-        
+
         // Jika belum pernah reset atau reset terjadi kemarin, lakukan reset
-        if (!$lastReset || $lastReset < $today) {
+        if (! $lastReset || $lastReset < $today) {
             $this->performDailyReset($user);
             $this->dailyResetCompleted = true;
         }
-        
+
         // Set informasi reset
         $this->lastResetDate = $user->last_mission_reset ? Carbon::parse($user->last_mission_reset)->format('M j, Y') : 'Never';
-        
+
         // Hitung waktu reset berikutnya (jam 00:00 besok)
         $now = Carbon::now();
         $tomorrow = $now->copy()->addDay()->startOfDay();
@@ -105,30 +130,29 @@ class ChallengeCenter extends Component
     private function performDailyReset($user)
     {
         $today = Carbon::now()->format('Y-m-d');
-        
+
         // Reset status misi
         foreach ($this->missions as &$mission) {
             $mission['status'] = 'pending';
             $mission['completedDate'] = null;
         }
-        
+
         // Reset progress misi harian di database
         $user->update([
             'last_mission_reset' => $today,
             'daily_missions_completed' => 0,
-            'daily_challenge_progress' => []
+            'daily_challenge_progress' => [],
         ]);
-        
+
         // Simpan poin yang sudah didapatkan hari ini
         $todayPoints = $user->today_earned_points ?? 0;
         $user->increment('total_lifetime_points', $todayPoints);
-        
+
         // Reset poin harian
         $user->update([
             'today_earned_points' => 0,
-            'daily_streak' => $user->daily_streak + 1
+            'daily_streak' => $user->daily_streak + 1,
         ]);
-        
 
     }
 
@@ -147,28 +171,37 @@ class ChallengeCenter extends Component
                 'completedDate' => null,
                 'image_url' => $challenge->image_url,
                 'category' => $challenge->category,
-                'requirements' => $challenge->requirements
+                'requirements' => $challenge->requirements,
             ];
         })->toArray();
     }
 
     private function calculateDifficulty($points)
     {
-        if ($points <= 15) return 1;
-        if ($points <= 25) return 2;
-        if ($points <= 35) return 3;
+        if ($points <= 15) {
+            return 1;
+        }
+        if ($points <= 25) {
+            return 2;
+        }
+        if ($points <= 35) {
+            return 3;
+        }
+
         return 4;
     }
 
     public function loadUserProgress()
     {
         $user = auth()->user();
-        if (!$user) return;
+        if (! $user) {
+            return;
+        }
 
         // Gunakan total_lifetime_points untuk leaderboard
         $this->totalPoints = $user->total_lifetime_points ?? $user->eco_points ?? 0;
         $this->userLevel = $user->eco_level;
-        
+
         // Gunakan daily_missions_completed untuk progress harian
         $this->challengesCompleted = $user->daily_missions_completed ?? 0;
         $this->progressPercentage = count($this->missions) > 0 ? ($this->challengesCompleted / count($this->missions)) * 100 : 0;
@@ -226,7 +259,9 @@ class ChallengeCenter extends Component
         $user = auth()->user();
         $mission = collect($this->missions)->firstWhere('id', $this->selectedMission);
 
-        if (!$mission || !$user) return;
+        if (! $mission || ! $user) {
+            return;
+        }
 
         // Check if user already has a pending or approved submission for this challenge
         $existingSubmission = MissionSubmission::where('user_id', $user->id)
@@ -241,6 +276,7 @@ class ChallengeCenter extends Component
                 session()->flash('error', '❌ You have already completed this mission today.');
             }
             $this->closeUploadModal();
+
             return;
         }
 
@@ -269,14 +305,19 @@ class ChallengeCenter extends Component
     public function completeMission($missionId)
     {
         $user = auth()->user();
-        if (!$user) return;
+        if (! $user) {
+            return;
+        }
 
         $mission = collect($this->missions)->firstWhere('id', $missionId);
-        if (!$mission || $mission['status'] === 'completed') return;
+        if (! $mission || $mission['status'] === 'completed') {
+            return;
+        }
 
         // Check if photo is required
         if (isset($mission['requirements']['photo_required']) && $mission['requirements']['photo_required']) {
             $this->openUploadModal($missionId);
+
             return;
         }
 
@@ -325,14 +366,16 @@ class ChallengeCenter extends Component
     // Method baru untuk submit review (selalu approve)
     public function submitReview()
     {
-        if (!$this->reviewSubmissionId) {
+        if (! $this->reviewSubmissionId) {
             session()->flash('error', 'No submission selected for review');
+
             return;
         }
 
         $submission = MissionSubmission::find($this->reviewSubmissionId);
-        if (!$submission) {
+        if (! $submission) {
             session()->flash('error', 'Submission not found');
+
             return;
         }
 
@@ -347,7 +390,7 @@ class ChallengeCenter extends Component
         // Award points to user
         $user = $submission->user;
         $points = $submission->ecoChallenge->points_reward;
-        
+
         // Tambahkan ke total lifetime dan poin harian
         $user->increment('total_lifetime_points', $points);
         $user->increment('today_earned_points', $points);
@@ -412,11 +455,11 @@ class ChallengeCenter extends Component
                     'id' => $user->id,
                     'name' => $user->name,
                     'points' => $user->total_lifetime_points ?? $user->eco_points ?? 0, // Gunakan total_lifetime_points
-                    'location' => 'Jakarta', 
+                    'location' => 'Jakarta',
                     'avatar' => 'https://cdn-icons-png.flaticon.com/512/219/219983.png',
                     'level' => $user->eco_level ?? 'Beginner',
                     'completedMissions' => $user->daily_missions_completed ?? $user->challenges_completed ?? 0,
-                    'totalMissions' => count($this->missions)
+                    'totalMissions' => count($this->missions),
                 ];
             })
             ->toArray();
@@ -430,7 +473,7 @@ class ChallengeCenter extends Component
             'avatar' => $this->userAvatar,
             'level' => $this->userLevel,
             'completedMissions' => $this->challengesCompleted,
-            'totalMissions' => count($this->missions)
+            'totalMissions' => count($this->missions),
         ];
 
         // Combine and sort by points (descending)
@@ -446,13 +489,13 @@ class ChallengeCenter extends Component
             $this->filteredLeaderboard = $this->leaderboard;
         } else {
             $this->filteredLeaderboard = collect($this->leaderboard)
-                ->filter(fn($user) => $user['location'] === $this->selectedLocation)
+                ->filter(fn ($user) => $user['location'] === $this->selectedLocation)
                 ->values()
                 ->all();
         }
 
         // Update current user rank
-        $currentUserIndex = collect($this->filteredLeaderboard)->search(fn($user) => $user['id'] == auth()->id());
+        $currentUserIndex = collect($this->filteredLeaderboard)->search(fn ($user) => $user['id'] == auth()->id());
         $this->currentUserRank = $currentUserIndex !== false ? $currentUserIndex + 1 : count($this->filteredLeaderboard) + 1;
     }
 
@@ -476,7 +519,9 @@ class ChallengeCenter extends Component
     // Ubah method resetProgress untuk reset manual
     public function resetProgress()
     {
-        if (!auth()->check()) return;
+        if (! auth()->check()) {
+            return;
+        }
 
         $user = auth()->user();
 
@@ -489,7 +534,7 @@ class ChallengeCenter extends Component
         // Reset progress misi harian di database
         $user->update([
             'daily_missions_completed' => 0,
-            'daily_challenge_progress' => []
+            'daily_challenge_progress' => [],
         ]);
 
         // Reload progress
@@ -505,15 +550,22 @@ class ChallengeCenter extends Component
 
     public function getRankBadgeClass($rank)
     {
-        if ($rank === 1) return 'bg-yellow-500 text-yellow-900';
-        if ($rank === 2) return 'bg-gray-400 text-gray-900';
-        if ($rank === 3) return 'bg-amber-700 text-amber-100';
+        if ($rank === 1) {
+            return 'bg-yellow-500 text-yellow-900';
+        }
+        if ($rank === 2) {
+            return 'bg-gray-400 text-gray-900';
+        }
+        if ($rank === 3) {
+            return 'bg-amber-700 text-amber-100';
+        }
+
         return 'bg-slate-700 text-gray-300';
     }
 
     public function render()
     {
         return view('livewire.challenge-center')
-        ->layout('layouts.app');
+            ->layout('layouts.app');
     }
 }

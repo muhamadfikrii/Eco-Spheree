@@ -98,6 +98,6 @@ class MissionSubmission extends Model
 
     public function getPhotoUrlAttribute()
     {
-        return $this->photo_path ? asset('storage/' . $this->photo_path) : null;
+        return $this->photo_path ? asset('storage/'.$this->photo_path) : null;
     }
 }

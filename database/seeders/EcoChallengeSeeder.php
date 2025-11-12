@@ -24,8 +24,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Plant a Tree',
@@ -41,8 +41,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Meat-Free Week Challenge',
@@ -58,8 +58,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Sustainable Commute',
@@ -75,8 +75,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Environmental Education',
@@ -92,8 +92,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Water Conservation',
@@ -109,8 +109,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Zero Waste Day',
@@ -126,8 +126,8 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
+                    'min_participants' => 1,
+                ],
             ],
             [
                 'title' => 'Energy Audit',
@@ -143,9 +143,9 @@ class EcoChallengeSeeder extends Seeder
                 'requirements' => [
                     'photo_required' => true,
                     'description_required' => true,
-                    'min_participants' => 1
-                ]
-            ]
+                    'min_participants' => 1,
+                ],
+            ],
         ];
 
         foreach ($challenges as $challenge) {
