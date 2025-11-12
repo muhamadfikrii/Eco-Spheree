@@ -57,6 +57,9 @@ Route::get('/protect', function () {
 Route::get('/learn_more', function () {
     return view('livewire.components.learn-more');
 })->name('learn_more');
+Route::get('/discover', function () {
+    return view('livewire.components.discover');
+})->name('discover');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
