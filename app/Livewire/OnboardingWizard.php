@@ -30,7 +30,7 @@ class OnboardingWizard extends Component
                 ]),
             ]);
 
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
     }
 
