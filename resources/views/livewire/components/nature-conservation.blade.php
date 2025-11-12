@@ -275,7 +275,7 @@
                         <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Forest Conservation</h3>
                         <p class="text-gray-400 mb-4 text-sm sm:text-base">Protect vital ecosystems and biodiversity through sustainable forest management and reforestation efforts.</p>
                         <div class="flex items-center text-emerald-400 font-medium">
-                            <span>Protect</span>
+                            <span><a href="{{ route('protect') }}">Protect</a></span>
                             <svg class="w-4 h-4 ml-2 transform transition-transform" :class="{'translate-x-1': card1Hover}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -300,7 +300,7 @@
                         <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Wildlife Protection</h3>
                         <p class="text-gray-400 mb-4 text-sm sm:text-base">Safeguard endangered species and their habitats through conservation programs and community engagement.</p>
                         <div class="flex items-center text-teal-400 font-medium">
-                            <span>Discover</span>
+                            <span><a href="{{ route('discover') }}">Discover</a></span>
                             <svg class="w-4 h-4 ml-2 transform transition-transform" :class="{'translate-x-1': card2Hover}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -324,7 +324,8 @@
                         <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Sustainable Living</h3>
                         <p class="text-gray-400 mb-4 text-sm sm:text-base">Embrace eco-friendly practices that reduce your environmental footprint and promote harmony with nature.</p>
                         <div class="flex items-center text-green-400 font-medium">
-                            <span>Learn More</span>
+                            <span></span>
+                            <span><a href="{{ route('learn_more') }}">Learn More</a></span>
                             <svg class="w-4 h-4 ml-2 transform transition-transform" :class="{'translate-x-1': card3Hover}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
