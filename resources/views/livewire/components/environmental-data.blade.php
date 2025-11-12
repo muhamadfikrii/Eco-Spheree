@@ -1,5 +1,5 @@
 <div>
-<section id="environmental-data" class="min-h-screen bg-slate-900 py-4 sm:py-8 lg:py-12 relative overflow-hidden" x-data="modernEcosphere()">
+<section id="environmental-data" class="min-h-screen bg-grid-pattern py-4 sm:py-8 lg:py-12 relative overflow-hidden" x-data="modernEcosphere()">
     <!-- Enhanced Animated Background -->
     <div class="absolute inset-0">
         <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/10 to-slate-900"></div>

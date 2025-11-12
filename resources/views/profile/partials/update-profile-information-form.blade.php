@@ -2,10 +2,26 @@
     <!-- Header dengan latar belakang gradien -->
     <div class="bg-gradient-to-r from-blue-700 to-blue-600 px-6 py-5 sm:px-8">
         <div class="flex items-center">
-            <div class="flex items-center justify-center w-10 h-10 bg-white/10 rounded-lg backdrop-blur-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+            <div class="col-span-6 sm:col-span-4">
+                <x-input-label for="profile_photo" value="Profile Photo" />
+                <div class="flex items-center space-x-4 mt-2">
+                    @if (Auth::user()->profile_photo)
+                        <img src="{{ asset('storage/' . Auth::user()->profile_photo) }}" 
+                            alt="Profile Photo" 
+                            class="w-16 h-16 rounded-full object-cover">
+                    @else
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=random" 
+                            alt="Default Avatar"
+                            class="w-16 h-16 rounded-full object-cover">
+                    @endif
+
+                    <input id="profile_photo" 
+                        name="profile_photo" 
+                        type="file" 
+                        class="mt-2 block w-full text-sm text-gray-600" 
+                        accept="image/*">
+                </div>
+                <x-input-error :messages="$errors->get('profile_photo')" class="mt-2" />
             </div>
             <div class="ml-4">
                 <h2 class="text-xl font-semibold text-white">
@@ -30,7 +46,7 @@
 
         <div class="space-y-6">
             <!-- Name and Username Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> 
                 <!-- Name -->
                 <div>
                     <x-input-label for="name" :value="__('Full Name')" class="text-sm font-medium text-gray-700 mb-2" />

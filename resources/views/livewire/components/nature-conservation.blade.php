@@ -1,4 +1,4 @@
-<div class="font-inter bg-gradient-to-br from-gray-900 to-gray-800">
+<div class="font-inter bg-grid-pattern bg-gradient-to-br from-gray-900 to-gray-800">
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
