@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
-use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -55,12 +52,11 @@ class ProfileController extends Controller
             'email' => $validated['email'],
         ]);
 
-        
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
         }
 
-        if (!$user->save()) {
+        if (! $user->save()) {
             return back()
                 ->with('error', 'Failed to update profile. Please try again.')
                 ->withInput();
@@ -99,7 +95,7 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        if (!Hash::check($request->password, $user->password)) {
+        if (! Hash::check($request->password, $user->password)) {
             return back()
                 ->withErrors(['password' => 'The provided password does not match your current password.'])
                 ->withInput();
@@ -135,7 +131,7 @@ class ProfileController extends Controller
         $exists = User::isUsernameTaken($username, $currentUserId);
 
         return response()->json([
-            'available' => !$exists,
+            'available' => ! $exists,
             'message' => $exists ? 'Username is already taken' : 'Username is available',
         ]);
     }
