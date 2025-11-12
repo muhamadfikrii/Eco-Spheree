@@ -1,17 +1,17 @@
 @props(['active', 'section' => null])
 
 @php
-$isActive = ($active ?? false);
+ $isActive = ($active ?? false);
 @endphp
 
 <a 
     {{ $attributes->merge([
-        'class' => "inline-flex items-center px-5 py-2 rounded-lg font-Inter font-bold leading-5 transition duration-150 ease-in-out " . 
-                   ($isActive ? 'bg-gray-700 text-emerald-900' : 'text-white hover:text-white hover:bg-gray-700')
+        'class' => "relative inline-flex items-center px-4 py-2 rounded-lg font-Inter font-medium text-md leading-5 transition-all duration-300 overflow-hidden group " . 
+                   ($isActive ? 'bg-emerald-500/20 text-emerald-100 border border-emerald-400/30' : 'text-white/90 hover:text-white')
     ]) }}
     x-bind:class="{
-        'text-emerald-900': scrolled && !{{ $isActive ? 'true' : 'false' }},
-        'text-white': !scrolled && !{{ $isActive ? 'true' : 'false' }}
+        'text-white hover:bg-slate-500': scrolled && !{{ $isActive ? 'true' : 'false' }},
+        'text-white/90 hover:bg-white/10': !scrolled && !{{ $isActive ? 'true' : 'false' }}
     }"
     @if($section)
         @click="
@@ -23,4 +23,10 @@ $isActive = ($active ?? false);
     @endif
 >
     {{ $slot }}
+    <!-- Animated underline effect -->
+    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+    
+    <!-- Animated background effect -->
+    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-lg"></div>
+
 </a>

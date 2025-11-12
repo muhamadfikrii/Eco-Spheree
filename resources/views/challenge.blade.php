@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 dark:from-gray-900 dark:via-blue-900 dark:to-emerald-900 min-h-screen">
+    <div class="bg-grid-pattern bg-gradient-to-br dark:from-gray-900 dark:via-blue-900 min-h-screen">
         <!-- Loading Overlay -->
         <div x-data="loadingOverlay()" x-show="isLoading" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-white dark:bg-gray-900 z-50 flex items-center justify-center">
             <div class="text-center">
@@ -27,9 +27,7 @@
             </div>
         </div>
 
-        <!-- Interactive Hero Section -->
         <section x-data="challengeHero()" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
-            <!-- Animated Background -->
             <div class="absolute inset-0 overflow-hidden pointer-events-none">
                 <!-- Floating particles -->
                 <template x-for="(particle, index) in particles" :key="index">
@@ -127,7 +125,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            @auth
                             <!-- Action Button with Animation -->
                             <button 
                                 @click="startChallengeJourney()"
@@ -145,6 +143,24 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                                 </svg>
                             </button>
+                            @else
+                            <button 
+                                @click="startChallengeJourney()"
+                                :disabled="isLoading"
+                                class="w-full py-4 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3 group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                                <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" :class="{'translate-x-full': isLoading}"></div>
+                                <template x-if="!isLoading">
+                                    <span>Join This Challenge Now</span>
+                                </template>
+                                <template x-if="isLoading">
+                                    <span>Preparing Your Journey...</span>
+                                </template>
+                                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" :class="{'translate-x-1': isLoading}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </button>
+                            @endauth
                         </div>
                     </div>
 
@@ -175,6 +191,9 @@
             </div>
         </section>
     </div>
+
+    <livewire:sustainable-living />
+    
 
     <script>
         // Single Alpine.js component to handle both loading and challenge

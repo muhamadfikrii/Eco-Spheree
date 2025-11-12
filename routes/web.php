@@ -23,12 +23,11 @@ Route::get('/challenge', function () {
     return view('challenge');
 })->name('challenge');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/challenge',function (){
-        return view('challenge');
-    })->name('challenge');
-    Route::get('/challenge-center', ChallengeCenter::class)->name('challenge.center');
-});
+Route::get('/challenge',function (){
+    return view('challenge');
+})->name('challenge');
+Route::get('/challenge-center', ChallengeCenter::class)
+->name('challenge.center')->middleware('auth');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/mission-reviews', [App\Http\Controllers\Admin\MissionReviewController::class, 'index'])->name('admin.mission-reviews.index');

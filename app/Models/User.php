@@ -29,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'challenges_completed',
         'challenge_progress',
         'achievements_unlocked',
+        'profile_photo',
     ];
 
     /**
@@ -54,11 +55,6 @@ class User extends Authenticatable implements MustVerifyEmail
             'challenge_progress' => 'array',
             'achievements_unlocked' => 'array',
         ];
-    }
-
-    public function activities(): HasMany
-    {
-        return $this->hasMany(UserActivity::class);
     }
 
     // Relasi ke challenge participations

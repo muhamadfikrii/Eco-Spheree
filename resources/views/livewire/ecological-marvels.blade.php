@@ -1,86 +1,5 @@
-<div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 lg:py-36">
-    <style>
-        .heading-font {
-            font-family: 'Crimson Pro', serif;
-        }
-        .content-transition {
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .nav-item {
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        .nav-item::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background: linear-gradient(90deg, #7c9a92, #5a7c74);
-            transition: all 0.4s ease;
-            transform: translateX(-50%);
-        }
-        .nav-item:hover::after, .active-nav::after {
-            width: 80%;
-        }
-        .active-nav {
-            color: #3a5a53;
-            font-weight: 500;
-        }
-        .floating-element {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #09f550 0%, #5a7c74 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        .nature-bg {
-            background: linear-gradient(135deg, rgba(122, 161, 149, 0.7) 0%, rgba(90, 124, 116, 0.1) 100%);
-        }
-        .eco-card {
-            transition: all 0.4s ease;
-            transform-style: preserve-3d;
-        }
-        .eco-card:hover {
-            transform: translateY(-8px) rotateX(5deg);
-            box-shadow: 0 20px 30px rgba(58, 90, 83, 0.15);
-        }
-        .stagger-item {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .parallax-bg {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        .image-overlay {
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-        }
-        .indonesia-flag {
-            background: linear-gradient(135deg, #e70011 0%, #e70011 50%, #ffffff 50%, #ffffff 100%);
-        }
-    </style>
+<div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 lg:py-36 bg-grid-pattern">
+    
     <div x-data="ecologicalMarvels()" class="max-w-7xl mx-auto">
         <div class="fixed inset-0 -z-10 overflow-hidden">
             <div class="absolute -top-40 -right-32 w-80 h-80 rounded-full bg-gradient-to-br from-[#a8c0b8] to-[#7c9a92] opacity-10 blur-xl floating-element"></div>
@@ -478,4 +397,87 @@
             }
         }
     </script>
+
+    <style>
+        .heading-font {
+            font-family: 'Crimson Pro', serif;
+        }
+        .content-transition {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nav-item {
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: linear-gradient(90deg, #7c9a92, #5a7c74);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+        .nav-item:hover::after, .active-nav::after {
+            width: 80%;
+        }
+        .active-nav {
+            color: #3a5a53;
+            font-weight: 500;
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #09f550 0%, #5a7c74 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .nature-bg {
+            background: linear-gradient(135deg, rgba(122, 161, 149, 0.7) 0%, rgba(90, 124, 116, 0.1) 100%);
+        }
+        .eco-card {
+            transition: all 0.4s ease;
+            transform-style: preserve-3d;
+        }
+        .eco-card:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 20px 30px rgba(58, 90, 83, 0.15);
+        }
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .image-overlay {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+        }
+        .indonesia-flag {
+            background: linear-gradient(135deg, #e70011 0%, #e70011 50%, #ffffff 50%, #ffffff 100%);
+        }
+    </style>
 </div>
