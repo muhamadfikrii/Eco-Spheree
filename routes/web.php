@@ -51,6 +51,12 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 Route::get('/explore', function () {
     return view('explore');
 })->name('explore');
+Route::get('/protect', function () {
+    return view('livewire.components.protect');
+})->name('protect');
+Route::get('/learn_more', function () {
+    return view('livewire.components.learn-more');
+})->name('learn_more');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
