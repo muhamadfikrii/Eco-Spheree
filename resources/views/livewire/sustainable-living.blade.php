@@ -213,7 +213,7 @@
                     </div>
 
                     <!-- Content -->
-                    <div class="order-2 lg:order-1 space-y-6 md:space-y-8">
+                    <div class="order-2 space-y-6 md:space-y-8">
                         <div class="space-y-4">
                             <div class="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-medium">
                                 <span>Chapter 03</span>

@@ -2,7 +2,7 @@
     
 <div class="bg-gray-900 bg-grid-pattern">
     <section class="relative h-screen w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-900">
-        <div class="absolute inset-0 bg-pattern"></div>
+            <div class="absolute inset-0 bg-pattern"></div>
         
         <div class="absolute top-1/4 left-1/4 w-6 h-6 rounded-full bg-green-400 opacity-30 float-animation"></div>
         <div class="absolute top-1/3 right-1/4 w-10 h-10 rounded-full bg-emerald-500 opacity-20 float-animation" style="animation-delay: 1s;"></div>
