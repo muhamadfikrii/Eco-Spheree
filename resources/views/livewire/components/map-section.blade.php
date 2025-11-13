@@ -86,7 +86,7 @@
         </div>
 
        <!-- Regional Stats -->
-        <div class="absolute top-4 right-4 z-[999] bg-gray-900/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[160px] sm:min-w-[220px]">
+        <div class="absolute top-4 right-4 z-[998] bg-gray-900/90 backdrop-blur-md p-3 sm:p-4 rounded-xl shadow-xl border border-gray-700/50 min-w-[160px] sm:min-w-[220px]">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
                 <span class="text-sm text-gray-300 truncate" id="region-name">Indonesia</span>
                 <div class="flex items-center bg-green-900/30 px-2 py-1 rounded-full sm:ml-auto">
@@ -110,18 +110,18 @@
         </div>
 
         <!-- Map Controls -->
-        <div class="absolute top-20 sm:top-16 right-4 sm:right-2 z-[99] flex flex-col space-y-2">
+        <div class="absolute top-20 md:top-56 pl-3 sm:right-2 flex flex-col space-y-2">
             <button 
                 onclick="toggleSatelliteView()"
                 id="satellite-btn"
-                class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300"
+                class="bg-gray-900/90 backdrop-blur-md z-[998] text-white p-2 md:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300"
                 title="Satellite View"
             >
                 <i class="fas fa-satellite"></i>
             </button>
             <button 
                 onclick="downloadRegionData()"
-                class="bg-gray-900/90 backdrop-blur-md text-white p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300"
+                class="bg-gray-900/90 backdrop-blur-md z-[998] text-white p-2 md:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300"
                 title="Download Data"
             >
                 <i class="fas fa-download"></i>
@@ -139,9 +139,8 @@
         </div>
 
         <!-- Main Map -->
-        <div id="ecoMainMap" class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-xl bg-gray-700"></div>
-            <!-- Group of Control Buttons (Right on Mobile, Center on Larger Screens) -->
-            <div class="absolute bottom-4 right-4 z-[999] flex flex-wrap justify-end gap-2 px-4
+        <div id="ecoMainMap" class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] -z-998 rounded-xl bg-gray-700"></div>
+            <div class="absolute bottom-4 right-4 z-[998] flex flex-wrap justify-end gap-2 px-4
                     sm:right-auto sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:justify-center">
                 <button 
                     onclick="useCurrentLocation()"
@@ -175,7 +174,7 @@
             </div>
 
             <!-- Coordinates Display (Bottom Left on All Screens) -->
-            <div class="absolute bottom-4 left-4 z-[999] bg-gray-900/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 rounded-xl shadow-xl border border-gray-700/50">
+            <div class="absolute bottom-4 left-4 z-[998] bg-gray-900/90 backdrop-blur-md px-2 py-1.5 sm:px-3 sm:py-2 rounded-xl shadow-xl border border-gray-700/50">
                 <div class="text-xs text-gray-400">
                     <span id="coordinates">Lat: -2.5489, Lng: 118.0149</span>
                 </div>
@@ -254,6 +253,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <script>
@@ -525,32 +525,26 @@ function initMap() {
     }
 
     try {
-        // Buat map instance dengan view Indonesia
         mainMap = L.map('ecoMainMap', {
             center: regionCoordinates.all.center,
             zoom: regionCoordinates.all.zoom,
             zoomControl: false
         });
 
-        // Tambahkan tile layer default
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             maxZoom: 19
         }).addTo(mainMap);
 
-        // Tambahkan zoom control
-        L.control.zoom({ position: 'topright' }).addTo(mainMap);
+        // L.control.zoom({ position: 'topright'}).addTo(mainMap);
 
-        // Track mouse movement untuk coordinates
         mainMap.on('mousemove', function(e) {
             document.getElementById('coordinates').textContent = 
                 `Lat: ${e.latlng.lat.toFixed(4)}, Lng: ${e.latlng.lng.toFixed(4)}`;
         });
 
-        // Tambahkan data awal
         addSampleData();
 
-        // Invalidate size setelah delay
         setTimeout(() => {
             if (mainMap) {
                 mainMap.invalidateSize();
@@ -582,7 +576,6 @@ function addSampleData() {
         data = data.filter(item => item.region === currentRegion);
     }
 
-    // 🔥 IMPLEMENTASI CLUSTERING
     if (viewMode === 'clusters') {
         // Buat cluster group
         markerClusters = L.markerClusterGroup({
@@ -609,7 +602,6 @@ function addSampleData() {
         mainMap.addLayer(markerClusters);
         
     } else {
-        // MODE MARKER BIASA
         data.forEach(point => {
             const color = getImpactColor(point.impact);
             const icon = createCustomIcon(point.impact, point.type);
@@ -725,14 +717,12 @@ function switchLayer(layer) {
     ['carbon', 'transport', 'energy', 'biodiversity'].forEach(l => {
         const btn = document.getElementById(`${l}-btn`);
         if (btn) {
-            // Terapkan class dasar + class tidak aktif
             btn.className = `${baseClasses} ${inactiveClasses}`;
         }
     });
     
     const activeBtn = document.getElementById(`${layer}-btn`);
     if (activeBtn) {
-        // Hapus warna latar, hanya gunakan warna teks untuk menandakan tombol aktif
         const colors = {
             carbon: 'text-green-400 bg-green-100/10',
             transport: 'text-blue-400 bg-blue-100/10',
