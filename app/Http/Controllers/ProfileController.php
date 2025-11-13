@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -26,12 +26,12 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        // Cek apakah hanya update foto profil 
+        // Cek apakah hanya update foto profil
         $isPhotoOnlyUpdate = $request->hasFile('profile_photo') &&
-                            !$request->has(['username', 'name', 'email']);
+                            ! $request->has(['username', 'name', 'email']);
 
         if ($isPhotoOnlyUpdate) {
-            // Validasi untuk upload foto 
+            // Validasi untuk upload foto
             $validated = $request->validate([
                 'profile_photo' => ['required', 'image', 'max:2048'],
             ]);

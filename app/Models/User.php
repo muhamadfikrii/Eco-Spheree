@@ -53,11 +53,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'challenge_progress' => 'array',
         'achievements_unlocked' => 'array',
     ];
-    
+
     public function getProfilePhotoUrlAttribute()
     {
         return $this->profile_photo
-            ? asset('storage/profile-photos/' . $this->profile_photo)
+            ? asset('storage/profile-photos/'.$this->profile_photo)
             : '';
     }
 
