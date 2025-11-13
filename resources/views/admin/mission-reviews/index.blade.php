@@ -196,15 +196,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 rounded-xl p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-gray-600">Average Review Time</span>
-                                <span class="text-lg font-bold text-green-600">~5 min</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
+
                         <div class="bg-gray-50 rounded-xl p-4">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-600">Completion Rate</span>
@@ -222,15 +214,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 rounded-xl p-4">
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-sm font-medium text-gray-600">User Satisfaction</span>
-                                <span class="text-lg font-bold text-green-600">94%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-400 h-2 rounded-full" style="width: 94%"></div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
