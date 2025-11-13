@@ -55,10 +55,6 @@
                                 <i class="fas fa-map-marked-alt mr-3 group-hover:scale-110 transition-transform"></i>
                                 Explore Interactive Map
                             </a>
-                            <button class="px-8 py-4 bg-transparent border-2 border-[#4a8c6d] hover:border-[#e6b325] text-[#e8f4f0] rounded-lg transition-all duration-300 font-semibold hover:bg-[#4a8c6d]/10 flex items-center justify-center group">
-                                <i class="fas fa-play-circle mr-3 group-hover:scale-110 transition-transform"></i>
-                                Watch Demo
-                            </button>
                         </div>
 
                         <!-- Trust Indicators -->
