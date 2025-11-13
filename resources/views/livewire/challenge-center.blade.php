@@ -341,10 +341,9 @@
 
                                 <div class="ml-4">
                                     @if($submission['status'] === 'pending')
-                                    <button wire:click="openReviewModal({{ $submission['id'] }})"
-                                            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium transition-colors">
-                                        Review
-                                    </button>
+                                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full font-medium">
+                                            Pending
+                                        </span>
                                     @else
                                     <div class="text-right">
                                         <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full font-medium">
