@@ -336,289 +336,289 @@
             </div>
 
             <!-- Interactive Nature Dashboard -->
-            <div class="bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 mb-12 sm:mb-16 border border-gray-700" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row items-center justify-between mb-6 sm:mb-8">
-                    <div class="mb-4 md:mb-0 text-center md:text-left">
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Nature Conservation Dashboard</h3>
-                        <p class="text-gray-400 text-sm sm:text-base">Track our progress in preserving natural habitats and promoting biodiversity</p>
+            <div class="bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 mb-8 sm:mb-12 border border-gray-700" data-aos="fade-up">
+    <div class="flex flex-col md:flex-row items-center justify-between mb-6 sm:mb-8">
+        <div class="mb-4 md:mb-0 text-center md:text-left">
+            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">Nature Conservation Dashboard</h3>
+            <p class="text-gray-400 text-base sm:text-lg">Track our progress in preserving natural habitats and promoting biodiversity</p>
+        </div>
+        <button @click="resetDashboard" class="px-4 py-2.5 sm:px-5 bg-emerald-900 text-emerald-300 rounded-lg font-medium hover:bg-emerald-800 transition-colors flex items-center border border-emerald-700 text-base">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            Reset View
+        </button>
+    </div>
+    
+    <!-- Dashboard Container with Mobile Scroll -->
+    <div class="dashboard-container custom-scrollbar overflow-x-auto overflow-y-auto">
+        <div class="dashboard-content flex flex-col xl:flex-row gap-6 lg:gap-8">
+            <!-- Controls -->
+            <div class="xl:w-1/3 space-y-4 sm:space-y-6">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="text-gray-300 font-medium text-base sm:text-lg">Forest Cover</label>
+                        <span class="text-emerald-400 font-semibold text-base sm:text-lg" x-text="forestCover + '%'"></span>
                     </div>
-                    <button @click="resetDashboard" class="px-3 py-2 sm:px-4 bg-emerald-900 text-emerald-300 rounded-lg font-medium hover:bg-emerald-800 transition-colors flex items-center border border-emerald-700 text-sm">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                        </svg>
-                        Reset View
-                    </button>
+                    <input type="range" min="0" max="100" x-model="forestCover" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-emerald-500">
+                    <p class="text-sm text-gray-400 mt-1">Healthy forest cover supports biodiversity and regulates climate</p>
                 </div>
                 
-                <!-- Dashboard Container with Mobile Scroll -->
-                <div class="dashboard-container custom-scrollbar overflow-x-auto overflow-y-auto">
-                    <div class="dashboard-content flex flex-col xl:flex-row gap-6 lg:gap-8">
-                        <!-- Controls -->
-                        <div class="xl:w-1/3 space-y-4 sm:space-y-6">
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <label class="text-gray-300 font-medium text-sm sm:text-base">Forest Cover</label>
-                                    <span class="text-emerald-400 font-semibold text-sm sm:text-base" x-text="forestCover + '%'"></span>
-                                </div>
-                                <input type="range" min="0" max="100" x-model="forestCover" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-emerald-500">
-                                <p class="text-xs text-gray-500 mt-1">Healthy forest cover supports biodiversity and regulates climate</p>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <label class="text-gray-300 font-medium text-sm sm:text-base">Wildlife Population</label>
-                                    <span class="text-teal-400 font-semibold text-sm sm:text-base" x-text="wildlifePopulation + '%'"></span>
-                                </div>
-                                <input type="range" min="0" max="100" x-model="wildlifePopulation" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-teal-500">
-                                <p class="text-xs text-gray-500 mt-1">Thriving wildlife indicates healthy ecosystems</p>
-                            </div>
-                            
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <label class="text-gray-300 font-medium text-sm sm:text-base">Community Engagement</label>
-                                    <span class="text-green-400 font-semibold text-sm sm:text-base" x-text="communityEngagement + '%'"></span>
-                                </div>
-                                <input type="range" min="0" max="100" x-model="communityEngagement" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-green-500">
-                                <p class="text-xs text-gray-500 mt-1">Local communities are essential for conservation success</p>
-                            </div>
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="text-gray-300 font-medium text-base sm:text-lg">Wildlife Population</label>
+                        <span class="text-teal-400 font-semibold text-base sm:text-lg" x-text="wildlifePopulation + '%'"></span>
+                    </div>
+                    <input type="range" min="0" max="100" x-model="wildlifePopulation" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-teal-500">
+                    <p class="text-sm text-gray-400 mt-1">Thriving wildlife indicates healthy ecosystems</p>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="text-gray-300 font-medium text-base sm:text-lg">Community Engagement</label>
+                        <span class="text-green-400 font-semibold text-base sm:text-lg" x-text="communityEngagement + '%'"></span>
+                    </div>
+                    <input type="range" min="0" max="100" x-model="communityEngagement" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-green-500">
+                    <p class="text-sm text-gray-400 mt-1">Local communities are essential for conservation success</p>
+                </div>
 
-                            <!-- Conservation Score -->
-                            <div class="bg-gray-700 rounded-lg p-4 mt-6 border border-gray-600">
-                                <div class="text-center mb-2">
-                                    <span class="text-sm font-medium text-emerald-300">Conservation Health Score</span>
-                                </div>
-                                <div class="relative h-4 bg-gray-600 rounded-full overflow-hidden">
-                                    <div class="absolute top-0 left-0 h-full rounded-full transition-all duration-500 bg-gradient-to-r from-emerald-400 to-teal-500" 
-                                         :style="'width: ' + conservationScore + '%'"></div>
-                                </div>
-                                <div class="flex justify-between mt-1 text-xs text-emerald-300">
-                                    <span>Needs Work</span>
-                                    <span>Good</span>
-                                    <span>Excellent</span>
-                                </div>
-                                <div class="text-center mt-2">
-                                    <span class="text-lg font-bold text-emerald-400" x-text="conservationScore + '%'"></span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Enhanced Visualization -->
-                       <div class="xl:w-2/3 bg-gradient-to-br overflow-auto lg:overflow-hidden from-gray-700 to-gray-600 rounded-xl p-4 sm:p-6  border border-gray-600">
-                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
-                                <h4 class="font-semibold text-white text-sm sm:text-base">Ecosystem Health Visualization</h4>
-                                <span class="text-sm font-medium px-2 py-1 rounded-lg bg-emerald-900/80 backdrop-blur text-emerald-300 border border-emerald-700/50 whitespace-nowrap" 
-                                    x-text="getConservationStatus()"></span>
-                            </div>
-                            
-                            <!-- Modern Nature Visualization -->
-                            <div class="h-64 sm:h-80 lg:h-96 relative bg-gradient-to-b from-sky-300/20 via-sky-400/10 to-transparent rounded-xl overflow-hidden shadow-inner">
-                                <!-- Sky with Dynamic Elements -->
-                                <div class="absolute inset-0 bg-gradient-to-b from-sky-400/30 via-blue-300/20 to-transparent rounded-t-xl">
-                                    <!-- Enhanced Sun with Glow Effect -->
-                                    <div class="absolute top-6 right-8 transition-all duration-700" 
-                                        :style="`opacity: ${0.6 + conservationScore / 250}; transform: scale(${0.7 + conservationScore / 150})`">
-                                        <div class="relative">
-                                            <div class="w-14 h-14 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full shadow-lg"
-                                                :style="`box-shadow: 0 0 ${20 + conservationScore / 5}px rgba(251, 191, 36, ${0.4 + conservationScore / 250})`"></div>
-                                            <div class="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-200/40 to-orange-300/20 blur-md"></div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Enhanced Clouds with Better Styling -->
-                                    <template x-for="i in 4" :key="i">
-                                        <div class="absolute transition-all duration-1000" 
-                                            :style="`top: ${8 + i * 12}%; left: ${15 + i * 18}%; opacity: ${0.4 + forestCover / 200}; transform: translateX(${Math.sin(Date.now() / 5000 + i) * 10}px)`">
-                                            <div class="relative">
-                                                <div class="w-16 h-8 bg-white/70 rounded-full backdrop-blur-sm"></div>
-                                                <div class="absolute -top-3 left-3 w-10 h-6 bg-white/70 rounded-full backdrop-blur-sm"></div>
-                                                <div class="absolute -top-2 right-2 w-8 h-5 bg-white/70 rounded-full backdrop-blur-sm"></div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                </div>
-                                
-                                <!-- Enhanced Forest Area with Depth -->
-                                <div class="absolute bottom-0 left-0 right-0 transition-all duration-700" :style="'height: ' + (forestCover * 0.65) + '%;'">
-                                    <!-- Forest Background Layers -->
-                                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-800 via-emerald-700 to-emerald-600 rounded-t-xl"></div>
-                                    
-                                    <!-- Forest Foreground with Texture -->
-                                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/50 via-transparent to-transparent rounded-t-xl"></div>
-                                    
-                                    <!-- Enhanced Trees with Variety and Depth -->
-                                    <template x-for="i in treeCount" :key="i">
-                                        <div class="absolute bottom-0 transition-all duration-500" 
-                                            :style="`left: ${Math.random() * 90 + 5}%; z-index: ${Math.floor(Math.random() * 10)}`">
-                                            <div class="relative">
-                                                <!-- Tree Trunk with Gradient -->
-                                                <div class="w-2.5 h-10 bg-gradient-to-t from-amber-900 to-amber-700 mx-auto rounded-t-sm"></div>
-                                                
-                                                <!-- Tree Crown with Multiple Layers for Depth -->
-                                                <div class="absolute -top-8 left-1/2 transform -translate-x-1/2">
-                                                    <div class="relative">
-                                                        <!-- Back Layer -->
-                                                        <div class="w-12 h-12 bg-emerald-700 rounded-full opacity-80"></div>
-                                                        <!-- Middle Layer -->
-                                                        <div class="absolute top-1 left-1 w-10 h-10 bg-emerald-600 rounded-full opacity-90"></div>
-                                                        <!-- Front Layer with Highlight -->
-                                                        <div class="absolute top-2 left-2 w-8 h-8 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-md"></div>
-                                                        <!-- Highlight Effect -->
-                                                        <div class="absolute top-3 left-3 w-3 h-3 bg-emerald-400/40 rounded-full blur-sm"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                    
-                                    <div class="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
-                                </div>
-                                
-                                <!-- Enhanced Wildlife with Better Icons and Animations -->
-                                <div class="absolute inset-0 overflow-auto md:overflow-hidden">
-                                    <!-- Birds with Flying Animation -->
-                                    <template x-for="i in Math.ceil(wildlifeCount / 2)" :key="`bird-${i}`">
-                                        <div class="absolute transition-all duration-1000" 
-                                            :style="`left: ${Math.random() * 80 + 10}%; top: ${Math.random() * 30 + 10}%; opacity: ${0.7 + wildlifePopulation / 300}; transform: translateX(${Math.sin(Date.now() / 2000 + i) * 20}px)`">
-                                            <div class="relative">
-                                                <!-- Detailed Bird Icon -->
-                                                <div class="relative w-8 h-6">
-                                                    <!-- Bird Body -->
-                                                    <div class="absolute top-2 left-2 w-4 h-3 bg-gray-800 rounded-full"></div>
-                                                    <!-- Bird Head -->
-                                                    <div class="absolute top-1.5 left-5 w-2 h-2 bg-gray-800 rounded-full"></div>
-                                                    <!-- Bird Beak -->
-                                                    <div class="absolute top-2 left-6.5 w-1 h-0.5 bg-orange-500 transform rotate-45"></div>
-                                                    <!-- Animated Wings -->
-                                                    <div class="absolute top-1.5 left-1 w-3 h-4 bg-gray-700 rounded-t-full origin-right transition-transform duration-200"
-                                                        :style="`transform: rotate(${Math.sin(Date.now() / 200 + i) * 30}deg)`"></div>
-                                                    <div class="absolute top-1.5 left-4 w-3 h-4 bg-gray-700 rounded-t-full origin-left transition-transform duration-200"
-                                                        :style="`transform: rotate(${Math.sin(Date.now() / 200 + i + Math.PI) * 30}deg)`"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                    
-                                    <!-- Land Animals with Clear Visuals -->
-                                    <template x-for="i in wildlifeCount" :key="`animal-${i}`">
-                                        <div class="absolute transition-all duration-700" 
-                                            :style="`left: ${Math.random() * 80 + 10}%; bottom: ${forestCover * 0.65 + 2}%; opacity: ${0.7 + wildlifePopulation / 300}`"
-                                            x-show="wildlifePopulation > (i * 10)">
-                                            
-                                            <!-- Deer Icon -->
-                                            <div x-show="i % 3 === 1" class="relative">
-                                                <div class="w-10 h-8 relative">
-                                                    <!-- Deer Body -->
-                                                    <div class="absolute bottom-0 left-1 w-6 h-4 bg-amber-700 rounded-lg"></div>
-                                                    <!-- Deer Head -->
-                                                    <div class="absolute bottom-3 left-6 w-3 h-3 bg-amber-700 rounded-full"></div>
-                                                    <!-- Deer Legs -->
-                                                    <div class="absolute bottom-0 left-1.5 w-0.5 h-3 bg-amber-800"></div>
-                                                    <div class="absolute bottom-0 left-2.5 w-0.5 h-3 bg-amber-800"></div>
-                                                    <div class="absolute bottom-0 left-4.5 w-0.5 h-3 bg-amber-800"></div>
-                                                    <div class="absolute bottom-0 left-5.5 w-0.5 h-3 bg-amber-800"></div>
-                                                    <!-- Deer Antlers -->
-                                                    <div class="absolute bottom-5.5 left-6.5 w-0.5 h-2 bg-amber-900 transform -rotate-12"></div>
-                                                    <div class="absolute bottom-5.5 left-7 w-0.5 h-2 bg-amber-900 transform rotate-12"></div>
-                                                    <!-- Deer Tail -->
-                                                    <div class="absolute bottom-2 left-0 w-1 h-1 bg-white/70 rounded-full"></div>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Bear Icon -->
-                                            <div x-show="i % 3 === 2" class="relative">
-                                                <div class="w-9 h-7 relative">
-                                                    <!-- Bear Body -->
-                                                    <div class="absolute bottom-0 left-1 w-6 h-5 bg-amber-800 rounded-lg"></div>
-                                                    <!-- Bear Head -->
-                                                    <div class="absolute bottom-3 left-6 w-3 h-3 bg-amber-800 rounded-full"></div>
-                                                    <!-- Bear Ears -->
-                                                    <div class="absolute bottom-5 left-6 w-1 h-1 bg-amber-900 rounded-full"></div>
-                                                    <div class="absolute bottom-5 left-8 w-1 h-1 bg-amber-900 rounded-full"></div>
-                                                    <!-- Bear Legs -->
-                                                    <div class="absolute bottom-0 left-1.5 w-1 h-2 bg-amber-900 rounded-b"></div>
-                                                    <div class="absolute bottom-0 left-3 w-1 h-2 bg-amber-900 rounded-b"></div>
-                                                    <div class="absolute bottom-0 left-4.5 w-1 h-2 bg-amber-900 rounded-b"></div>
-                                                    <div class="absolute bottom-0 left-6 w-1 h-2 bg-amber-900 rounded-b"></div>
-                                                    <!-- Bear Snout -->
-                                                    <div class="absolute bottom-3.5 left-8.5 w-1 h-0.5 bg-amber-900 rounded-full"></div>
-                                                </div>
-                                            </div>
-                                            
-                                            <!-- Rabbit Icon -->
-                                            <div x-show="i % 3 === 0" class="relative">
-                                                <div class="w-8 h-8 relative">
-                                                    <!-- Rabbit Body -->
-                                                    <div class="absolute bottom-0 left-2 w-4 h-3 bg-gray-400 rounded-lg"></div>
-                                                    <!-- Rabbit Head -->
-                                                    <div class="absolute bottom-2 left-3 w-3 h-3 bg-gray-400 rounded-full"></div>
-                                                    <!-- Rabbit Ears -->
-                                                    <div class="absolute bottom-4 left-3.5 w-0.5 h-3 bg-gray-400 rounded-t"></div>
-                                                    <div class="absolute bottom-4 left-4.5 w-0.5 h-3 bg-gray-400 rounded-t"></div>
-                                                    <!-- Rabbit Tail -->
-                                                    <div class="absolute bottom-1 left-1 w-1.5 h-1.5 bg-white rounded-full"></div>
-                                                    <!-- Rabbit Legs -->
-                                                    <div class="absolute bottom-0 left-2.5 w-0.5 h-2 bg-gray-500"></div>
-                                                    <div class="absolute bottom-0 left-4 w-0.5 h-2 bg-gray-500"></div>
-                                                    <!-- Rabbit Eye -->
-                                                    <div class="absolute bottom-3 left-5 w-0.5 h-0.5 bg-black rounded-full"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </template>
-                                </div>
-                                
-                                <!-- Enhanced Community Elements -->
-                                <div class="absolute top-6 left-6 transition-all duration-700" x-show="communityEngagement > 50">
-                                    <div class="bg-teal-900/80 backdrop-blur text-teal-300 px-3 py-2 rounded-lg text-sm border border-teal-700/50 shadow-lg">
-                                        <div class="flex items-center">
-                                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                            </svg>
-                                            <span>Community Active</span>
-                                        </div>
-                                        <div class="mt-1 text-xs text-teal-200/80" x-text="`${communityEngagement}% Engagement`"></div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Enhanced Water Source with Ripple Effect -->
-                                <div class="absolute bottom-0 left-1/4 w-1/2 h-12 rounded-t-lg overflow-hidden transition-all duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-blue-600/80 via-blue-500/60 to-blue-400/40"></div>
-                                    
-                                    <!-- Water Ripples -->
-                                    <div class="absolute inset-0 overflow-hidden">
-                                        <template x-for="i in 3" :key="i">
-                                            <div class="absolute rounded-full border border-blue-300/30"
-                                                :style="`width: ${20 + i * 15}px; height: ${10 + i * 7}px; top: ${30 + i * 10}%; left: 50%; transform: translateX(-50%); animation: ripple ${2 + i}s infinite ease-out`"></div>
-                                        </template>
-                                    </div>
-                                    
-                                    <div class="absolute inset-0 flex items-center justify-center">
-                                        <svg class="w-8 h-8 text-blue-300 drop-shadow-md" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16a1 1 0 11-2 0V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Simplified Legend -->
-                            <div class="flex justify-center mt-4 text-xs text-gray-400">
-                                <span class="px-2 py-1 bg-gray-700/30 rounded-full mr-2">
-                                    🌳 Forest: <span x-text="forestCover + '%'"></span>%
-                                </span>
-                                <span class="px-2 py-1 bg-gray-700/30 rounded-full mr-2">
-                                    🦌 Wildlife: <span x-text="wildlifePopulation + '%'"></span>%
-                                </span>
-                                <span class="px-2 py-1 bg-gray-700/30 rounded-full mr-2">
-                                    💧 Water
-                                </span>
-                                <span class="px-2 py-1 bg-gray-700/30 rounded-full">
-                                    👥 Community: <span x-text="communityEngagement + '%'"></span>%
-                                </span>
-                            </div>
-                        </div>
+                <!-- Conservation Score -->
+                <div class="bg-gray-700 rounded-lg p-4 mt-6 border border-gray-600">
+                    <div class="text-center mb-2">
+                        <span class="text-base font-medium text-emerald-300">Conservation Health Score</span>
+                    </div>
+                    <div class="relative h-4 bg-gray-600 rounded-full overflow-hidden">
+                        <div class="absolute top-0 left-0 h-full rounded-full transition-all duration-500 bg-gradient-to-r from-emerald-400 to-teal-500" 
+                             :style="'width: ' + conservationScore + '%'"></div>
+                    </div>
+                    <div class="flex justify-between mt-1 text-xs text-emerald-300">
+                        <span>Needs Work</span>
+                        <span>Good</span>
+                        <span>Excellent</span>
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class="text-xl font-bold text-emerald-400" x-text="conservationScore + '%'"></span>
                     </div>
                 </div>
             </div>
+            
+            <!-- Enhanced Visualization -->
+           <div class="xl:w-2/3 bg-gradient-to-br overflow-hidden from-gray-700 to-gray-600 rounded-xl p-3 sm:p-5  border border-gray-600">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                    <h4 class="font-semibold text-white text-base sm:text-lg">Ecosystem Health Visualization</h4>
+                    <span class="text-base font-medium px-3 py-1.5 rounded-lg bg-emerald-900/80 backdrop-blur text-emerald-300 border border-emerald-700/50 whitespace-nowrap" 
+                        x-text="getConservationStatus()"></span>
+                </div>
+                
+                <!-- Modern Nature Visualization -->
+                <div class="h-72 sm:h-80 lg:h-96 relative bg-gradient-to-b from-sky-300/20 via-sky-400/10 to-transparent rounded-xl overflow-hidden shadow-inner">
+                    <!-- Sky with Dynamic Elements -->
+                    <div class="absolute inset-0 bg-gradient-to-b from-sky-400/30 via-blue-300/20 to-transparent rounded-t-xl">
+                        <!-- Enhanced Sun with Glow Effect -->
+                        <div class="absolute top-6 right-8 transition-all duration-700" 
+                            :style="`opacity: ${0.6 + conservationScore / 250}; transform: scale(${0.7 + conservationScore / 150})`">
+                            <div class="relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full shadow-lg"
+                                    :style="`box-shadow: 0 0 ${20 + conservationScore / 5}px rgba(251, 191, 36, ${0.4 + conservationScore / 250})`"></div>
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-200/40 to-orange-300/20 blur-md"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Enhanced Clouds with Better Styling -->
+                        <template x-for="i in 4" :key="i">
+                            <div class="absolute transition-all duration-1000" 
+                                :style="`top: ${8 + i * 12}%; left: ${15 + i * 18}%; opacity: ${0.4 + forestCover / 200}; transform: translateX(${Math.sin(Date.now() / 5000 + i) * 10}px)`">
+                                <div class="relative">
+                                    <div class="w-20 h-10 bg-white/70 rounded-full backdrop-blur-sm"></div>
+                                    <div class="absolute -top-3 left-3 w-12 h-8 bg-white/70 rounded-full backdrop-blur-sm"></div>
+                                    <div class="absolute -top-2 right-2 w-10 h-6 bg-white/70 rounded-full backdrop-blur-sm"></div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <!-- Enhanced Forest Area with Depth -->
+                    <div class="absolute bottom-0 left-0 right-0 transition-all duration-700" :style="'height: ' + (forestCover * 0.65) + '%;'">
+                        <!-- Forest Background Layers -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-800 via-emerald-700 to-emerald-600 rounded-t-xl"></div>
+                        
+                        <!-- Forest Foreground with Texture -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/50 via-transparent to-transparent rounded-t-xl"></div>
+                        
+                        <!-- Enhanced Trees with Variety and Depth -->
+                        <template x-for="i in treeCount" :key="i">
+                            <div class="absolute bottom-0 transition-all duration-500" 
+                                :style="`left: ${Math.random() * 90 + 5}%; z-index: ${Math.floor(Math.random() * 10)}`">
+                                <div class="relative">
+                                    <!-- Tree Trunk with Gradient -->
+                                    <div class="w-3 h-12 bg-gradient-to-t from-amber-900 to-amber-700 mx-auto rounded-t-sm"></div>
+                                    
+                                    <!-- Tree Crown with Multiple Layers for Depth -->
+                                    <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+                                        <div class="relative">
+                                            <!-- Back Layer -->
+                                            <div class="w-14 h-14 bg-emerald-700 rounded-full opacity-80"></div>
+                                            <!-- Middle Layer -->
+                                            <div class="absolute top-1 left-1 w-12 h-12 bg-emerald-600 rounded-full opacity-90"></div>
+                                            <!-- Front Layer with Highlight -->
+                                            <div class="absolute top-2 left-2 w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-md"></div>
+                                            <!-- Highlight Effect -->
+                                            <div class="absolute top-3 left-3 w-3 h-3 bg-emerald-400/40 rounded-full blur-sm"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <div class="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
+                    </div>
+                    
+                    <!-- Enhanced Wildlife with Better Icons and Animations -->
+                    <div class="absolute inset-0 overflow-hidden">
+                        <!-- Birds with Flying Animation -->
+                        <template x-for="i in Math.ceil(wildlifeCount / 2)" :key="`bird-${i}`">
+                            <div class="absolute transition-all duration-1000" 
+                                :style="`left: ${Math.random() * 80 + 10}%; top: ${Math.random() * 30 + 10}%; opacity: ${0.7 + wildlifePopulation / 300}; transform: translateX(${Math.sin(Date.now() / 2000 + i) * 20}px)`">
+                                <div class="relative">
+                                    <!-- Detailed Bird Icon -->
+                                    <div class="relative w-10 h-7">
+                                        <!-- Bird Body -->
+                                        <div class="absolute top-2 left-2 w-5 h-4 bg-gray-800 rounded-full"></div>
+                                        <!-- Bird Head -->
+                                        <div class="absolute top-1.5 left-6 w-3 h-3 bg-gray-800 rounded-full"></div>
+                                        <!-- Bird Beak -->
+                                        <div class="absolute top-2 left-8 w-1 h-0.5 bg-orange-500 transform rotate-45"></div>
+                                        <!-- Animated Wings -->
+                                        <div class="absolute top-1.5 left-1 w-4 h-5 bg-gray-700 rounded-t-full origin-right transition-transform duration-200"
+                                            :style="`transform: rotate(${Math.sin(Date.now() / 200 + i) * 30}deg)`"></div>
+                                        <div class="absolute top-1.5 left-5 w-4 h-5 bg-gray-700 rounded-t-full origin-left transition-transform duration-200"
+                                            :style="`transform: rotate(${Math.sin(Date.now() / 200 + i + Math.PI) * 30}deg)`"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
+                        <!-- Land Animals with Clear Visuals -->
+                        <template x-for="i in wildlifeCount" :key="`animal-${i}`">
+                            <div class="absolute transition-all duration-700" 
+                                :style="`left: ${Math.random() * 80 + 10}%; bottom: ${forestCover * 0.65 + 2}%; opacity: ${0.7 + wildlifePopulation / 300}`"
+                                x-show="wildlifePopulation > (i * 10)">
+                                
+                                <!-- Deer Icon -->
+                                <div x-show="i % 3 === 1" class="relative">
+                                    <div class="w-12 h-10 relative">
+                                        <!-- Deer Body -->
+                                        <div class="absolute bottom-0 left-1 w-8 h-5 bg-amber-700 rounded-lg"></div>
+                                        <!-- Deer Head -->
+                                        <div class="absolute bottom-4 left-7 w-4 h-4 bg-amber-700 rounded-full"></div>
+                                        <!-- Deer Legs -->
+                                        <div class="absolute bottom-0 left-2 w-1 h-3 bg-amber-800"></div>
+                                        <div class="absolute bottom-0 left-3.5 w-1 h-3 bg-amber-800"></div>
+                                        <div class="absolute bottom-0 left-6 w-1 h-3 bg-amber-800"></div>
+                                        <div class="absolute bottom-0 left-7.5 w-1 h-3 bg-amber-800"></div>
+                                        <!-- Deer Antlers -->
+                                        <div class="absolute bottom-7 left-7.5 w-1 h-2 bg-amber-900 transform -rotate-12"></div>
+                                        <div class="absolute bottom-7 left-8.5 w-1 h-2 bg-amber-900 transform rotate-12"></div>
+                                        <!-- Deer Tail -->
+                                        <div class="absolute bottom-2 left-0 w-1.5 h-1.5 bg-white/70 rounded-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bear Icon -->
+                                <div x-show="i % 3 === 2" class="relative">
+                                    <div class="w-11 h-9 relative">
+                                        <!-- Bear Body -->
+                                        <div class="absolute bottom-0 left-1 w-7 h-6 bg-amber-800 rounded-lg"></div>
+                                        <!-- Bear Head -->
+                                        <div class="absolute bottom-4 left-7 w-4 h-4 bg-amber-800 rounded-full"></div>
+                                        <!-- Bear Ears -->
+                                        <div class="absolute bottom-6 left-7 w-1 h-1 bg-amber-900 rounded-full"></div>
+                                        <div class="absolute bottom-6 left-9 w-1 h-1 bg-amber-900 rounded-full"></div>
+                                        <!-- Bear Legs -->
+                                        <div class="absolute bottom-0 left-2 w-1 h-3 bg-amber-900 rounded-b"></div>
+                                        <div class="absolute bottom-0 left-4 w-1 h-3 bg-amber-900 rounded-b"></div>
+                                        <div class="absolute bottom-0 left-5.5 w-1 h-3 bg-amber-900 rounded-b"></div>
+                                        <div class="absolute bottom-0 left-7 w-1 h-3 bg-amber-900 rounded-b"></div>
+                                        <!-- Bear Snout -->
+                                        <div class="absolute bottom-4.5 left-10 w-1 h-0.5 bg-amber-900 rounded-full"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Rabbit Icon -->
+                                <div x-show="i % 3 === 0" class="relative">
+                                    <div class="w-10 h-10 relative">
+                                        <!-- Rabbit Body -->
+                                        <div class="absolute bottom-0 left-2.5 w-5 h-4 bg-gray-400 rounded-lg"></div>
+                                        <!-- Rabbit Head -->
+                                        <div class="absolute bottom-3 left-4 w-4 h-4 bg-gray-400 rounded-full"></div>
+                                        <!-- Rabbit Ears -->
+                                        <div class="absolute bottom-6 left-4.5 w-1 h-4 bg-gray-400 rounded-t"></div>
+                                        <div class="absolute bottom-6 left-6 w-1 h-4 bg-gray-400 rounded-t"></div>
+                                        <!-- Rabbit Tail -->
+                                        <div class="absolute bottom-1.5 left-1 w-2 h-2 bg-white rounded-full"></div>
+                                        <!-- Rabbit Legs -->
+                                        <div class="absolute bottom-0 left-3 w-1 h-3 bg-gray-500"></div>
+                                        <div class="absolute bottom-0 left-5.5 w-1 h-3 bg-gray-500"></div>
+                                        <!-- Rabbit Eye -->
+                                        <div class="absolute bottom-4 left-6.5 w-1 h-1 bg-black rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <!-- Enhanced Community Elements -->
+                    <div class="absolute top-6 left-6 transition-all duration-700" x-show="communityEngagement > 50">
+                        <div class="bg-teal-900/80 backdrop-blur text-teal-300 px-4 py-2.5 rounded-lg text-base border border-teal-700/50 shadow-lg">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                <span>Community Active</span>
+                            </div>
+                            <div class="mt-1 text-sm text-teal-200/80" x-text="`${communityEngagement}% Engagement`"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Enhanced Water Source with Ripple Effect -->
+                    <div class="absolute bottom-0 left-1/4 w-1/2 h-12 rounded-t-lg overflow-hidden transition-all duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-600/80 via-blue-500/60 to-blue-400/40"></div>
+                        
+                        <!-- Water Ripples -->
+                        <div class="absolute inset-0 overflow-hidden">
+                            <template x-for="i in 3" :key="i">
+                                <div class="absolute rounded-full border border-blue-300/30"
+                                    :style="`width: ${20 + i * 15}px; height: ${10 + i * 7}px; top: ${30 + i * 10}%; left: 50%; transform: translateX(-50%); animation: ripple ${2 + i}s infinite ease-out`"></div>
+                            </template>
+                        </div>
+                        
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-10 h-10 text-blue-300 drop-shadow-md" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16a1 1 0 11-2 0V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1z" clip-rule="evenodd"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Simplified Legend -->
+                <div class="flex flex-wrap justify-center mt-4 text-sm text-gray-400 gap-x-2 gap-y-1">
+                    <span class="px-3 py-1 bg-gray-700/30 rounded-full">
+                        🌳 Forest: <span x-text="forestCover + '%'"></span>%
+                    </span>
+                    <span class="px-3 py-1 bg-gray-700/30 rounded-full">
+                        🦌 Wildlife: <span x-text="wildlifePopulation + '%'"></span>%
+                    </span>
+                    <span class="px-3 py-1 bg-gray-700/30 rounded-full">
+                        💧 Water
+                    </span>
+                    <span class="px-3 py-1 bg-gray-700/30 rounded-full">
+                        👥 Community: <span x-text="communityEngagement + '%'"></span>%
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
             <!-- Conservation Statistics -->
             <div class="grid md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">

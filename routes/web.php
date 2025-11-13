@@ -33,7 +33,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/mission-reviews/{submission}', [App\Http\Controllers\Admin\MissionReviewController::class, 'show'])->name('admin.mission-reviews.show');
     Route::post('/admin/mission-reviews/{submission}/approve', [App\Http\Controllers\Admin\MissionReviewController::class, 'approve'])->name('admin.mission-reviews.approve');
     Route::post('/admin/mission-reviews/{submission}/reject', [App\Http\Controllers\Admin\MissionReviewController::class, 'reject'])->name('admin.mission-reviews.reject');
-    Route::post('/admin/mission-reviews/bulk-approve', [App\Http\Controllers\Admin\MissionReviewController::class, 'bulkApprove'])->name('admin.mission-reviews.bulk-approve');
+
 });
 
 Route::get('/eco_track', function () {

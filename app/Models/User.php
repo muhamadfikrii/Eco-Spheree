@@ -199,6 +199,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $participation;
     }
 
+    // Update daily eco progress
+    public function updateDailyEcoProgress($missionId, $points, $completedDate)
+    {
+        $progress = $this->daily_challenge_progress ?? [];
+        $progress[$missionId] = [
+            'completed' => true,
+            'points_earned' => $points,
+            'completed_at' => $completedDate,
+        ];
+        $this->daily_challenge_progress = $progress;
+        $this->save();
+    }
+
     // Log activity
     public function logActivity($data)
     {
