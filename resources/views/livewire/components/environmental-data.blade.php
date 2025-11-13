@@ -5,6 +5,7 @@
         <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/10 to-slate-900"></div>
         <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div class="absolute inset-0" id="particleCanvas"></div>
+        <div class="absolute inset-0" id="floatingParticles"></div>
     </div>
     
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
@@ -84,9 +85,10 @@
                     <button @click="toggleAutoRotate" 
                             class="px-3 sm:px-4 py-2 bg-slate-700/50 hover:bg-slate-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 border border-slate-600/50 text-xs sm:text-sm"
                             :class="autoRotate ? 'bg-emerald-600/50 border-emerald-500/50' : ''">
-                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg x-show="!autoRotate" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                         </svg>
+                        <i x-show="autoRotate" class="fa-sharp fa-solid fa-stop"></i>
                         <span x-text="autoRotate ? 'Stop' : 'Auto Rotate'"></span>
                     </button>
                     <button @click="refreshNetwork" 
@@ -103,7 +105,7 @@
 
         <!-- Advanced Ecosystem Network -->
         <div class="bg-slate-800/60 backdrop-blur-md rounded-3xl shadow-2xl p-4 sm:p-8 mb-8 sm:mb-16 mx-auto border border-emerald-700/30 animate-scale-in">
-            <div class="relative h-[500px] sm:h-[600px] lg:h-[700px] xl:h-[800px] bg-slate-900/50 rounded-2xl overflow-hidden">
+            <div class="relative h-[500px] sm:h-[600px] lg:h-[700px] xl:h-[800px] bg-slate-900/50 rounded-2xl overflow-auto md:overflow-hidden">
                 
                 <!-- Enhanced Background Effects -->
                 <div class="absolute inset-0 opacity-20">
@@ -117,7 +119,7 @@
 
                 <!-- Advanced Orbital System -->
                 <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="relative" :class="viewMode === '3d' ? 'transform-gpu perspective-1000' : ''" :style="`width: ${getOrbitContainerWidth()}px; height: ${getOrbitContainerHeight()}px;`">
+                    <div id="orbitContainer" class="relative" :class="viewMode === '3d' ? 'transform-gpu perspective-1000' : ''" :style="`width: ${getOrbitContainerWidth()}px; height: ${getOrbitContainerHeight()}px;`">
                         
                         <!-- Enhanced Orbital Rings with 3D Effects -->
                         <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
@@ -284,9 +286,6 @@
                     </button>
                     <button @click="zoomOut" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-slate-800/80 backdrop-blur-sm rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg border border-emerald-600/50 hover:bg-slate-700/80 transition-all duration-200 hover:scale-110 control-btn group">
                         <span class="text-sm sm:text-lg text-slate-200 group-hover:text-emerald-400 transition-colors">-</span>
-                    </button>
-                    <button @click="resetView" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-slate-800/80 backdrop-blur-sm rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg border border-emerald-600/50 hover:bg-slate-700/80 transition-all duration-200 hover:scale-110 control-btn group">
-                        <span class="text-sm sm:text-lg text-slate-200 group-hover:text-emerald-400 transition-colors">↺</span>
                     </button>
                     <button @click="toggleFullscreen" class="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-slate-800/80 backdrop-blur-sm rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg border border-emerald-600/50 hover:bg-slate-700/80 transition-all duration-200 hover:scale-110 control-btn group">
                         <i class="fa-solid fa-compress"></i>
@@ -756,9 +755,6 @@ function modernEcosphere() {
                 case '_':
                     this.zoomOut();
                     break;
-                case '0':
-                    this.resetView();
-                    break;
             }
         },
 
@@ -1032,32 +1028,20 @@ function modernEcosphere() {
 
         zoomIn() {
             this.zoomLevel = Math.min(this.zoomLevel + 0.1, 1.5);
-            const container = document.querySelector('.relative');
+            const container = document.getElementById('orbitContainer');
             container.style.transform = `scale(${this.zoomLevel})`;
         },
 
         zoomOut() {
             this.zoomLevel = Math.max(this.zoomLevel - 0.1, 0.5);
-            const container = document.querySelector('.relative');
+            const container = document.getElementById('orbitContainer');
             container.style.transform = `scale(${this.zoomLevel})`;
         },
-
-        resetView() {
-            this.zoomLevel = 1;
-            const container = document.querySelector('.relative');
-            container.style.transform = `scale(${this.zoomLevel})`;
-            this.selectedNode = null;
-            this.orbitingNodes.forEach(node => {
-                node.active = false;
-                node.hover = false;
-            });
-        }
     }
 }
 </script>
 
 <style>
-/* Enhanced Background Pattern */
 .bg-grid-pattern {
     background-image: 
         linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),

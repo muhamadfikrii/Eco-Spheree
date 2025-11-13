@@ -22,7 +22,7 @@
         :class="scrolled 
             ? 'backdrop-blur-lg bg-emerald-600/20 border-b border-slate-200 shadow-lg py-3' 
             : 'backdrop-blur-md py-5'"
-        class="top-0 fixed left-0 w-full z-[999] transition-all duration-500 ease-in-out"
+        class="top-0 fixed left-0 w-full z-[1000] transition-all duration-500 ease-in-out"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
@@ -221,7 +221,7 @@
                             x-transition:leave-end="opacity-0 translate-x-0 scale-0"
                             style="transition-delay: 0ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
-                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="block py-3 px-4 bg-green-500 w-full text-white font-medium">
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
                                 Home
                             </x-nav-link>
                         </div>
@@ -236,7 +236,7 @@
                             x-transition:leave-end="opacity-0 translate-x-0 scale-0"
                             style="transition-delay: 50ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
-                            <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" class="block py-3 px-4 bg-green-500 w-full text-white font-medium">
+                            <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
                                 Explore
                             </x-nav-link>
                         </div>
@@ -251,7 +251,7 @@
                             x-transition:leave-end="opacity-0 translate-x-0 scale-0"
                             style="transition-delay: 100ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
-                            <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="block py-3 px-4 bg-green-500 w-full text-white font-medium">
+                            <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
                                 Challenge
                             </x-nav-link>
                         </div>
@@ -266,7 +266,7 @@
                             x-transition:leave-end="opacity-0 translate-x-0 scale-0"
                             style="transition-delay: 150ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
-                            <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="block py-3 px-4 bg-green-500 w-full text-white font-medium">
+                            <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
                                 Eco-Track
                             </x-nav-link>
                         </div>
@@ -281,7 +281,7 @@
                             x-transition:leave-end="opacity-0 translate-x-0 scale-0"
                             style="transition-delay: 200ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
-                            <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="block py-3 px-4 bg-green-500 w-full text-white font-medium">
+                            <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
                                 Report
                             </x-nav-link>
                         </div>
@@ -296,7 +296,7 @@
                             x-transition:leave-end="opacity-0 translate-x-0 scale-0"
                             style="transition-delay: 250ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
-                            <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" class="block py-3 px-4 bg-green-500 w-full text-white font-medium">
+                            <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
                                 Contact
                             </x-nav-link>
                         </div>

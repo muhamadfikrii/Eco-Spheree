@@ -16,13 +16,13 @@
                 <span class="gradient-text">Ecological</span>
                 <span class="block gradient-text mt-2">Marvels of Indonesia</span>
             </h1>
-            <p class="text-xl text-[#5a7c74] max-w-3xl mx-auto leading-relaxed">Explore the natural wonders of Indonesia and its mesmerizing ecosystems in the archipelago of wonders. Every island holds priceless charm.</p>
+            <p class="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">Explore the natural wonders of Indonesia and its mesmerizing ecosystems in the archipelago of wonders. Every island holds priceless charm.</p>
         </header>
 
         <nav class="mb-16 fade-in" style="animation-delay: 0.2s;">
             <ul class="flex flex-wrap justify-center gap-2 md:gap-6">
                 <template x-for="(item, index) in navItems" :key="index">
-                    <li>
+                    <li class="border border-green-500 rounded-lg">
                         <button 
                             @click="setActiveItem(index)"
                             class="nav-item px-5 py-3 rounded-xl text-green-600 font-medium flex items-center gap-2"
