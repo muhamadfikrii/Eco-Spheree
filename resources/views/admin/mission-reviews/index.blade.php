@@ -3,10 +3,10 @@
         <div class="flex flex-col space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
+                    <h2 class="font-semibold text-2xl text-white leading-tight">
                         {{ __('Mission Review Dashboard') }}
                     </h2>
-                    <p class="text-gray-600 mt-2">Manage and review user mission submissions</p>
+                    <p class="text-green-100 mt-2">Manage and review user mission submissions</p>
                 </div>
                 <div class="mt-4 sm:mt-0">
                     <div class="relative rounded-lg shadow-sm">
@@ -15,7 +15,7 @@
                                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <input type="text" placeholder="Type here to search..." class="block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm">
+                        <input type="text" placeholder="Type here to search..." class="block w-full pl-10 pr-4 py-3 border border-green-300 rounded-lg bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm">
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             @endif
 
             <!-- Hero Section -->
-            <div class="mb-8 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl shadow-xl overflow-hidden">
+            <div class="mb-8 bg-gradient-to-r from-green-600 to-emerald-700 rounded-2xl shadow-xl overflow-hidden">
                 <div class="px-6 py-12 sm:px-12 sm:py-16 lg:py-20">
                     <div class="max-w-3xl mx-auto text-center">
                         <div class="flex justify-center mb-6">
@@ -53,21 +53,21 @@
                             </div>
                         </div>
                         <h1 class="text-3xl sm:text-4xl font-bold text-white mb-4">Mission Review Center</h1>
-                        <p class="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto">
+                        <p class="text-lg sm:text-xl text-green-100 max-w-2xl mx-auto">
                             Efficiently manage and review user mission submissions. Track pending, approved, and rejected missions all in one place.
                         </p>
                         <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
                             <div class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
                                 <div class="text-2xl font-bold text-white">{{ $pendingSubmissions->total() + $approvedSubmissions->total() + $rejectedSubmissions->total() }}</div>
-                                <div class="text-blue-100 text-sm">Total Submissions</div>
+                                <div class="text-green-100 text-sm">Total Submissions</div>
                             </div>
                             <div class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
                                 <div class="text-2xl font-bold text-white">{{ $pendingSubmissions->total() }}</div>
-                                <div class="text-blue-100 text-sm">Awaiting Review</div>
+                                <div class="text-green-100 text-sm">Awaiting Review</div>
                             </div>
                             <div class="bg-white bg-opacity-10 rounded-lg p-4 backdrop-blur-sm">
                                 <div class="text-2xl font-bold text-white">{{ $approvedSubmissions->total() }}</div>
-                                <div class="text-blue-100 text-sm">Approved Today</div>
+                                <div class="text-green-100 text-sm">Approved Today</div>
                             </div>
                         </div>
                     </div>
@@ -162,8 +162,8 @@
                             </div>
                         </div>
                         <div class="flex items-start space-x-3">
-                            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
@@ -199,16 +199,16 @@
                         <div class="bg-gray-50 rounded-xl p-4">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-600">Average Review Time</span>
-                                <span class="text-lg font-bold text-blue-600">~5 min</span>
+                                <span class="text-lg font-bold text-green-600">~5 min</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
                             </div>
                         </div>
                         <div class="bg-gray-50 rounded-xl p-4">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-600">Completion Rate</span>
-                                <span class="text-lg font-bold text-purple-600">
+                                <span class="text-lg font-bold text-green-600">
                                     @if($pendingSubmissions->total() + $approvedSubmissions->total() + $rejectedSubmissions->total() > 0)
                                         {{ round((($approvedSubmissions->total() + $rejectedSubmissions->total()) / ($pendingSubmissions->total() + $approvedSubmissions->total() + $rejectedSubmissions->total())) * 100) }}%
                                     @else
@@ -217,7 +217,7 @@
                                 </span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-purple-600 h-2 rounded-full" 
+                                <div class="bg-green-500 h-2 rounded-full" 
                                      style="width: {{ $pendingSubmissions->total() + $approvedSubmissions->total() + $rejectedSubmissions->total() > 0 ? (($approvedSubmissions->total() + $rejectedSubmissions->total()) / ($pendingSubmissions->total() + $approvedSubmissions->total() + $rejectedSubmissions->total())) * 100 : 0 }}%">
                                 </div>
                             </div>
@@ -225,10 +225,10 @@
                         <div class="bg-gray-50 rounded-xl p-4">
                             <div class="flex items-center justify-between mb-2">
                                 <span class="text-sm font-medium text-gray-600">User Satisfaction</span>
-                                <span class="text-lg font-bold text-yellow-600">94%</span>
+                                <span class="text-lg font-bold text-green-600">94%</span>
                             </div>
                             <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-yellow-500 h-2 rounded-full" style="width: 94%"></div>
+                                <div class="bg-green-400 h-2 rounded-full" style="width: 94%"></div>
                             </div>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                     <nav class="flex flex-col sm:flex-row">
                         <button 
                             @click="activeTab = 'pending'"
-                            :class="activeTab === 'pending' ? 'border-blue-500 text-blue-600 bg-blue-50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'"
+                            :class="activeTab === 'pending' ? 'border-green-500 text-green-600 bg-green-50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'"
                             class="flex-1 py-5 px-6 text-center border-b-2 font-medium text-base flex items-center justify-center transition-all duration-200">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -252,7 +252,7 @@
                         </button>
                         <button 
                             @click="activeTab = 'approved'"
-                            :class="activeTab === 'approved' ? 'border-blue-500 text-blue-600 bg-blue-50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'"
+                            :class="activeTab === 'approved' ? 'border-green-500 text-green-600 bg-green-50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'"
                             class="flex-1 py-5 px-6 text-center border-b-2 font-medium text-base flex items-center justify-center transition-all duration-200">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -262,7 +262,7 @@
                         </button>
                         <button 
                             @click="activeTab = 'rejected'"
-                            :class="activeTab === 'rejected' ? 'border-blue-500 text-blue-600 bg-blue-50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'"
+                            :class="activeTab === 'rejected' ? 'border-green-500 text-green-600 bg-green-50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'"
                             class="flex-1 py-5 px-6 text-center border-b-2 font-medium text-base flex items-center justify-center transition-all duration-200">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -297,7 +297,7 @@
                                                                 <p class="text-gray-600 mt-1">{{ $submission->eco_challenge?->title ?? 'Challenge Not Found' }}</p>
                                                             </div>
                                                             <div class="mt-2 sm:mt-0 flex items-center space-x-2">
-                                                                <span class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
+                                                                <span class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
                                                                     {{ $submission->eco_challenge?->points_reward ?? 0 }} pts
                                                                 </span>
                                                                 <span class="text-sm text-gray-500">
@@ -455,7 +455,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach>
+                                @endforeach
                             </div>
 
                             <div class="mt-8">
@@ -513,7 +513,7 @@
                                     <button type="submit" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2.5 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                                         Reject Submission
                                     </button>
-                                    <button type="button" @click="rejectModalOpen = false" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2.5 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:w-auto sm:text-sm">
+                                    <button type="button" @click="rejectModalOpen = false" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2.5 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm">
                                         Cancel
                                     </button>
                                 </div>
