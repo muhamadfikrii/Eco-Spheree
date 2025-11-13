@@ -63,7 +63,6 @@ class MissionSubmission extends Model
             'reviewed_at' => now(),
         ]);
 
-        // Award points to user
         $this->awardPoints();
     }
 
@@ -74,6 +73,19 @@ class MissionSubmission extends Model
             'review_notes' => $notes,
             'reviewed_at' => now(),
         ]);
+
+        // Allow user to resubmit for this challenge by updating participation status
+        $participation = $this->user->challengeParticipations()
+            ->where('eco_challenge_id', $this->eco_challenge_id)
+            ->first();
+
+        if ($participation) {
+            $participation->update([
+                'completed_at' => null,
+                'progress' => 0,
+                'earned_points' => 0,
+            ]);
+        }
     }
 
     private function awardPoints()
@@ -81,7 +93,6 @@ class MissionSubmission extends Model
         $user = $this->user;
         $challenge = $this->ecoChallenge;
 
-        // Create or update user challenge participation
         $participation = $user->challengeParticipations()->updateOrCreate(
             ['eco_challenge_id' => $challenge->id],
             [

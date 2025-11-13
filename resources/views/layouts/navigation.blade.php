@@ -36,7 +36,7 @@
                     <h1 class="text-xl font-bold transition-all duration-300"
                         :class="scrolled ? 'text-emerald-500' : 'text-white'">
                         <span class="relative">
-                            Eco-Sphere
+                            Eco-Spheree
                             <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 group-hover:w-full transition-all duration-300"></span>
                         </span>
                     </h1>
@@ -88,10 +88,10 @@
                                     class="w-8 h-8 rounded-full object-cover border border-slate-200"
                                 />
                                 
-                                <div class="text-left">
-                                    <div class="font-semibold text-sm capitalize">{{ Auth::user()->name }}</div>
-                                    <div class="text-xs opacity-75">{{ auth()->user()->eco_points ?? 0 }} pts</div>
-                                </div>
+                                    <div class="text-left">
+                                        <div class="font-semibold text-sm capitalize">{{ Auth::user()->name }}</div>
+                                        <div class="text-xs opacity-75">{{ auth()->user()->eco_points ?? 0 }} pts</div>
+                                    </div>
                                 <svg class="w-4 h-4 transition-transform duration-300" 
                                     :class="profileOpen ? 'rotate-180' : ''" 
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -391,7 +391,7 @@
                     @else
                         <div class="space-y-3">
                             <a href="{{ route('login') }}"
-                                class="group block w-full px-4 py-4 text-center bg-gradient-to-r from-slate-100 to-slate-200 hover:from-slate-200 hover:to-slate-300 text-slate-700 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 border border-slate-300/50">
+                                class="group block w-full px-4 py-3 text-center bg-gradient-to-r from-slate-100 to-slate-200 hover:from-slate-200 hover:to-slate-300 text-slate-700 rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 border border-slate-300/50">
                                 <span class="flex items-center justify-center space-x-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
@@ -401,7 +401,7 @@
                             </a>
 
                             <a href="{{ route('register') }}"
-                                class="group block w-full px-6 py-4 text-center bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 border border-emerald-400/50">
+                                class="group block w-full px-6 py-3 text-center bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-2xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 border border-emerald-400/50">
                                 <span class="flex items-center justify-center space-x-2">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>

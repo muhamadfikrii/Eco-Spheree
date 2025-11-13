@@ -127,7 +127,7 @@
                 <!-- Copyright -->
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-leaf text-[#4a8c6d]"></i>
-                    <p class="text-sm text-[#a0b8b0]">&copy; 2025 Eco-Sphere. All rights reserved.</p>
+                    <p class="text-sm text-[#a0b8b0]">&copy; 2025 Eco-Spheree. All rights reserved.</p>
                 </div>
                 
                 <!-- Quick links -->

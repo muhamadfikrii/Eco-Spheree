@@ -143,14 +143,16 @@ class ChallengeCenter extends Component
             'daily_challenge_progress' => [],
         ]);
 
-        // Simpan poin yang sudah didapatkan hari ini
+        // Simpan poin yang sudah didapatkan hari ini ke total lifetime
         $todayPoints = $user->today_earned_points ?? 0;
-        $user->increment('total_lifetime_points', $todayPoints);
+        if ($todayPoints > 0) {
+        $user->increment('eco_points', $todayPoints);
+        }
 
         // Reset poin harian
         $user->update([
             'today_earned_points' => 0,
-            'daily_streak' => $user->daily_streak + 1,
+            'daily_streak' => ($user->daily_streak ?? 0) + 1,
         ]);
 
     }
@@ -197,20 +199,50 @@ class ChallengeCenter extends Component
             return;
         }
 
-        // Gunakan total_lifetime_points untuk leaderboard
-        $this->totalPoints = $user->total_lifetime_points ?? $user->eco_points ?? 0;
+        // Gunakan eco_points untuk leaderboard
+        $this->totalPoints = $user->eco_points ?? 0;
         $this->userLevel = $user->eco_level;
 
-        // Gunakan daily_missions_completed untuk progress harian
-        $this->challengesCompleted = $user->daily_missions_completed ?? 0;
+        $today = Carbon::now()->format('Y-m-d');
+        $approvedToday = MissionSubmission::where('user_id', $user->id)
+            ->whereDate('submitted_at', $today)
+            ->where('status', 'approved')
+            ->count();
+
+        $this->challengesCompleted = $approvedToday;
         $this->progressPercentage = count($this->missions) > 0 ? ($this->challengesCompleted / count($this->missions)) * 100 : 0;
 
-        // Update mission statuses based on user progress
+        $todaySubmissions = MissionSubmission::where('user_id', $user->id)
+            ->whereDate('submitted_at', $today)
+            ->get()
+            ->keyBy('eco_challenge_id');
+
         $progress = $user->daily_challenge_progress ?? [];
         foreach ($this->missions as &$mission) {
-            if (isset($progress[$mission['id']]) && $progress[$mission['id']]['completed']) {
+            $challengeId = $mission['id'];
+
+            // Check for submissions first
+            if (isset($todaySubmissions[$challengeId])) {
+                $submission = $todaySubmissions[$challengeId];
+                if ($submission->status === 'approved') {
+                    $mission['status'] = 'approved';
+                    $mission['completedDate'] = $submission->reviewed_at?->format('Y-m-d');
+                } elseif ($submission->status === 'pending') {
+                    $mission['status'] = 'submitted';
+                } elseif ($submission->status === 'rejected') {
+                    $mission['status'] = 'pending'; // Allow resubmission for rejected submissions
+                    $mission['completedDate'] = null;
+                }
+            }
+            // Fallback to progress (for non-submission missions)
+            elseif (isset($progress[$challengeId]) && $progress[$challengeId]['completed']) {
                 $mission['status'] = 'completed';
-                $mission['completedDate'] = $progress[$mission['id']]['completed_at'];
+                $mission['completedDate'] = $progress[$challengeId]['completed_at'];
+            }
+            // Default to pending
+            else {
+                $mission['status'] = 'pending';
+                $mission['completedDate'] = null;
             }
         }
 
@@ -221,12 +253,12 @@ class ChallengeCenter extends Component
         }
     }
 
-    // Perbaikan: Mengambil semua submission yang pending dan approved untuk ditampilkan di review
+    // Perbaikan: Mengambil semua submission yang pending, approved, dan rejected untuk ditampilkan di review
     public function loadPendingSubmissions()
     {
-        $this->pendingSubmissions = MissionSubmission::whereIn('status', ['pending', 'approved'])
+        $this->pendingSubmissions = MissionSubmission::whereIn('status', ['pending', 'approved', 'rejected'])
             ->with(['ecoChallenge', 'user'])
-            ->orderBy('status', 'asc') // pending dulu, lalu approved
+            ->orderByRaw("CASE WHEN status = 'pending' THEN 1 WHEN status = 'approved' THEN 2 WHEN status = 'rejected' THEN 3 END")
             ->orderBy('submitted_at', 'desc')
             ->get()
             ->toArray();
@@ -262,9 +294,12 @@ class ChallengeCenter extends Component
             return;
         }
 
-        // Check if user already has a pending or approved submission for this challenge
+        // Check if user already has a pending or approved submission for this challenge today
+        // Allow resubmission if previous submission was rejected
+        $today = Carbon::now()->format('Y-m-d');
         $existingSubmission = MissionSubmission::where('user_id', $user->id)
             ->where('eco_challenge_id', $this->selectedMission)
+            ->whereDate('submitted_at', $today)
             ->whereIn('status', ['pending', 'approved'])
             ->first();
 
@@ -279,6 +314,13 @@ class ChallengeCenter extends Component
             return;
         }
 
+        // Check if user has a rejected submission for this challenge today, update it instead of creating new
+        $rejectedSubmission = MissionSubmission::where('user_id', $user->id)
+            ->where('eco_challenge_id', $this->selectedMission)
+            ->whereDate('submitted_at', $today)
+            ->where('status', 'rejected')
+            ->first();
+
         // Store photos
         $photoPaths = [];
         foreach ($this->uploadedPhotos as $photo) {
@@ -286,14 +328,35 @@ class ChallengeCenter extends Component
             $photoPaths[] = $path;
         }
 
-        // Create submission
-        MissionSubmission::create([
-            'user_id' => $user->id,
-            'eco_challenge_id' => $this->selectedMission,
-            'photo_path' => count($photoPaths) > 0 ? $photoPaths[0] : null, // For now, store first photo
-            'description' => $this->completionDescription,
-            'submitted_at' => now(),
-        ]);
+        if ($rejectedSubmission) {
+            // Update existing rejected submission
+            $rejectedSubmission->update([
+                'photo_path' => count($photoPaths) > 0 ? $photoPaths[0] : $rejectedSubmission->photo_path,
+                'description' => $this->completionDescription,
+                'status' => 'pending', // Change status back to pending for review
+                'submitted_at' => now(),
+                'review_notes' => null, // Clear previous review notes
+                'reviewed_at' => null,
+                'rating' => null,
+            ]);
+        } else {
+            // Create new submission
+            MissionSubmission::create([
+                'user_id' => $user->id,
+                'eco_challenge_id' => $this->selectedMission,
+                'photo_path' => count($photoPaths) > 0 ? $photoPaths[0] : null, // For now, store first photo
+                'description' => $this->completionDescription,
+                'submitted_at' => now(),
+            ]);
+        }
+
+        // Update mission status to submitted
+        foreach ($this->missions as &$m) {
+            if ($m['id'] == $this->selectedMission) {
+                $m['status'] = 'submitted';
+                break;
+            }
+        }
 
         $this->loadPendingSubmissions();
         $this->closeUploadModal();
@@ -341,7 +404,7 @@ class ChallengeCenter extends Component
         $user->updateDailyEcoProgress($missionId, $mission['points'], now()->toDateString());
 
         // Tambahkan poin ke total lifetime dan poin harian
-        $user->increment('total_lifetime_points', $mission['points']);
+        $user->increment('eco_points', $mission['points']);
         $user->increment('today_earned_points', $mission['points']);
         $user->increment('eco_points', $mission['points']); // Tetap update untuk kompatibilitas
         $user->increment('daily_missions_completed', 1);
@@ -386,29 +449,31 @@ class ChallengeCenter extends Component
             'rating' => $this->submissionRating,
         ]);
 
-        // Award points to user
         $user = $submission->user;
         $points = $submission->ecoChallenge->points_reward;
 
-        // Tambahkan ke total lifetime dan poin harian
-        $user->increment('total_lifetime_points', $points);
+        $user->increment('eco_points', $points);
         $user->increment('today_earned_points', $points);
-        $user->increment('eco_points', $points); // Tetap update untuk kompatibilitas
         $user->increment('challenges_completed', 1);
         $user->increment('daily_missions_completed', 1);
 
+        // Update mission status to approved in the UI
+        foreach ($this->missions as &$mission) {
+            if ($mission['id'] == $submission->eco_challenge_id) {
+                $mission['status'] = 'approved';
+                $mission['completedDate'] = now()->toDateString();
+                break;
+            }
+        }
+
         // Update user level
         $this->updateUserLevel($user);
-
         $this->loadUserProgress();
         $this->refreshLeaderboard();
 
-        // Close modal and show success message
         $this->closeReviewModal();
-        // Jangan reload pending submissions agar submission yang sudah di-approve tetap terlihat
-        // $this->loadPendingSubmissions();
 
-        session()->flash('message', '✅ Submission reviewed and approved successfully! Points awarded. Thank you for your environmental efforts!');
+        session()->flash('message', 'Submission reviewed and approved successfully! Points awarded. Thank you for your environmental efforts!');
     }
 
     // Method reviewSubmission lama bisa dihapus atau dibiarkan untuk backward compatibility
@@ -450,14 +515,21 @@ class ChallengeCenter extends Component
             ->where('id', '!=', auth()->id())
             ->get()
             ->map(function ($user) {
+                // Hitung approved submissions hari ini untuk user lain
+                $today = Carbon::now()->format('Y-m-d');
+                $approvedToday = MissionSubmission::where('user_id', $user->id)
+                    ->whereDate('submitted_at', $today)
+                    ->where('status', 'approved')
+                    ->count();
+
                 return [
                     'id' => $user->id,
                     'name' => $user->name,
-                    'points' => $user->total_lifetime_points ?? $user->eco_points ?? 0, // Gunakan total_lifetime_points
+                    'points' => $user->eco_points ?? 0,
                     'location' => 'Jakarta',
                     'avatar' => 'https://cdn-icons-png.flaticon.com/512/219/219983.png',
                     'level' => $user->eco_level ?? 'Beginner',
-                    'completedMissions' => $user->daily_missions_completed ?? $user->challenges_completed ?? 0,
+                    'completedMissions' => $approvedToday,
                     'totalMissions' => count($this->missions),
                 ];
             })
@@ -507,6 +579,18 @@ class ChallengeCenter extends Component
                 $user['level'] = $this->userLevel;
                 $user['completedMissions'] = $this->challengesCompleted;
                 break;
+            }
+        }
+
+        // Update other users' completed missions
+        $today = Carbon::now()->format('Y-m-d');
+        foreach ($this->leaderboard as &$user) {
+            if ($user['id'] != auth()->id()) {
+                $approvedToday = MissionSubmission::where('user_id', $user['id'])
+                    ->whereDate('submitted_at', $today)
+                    ->where('status', 'approved')
+                    ->count();
+                $user['completedMissions'] = $approvedToday;
             }
         }
 

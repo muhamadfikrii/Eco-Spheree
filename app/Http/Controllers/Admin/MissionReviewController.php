@@ -60,22 +60,8 @@ class MissionReviewController extends Controller
 
         $submission->reject($request->review_notes);
 
-        return redirect()->back()->with('success', 'Mission submission rejected.');
+        return redirect()->back()->with('success', 'Mission submission rejected. User can resubmit for this challenge.');
     }
 
-    public function bulkApprove(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'submission_ids' => 'required|array',
-            'submission_ids.*' => 'exists:mission_submissions,id',
-        ]);
 
-        $submissions = MissionSubmission::whereIn('id', $request->submission_ids)->get();
-
-        foreach ($submissions as $submission) {
-            $submission->approve('Bulk approved by admin');
-        }
-
-        return redirect()->back()->with('success', count($submissions).' submissions approved successfully!');
-    }
 }

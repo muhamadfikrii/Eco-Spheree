@@ -1,20 +1,7 @@
 <div class="min-h-screen py-8 relative mt-40">
-    <!-- Enhanced Flash Messages -->
-    @if (session()->has('message'))
-        <div class="fixed top-6 right-6 z-50 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-6 py-4 rounded-lg shadow-lg border-l-4 border-green-500 animate-slide-in">
-            <div class="flex items-center space-x-3">
-                <div class="bg-green-100 dark:bg-green-900 p-2 rounded-full">
-                    <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <span class="font-medium">{{ session('message') }}</span>
-            </div>
-        </div>
-    @endif
 
     @if (session()->has('error'))
-        <div class="fixed top-6 right-6 z-50 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-6 py-4 rounded-lg shadow-lg border-l-4 border-red-500 animate-slide-in">
+        <div class="fixed top-6 mt-16 right-6 z-50 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-6 py-4 rounded-lg shadow-lg border-l-4 border-red-500 animate-slide-in">
             <div class="flex items-center space-x-3">
                 <div class="bg-red-100 dark:bg-red-900 p-2 rounded-full">
                     <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -204,6 +191,25 @@
                                         <span class="text-green-600 dark:text-green-400 text-sm">{{ $mission['completedDate'] }}</span>
                                     </div>
                                 </div>
+                            @elseif($mission['status'] === 'submitted')
+                                <div class="bg-yellow-50 dark:bg-gray-700 border border-yellow-200 dark:border-yellow-800 rounded-md p-3 mb-4">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="text-yellow-800 dark:text-yellow-200 font-medium">Submitted - Waiting for Review</span>
+                                    </div>
+                                </div>
+                            @elseif($mission['status'] === 'approved')
+                                <div class="bg-green-50 dark:bg-gray-700 border border-green-200 dark:border-green-800 rounded-md p-3 mb-4">
+                                    <div class="flex items-center space-x-2">
+                                        <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="text-green-800 dark:text-green-200 font-medium">Mission Success!</span>
+                                        <span class="text-green-600 dark:text-green-400 text-sm">{{ $mission['completedDate'] }}</span>
+                                    </div>
+                                </div>
                             @else
                                 <div class="bg-gray-50 dark:bg-gray-700 rounded-md p-3 mb-4">
                                     <div class="flex items-center space-x-2 text-gray-600 dark:text-gray-400">
@@ -213,10 +219,20 @@
                                 </div>
                             @endif
 
-                            @if($mission['status'] !== 'completed')
+                            @if($mission['status'] === 'pending')
                             <button wire:click="openUploadModal({{ $mission['id'] }})"
                                     class="w-full py-2 px-4 bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg font-medium transition-colors">
                                 Complete Mission
+                            </button>
+                            @elseif($mission['status'] === 'submitted')
+                            <button disabled
+                                    class="w-full py-2 px-4 bg-gray-400 dark:bg-gray-600 text-gray-200 dark:text-gray-400 rounded-lg font-medium cursor-not-allowed">
+                                Waiting for Review
+                            </button>
+                            @elseif($mission['status'] === 'approved')
+                            <button disabled
+                                    class="w-full py-2 px-4 bg-green-600 dark:bg-green-700 text-white rounded-lg font-medium cursor-not-allowed">
+                                Mission Success
                             </button>
                             @else
                             <button disabled
@@ -323,7 +339,7 @@
                                         </div>
                                     </div>
 
-                                    @if($submission['photo_path'])
+                                    @if(isset($submission['photo_path']) && $submission['photo_path'])
                                     <div class="mb-4">
                                         <img src="{{ asset('storage/' . $submission['photo_path']) }}" alt="Submission Photo" class="w-32 h-32 object-cover rounded-lg border border-gray-200 dark:border-gray-600">
                                     </div>
@@ -341,10 +357,10 @@
 
                                 <div class="ml-4">
                                     @if($submission['status'] === 'pending')
-                                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full font-medium">
+                                    <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full font-medium">
                                             Pending
                                         </span>
-                                    @else
+                                    @elseif($submission['status'] === 'approved')
                                     <div class="text-right">
                                         <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full font-medium">
                                             Approved
@@ -352,6 +368,17 @@
                                         @if(isset($submission['rating']) && $submission['rating'])
                                         <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
                                             ⭐ {{ $submission['rating'] }}/5
+                                        </div>
+                                        @endif
+                                    </div>
+                                    @else
+                                    <div class="text-right">
+                                        <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm rounded-full font-medium">
+                                            Rejected
+                                        </span>
+                                        @if(isset($submission['review_notes']) && $submission['review_notes'])
+                                        <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                                            Reason provided
                                         </div>
                                         @endif
                                     </div>

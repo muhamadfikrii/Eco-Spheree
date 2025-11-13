@@ -23,10 +23,10 @@
     </x-slot>
 
     <div class="py-8" x-data="missionReviewDashboard()">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
             <!-- Success Message -->
             @if (session('success'))
-                <div class="mb-6 bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between slide-in">
+                <div class="mb-6 bg-green-50 border border-green-200 rounded-xl p-4 flex items-center justify-between slide-in" x-init="refreshPage()">
                     <div class="flex items-center">
                         <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
@@ -261,9 +261,12 @@
                 <div class="p-6">
                     <!-- Pending Reviews Tab -->
                     <div x-show="activeTab === 'pending'" class="fade-in">
-                        <div class="mb-6">
-                            <h3 class="text-xl font-bold text-gray-900">Pending Mission Submissions</h3>
-                            <p class="text-gray-600 mt-2">Review and approve or reject user mission submissions</p>
+                        <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900">Pending Mission Submissions</h3>
+                                <p class="text-gray-600 mt-2">Review and approve or reject user mission submissions</p>
+                            </div>
+
                         </div>
 
                         @if($pendingSubmissions->count() > 0)
@@ -273,16 +276,16 @@
                                         <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between">
                                             <div class="flex-1">
                                                 <div class="flex items-start space-x-4">
-                                                    <img src="{{ $submission->user->profile_photo_url ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-12 h-12 rounded-full flex-shrink-0">
+                                                    <img src="{{ $submission->user->profile_photo ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-12 h-12 rounded-full border border-black flex-shrink-0">
                                                     <div class="flex-1">
                                                         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                                                             <div>
                                                                 <h4 class="text-lg font-semibold text-gray-900">{{ $submission->user->name }}</h4>
-                                                                <p class="text-gray-600 mt-1">{{ $submission->eco_challenge?->title ?? 'Challenge Not Found' }}</p>
+                                                                <p class="text-gray-600 mt-1">{{ $submission->ecoChallenge?->title ?? 'Challenge Not Found' }}</p>
                                                             </div>
                                                             <div class="mt-2 sm:mt-0 flex items-center space-x-2">
                                                                 <span class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                                                                    {{ $submission->eco_challenge?->points_reward ?? 0 }} pts
+                                                                    {{ $submission->ecoChallenge?->points_reward ?? 0 }} point
                                                                 </span>
                                                                 <span class="text-sm text-gray-500">
                                                                     {{ $submission->submitted_at->diffForHumans() }}
@@ -292,7 +295,7 @@
 
                                                         @if($submission->photo_path)
                                                             <div class="mt-4">
-                                                                <img src="{{ asset('storage/' . $submission->photo_path) }}" alt="Submission Photo" class="w-32 h-32 object-cover rounded-lg border border-gray-200">
+                                                                <img src="{{ $submission->photo_url }}" alt="Submission Photo" class="w-32 h-32 object-cover rounded-lg border border-gray-200">
                                                             </div>
                                                         @endif
 
@@ -311,12 +314,15 @@
                                                         Approve
                                                     </button>
                                                 </form>
-                                                <button @click="openRejectModal({{ $submission->id }})" class="w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium flex items-center justify-center transition-colors duration-200">
-                                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                    </svg>
-                                                    Reject
-                                                </button>
+                                                <form method="POST" action="{{ route('admin.mission-reviews.reject', $submission) }}" class="inline">
+                                                    @csrf
+                                                    <button type="submit" class="w-full px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium flex items-center justify-center transition-colors duration-200" @click="openRejectModal({{ $submission->id }})">
+                                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                        </svg>
+                                                        Reject
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -351,16 +357,16 @@
                                 @foreach($approvedSubmissions as $submission)
                                     <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-all duration-200">
                                         <div class="flex items-start space-x-4">
-                                            <img src="{{ $submission->user->profile_photo_url ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-12 h-12 rounded-full flex-shrink-0">
+                                            <img src="{{ $submission->user->profile_photo ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-12 h-12 rounded-full flex-shrink-0">
                                             <div class="flex-1">
                                                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                                                     <div>
                                                         <h4 class="text-lg font-semibold text-gray-900">{{ $submission->user->name }}</h4>
-                                                        <p class="text-gray-600 mt-1">{{ $submission->eco_challenge?->title ?? 'Challenge Not Found' }}</p>
+                                                        <p class="text-gray-600 mt-1">{{ $submission->ecoChallenge?->title ?? 'Challenge Not Found' }}</p>
                                                     </div>
                                                     <div class="mt-2 sm:mt-0 flex items-center space-x-2">
                                                         <span class="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                                                            +{{ $submission->eco_challenge?->points_reward ?? 0 }} pts
+                                                            +{{ $submission->ecoCHallenge?->points_reward ?? 0 }} pts
                                                         </span>
                                                     </div>
                                                 </div>
@@ -480,21 +486,21 @@
                         <h3 class="text-lg leading-6 font-medium text-gray-900">Reject Mission Submission</h3>
                         <div class="mt-2">
                             <p class="text-sm text-gray-500 mb-4">Please provide a reason for rejecting this submission. This feedback will be shared with the user.</p>
-                            <form id="rejectForm" method="POST" class="space-y-4" @submit.prevent="submitRejection">
+                            <form id="rejectForm" method="POST" action="" class="space-y-4">
                                 @csrf
                                 <div>
                                     <label for="rejectReason" class="block text-sm font-medium text-gray-700 mb-1">Rejection Reason</label>
-                                    <textarea 
-                                        id="rejectReason" 
+                                    <textarea
+                                        id="rejectReason"
                                         name="review_notes"
-                                        rows="4" 
-                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent" 
+                                        rows="4"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                                         placeholder="Please explain why this submission is being rejected..."
                                         required
                                         x-model="rejectionReason"></textarea>
                                 </div>
                                 <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                                    <button type="submit" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2.5 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+                                    <button type="button" @click="submitRejection()" class="w-full inline-flex justify-center rounded-lg border border-transparent shadow-sm px-4 py-2.5 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
                                         Reject Submission
                                     </button>
                                     <button type="button" @click="rejectModalOpen = false" class="mt-3 w-full inline-flex justify-center rounded-lg border border-gray-300 shadow-sm px-4 py-2.5 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:mt-0 sm:w-auto sm:text-sm">
@@ -508,6 +514,8 @@
             </div>
         </div>
     </div>
+
+
 
     <style>
         .fade-in {
@@ -534,7 +542,7 @@
                 rejectModalOpen: false,
                 currentSubmissionId: null,
                 rejectionReason: '',
-                
+
                 init() {
                     // Set initial active tab based on URL hash or default to 'pending'
                     const hash = window.location.hash.substring(1);
@@ -542,21 +550,28 @@
                         this.activeTab = hash;
                     }
                 },
-                
+
                 openRejectModal(submissionId) {
                     this.currentSubmissionId = submissionId;
                     this.rejectModalOpen = true;
                     this.rejectionReason = '';
-                    
-                    // Set form action
-                    document.getElementById('rejectForm').action = `/admin/mission-reviews/${submissionId}/reject`;
                 },
-                
+
                 submitRejection() {
+                    // Set the form action dynamically
+                    const form = document.getElementById('rejectForm');
+                    form.action = '/admin/mission-reviews/' + this.currentSubmissionId + '/reject';
                     // Submit the form
-                    document.getElementById('rejectForm').submit();
+                    form.submit();
                 },
-                
+
+                refreshPage() {
+                    // Refresh the page after successful action
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 100);
+                },
+
                 removeSuccessMessage() {
                     // This would remove the success message from the DOM
                     const successMessage = document.querySelector('.bg-green-50');
