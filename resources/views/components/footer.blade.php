@@ -91,24 +91,32 @@
             <!-- Column 4: Newsletter -->
             <div>
                 <div class="flex items-center space-x-2 mb-4">
-                    <i class="fas fa-newspaper text-[#e6b325]"></i>
-                    <h3 class="text-[#e6b325] font-bold text-lg">Stay Connected</h3>
+                    <i class="fas fa-chart-line text-[#e6b325]"></i>
+                    <h3 class="text-[#e6b325] font-bold text-lg">Our Impact</h3>
                 </div>
-                <p class="text-[#a0b8b0] text-sm mb-4 leading-relaxed">
-                    Subscribe to our newsletter for environmental data updates and sustainability tips.
-                </p>
-                <form class="flex flex-col md:grid lg:flex md:flex-row gap-3">
-                    <input type="email" placeholder="Your email address" 
-                        class="flex-1 px-4 py-3 bg-[#0f2a3d] border border-[#4a8c6d]/30 rounded-lg text-[#e8f4f0] text-sm focus:outline-none focus:ring-2 focus:ring-[#e6b325] transition-all">
-                    <button type="submit" 
-                        class="px-5 py-3 lg:py-3 lg:px-24 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 flex items-center justify-center font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                        <span>Subscribe</span>
-                        <i class="fas fa-paper-plane ml-2"></i>
-                    </button>
-                </form>
-                <p class="text-xs text-[#8aa49b] mt-3">
-                    We respect your privacy. Unsubscribe at any time.
-                </p>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#a0b8b0] text-sm">Trees Planted</span>
+                        <span class="text-[#e6b325] font-bold">12,847</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#a0b8b0] text-sm">Plastic Reduced</span>
+                        <span class="text-[#e6b325] font-bold">45.2T</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#a0b8b0] text-sm">CO₂ Saved</span>
+                        <span class="text-[#e6b325] font-bold">128.5T</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-[#a0b8b0] text-sm">Active Users</span>
+                        <span class="text-[#e6b325] font-bold">25,634</span>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-[#4a8c6d]/20 rounded-lg border border-[#4a8c6d]/30">
+                    <p class="text-[#a0b8b0] text-xs text-center">
+                        Join the movement and help us grow these numbers!
+                    </p>
+                </div>
             </div>
         </div>
 
