@@ -34,7 +34,6 @@ class ChallengeCenter extends Component
 
     public $reviewSubmissionId = null;
 
-    // Tambahkan properti untuk reset harian
     public $lastResetDate;
 
     public $nextResetTime;

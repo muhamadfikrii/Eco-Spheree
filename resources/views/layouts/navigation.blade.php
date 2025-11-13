@@ -77,7 +77,7 @@
                             @click="profileOpen = !profileOpen"
                             class="flex items-center space-x-3 rounded-xl px-4 py-2 transition-all duration-300 group"
                             :class="scrolled 
-                                ? 'bg-slate-100/90 backdrop-blur-sm hover:bg-slate-200 text-slate-700' 
+                                ? 'bg-white/10 backdrop-blur-sm hover:bg-black text-white' 
                                 : 'bg-white/10 hover:bg-white/20 text-white'">
                             
                             <img 
