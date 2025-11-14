@@ -1102,7 +1102,7 @@ function downloadRegionData() {
 
 function useCurrentLocation() {
     if (!navigator.geolocation) {
-        alert('Geolocation is not supported by your browser');
+        showMapInfo('Geolocation Error', 'Geolocation is not supported by your browser');
         return;
     }
 
@@ -1110,19 +1110,19 @@ function useCurrentLocation() {
         (position) => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
-            
+
             if (mainMap) {
                 mainMap.setView([lat, lng], 12);
                 L.marker([lat, lng])
                     .addTo(mainMap)
                     .bindPopup('Your current location')
                     .openPopup();
-                    
+
                 showMapInfo('Location Found', 'You are here! Explore environmental data around you.');
             }
         },
         () => {
-            alert('Unable to retrieve your location');
+            showMapInfo('Location Error', 'Unable to retrieve your location');
         }
     );
 }
