@@ -30,6 +30,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'challenge_progress',
         'achievements_unlocked',
         'profile_photo',
+        'today_earned_points',
+        'daily_streak',
+        'daily_missions_completed',
+        'last_mission_reset',
+        'daily_challenge_progress',
+        'completed_all_challenges_today',
+        'completed_all_challenges_yesterday',
     ];
 
     /**
@@ -52,6 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
         'challenge_progress' => 'array',
         'achievements_unlocked' => 'array',
+        'daily_challenge_progress' => 'array',
+        'completed_all_challenges_today' => 'boolean',
+        'completed_all_challenges_yesterday' => 'boolean',
     ];
 
     public function getProfilePhotoUrlAttribute()

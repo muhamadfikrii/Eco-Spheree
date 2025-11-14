@@ -322,7 +322,6 @@
                     
                     // Simulate navigation or API call
                     setTimeout(() => {
-                        console.log(`Starting ${type} journey`);
                         // Here you would typically redirect or load specific content
                         
                         // Reset button

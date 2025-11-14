@@ -435,13 +435,12 @@
         footprintMessage: '',
 
         init() {
-          console.log('🚀 Eco-Track initialized');
           // Load saved data if exists
           this.loadSavedData();
         },
 
+
         calculateFootprint() {
-          console.log('📊 Calculating footprint...', this.inputs);
           
           // Calculate carbon for each category
           const transportCarbon = this.inputs.transport * 10; // Weekly to monthly
@@ -499,7 +498,7 @@
           // Save results to localStorage
           this.saveToLocalStorage();
           
-          console.log('✅ Calculation complete:', this.totalCarbon);
+
         },
 
         saveToLocalStorage() {
