@@ -42,7 +42,7 @@ class ChallengeCenter extends Component
 
     public $dailyStreak = 0;
 
-    public $totalChallenges = 8; // Total number of challenges
+    public $totalChallenges = 11; // Total number of challenges (updated to match seeder)
 
     public function setSubmissionRating($rating)
     {
@@ -458,7 +458,7 @@ class ChallengeCenter extends Component
             ->where('status', 'approved')
             ->count();
 
-        // Jika semua challenge sudah diselesaikan (8 challenge)
+        // Jika semua challenge sudah diselesaikan (11 challenge)
         if ($completedToday >= $this->totalChallenges) {
             // Cek apakah flag sudah diset
             if (! $user->completed_all_challenges_today) {

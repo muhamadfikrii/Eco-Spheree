@@ -104,7 +104,7 @@
             <div class="mt-8">
                 <div class="flex justify-between items-center mb-3">
                     <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Daily Progress</span>
-                    <span class="text-sm font-medium text-gray-900 dark:text-white">{{ $challengesCompleted }}/{{ count($missions) }} missions completed</span>
+                    <span class="text-sm font-medium text-gray-900 dark:text-white">{{ $challengesCompleted }}/11 missions completed</span>
                 </div>
                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-lg h-2">
                     <div class="bg-gray-900 dark:bg-white h-2 rounded-lg transition-all duration-500"
@@ -304,7 +304,7 @@
                                         <div class="text-xs text-gray-500 dark:text-gray-400">Points</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">{{ $user['completedMissions'] }}/{{ $user['totalMissions'] }}</div>
+                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">{{ $user['completedMissions'] }}/11</div>
                                         <div class="text-xs text-gray-500 dark:text-gray-400">Missions</div>
                                     </div>
                                 </div>
