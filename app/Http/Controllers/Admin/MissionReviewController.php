@@ -62,6 +62,4 @@ class MissionReviewController extends Controller
 
         return redirect()->back()->with('success', 'Mission submission rejected. User can resubmit for this challenge.');
     }
-
-
 }

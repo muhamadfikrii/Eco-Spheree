@@ -512,14 +512,12 @@ function initMap() {
 
     
     if (typeof L === 'undefined') {
-        console.error('❌ Leaflet not available');
         setTimeout(initMap, 500);
         return;
     }
 
     const mapContainer = document.getElementById('ecoMainMap');
     if (!mapContainer) {
-        console.error('❌ Map container not found');
         setTimeout(initMap, 500);
         return;
     }
@@ -557,7 +555,6 @@ function initMap() {
         }, 300);
 
     } catch (error) {
-        console.error('❌ Map initialization error:', error);
     }
 }
 
@@ -1169,4 +1166,18 @@ document.addEventListener('livewire:load', function() {
     setTimeout(initMap, 1500);
 });
 </script>
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    setTimeout(initMap, 1000);
+});
+
+document.addEventListener('livewire:load', function() {
+
+    setTimeout(initMap, 1500);
+});
+</script>
+@endpush
 

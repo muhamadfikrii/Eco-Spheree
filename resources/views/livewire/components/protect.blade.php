@@ -417,31 +417,6 @@
         </div>
     </section>
 
-    <style>
-        /* Custom scroll behavior for smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Animation for stats counters */
-        @keyframes countUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .count-up {
-            animation: countUp 1s ease-out forwards;
-        }
-        
-        /* Custom gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    </style>
-
     <script>
         // Add scroll-triggered animations for stats
         document.addEventListener('DOMContentLoaded', function() {

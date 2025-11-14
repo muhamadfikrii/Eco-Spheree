@@ -33,7 +33,7 @@ class ProfileController extends Controller
         if ($isPhotoOnlyUpdate) {
             // Validasi untuk upload foto
             $validated = $request->validate([
-                'profile_photo' => ['required', 'image', 'max:2048'],
+                'profile_photo' => ['required', 'image', 'max:2048', 'mimes:jpg,jpeg,png,gif'],
             ]);
 
             // Hapus foto lama
@@ -52,12 +52,11 @@ class ProfileController extends Controller
                 'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-                'profile_photo' => ['nullable', 'image', 'max:2048'],
+                'profile_photo' => ['nullable', 'image', 'max:2048', 'mimes:jpg,jpeg,png,gif'],
             ]);
 
             // Handle upload foto profil jika ada
             if ($request->hasFile('profile_photo')) {
-                // Hapus foto lama
                 if ($user->profile_photo && Storage::disk('public')->exists($user->profile_photo)) {
                     Storage::disk('public')->delete($user->profile_photo);
                 }
@@ -78,7 +77,7 @@ class ProfileController extends Controller
 
             $user->save();
 
-            return redirect()->route('profile.edit')->with('status', 'profile-updated');
+            return redirect()->route('profile.edit')->with('message', 'Profile Updated Successfully!');
         }
     }
 

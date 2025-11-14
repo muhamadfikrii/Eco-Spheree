@@ -220,7 +220,6 @@ document.addEventListener('alpine:init', () => {
             const required = ['organization', 'contactName', 'email', 'tier', 'message'];
             for (let field of required) {
                 if (!this.form[field]) {
-                    alert(`Please fill in ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
                     return false;
                 }
             }
@@ -289,7 +288,6 @@ document.addEventListener('alpine:init', () => {
                     const required = ['organization', 'organizationType', 'contactName', 'email', 'tier', 'message'];
                     for (let field of required) {
                         if (!this.form[field]) {
-                            alert(`Please fill in the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()}`);
                             return false;
                         }
                     }

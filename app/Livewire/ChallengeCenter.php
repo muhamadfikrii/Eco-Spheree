@@ -146,7 +146,7 @@ class ChallengeCenter extends Component
         // Simpan poin yang sudah didapatkan hari ini ke total lifetime
         $todayPoints = $user->today_earned_points ?? 0;
         if ($todayPoints > 0) {
-        $user->increment('eco_points', $todayPoints);
+            $user->increment('eco_points', $todayPoints);
         }
 
         // Reset poin harian
@@ -406,7 +406,6 @@ class ChallengeCenter extends Component
         // Tambahkan poin ke total lifetime dan poin harian
         $user->increment('eco_points', $mission['points']);
         $user->increment('today_earned_points', $mission['points']);
-        $user->increment('eco_points', $mission['points']); // Tetap update untuk kompatibilitas
         $user->increment('daily_missions_completed', 1);
 
         // Reload user progress

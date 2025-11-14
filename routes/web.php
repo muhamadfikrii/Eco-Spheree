@@ -21,10 +21,6 @@ Route::get('/report', function () {
 Route::get('/challenge', function () {
     return view('challenge');
 })->name('challenge');
-
-Route::get('/challenge', function () {
-    return view('challenge');
-})->name('challenge');
 Route::get('/challenge-center', ChallengeCenter::class)
     ->name('challenge.center')->middleware('auth');
 

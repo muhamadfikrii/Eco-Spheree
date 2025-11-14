@@ -1,7 +1,15 @@
 <x-app-layout>
     <div class="bg-grid-pattern bg-gradient-to-br dark:from-gray-900 dark:via-blue-900 min-h-screen">
         <!-- Loading Overlay -->
-        <div x-data="loadingOverlay()" x-show="isLoading" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-white dark:bg-gray-900 z-50 flex items-center justify-center">
+        <div x-data="loadingOverlay()"
+             x-show="isLoading"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 bg-white dark:bg-gray-900 z-50 flex items-center justify-center">
             <div class="text-center">
                 <!-- Animated Loading Icon -->
                 <div class="relative mb-8">
@@ -11,33 +19,34 @@
                         <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full animate-pulse"></div>
                     </div>
                 </div>
-                
+
                 <!-- Loading Text with Countdown -->
                 <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-4">Preparing Your Challenge</h3>
                 <p class="text-slate-600 dark:text-slate-400 mb-2">Getting everything ready for your eco-journey...</p>
                 <div class="text-sm text-slate-500 dark:text-slate-500">
                     Redirecting in <span x-text="countdown" class="font-bold text-blue-600 dark:text-blue-400"></span> seconds
                 </div>
-                
+
                 <!-- Progress Bar -->
                 <div class="w-64 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden mt-6 mx-auto">
-                    <div class="h-full bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full transition-all duration-100" 
+                    <div class="h-full bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full transition-all duration-100"
                          :style="`width: ${progress}%`"></div>
                 </div>
             </div>
         </div>
 
-        <section x-data="challengeHero()" class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+        <section x-data="challengeHero()"
+                 class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
             <div class="absolute inset-0 overflow-hidden pointer-events-none">
                 <!-- Floating particles -->
                 <template x-for="(particle, index) in particles" :key="index">
-                    <div 
+                    <div
                         class="absolute rounded-full bg-gradient-to-r from-blue-400/20 to-emerald-400/20 animate-float"
                         :class="particle.size"
                         :style="`left: ${particle.x}%; top: ${particle.y}%; animation-delay: ${particle.delay}s;`"
                     ></div>
                 </template>
-                
+
                 <!-- Animated waves -->
                 <div class="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
                     <div class="absolute -bottom-10 left-0 right-0 h-40 bg-gradient-to-t from-blue-500/5 to-transparent rounded-t-[50%] animate-wave"></div>
@@ -50,7 +59,7 @@
                 <div class="text-center mb-16">
                     <!-- Animated Challenge Text -->
                     <div class="mb-8 relative h-24 md:h-32 flex items-center justify-center">
-                        <h1 class="text-4xl md:text-6xl font-bold absolute top-0 left-0 right-0 transition-all duration-500 transform" 
+                        <h1 class="text-4xl md:text-6xl font-bold absolute top-0 left-0 right-0 transition-all duration-500 transform"
                             :class="{
                                 'opacity-100 translate-y-0': currentTextIndex === 0,
                                 'opacity-0 -translate-y-10': currentTextIndex !== 0
@@ -58,7 +67,7 @@
                             <span class="text-slate-800 dark:text-slate-100">Ready for a</span>
                             <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">Daily Challenge?</span>
                         </h1>
-                        
+
                         <h1 class="text-4xl md:text-6xl font-bold absolute top-0 left-0 right-0 transition-all duration-500 transform"
                             :class="{
                                 'opacity-100 translate-y-0': currentTextIndex === 1,
@@ -67,7 +76,7 @@
                             <span class="text-slate-800 dark:text-slate-100">Make an</span>
                             <span class="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400">Environmental Impact</span>
                         </h1>
-                        
+
                         <h1 class="text-4xl md:text-6xl font-bold absolute top-0 left-0 right-0 transition-all duration-500 transform"
                             :class="{
                                 'opacity-100 translate-y-0': currentTextIndex === 2,
@@ -82,7 +91,7 @@
                     <div class="flex justify-center mb-8">
                         <div class="flex space-x-2">
                             <template x-for="i in 3" :key="i">
-                                <div 
+                                <div
                                     class="h-1 w-8 rounded-full transition-all duration-500"
                                     :class="currentTextIndex === i-1 ? 'bg-blue-600 w-12' : 'bg-slate-300'"
                                 ></div>
@@ -102,11 +111,11 @@
                                     <span>15 min</span>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-6">
                                 <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-3">Reduce Single-Use Plastics</h4>
                                 <p class="text-slate-600 dark:text-slate-300 mb-4">Commit to avoiding single-use plastics for one day. Bring your own containers, use reusable bags, and choose products with minimal packaging.</p>
-                                
+
                                 <div class="flex items-center justify-between bg-slate-100 dark:bg-slate-700/50 rounded-lg p-4">
                                     <div>
                                         <div class="text-sm text-slate-500 dark:text-slate-400 mb-1">Challenge Reward</div>
@@ -127,7 +136,7 @@
                             </div>
                             @auth
                             <!-- Action Button with Animation -->
-                            <button 
+                            <button
                                 @click="startChallengeJourney()"
                                 :disabled="isLoading"
                                 class="w-full py-4 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3 group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
@@ -144,7 +153,7 @@
                                 </svg>
                             </button>
                             @else
-                            <button 
+                            <button
                                 @click="startChallengeJourney()"
                                 :disabled="isLoading"
                                 class="w-full py-4 bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white rounded-xl font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3 group relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
@@ -193,7 +202,7 @@
     </div>
 
     <livewire:sustainable-living />
-    
+
 
     <script>
         // Single Alpine.js component to handle both loading and challenge
@@ -203,29 +212,25 @@
                 countdown: 3,
                 progress: 0,
                 interval: null,
-                
+
                 startLoading() {
                     this.isLoading = true;
                     this.countdown = 3;
                     this.progress = 0;
-                    
-                    console.log('Loading started'); // Debug log
-                    
+
                     // Update countdown every second
                     this.interval = setInterval(() => {
                         this.countdown--;
                         this.progress = ((3 - this.countdown) / 3) * 100;
-                        console.log(`Countdown: ${this.countdown}`); // Debug log
-                        
+
                         if (this.countdown <= 0) {
                             clearInterval(this.interval);
-                            console.log('Redirecting now...'); // Debug log
                             // Use Laravel route or direct URL
                             window.location.href = "{{ route('challenge.center') }}";
                         }
                     }, 1000);
                 },
-                
+
                 stopLoading() {
                     this.isLoading = false;
                     if (this.interval) {
@@ -239,21 +244,21 @@
                 textInterval: null,
                 particles: [],
                 isLoading: false,
-                
+
                 init() {
                     // Initialize text rotation
                     this.startTextRotation();
-                    
+
                     // Initialize floating particles
                     this.generateParticles();
                 },
-                
+
                 startTextRotation() {
                     this.textInterval = setInterval(() => {
                         this.currentTextIndex = (this.currentTextIndex + 1) % 3;
                     }, 4000);
                 },
-                
+
                 generateParticles() {
                     for (let i = 0; i < 15; i++) {
                         this.particles.push({
@@ -264,25 +269,23 @@
                         });
                     }
                 },
-                
+
                 startChallengeJourney() {
                     this.isLoading = true;
-                    console.log('Button clicked, starting journey...'); // Debug log
-                    
+
                     // Get the loading overlay component directly
                     const loadingElements = document.querySelectorAll('[x-data="loadingOverlay()"]');
                     if (loadingElements.length > 0) {
                         const loadingComponent = Alpine.$data(loadingElements[0]);
                         loadingComponent.startLoading();
                     } else {
-                        console.error('Loading overlay not found');
                         // Fallback: redirect after 3 seconds
                         setTimeout(() => {
                             window.location.href = "{{ route('challenge.center') }}";
                         }, 3000);
                     }
                 },
-                
+
                 // Clean up interval when component is destroyed
                 destroy() {
                     if (this.textInterval) {
@@ -305,7 +308,7 @@
                 transform: translateX(0) scaleY(1);
             }
         }
-        
+
         @keyframes float {
             0%, 100% {
                 transform: translateY(0) rotate(0deg);
@@ -316,11 +319,11 @@
                 opacity: 1;
             }
         }
-        
+
         .animate-wave {
             animation: wave 8s ease-in-out infinite;
         }
-        
+
         .animate-float {
             animation: float 6s ease-in-out infinite;
         }

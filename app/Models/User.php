@@ -194,6 +194,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'progress' => 0,
         ]);
 
+        // Increment current_participants on the challenge
         $challenge->increment('current_participants');
 
         return $participation;
