@@ -148,7 +148,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
     }
 
-    public function updateAchievements()
+    public function updateAchievements($currentRank = null)
     {
         $achievements = $this->achievements_unlocked ?? [];
 
@@ -172,10 +172,13 @@ class User extends Authenticatable implements MustVerifyEmail
             $achievements['eco_master'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
-        // Achievement 5: Reach top 10 in leaderboard (this would need leaderboard logic)
-        // For now, we'll skip this one
+        // Achievement 5: Reach top 10 in leaderboard
+        if ($currentRank !== null && $currentRank <= 10 && ! isset($achievements['community_leader'])) {
+            $achievements['community_leader'] = ['unlocked_at' => now()->toDateTimeString()];
+        }
 
         $this->achievements_unlocked = $achievements;
+        $this->save();
     }
 
     // Get challenge progress for a specific mission

@@ -271,6 +271,9 @@ class ChallengeCenter extends Component
         foreach ($this->achievements as &$achievement) {
             $achievement['unlocked'] = isset($unlockedAchievements[$achievement['key']]);
         }
+
+        // Check and update Community Leader achievement based on current rank
+        $user->updateAchievements($this->currentUserRank);
     }
 
     // Perbaikan: Mengambil semua submission yang pending, approved, dan rejected untuk ditampilkan di review
@@ -528,6 +531,9 @@ class ChallengeCenter extends Component
         $this->updateUserLevel($user);
         $this->loadUserProgress();
         $this->refreshLeaderboard();
+
+        // Update achievements after leaderboard refresh
+        $user->updateAchievements($this->currentUserRank);
 
         $this->closeReviewModal();
 
