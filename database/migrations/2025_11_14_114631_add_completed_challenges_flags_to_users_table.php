@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'completed_all_challenges_today')) {
+            if (! Schema::hasColumn('users', 'completed_all_challenges_today')) {
                 $table->boolean('completed_all_challenges_today')->default(false)->after('daily_challenge_progress');
             }
-            if (!Schema::hasColumn('users', 'completed_all_challenges_yesterday')) {
+            if (! Schema::hasColumn('users', 'completed_all_challenges_yesterday')) {
                 $table->boolean('completed_all_challenges_yesterday')->default(false)->after('completed_all_challenges_today');
             }
             if (Schema::hasColumn('users', 'total_lifetime_points')) {
@@ -36,7 +36,7 @@ return new class extends Migration
             if (Schema::hasColumn('users', 'completed_all_challenges_yesterday')) {
                 $table->dropColumn('completed_all_challenges_yesterday');
             }
-            if (!Schema::hasColumn('users', 'total_lifetime_points')) {
+            if (! Schema::hasColumn('users', 'total_lifetime_points')) {
                 $table->integer('total_lifetime_points')->default(0)->after('eco_points');
             }
         });

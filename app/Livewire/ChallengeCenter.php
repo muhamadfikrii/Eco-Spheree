@@ -107,7 +107,7 @@ class ChallengeCenter extends Component
     public function checkDailyReset()
     {
         $user = auth()->user();
-        if (!$user) {
+        if (! $user) {
             return;
         }
 
@@ -116,7 +116,7 @@ class ChallengeCenter extends Component
         $yesterday = Carbon::now()->subDay()->format('Y-m-d');
 
         // Jika belum pernah reset atau reset terjadi kemarin, lakukan reset
-        if (!$lastReset || $lastReset < $today) {
+        if (! $lastReset || $lastReset < $today) {
             $this->performDailyReset($user);
             $this->dailyResetCompleted = true;
         }
@@ -212,7 +212,7 @@ class ChallengeCenter extends Component
     public function loadUserProgress()
     {
         $user = auth()->user();
-        if (!$user) {
+        if (! $user) {
             return;
         }
 
@@ -310,7 +310,7 @@ class ChallengeCenter extends Component
         $user = auth()->user();
         $mission = collect($this->missions)->firstWhere('id', $this->selectedMission);
 
-        if (!$mission || !$user) {
+        if (! $mission || ! $user) {
             return;
         }
 
@@ -387,12 +387,12 @@ class ChallengeCenter extends Component
     public function completeMission($missionId)
     {
         $user = auth()->user();
-        if (!$user) {
+        if (! $user) {
             return;
         }
 
         $mission = collect($this->missions)->firstWhere('id', $missionId);
-        if (!$mission || $mission['status'] === 'completed') {
+        if (! $mission || $mission['status'] === 'completed') {
             return;
         }
 
@@ -448,7 +448,7 @@ class ChallengeCenter extends Component
     private function checkAndUpdateDailyStreak($user)
     {
         $today = Carbon::now()->format('Y-m-d');
-        
+
         // Hitung total challenge yang sudah diselesaikan hari ini
         $completedToday = MissionSubmission::where('user_id', $user->id)
             ->whereDate('submitted_at', $today)
@@ -458,13 +458,13 @@ class ChallengeCenter extends Component
         // Jika semua challenge sudah diselesaikan (8 challenge)
         if ($completedToday >= $this->totalChallenges) {
             // Cek apakah flag sudah diset
-            if (!$user->completed_all_challenges_today) {
+            if (! $user->completed_all_challenges_today) {
                 // Update flag untuk menandai semua challenge sudah diselesaikan hari ini
                 $user->update(['completed_all_challenges_today' => true]);
-                
+
                 // Update flag untuk kemarin (untuk streak besok)
                 $user->update(['completed_all_challenges_yesterday' => true]);
-                
+
                 // Tampilkan pesan sukses
                 session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
             }
@@ -480,14 +480,14 @@ class ChallengeCenter extends Component
     // Method baru untuk submit review (selalu approve)
     public function submitReview()
     {
-        if (!$this->reviewSubmissionId) {
+        if (! $this->reviewSubmissionId) {
             session()->flash('error', 'No submission selected for review');
 
             return;
         }
 
         $submission = MissionSubmission::find($this->reviewSubmissionId);
-        if (!$submission) {
+        if (! $submission) {
             session()->flash('error', 'Submission not found');
 
             return;
@@ -663,7 +663,7 @@ class ChallengeCenter extends Component
     // Ubah method resetProgress untuk reset manual
     public function resetProgress()
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return;
         }
 
