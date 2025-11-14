@@ -192,8 +192,8 @@ class User extends Authenticatable implements MustVerifyEmail
             $achievements['eco_warrior'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
-        // Achievement 4: Complete all missions (6 missions)
-        if ($this->challenges_completed >= 6 && ! isset($achievements['eco_master'])) {
+        // Achievement 4: Complete all missions (11 missions)
+        if ($this->challenges_completed >= 11 && ! isset($achievements['eco_master'])) {
             $achievements['eco_master'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
