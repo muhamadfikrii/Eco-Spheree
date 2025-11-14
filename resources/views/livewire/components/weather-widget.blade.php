@@ -4,7 +4,7 @@
     class="weather-widget rounded-2xl mb-3 shadow-lg p-6 sm:p-8 bg-white border border-slate-200 text-slate-800 transition-all duration-300"
 >
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between  gap-4 mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center">
                 <i class="fas fa-cloud-sun text-sky-600 text-lg"></i>
@@ -44,6 +44,9 @@
         <div class="text-center py-10">
             <i class="fas fa-exclamation-triangle text-3xl text-rose-500 mb-3"></i>
             <p class="text-sm text-slate-700">{{ $error }}</p>
+            <button wire:click="fetchWeatherData" class="mt-2 px-4 py-2 bg-sky-500 text-white rounded-lg text-sm">
+                Try Again
+            </button>
         </div>
     @elseif($weatherData)
         <div class="text-center space-y-4">
@@ -63,70 +66,97 @@
                     Feels like {{ round($weatherData['main']['feels_like']) }}°
                 </p>
             </div>
+
+            @if($lastUpdated)
+                <div class="text-xs text-slate-400 mt-4">
+                    Updated: {{ $lastUpdated }}
+                </div>
+            @endif
         </div>
     @endif
 </div>
 
-
 @push('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-document.addEventListener('livewire:load', () => {
-    // Load Lottie if it doesn't exist
-    if (typeof lottie === 'undefined') {
+// Pastikan Lottie sudah dimuat
+function loadLottie() {
+    return new Promise((resolve) => {
+        if (typeof lottie !== 'undefined') {
+            resolve();
+            return;
+        }
+
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js';
+        script.onload = () => resolve();
         document.head.appendChild(script);
+    });
+}
+
+// Animasi cuaca
+const weatherAnimations = {
+    sunny: 'https://assets1.lottiefiles.com/packages/lf20_2dvkfqly.json',
+    cloudy: 'https://assets1.lottiefiles.com/packages/lf20_1pxdmjms.json',
+    rainy: 'https://assets1.lottiefiles.com/packages/lf20_kcsrcxgq.json',
+    storm: 'https://assets1.lottiefiles.com/packages/lf20_6crsvohv.json',
+    snowy: 'https://assets1.lottiefiles.com/packages/lf20_ozjcgfzg.json'
+};
+
+let currentAnimations = {};
+
+function initWeatherAnimation(componentId, animationType) {
+    const containerId = `weather-animation-${componentId}`;
+    const container = document.getElementById(containerId);
+    
+    if (!container) {
+        console.warn('Container not found:', containerId);
+        return;
     }
 
-    function initWeatherAnimation(id, type) {
-        // Tunggu sebentar agar DOM benar-benar siap
-        setTimeout(() => {
-            const el = document.getElementById('weather-animation-' + id);
-            if (!el) {
-                console.warn('Weather animation container not found for id:', 'weather-animation-' + id);
-                return;
-            }
-
-            const anims = {
-                sunny: 'https://assets1.lottiefiles.com/packages/lf20_2dvkfqly.json',
-                cloudy: 'https://assets1.lottiefiles.com/packages/lf20_1pxdmjms.json',
-                rainy: 'https://assets1.lottiefiles.com/packages/lf20_kcsrcxgq.json',
-                storm: 'https://assets1.lottiefiles.com/packages/lf20_6crsvohv.json',
-                snowy: 'https://assets1.lottiefiles.com/packages/lf20_ozjcgfzg.json'
-            };
-
-            if (typeof lottie !== 'undefined' && anims[type]) {
-                lottie.loadAnimation({
-                    container: el,
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    path: anims[type],
-                });
-            }
-        }, 100); // Tunda 100ms untuk memastikan elemen ada
+    // Hapus animasi sebelumnya jika ada
+    if (currentAnimations[containerId]) {
+        currentAnimations[containerId].destroy();
     }
 
-    Livewire.hook('morph.updated', (component) => {
-        if (component.name === 'components.weather-widget' && component.el) {
-            const animationId = component.el.__livewire ? component.el.__livewire.currentAnimation : null;
-            if (animationId) {
-                initWeatherAnimation(component.id, animationId);
-            }
+    // Kosongkan container
+    container.innerHTML = '';
+
+    loadLottie().then(() => {
+        if (weatherAnimations[animationType]) {
+            const anim = lottie.loadAnimation({
+                container: container,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: weatherAnimations[animationType],
+            });
+            currentAnimations[containerId] = anim;
+        } else {
+            // Fallback icon
+            container.innerHTML = '<div class="text-4xl">☀️</div>';
         }
     });
+}
 
-    Livewire.hook('morph.initialized', (component) => {
-        if (component.name === 'components.weather-widget' && component.el) {
-            const animationId = component.el.__livewire ? component.el.__livewire.currentAnimation : null;
-            if (animationId) {
-                initWeatherAnimation(component.id, animationId);
-            }
+// Livewire hooks
+document.addEventListener('livewire:init', () => {
+    Livewire.on('weatherAnimationUpdated', ({ animation }) => {
+        const component = Livewire.find('{{ $componentId }}');
+        if (component) {
+            initWeatherAnimation('{{ $componentId }}', animation);
         }
     });
 });
 
+document.addEventListener('livewire:load', () => {
+    // Inisialisasi animasi pertama kali
+    setTimeout(() => {
+        initWeatherAnimation('{{ $componentId }}', '{{ $currentAnimation }}');
+    }, 500);
+});
+
+// Alpine.js
 document.addEventListener('alpine:init', () => {
     Alpine.data('weatherWidget', () => ({
         permissionDenied: false,
@@ -134,7 +164,6 @@ document.addEventListener('alpine:init', () => {
         init() {
             const locationDenied = localStorage.getItem('location_denied');
             if (locationDenied === 'true') {
-
                 return;
             }
 
@@ -146,7 +175,7 @@ document.addEventListener('alpine:init', () => {
             navigator.geolocation.getCurrentPosition(
                 (pos) => {
                     const { latitude, longitude } = pos.coords;
-                    Livewire.dispatch('updateLocation', { latitude, longitude });
+                    @this.setLocation({ latitude, longitude });
                 },
                 (err) => {
                     let msg = 'Failed to detect location.';
@@ -167,10 +196,12 @@ document.addEventListener('alpine:init', () => {
                 icon: 'warning',
                 title: 'Location Inactive',
                 text: msg,
-                confirmButtonText: 'OK, Got it'
+                confirmButtonText: 'OK, Got it',
+                background: '#fff',
+                color: '#1e293b'
             });
         }
-    }))
-})
+    }));
+});
 </script>
 @endpush

@@ -41,7 +41,6 @@ class WeatherWidget extends Component
         $this->latitude = $data['latitude'];
         $this->longitude = $data['longitude'];
 
-        // Get city name based on coordinates
         try {
             $geoResponse = Http::get('https://nominatim.openstreetmap.org/reverse', [
                 'lat' => $this->latitude,
@@ -168,6 +167,8 @@ class WeatherWidget extends Component
             'storm' => 'storm',
         ];
         $this->currentAnimation = $map[$main] ?? 'sunny';
+
+        $this->dispatch('weatherAnimationUpdated', animation: $this->currentAnimation);
     }
 
     public function refreshWeather()
