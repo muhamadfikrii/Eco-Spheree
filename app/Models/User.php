@@ -79,6 +79,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserChallengeParticipation::class);
     }
 
+    // Relasi ke reward redemptions
+    public function rewardRedemptions(): HasMany
+    {
+        return $this->hasMany(RewardRedemption::class);
+    }
+
     // Relasi ke challenges yang diikuti user
     public function challenges()
     {
