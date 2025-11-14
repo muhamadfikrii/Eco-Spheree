@@ -9,23 +9,14 @@ use Livewire\Component;
 class WeatherWidget extends Component
 {
     public $weatherData;
-
     public $loading = true;
-
     public $error = null;
-
     public $city = 'Your Location';
-
     public $latitude = -6.2088;
-
-    public $longitude = 106.8456;
-
+    public $longitude = 106.8456; 
     public $lastUpdated;
-
     public $currentAnimation = 'clear';
-
     public $autoRefresh = true;
-
     public $componentId;
 
     protected $listeners = ['updateLocation' => 'setLocation'];
@@ -36,12 +27,12 @@ class WeatherWidget extends Component
         $this->fetchWeatherData();
     }
 
+ 
     public function setLocation($data)
     {
         $this->latitude = $data['latitude'];
         $this->longitude = $data['longitude'];
 
-        // Get city name based on coordinates
         try {
             $geoResponse = Http::get('https://nominatim.openstreetmap.org/reverse', [
                 'lat' => $this->latitude,
@@ -168,6 +159,8 @@ class WeatherWidget extends Component
             'storm' => 'storm',
         ];
         $this->currentAnimation = $map[$main] ?? 'sunny';
+        
+        $this->dispatch('weatherAnimationUpdated', animation: $this->currentAnimation);
     }
 
     public function refreshWeather()
