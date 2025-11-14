@@ -181,6 +181,14 @@
                         </svg>
                         achievements
                     </button>
+                    <button @click="activeTab = 'rewards'"
+                            :class="activeTab === 'rewards' ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
+                            class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                        </svg>
+                        rewards
+                    </button>
                     <button @click="activeTab = 'danger'"
                             :class="activeTab === 'danger' ? 'border-red-500 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
                             class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
@@ -446,6 +454,199 @@
                     </div>
                 </div>
 
+                {{-- Tab Rewards --}}
+                <div x-show="activeTab === 'rewards'"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0"
+                     x-transition:enter-end="opacity-100">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Rewards & Benefits</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Track your eco-points and redeem rewards for your environmental contributions.</p>
+                    </div>
+
+                    {{-- Current Points Display --}}
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 mb-6 border border-green-200 dark:border-green-800">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Current Eco-Points</h4>
+                                <p class="text-3xl font-bold text-green-600 dark:text-green-400">{{ number_format(Auth::user()->eco_points ?? 0) }}</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Keep completing missions to earn more points!</p>
+                            </div>
+                            <div class="text-6xl opacity-20">🌱</div>
+                        </div>
+                    </div>
+
+                    {{-- Available Rewards --}}
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Available Rewards</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {{-- Reward 1 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg sm:text-xl">🛒</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">Shopping Voucher Rp 50.000</h5>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">50 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs md:text-md text-gray-600 dark:text-gray-400 mb-2 md:mb-3 line-clamp-2">Rp 50.000 shopping voucher for eco-friendly products</p>
+                                <button class="w-full px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-md rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 50 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 50 ? '' : 'disabled' }} onclick="redeemReward('shopping_voucher_50k')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 2 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg md:text-xl">🎵</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-md md:text-base truncate">Eco-Friendly Concert Ticket</h5>
+                                        <p class="text-xs md:text-md text-gray-600 dark:text-gray-400">100 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs md:text-md text-gray-600 dark:text-gray-400 mb-2 md:mb-3 line-clamp-2">Free ticket to eco-friendly music concert</p>
+                                <button class="w-full px-3 md:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs md:text-md rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 100 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 100 ? '' : 'disabled' }} onclick="redeemReward('concert_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 3 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
+                                    <div class="w-8 h-8 md:w-10 md:h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg md:text-xl">🌱</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-md md:text-base truncate">Environmental Event Ticket</h5>
+                                        <p class="text-xs md:text-md text-gray-600 dark:text-gray-400">150 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Entry ticket to environmental awareness event</p>
+                                <button class="w-full px-3 sm:px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 150 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 150 ? '' : 'disabled' }} onclick="redeemReward('eco_event_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 4 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg sm:text-xl">🎓</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">Sustainability Workshop Ticket</h5>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">200 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Access to sustainability workshop session</p>
+                                <button class="w-full px-3 sm:px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 200 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 200 ? '' : 'disabled' }} onclick="redeemReward('workshop_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 5 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg sm:text-xl">🌳</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">Tree Planting Event Ticket</h5>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">250 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Participation ticket for community tree planting</p>
+                                <button class="w-full px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 250 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 250 ? '' : 'disabled' }} onclick="redeemReward('planting_event_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 6 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg sm:text-xl">🏖️</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">Beach Cleanup Event Ticket</h5>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">300 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Entry to organized beach cleanup activity</p>
+                                <button class="w-full px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 300 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 300 ? '' : 'disabled' }} onclick="redeemReward('beach_cleanup_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 7 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg sm:text-xl">♻️</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">Recycling Workshop Ticket</h5>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">350 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Hands-on recycling workshop participation</p>
+                                <button class="w-full px-3 sm:px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 350 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 350 ? '' : 'disabled' }} onclick="redeemReward('recycling_workshop_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+
+                            {{-- Reward 8 --}}
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                                    <div class="w-8 h-8 sm:w-10 sm:h-10 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <span class="text-lg sm:text-xl">🛍️</span>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <h5 class="font-semibold text-gray-900 dark:text-white text-sm sm:text-base truncate">Green Market Event Ticket</h5>
+                                        <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400">400 points</p>
+                                    </div>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Access to eco-friendly products market</p>
+                                <button class="w-full px-3 sm:px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 400 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 400 ? '' : 'disabled' }} onclick="redeemReward('green_market_ticket')">
+                                    Redeem
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- Redemption History --}}
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6">
+                        <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Recent Redemptions</h4>
+                        <div class="space-y-3">
+                            @php
+                                $recentRedemptions = Auth::user()->rewardRedemptions()->latest()->take(5)->get();
+                            @endphp
+                            @if($recentRedemptions->count() > 0)
+                                @foreach($recentRedemptions as $redemption)
+                                    <div class="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                                        <div class="flex items-center gap-3">
+                                            <span class="text-xl">{{ $redemption->reward_details['icon'] ?? '🎁' }}</span>
+                                            <div>
+                                                <p class="font-medium text-gray-900 dark:text-white">{{ $redemption->reward_name }}</p>
+                                                <p class="text-sm text-gray-600 dark:text-gray-400">{{ $redemption->redeemed_at->diffForHumans() }}</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm font-medium text-green-600 dark:text-green-400">-{{ $redemption->points_spent }} points</span>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="text-center py-4 text-gray-500 dark:text-gray-400">
+                                    <p>No recent redemptions</p>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
                 {{-- Tab Zona Bahaya --}}
                 <div x-show="activeTab === 'danger'"
                 x-transition:enter="transition ease-out duration-300"
@@ -632,4 +833,30 @@
             background: rgba(34, 197, 94, 0.7);
         }
     </style>
-</x-app-layout>
+</x-app-layout><script>
+function redeemReward(rewardType) {
+    if (confirm("Are you sure you want to redeem this reward?")) {
+        fetch("/rewards/redeem", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector("meta[name=csrf-token]").getAttribute("content")
+            },
+            body: JSON.stringify({ reward_type: rewardType })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                location.reload();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred while redeeming the reward.");
+        });
+    }
+}
+</script>
