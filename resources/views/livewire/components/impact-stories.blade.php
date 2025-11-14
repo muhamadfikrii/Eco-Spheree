@@ -186,6 +186,7 @@
     </section>
 </div>
 
+@push('scripts')
 <script>
 function impactStories() {
     return {
@@ -295,3 +296,4 @@ function impactStories() {
     }
 }
 </script>
+@endpush

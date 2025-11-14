@@ -1,7 +1,6 @@
 <x-app-layout>
     <!-- Hero Section Discover -->
     <section class="relative bg-gradient-to-br from-blue-900 via-blue-800 to-cyan-900 overflow-hidden">
-        <!-- Background Elements -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-20 animate-pulse"></div>
             <div class="absolute top-10 right-10 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
@@ -626,31 +625,7 @@
         </div>
     </section>
 
-    <style>
-        /* Custom scroll behavior for smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Animation for stats counters */
-        @keyframes countUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .count-up {
-            animation: countUp 1s ease-out forwards;
-        }
-        
-        /* Custom gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-    </style>
-
+    @push('scripts')
     <script>
         // Add scroll-triggered animations for stats
         document.addEventListener('DOMContentLoaded', function() {
@@ -662,7 +637,7 @@
                     offset: 100
                 });
             }
-            
+
             // Add intersection observer for stats animation
             const statsSection = document.querySelector('.relative.bg-gradient-to-br');
             if (statsSection && 'IntersectionObserver' in window) {
@@ -679,10 +654,10 @@
                         }
                     });
                 }, { threshold: 0.5 });
-                
+
                 observer.observe(statsSection);
             }
-            
+
             // Counter animation function
             function animateCounter(element, start, end, duration) {
                 let startTimestamp = null;
@@ -698,4 +673,5 @@
             }
         });
     </script>
+    @endpush
 </x-app-layout>

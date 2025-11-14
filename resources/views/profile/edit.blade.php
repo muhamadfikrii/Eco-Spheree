@@ -34,22 +34,18 @@
                     <!-- Profile Photo -->
                     <div class="flex-shrink-0">
                         <div class="w-24 h-24 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 border-4 border-white dark:border-gray-800 shadow-lg">
-                            @if($user->profile_photo)
                                 <img
-                                    src="
-                                    {{ Auth::user()->profile_photo 
-                                    ? asset('storage/' . Auth::user()->profile_photo) 
-                                    : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}"
+                                    src="{{ Auth::user()->profile_photo
+                                                ? asset('storage/' . Auth::user()->profile_photo)
+                                                : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}"
                                     alt="Profile Photo"
                                     class="w-full h-full object-cover"
                                 >
-                            @else
                                 <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
                                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
                                     </svg>
                                 </div>
-                            @endif
                         </div>
                     </div>
 
@@ -203,7 +199,7 @@
             <div class="p-8">
                 <div x-show="activeTab === 'profile'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
                     <div class="mb-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Informasi Profil</h3>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Information Profile</h3>
                         <p class="text-gray-600 dark:text-gray-400">Update your profile information and account email address.</p>
                     </div>
 
@@ -212,43 +208,76 @@
                     </form>
 
                         {{-- Upload Foto Profil --}}
-                        <div class="mb-8">
+                        <div class="mb-8" x-data="{ photoPreview: null }">
                             <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Profile Photo</h4>
                             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="space-y-4">
                                 @csrf
                                 @method('PATCH')
-
                                 <div class="flex items-center gap-6">
-                                    <div class="w-20 h-20 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 border-4 border-white dark:border-gray-800 shadow-lg">
-                                        @if($user->profile_photo)
-                                            <img
-                                                src="
-                                                {{ Auth::user()->profile_photo
+                                    <div class="relative w-20 h-20">
+                                        <!-- Profile Image -->
+                                        <img
+                                            x-show="!photoPreview"
+                                            src="{{ Auth::user()->profile_photo
                                                 ? asset('storage/' . Auth::user()->profile_photo)
                                                 : 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) }}"
-                                                alt="Profile Photo"
-                                                class="w-full h-full object-cover"
-                                            >
-                                        @else
-                                            <div class="mt-2" x-show="photoPreview">
-                                                <span class="block w-20 h-20 rounded-full bg-cover bg-center"
-                                                    x-bind:style="'background-image: url(' + photoPreview + ');'"></span>
-                                            </div>
-                                        @endif
+                                            alt="Profile Photo"
+                                            class="w-full h-full rounded-full object-cover shadow-lg border-4 border-white dark:border-gray-800">
+
+                                        <template x-if="photoPreview">
+                                            <div 
+                                                class="w-full h-full rounded-full bg-cover bg-center shadow-lg border-4 border-white dark:border-gray-800"
+                                                x-bind:style="`background-image: url('${photoPreview}')`"
+                                            ></div>
+                                        </template>
                                     </div>
 
                                     <div class="flex-1">
-                                        <input id="profile_photo" name="profile_photo" type="file"
-                                            class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                                        <input 
+                                            ref="profile_photo"
+                                            id="profile_photo" 
+                                            name="profile_photo" 
+                                            type="file"
+                                            class="hidden"
+                                            @change="event => { 
+                                                const file = event.target.files[0]; 
+                                                if (file) { 
+                                                    const reader = new FileReader(); 
+                                                    reader.onload = e => photoPreview = e.target.result; 
+                                                    reader.readAsDataURL(file); 
+                                                } 
+                                            }"
                                         />
+                                        
+                                        <!-- Custom file input label -->
+                                        <label for="profile_photo" class="block w-full text-sm text-gray-500 cursor-pointer">
+                                            <div class="flex items-center justify-center w-full p-3 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-400 transition-colors">
+                                                <svg class="w-5 h-5 mr-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                                </svg>
+                                                <span class="text-sm">Choose file or click edit button</span>
+                                            </div>
+                                        </label>
+                                        
                                         <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">JPG, GIF or PNG. Max 2MB.</p>
                                         <x-input-error class="mt-2" :messages="$errors->get('profile_photo')" />
                                     </div>
 
-                                    <button type="submit" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                                    <button type="submit" 
+                                        class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg 
+                                            font-medium transition-colors focus:outline-none focus:ring-2 
+                                            focus:ring-offset-2 focus:ring-green-500">
                                         Upload
                                     </button>
                                 </div>
+                                @if (session('status') === 'ProfilePhotoUpdated')
+                                <div class="flex items-center gap-2 text-green-600 dark:text-green-400">
+                                    <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span class="font-medium">{{ __('Profile successfully updated.') }}</span>
+                                </div>
+                            @endif
                             </form>
                         </div>
 

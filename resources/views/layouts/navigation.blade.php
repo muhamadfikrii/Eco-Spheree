@@ -163,7 +163,7 @@
                         <div class="flex items-center space-x-3">
                             <a href="{{ route('login') }}" 
                             class="px-4 py-2 font-medium transition rounded-lg"
-                            :class="scrolled ? 'text-slate-700 hover:bg-slate-100' : 'text-white hover:bg-white/10'">
+                            :class="scrolled ? 'text-slate-700 hover:bg-slate-100 bg-white' : 'text-white hover:bg-white/10'">
                                 Login
                             </a>
                             <a href="{{ route('register') }}" 
@@ -412,6 +412,6 @@
                         </div>
                     @endauth
                 </div>
-    </div>
+        </div>
     </div>
 </nav>

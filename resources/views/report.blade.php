@@ -211,17 +211,13 @@
                 report: { title: '', desc: '', location: '', category: '', image: null },
 
                 init() {
-                    console.log('🚀 Eco-Report Hub initialized');
-
                     if (!localStorage.getItem('ecoReportIntroShown')) {
 
                         setTimeout(() => {
                             this.showIntro = true;
-                            console.log('📢 Showing intro modal');
                         }, 500);
                     } else {
                         this.showIntro = false;
-                        console.log('✅ Intro already shown, skipping modal');
                     }
                     
                     // Auto-close mobile sidebar on desktop
@@ -245,7 +241,6 @@
                 },
 
                 closeIntro() {
-                    console.log('🔒 Closing intro modal');
                     this.showIntro = false;
                     localStorage.setItem('ecoReportIntroShown', 'true');
                     
@@ -296,10 +291,8 @@
 
                 submitReport() {
                     if (!this.report.title || !this.report.desc) {
-                        alert('Please complete the title and description.');
                         return;
                     }
-                    alert(`Report "${this.report.title}" has been submitted successfully!`);
                     this.report = { title: '', desc: '', location: '', category: '', image: null };
                     if (this.$refs.reportImage) {
                         this.$refs.reportImage.value = '';
