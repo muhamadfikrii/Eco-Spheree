@@ -33,7 +33,7 @@ class RewardController extends Controller
             'climate_action_seminar_ticket' => ['cost' => 500, 'name' => 'Climate Action Seminar Ticket'],
         ];
 
-        if (!isset($rewards[$rewardType])) {
+        if (! isset($rewards[$rewardType])) {
             return response()->json(['success' => false, 'message' => 'Invalid reward type.'], 400);
         }
 
@@ -56,7 +56,7 @@ class RewardController extends Controller
             'reward_details' => [
                 'description' => $this->getRewardDescription($rewardType),
                 'validity' => 'Valid for 3 months from redemption date',
-                'redemption_code' => 'ECO-' . strtoupper(uniqid()),
+                'redemption_code' => 'ECO-'.strtoupper(uniqid()),
                 'icon' => $this->getRewardIcon($rewardType),
             ],
             'redeemed_at' => now(),
@@ -67,7 +67,7 @@ class RewardController extends Controller
             'message' => 'Reward redeemed successfully! Check your redemption history below.',
             'reward_name' => $reward['name'],
             'points_deducted' => $reward['cost'],
-            'remaining_points' => $user->eco_points
+            'remaining_points' => $user->eco_points,
         ]);
     }
 
