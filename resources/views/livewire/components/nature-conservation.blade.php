@@ -1,5 +1,5 @@
 <div class="font-inter bg-grid-pattern bg-gradient-to-br from-gray-900 to-gray-800">
-    <section class="relative py-12 sm:py-16 lg:py-20 overflow-hidden nature-pattern" x-data="natureConservation()">
+    <section class="relative py-12 sm:py-16 lg:py-20 overflow-hidden nature-pattern" x-data="natureConservation()" data-aos="fade-up">
         <!-- Background Elements -->
         <div class="absolute top-0 left-0 w-full h-full opacity-10">
             <div class="absolute top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-emerald-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 floating"></div>
@@ -9,27 +9,27 @@
 
         <div class="container mx-auto px-4 sm:px-6 relative z-10">
             <div class="text-center mb-10 sm:mb-12 lg:mb-16" data-aos="fade-up">
-                <div class="inline-flex items-center px-3 py-1 sm:px-4 mb-4 text-xs font-semibold text-white eco-badge rounded-full glow">
+                <div class="inline-flex items-center px-3 py-1 sm:px-4 mb-4 text-xs font-semibold text-white eco-badge rounded-full glow" data-aos="zoom-in" data-aos-delay="200">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                     </svg>
                     NATURE CONSERVATION
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">Explore Our <span class="text-gradient">Natural Heritage</span></h2>
-                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">Discover the beauty of our planet and learn how we can work together to preserve it for future generations.</p>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4" data-aos="fade-up" data-aos-delay="300">Explore Our <span class="text-gradient">Natural Heritage</span></h2>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4" data-aos="fade-up" data-aos-delay="400">Discover the beauty of our planet and learn how we can work together to preserve it for future generations.</p>
             </div>
 
             <!-- Interactive Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16" data-aos="fade-up" data-aos-delay="500">
                 <!-- Card 1 - Forest Conservation -->
                 <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-700"
                      data-aos="fade-up"
-                     data-aos-delay="100"
+                     data-aos-delay="600"
                      @mouseenter="animateCard(1)"
                      @mouseleave="resetCard(1)">
                     <div class="p-5 sm:p-6">
-                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-4 glow">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mb-4 glow icon-container">
+                            <svg class="w-6 h-6 text-white icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
                             </svg>
                         </div>
@@ -48,12 +48,12 @@
                 <!-- Card 2 - Wildlife Protection -->
                 <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-700"
                      data-aos="fade-up"
-                     data-aos-delay="200"
+                     data-aos-delay="700"
                      @mouseenter="animateCard(2)"
                      @mouseleave="resetCard(2)">
                     <div class="p-5 sm:p-6">
-                        <div class="w-12 h-12 gradient-bg-teal rounded-xl flex items-center justify-center mb-4 glow">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 gradient-bg-teal rounded-xl flex items-center justify-center mb-4 glow icon-container">
+                            <svg class="w-6 h-6 text-white icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
@@ -73,12 +73,12 @@
                 <!-- Card 3 - Sustainable Living -->
                 <div class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-700"
                      data-aos="fade-up"
-                     data-aos-delay="300"
+                     data-aos-delay="800"
                      @mouseenter="animateCard(3)"
                      @mouseleave="resetCard(3)">
                     <div class="p-5 sm:p-6">
-                        <div class="w-12 h-12 gradient-bg-emerald rounded-xl flex items-center justify-center mb-4 glow">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-12 h-12 gradient-bg-emerald rounded-xl flex items-center justify-center mb-4 glow icon-container">
+                            <svg class="w-6 h-6 text-white icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                             </svg>
                         </div>
@@ -97,13 +97,13 @@
             </div>
 
             <!-- Interactive Nature Dashboard -->
-            <div class="bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 mb-8 md:mb-12 border border-gray-700" data-aos="fade-up">
+            <div class="bg-gray-800 rounded-2xl shadow-2xl p-4 sm:p-6 mb-8 md:mb-12 border border-gray-700" data-aos="fade-up" data-aos-delay="900">
                 <div class="flex flex-col md:flex-row items-center justify-between mb-6 sm:mb-8">
-                    <div class="mb-4 md:mb-0 text-center md:text-left">
+                    <div class="mb-4 md:mb-0 text-center md:text-left slide-in-left">
                         <h3 class="text-2xl sm:text-3xl font-bold text-white mb-2">Nature Conservation Dashboard</h3>
                         <p class="text-gray-400 text-base sm:text-lg">Track our progress in preserving natural habitats and promoting biodiversity</p>
                     </div>
-                    <button @click="resetDashboard" class="px-4 py-2.5 sm:px-5 bg-emerald-900 text-emerald-300 rounded-lg font-medium hover:bg-emerald-800 transition-colors flex items-center border border-emerald-700 text-base">
+                    <button @click="resetDashboard" class="px-4 py-2.5 sm:px-5 bg-emerald-900 text-emerald-300 rounded-lg font-medium hover:bg-emerald-800 transition-colors flex items-center border border-emerald-700 text-base slide-in-right">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                         </svg>
@@ -348,7 +348,7 @@
                         <!-- Water Ripples -->
                         <div class="absolute inset-0 overflow-hidden">
                             <template x-for="i in 3" :key="i">
-                                <div class="absolute rounded-full border border-blue-300/30"
+                                <div class="absolute rounded-full border border-blue-300/30 ripple-effect"
                                     :style="`width: ${20 + i * 15}px; height: ${10 + i * 7}px; top: ${30 + i * 10}%; left: 50%; transform: translateX(-50%); animation: ripple ${2 + i}s infinite ease-out`"></div>
                             </template>
                         </div>
@@ -381,23 +381,23 @@
     </div>
 
             <!-- Conservation Statistics -->
-            <div class="grid md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
-                <div class="bg-gray-800 rounded-xl p-4 sm:p-6 text-center shadow-2xl border border-gray-700" data-aos="fade-up" data-aos-delay="100">
+            <div class="grid md:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16" data-aos="fade-up" data-aos-delay="1000">
+                <div class="bg-gray-800 rounded-xl p-4 sm:p-6 text-center shadow-2xl border border-gray-700 breathe" data-aos="zoom-in" data-aos-delay="1100">
                     <div class="text-2xl sm:text-3xl font-bold text-gradient mb-2" x-text="animatedStats.forestsProtected" x-init="animateCounter('forestsProtected', 0, 295000, 2000)"></div>
                     <div class="text-gray-400 text-xs sm:text-sm">Forests Protected (km²)</div>
                 </div>
-                <div class="bg-gray-800 rounded-xl p-4 sm:p-6 text-center shadow-2xl border border-gray-700" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-gray-800 rounded-xl p-4 sm:p-6 text-center shadow-2xl border border-gray-700 breathe" data-aos="zoom-in" data-aos-delay="1200">
                     <div class="text-2xl sm:text-3xl font-bold text-gradient-teal mb-2" x-text="animatedStats.speciesSaved" x-init="animateCounter('speciesSaved', 0, 728, 2000)"></div>
                     <div class="text-gray-400 text-xs sm:text-sm">Species Saved from Extinction</div>
                 </div>
-                <div class="bg-gray-800 rounded-xl p-4 sm:p-6 text-center shadow-2xl border border-gray-700" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-gray-800 rounded-xl p-4 sm:p-6 text-center shadow-2xl border border-gray-700 breathe" data-aos="zoom-in" data-aos-delay="1300">
                     <div class="text-2xl sm:text-3xl font-bold text-gradient mb-2" x-text="animatedStats.treesPlanted" x-init="animateCounter('treesPlanted', 0, 12500, 2000)"></div>
                     <div class="text-gray-400 text-xs sm:text-sm">Trees Planted This Year</div>
                 </div>
             </div>
 
             <!-- CTA Section -->
-            <div class="gradient-bg rounded-2xl p-6 sm:p-8 md:p-12 text-center text-white relative overflow-hidden glow" data-aos="fade-up">
+            <div class="gradient-bg rounded-2xl p-6 sm:p-8 md:p-12 text-center text-white relative overflow-hidden glow" data-aos="fade-up" data-aos-delay="1400">
                 <!-- Background Pattern -->
                 <div class="absolute top-0 right-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 -mt-20 sm:-mt-28 lg:-mt-32 -mr-20 sm:-mr-28 lg:-mr-32 bg-white opacity-10 rounded-full"></div>
                 <div class="absolute bottom-0 left-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-64 lg:h-64 -mb-20 sm:-mb-28 lg:-mb-32 -ml-20 sm:-ml-28 lg:-ml-32 bg-white opacity-10 rounded-full"></div>
@@ -475,6 +475,7 @@
         .eco-badge {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+            animation: badge-pulse 2s ease-in-out infinite;
         }
 
         .conservation-badge {
@@ -497,6 +498,11 @@
 
         .glow {
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        .icon-container:hover .icon-svg {
+            animation: icon-bounce 1s ease-in-out;
         }
 
         /* Mobile scrollbar styling */
@@ -692,6 +698,68 @@
         @keyframes flap {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(30deg); }
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 6px 20px rgba(5, 150, 105, 0.5); }
+        }
+
+        @keyframes icon-bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.6), 0 0 40px rgba(16, 185, 129, 0.4); }
+        }
+
+        @keyframes slide-in-left {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slide-in-right {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes typewriter {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0) translateX(-50%); opacity: 1; }
+            100% { transform: scale(4) translateX(-50%); opacity: 0; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .slide-in-left {
+            animation: slide-in-left 1s ease-out;
+        }
+
+        .slide-in-right {
+            animation: slide-in-right 1s ease-out;
+        }
+
+        .breathe {
+            animation: breathe 4s ease-in-out infinite;
+        }
+
+        .ripple-effect {
+            animation: ripple 3s infinite ease-out;
         }
     </style>
 @endpush

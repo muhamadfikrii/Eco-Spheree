@@ -1,6 +1,6 @@
 <x-app-layout>
     <!-- Hero Section Learn More -->
-    <section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 overflow-hidden">
+    <section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 overflow-hidden" data-aos="fade-up">
         <!-- Background Elements -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-20 animate-pulse"></div>
@@ -606,15 +606,6 @@
                             <span>85% waste reduction</span>
                         </div>
                     </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#" class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">
-                        View All Success Stories
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </a>
                 </div>
             </div>
         </div>

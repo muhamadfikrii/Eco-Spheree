@@ -1,7 +1,7 @@
 <x-app-layout>
     
 <div class="bg-gray-900 bg-grid-pattern">
-    <section class="relative h-screen w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-900">
+    <section class="relative h-screen w-full overflow-hidden flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-900" data-aos="fade-up">
             <div class="absolute inset-0 bg-pattern"></div>
         
         <div class="absolute top-1/4 left-1/4 w-6 h-6 rounded-full bg-green-400 opacity-30 float-animation"></div>
@@ -62,24 +62,32 @@
     </section>
 </div>
 
-    <section class=" py-10 border-b border-white p-1 bg-transparent">
+    <section class=" py-10 border-b border-white p-1 bg-transparent" data-aos="fade-up">
         <h1 class="text-center text-2xl font-bold text-white z-10">Sosial Media</h1>
         <div class="max-w-5xl mx-auto flex flex-wrap justify-center items-center gap-8">
-            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300" data-aos="zoom-in" data-aos-delay="200"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300" data-aos="zoom-in" data-aos-delay="300"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300" data-aos="zoom-in" data-aos-delay="400"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300" data-aos="zoom-in" data-aos-delay="500"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="text-white z-10 hover:text-emerald-500 text-3xl transition duration-300" data-aos="zoom-in" data-aos-delay="600"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </section>
 
-    <livewire:components.environmental-data />
+    <div data-aos="fade-up" data-aos-delay="700">
+        <livewire:components.environmental-data />
+    </div>
 
-    <livewire:components.reports-explore />
+    <div data-aos="fade-up" data-aos-delay="900">
+        <livewire:components.reports-explore />
+    </div>
 
-    <livewire:ecological-marvels />
+    <div data-aos="fade-up" data-aos-delay="1100">
+        <livewire:ecological-marvels />
+    </div>
 
-    <livewire:components.nature-conservation />
+    <div data-aos="fade-up" data-aos-delay="1300">
+        <livewire:components.nature-conservation />
+    </div>
 
 </div>
 @push('scripts')

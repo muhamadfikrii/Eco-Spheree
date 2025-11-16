@@ -49,11 +49,11 @@
                     
                     <div class="flex items-center gap-2 sm:gap-3">
                         <!-- Enhanced 3D/2D Toggle Button -->
-                        <button @click="toggleViewMode" 
+                        <button @click="toggleViewMode"
                                 class="px-3 sm:px-4 py-2 bg-slate-700/50 hover:bg-slate-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 border border-slate-600/50 text-xs sm:text-sm relative overflow-hidden group"
-                                :class="viewMode === '3d' 
-                                ? 'bg-gradient-to-r from-purple-400/20 to-blue-400/20 text-gray-800' 
-                                : 'bg-gradient-to-r from-gray-300 to-slate-300 border-gray-200/50 text-gray-700'">
+                                :class="viewMode === '3d'
+                                ? 'bg-gradient-to-r from-purple-400/20 to-blue-400/20 text-slate-100'
+                                : 'bg-gradient-to-r from-slate-300 to-slate-400 border-slate-200/50 text-slate-700'">
                             
                             <!-- Animated Background Effect -->
                             <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"

@@ -85,7 +85,7 @@
     }
 }">
     <!-- Learn More Hero Section -->
-    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700">
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700" data-aos="fade-up">
         <!-- Background Elements -->
         <div class="absolute inset-0 overflow-hidden ">
             <div class="absolute top-20 left-10 w-56 h-60 bg-[#4a8c6d]/10 rounded-full filter blur-3xl animate-float-slow"></div>
@@ -123,11 +123,11 @@
     </section>
 
    <!-- Mission & Vision Section -->
-    <section x-data="{ 
-        expanded: null, 
-        activeFeature: 0, 
-        setActiveFeature(index) { this.activeFeature = index; } 
-    }" class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]/80">
+    <section x-data="{
+        expanded: null,
+        activeFeature: 0,
+        setActiveFeature(index) { this.activeFeature = index; }
+    }" class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]/80" data-aos="fade-up" data-aos-delay="200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <!-- Left Column: Text and Accordion -->
@@ -220,7 +220,7 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-[#1a3c34]/30">
+    <section id="features" class="py-20 bg-[#1a3c34]/30" data-aos="fade-up" data-aos-delay="400">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 text-text-[#e8f4f0]">Innovative Features</h2>
@@ -347,7 +347,7 @@
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-[#0f2a3d]/80">
+    <section id="how-it-works" class="py-20 bg-[#0f2a3d]/80" data-aos="fade-up" data-aos-delay="600">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 text-text-[#e8f4f0]">How Eco-Sphere Works</h2>
@@ -472,7 +472,7 @@
     </section>
 
     <!-- Impact & Call to Action -->
-    <section class="py-20 bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34]">
+    <section class="py-20 bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34]" data-aos="fade-up" data-aos-delay="800">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6 text-text-[#e8f4f0]">Join the Movement for Sustainable Nature</h2>
             <p class="text-[#a0b8b0] text-lg max-w-2xl mx-auto mb-10">
