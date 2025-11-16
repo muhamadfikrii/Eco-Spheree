@@ -34,6 +34,11 @@ class WeatherWidget extends Component
     {
         $this->componentId = $this->getId();
         $this->fetchWeatherData();
+
+        // Set up auto-refresh every 5 minutes if enabled
+        if ($this->autoRefresh) {
+            $this->dispatch('startAutoRefresh', componentId: $this->componentId);
+        }
     }
 
     public function setLocation($data)
@@ -180,6 +185,12 @@ class WeatherWidget extends Component
     public function toggleAutoRefresh()
     {
         $this->autoRefresh = ! $this->autoRefresh;
+
+        if ($this->autoRefresh) {
+            $this->dispatch('startAutoRefresh', componentId: $this->componentId);
+        } else {
+            $this->dispatch('stopAutoRefresh', componentId: $this->componentId);
+        }
     }
 
     public function render()

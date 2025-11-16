@@ -82,7 +82,10 @@
     <livewire:components.nature-conservation />
 
 </div>
+@push('scripts')
 <script>
+    // Custom Tailwind config for this page
+    if (typeof tailwind !== 'undefined') {
         tailwind.config = {
             theme: {
                 extend: {
@@ -123,7 +126,9 @@
                 }
             }
         }
-    </script>
+    }
+</script>
+@endpush
     <style>
 .pulse-glow {
     animation: pulse-glow 4s ease-in-out infinite alternate;

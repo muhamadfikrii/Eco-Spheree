@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RewardController;
 use App\Livewire\ChallengeCenter;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
@@ -59,7 +60,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/rewards/redeem', [App\Http\Controllers\RewardController::class, 'redeem'])->name('rewards.redeem');
+    Route::post('/rewards/redeem', [RewardController::class, 'redeem'])->name('rewards.redeem');
 });
 
 require __DIR__.'/auth.php';

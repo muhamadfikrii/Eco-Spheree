@@ -309,7 +309,7 @@
                                 <div>
                                     <x-input-label for="username" :value="__('Username')" class="block text-sm font-medium text-gray-700 dark:text-gray-200" />
                                     <x-text-input id="username" name="username" type="text" class="mt-1 block w-full bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                                        :value="old('username', $user->username)" required autocomplete="username" />
+                                        :value="old('username', $user->username)" autocomplete="username" />
                                     <x-input-error class="mt-2 text-red-600 dark:text-red-400" :messages="$errors->get('username')" />
                                 </div>
                             </div>

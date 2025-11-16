@@ -70,6 +70,11 @@
             @if($lastUpdated)
                 <div class="text-xs text-slate-400 mt-4">
                     Updated: {{ $lastUpdated }}
+                    @if($autoRefresh)
+                        <span class="ml-2 text-green-400">• Auto-refresh ON</span>
+                    @else
+                        <span class="ml-2 text-slate-500">• Auto-refresh OFF</span>
+                    @endif
                 </div>
             @endif
         </div>
@@ -108,7 +113,7 @@ let currentAnimations = {};
 function initWeatherAnimation(componentId, animationType) {
     const containerId = `weather-animation-${componentId}`;
     const container = document.getElementById(containerId);
-    
+
     if (!container) {
         console.warn('Container not found:', containerId);
         return;
@@ -147,6 +152,30 @@ document.addEventListener('livewire:init', () => {
             initWeatherAnimation('{{ $componentId }}', animation);
         }
     });
+
+    // Auto-refresh functionality
+    const autoRefreshIntervals = {};
+
+    Livewire.on('startAutoRefresh', ({ componentId }) => {
+        if (autoRefreshIntervals[componentId]) {
+            clearInterval(autoRefreshIntervals[componentId]);
+        }
+
+        // Refresh every 5 minutes (300,000 ms)
+        autoRefreshIntervals[componentId] = setInterval(() => {
+            const component = Livewire.find(componentId);
+            if (component) {
+                component.call('fetchWeatherData');
+            }
+        }, 300000);
+    });
+
+    Livewire.on('stopAutoRefresh', ({ componentId }) => {
+        if (autoRefreshIntervals[componentId]) {
+            clearInterval(autoRefreshIntervals[componentId]);
+            delete autoRefreshIntervals[componentId];
+        }
+    });
 });
 
 document.addEventListener('livewire:load', () => {
@@ -154,54 +183,6 @@ document.addEventListener('livewire:load', () => {
     setTimeout(() => {
         initWeatherAnimation('{{ $componentId }}', '{{ $currentAnimation }}');
     }, 500);
-});
-
-// Alpine.js
-document.addEventListener('alpine:init', () => {
-    Alpine.data('weatherWidget', () => ({
-        permissionDenied: false,
-
-        init() {
-            const locationDenied = localStorage.getItem('location_denied');
-            if (locationDenied === 'true') {
-                return;
-            }
-
-            if (!navigator.geolocation) {
-                this.showLocationError('Your browser does not support location features.');
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                (pos) => {
-                    const { latitude, longitude } = pos.coords;
-                    @this.setLocation({ latitude, longitude });
-                },
-                (err) => {
-                    let msg = 'Failed to detect location.';
-                    if (err.code === 1) {
-                        msg = 'Location access denied. Please enable location permissions in your browser.';
-                        localStorage.setItem('location_denied', 'true');
-                    } else if (err.code === 2) {
-                        msg = 'Location unavailable. Please ensure your GPS is active.';
-                    }
-                    this.showLocationError(msg);
-                }
-            );
-        },
-
-        showLocationError(msg) {
-            this.permissionDenied = true;
-            Swal.fire({
-                icon: 'warning',
-                title: 'Location Inactive',
-                text: msg,
-                confirmButtonText: 'OK, Got it',
-                background: '#fff',
-                color: '#1e293b'
-            });
-        }
-    }));
 });
 </script>
 @endpush
