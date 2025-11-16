@@ -143,13 +143,12 @@ class ChallengeCenter extends Component
         }
 
         // Logika untuk daily streak
-        $newStreak = 1; // Default ke 1 untuk hari ini
-        if ($user->completed_all_challenges_yesterday) {
-            // Jika user menyelesaikan semua challenge kemarin, tambahkan streak
+        if ($user->completed_all_challenges_today) {
+            // Jika user menyelesaikan semua challenge hari ini, tambahkan streak
             $newStreak = ($user->daily_streak ?? 0) + 1;
         } else {
-            // Jika tidak menyelesaikan semua kemarin, reset streak ke 1
-            $newStreak = 1;
+            // Jika tidak menyelesaikan semua hari ini, reset streak ke 0
+            $newStreak = 0;
         }
 
         // Reset progress misi harian di database
