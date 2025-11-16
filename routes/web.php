@@ -7,7 +7,6 @@ use App\Livewire\ChallengeCenter;
 use App\Livewire\OnboardingWizard;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
     return view('Home');
 })->name('home');
