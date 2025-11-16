@@ -106,9 +106,9 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>
                         </div>
-                        <span class="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded-full">{{ Auth::user()->challenges_completed ?? 0 }}/11</span>
+                        <span class="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded-full">{{ Auth::user()->daily_missions_completed ?? 0 }}/11</span>
                     </div>
-                    <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">{{ Auth::user()->challenges_completed ?? 0 }}/11</div>
+                    <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">{{ Auth::user()->daily_missions_completed ?? 0 }}/11</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Missions</div>
                 </div>
 
@@ -130,14 +130,14 @@
 
         {{-- Ringkasan Progress --}}
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8 border border-gray-200 dark:border-gray-700">
-            <div class="flex items-center justify-between mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">Overall Progress</h3>
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{{ Auth::user()->challenges_completed ?? 0 }}/11 missions completed</span>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{{ Auth::user()->daily_missions_completed ?? 0 }}/11 missions completed</span>
             </div>
             <div class="relative mb-4">
                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
                     <div class="bg-gradient-to-r from-green-400 to-emerald-500 h-4 rounded-full transition-all duration-500 relative overflow-hidden shadow-sm"
-                         style="width: {{ (Auth::user()->challenges_completed ?? 0) > 0 ? ((Auth::user()->challenges_completed / 11) * 100) : 0 }}%">
+                         style="width: {{ (Auth::user()->daily_missions_completed ?? 0) > 0 ? ((Auth::user()->daily_missions_completed / 11) * 100) : 0 }}%">
                         <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
                     </div>
                 </div>
@@ -155,53 +155,58 @@
 
         {{-- Tab Pengaturan --}}
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden mb-8">
-            <div class="border-b border-gray-200 dark:border-gray-700">
-                <nav class="flex flex-wrap -mb-px" x-data="{ activeTab: 'profile' }">
+            <div class="border-b border-gray-200 w-full dark:border-gray-700 overflow-x-auto">
+                <nav class="flex min-w-max sm:min-w-0" x-data="{ activeTab: 'profile' }">
                     <button @click="activeTab = 'profile'"
                             :class="activeTab === 'profile' ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
-                            class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            class="flex-shrink-0 py-3 px-4 sm:py-4 sm:px-6 border-b-2 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
-                        Profile Information
+                        <span class="hidden xs:inline">Profile Information</span>
+                        <span class="xs:hidden">Profile</span>
                     </button>
                     <button @click="activeTab = 'password'"
                             :class="activeTab === 'password' ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
-                            class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            class="flex-shrink-0 py-3 px-4 sm:py-4 sm:px-6 border-b-2 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                         </svg>
-                        password
+                        <span class="hidden xs:inline">Update Password</span>
+                        <span class="xs:hidden">Password</span>
                     </button>
                     <button @click="activeTab = 'achievements'"
                             :class="activeTab === 'achievements' ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
-                            class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            class="flex-shrink-0 py-3 px-4 sm:py-4 sm:px-6 border-b-2 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        achievements
+                        <span class="hidden xs:inline">Achievements</span>
+                        <span class="xs:hidden">Achievements</span>
                     </button>
                     <button @click="activeTab = 'rewards'"
                             :class="activeTab === 'rewards' ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
-                            class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            class="flex-shrink-0 py-3 px-4 sm:py-4 sm:px-6 border-b-2 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                         </svg>
-                        rewards
+                        <span class="hidden xs:inline">Rewards & Benefits</span>
+                        <span class="xs:hidden">Rewards</span>
                     </button>
                     <button @click="activeTab = 'danger'"
                             :class="activeTab === 'danger' ? 'border-red-500 text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20' : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'"
-                            class="py-4 px-6 border-b-2 font-semibold text-sm transition-all duration-200 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            class="flex-shrink-0 py-3 px-4 sm:py-4 sm:px-6 border-b-2 font-semibold text-xs sm:text-sm transition-all duration-200 flex items-center gap-2 sm:gap-3 whitespace-nowrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
-                        Danger Zone
+                        <span class="hidden xs:inline">Danger Zone</span>
+                        <span class="xs:hidden">Danger</span>
                     </button>
                 </nav>
             </div>
 
             {{-- Konten Tab --}}
-            <div class="p-8">
+            <div class="p-4 sm:p-8">
                 <div x-show="activeTab === 'profile'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
                     <div class="mb-6">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Information Profile</h3>
@@ -218,7 +223,7 @@
                             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="space-y-4">
                                 @csrf
                                 @method('PATCH')
-                                <div class="flex items-center gap-6">
+                                <div class="flex flex-col sm:flex-row items-center gap-6">
                                     <div class="relative w-20 h-20">
                                         <!-- Profile Image -->
                                         <img
@@ -237,7 +242,7 @@
                                         </template>
                                     </div>
 
-                                    <div class="flex-1">
+                                    <div class="flex-1 w-full">
                                         <input 
                                             ref="profile_photo"
                                             id="profile_photo" 
@@ -318,13 +323,13 @@
 
                                 @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                                     <div class="mt-3 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-                                        <div class="flex">
-                                            <div class="flex-shrink-0">
+                                        <div class="flex flex-col sm:flex-row">
+                                            <div class="flex-shrink-0 mb-2 sm:mb-0">
                                                 <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                                                     <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
                                                 </svg>
                                             </div>
-                                            <div class="ml-3">
+                                            <div class="ml-0 sm:ml-3">
                                                 <p class="text-sm text-yellow-800 dark:text-yellow-200">
                                                     {{ __('Your email address is unverified.') }}
                                                     <button form="send-verification" type="submit"
@@ -344,7 +349,7 @@
                             </div>
 
                             {{-- Tombol Simpan --}}
-                            <div class="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                                 <x-primary-button class="bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500">{{ __('Save Changes') }}</x-primary-button>
 
                                 @if (session('status') === 'profile-updated')
@@ -396,7 +401,7 @@
                         </div>
 
                         {{-- Tombol Simpan --}}
-                        <div class="flex items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                             <x-primary-button class="bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500">{{ __('Update Password') }}</x-primary-button>
 
                             @if (session('status') === 'password-updated')
@@ -466,7 +471,7 @@
 
                     {{-- Current Points Display --}}
                     <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 mb-6 border border-green-200 dark:border-green-800">
-                        <div class="flex items-center justify-between">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                             <div>
                                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">Current Eco-Points</h4>
                                 <p class="text-3xl font-bold text-green-600 dark:text-green-400">{{ number_format(Auth::user()->eco_points ?? 0) }}</p>
@@ -627,7 +632,7 @@
                             @endphp
                             @if($recentRedemptions->count() > 0)
                                 @foreach($recentRedemptions as $redemption)
-                                    <div class="flex items-center justify-between py-2 border-b border-gray-200 dark:border-gray-700">
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 py-2 border-b border-gray-200 dark:border-gray-700">
                                         <div class="flex items-center gap-3">
                                             <span class="text-xl">{{ $redemption->reward_details['icon'] ?? '🎁' }}</span>
                                             <div>
@@ -651,7 +656,7 @@
                 <div x-show="activeTab === 'danger'"
                 x-transition:enter="transition ease-out duration-300"
                 x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100" class="hidden">
+                x-transition:enter-end="opacity-100">
                     <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
                         <div class="flex items-center mb-4">
                             <div class="flex-shrink-0">
@@ -833,7 +838,8 @@
             background: rgba(34, 197, 94, 0.7);
         }
     </style>
-</x-app-layout><script>
+</x-app-layout>
+<script>
 function redeemReward(rewardType) {
     if (confirm("Are you sure you want to redeem this reward?")) {
         fetch("/rewards/redeem", {
