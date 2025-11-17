@@ -1,6 +1,37 @@
-<x-app-layout>
+<x-app-layout
+     x-data="{
+         initLearnMoreAnimations() {
+             const observerOptions = {
+                 threshold: 0.1,
+                 rootMargin: '0px 0px -50px 0px'
+             };
+
+             const observer = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         entry.target.classList.add('animate-in');
+                         observer.unobserve(entry.target);
+                     }
+                 });
+             }, observerOptions);
+
+             // Observe learn-more section elements
+             const elements = [
+                 this.$refs.heroSection,
+                 this.$refs.aboutSection,
+                 this.$refs.sustainableSection,
+                 this.$refs.platformSection,
+                 this.$refs.storiesSection,
+                 this.$refs.ctaSection
+             ].filter(el => el);
+
+             elements.forEach(el => observer.observe(el));
+         }
+     }"
+     x-init="setTimeout(() => $nextTick(() => initLearnMoreAnimations()), 100)">
+
     <!-- Hero Section Learn More -->
-    <section class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 overflow-hidden">
+    <section x-ref="heroSection" class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 overflow-hidden opacity-0 translate-y-4 transition-all duration-700 ease-out">
         <!-- Background Elements -->
         <div class="absolute inset-0 opacity-10">
             <div class="absolute top-10 left-10 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-20 animate-pulse"></div>
@@ -74,7 +105,7 @@
     </section>
 
     <!-- About Our Platform -->
-    <section class="py-16 sm:py-24 bg-white">
+    <section x-ref="aboutSection" class="py-16 sm:py-24 bg-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-200">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="max-w-4xl mx-auto">
                 <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-lg border border-emerald-100">
@@ -389,7 +420,7 @@
     </section>
 
     <!-- How Our Platform Helps -->
-    <section class="py-16 sm:py-24 bg-white">
+    <section x-ref="platformSection" class="py-16 sm:py-24 bg-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-400">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How Our Platform Supports Sustainable Living</h2>
@@ -545,7 +576,7 @@
     </section>
 
     <!-- Success Stories -->
-    <section class="py-16 sm:py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section x-ref="storiesSection" class="py-16 sm:py-24 bg-gradient-to-b from-gray-50 to-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-500">
         <div class="container mx-auto px-4 sm:px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Sustainable Living Success Stories</h2>
@@ -614,7 +645,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 sm:py-24 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+    <section x-ref="ctaSection" class="py-16 sm:py-24 bg-gradient-to-r from-emerald-600 to-teal-600 text-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-600">
         <div class="container mx-auto px-4 sm:px-6 text-center">
             <h2 class="text-3xl sm:text-4xl font-bold mb-6">Ready to Embrace Sustainable Living?</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
@@ -642,23 +673,29 @@
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* Animation for stats counters */
         @keyframes countUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .count-up {
             animation: countUp 1s ease-out forwards;
         }
-        
+
         /* Custom gradient text */
         .gradient-text {
             background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        /* Scroll-triggered animations */
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
     </style>
 

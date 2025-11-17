@@ -293,11 +293,13 @@
                                                             </div>
                                                         </div>
 
-                                                        @if($submission->photo_path)
                                                             <div class="mt-4">
-                                                                <img src="{{ $submission->photo_url }}" alt="Submission Photo" class="w-32 h-32 object-cover rounded-lg border border-gray-200">
+                                                                @if($submission->photo_path)
+                                                                    <img src="{{ asset('storage/' . $submission->photo_path) }}" alt="Submission Photo" class="w-32 h-32 object-cover rounded-lg border border-gray-200">
+                                                                @else
+                                                                    <img src="{{ $submission->ecoChallenge->image_url ?? 'https://via.placeholder.com/128x128?text=No+Photo' }}" alt="Challenge Image" class="w-32 h-32 object-cover rounded-lg border border-gray-200">
+                                                                @endif
                                                             </div>
-                                                        @endif
 
                                                         <p class="mt-4 text-gray-700 leading-relaxed">{{ $submission->description }}</p>
                                                     </div>
@@ -413,7 +415,7 @@
                                 @foreach($rejectedSubmissions as $submission)
                                     <div class="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-md transition-all duration-200">
                                         <div class="flex items-start space-x-4">
-                                            <img src="{{ $submission->user->profile_photo_url ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-12 h-12 rounded-full flex-shrink-0">
+                                            <img src="{{ $submission->user->profile_photo ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-12 h-12 rounded-full flex-shrink-0">
                                             <div class="flex-1">
                                                 <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between">
                                                     <div>
