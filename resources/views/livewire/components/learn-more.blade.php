@@ -164,13 +164,6 @@
                                         <span class="text-gray-700">Progress tracking</span>
                                     </li>
                                 </ul>
-                                
-                                <a href="{{ route('register') }}" class="mt-6 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
-                                    Explore Features
-                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                    </svg>
-                                </a>
                             </div>
                         </div>
                     </div>

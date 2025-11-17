@@ -268,6 +268,7 @@ let currentRegion = 'all';
 let satelliteView = false;
 let satelliteLayer = null;
 let markerClusters = null;
+let userLocationMarker = null;
 
 const regionCoordinates = {
     all: { center: [-2.5489, 118.0149], zoom: 5 },
@@ -795,20 +796,23 @@ function toggleSatelliteView() {
 
 function toggleHeatmap() {
     if (!mainMap) return;
-    
+
     showHeatmap = !showHeatmap;
     const btn = document.getElementById('heatmap-btn');
-    
+
     if (showHeatmap) {
+        // Sembunyikan marker dan cluster saat heatmap aktif
+        clearMarkers();
+
         let data = layerData[activeLayer];
         if (currentRegion !== 'all') {
             data = data.filter(item => item.region === currentRegion);
         }
-        
+
         const heatmapData = data.map(point => {
             return [point.lat, point.lng, point.value / (activeLayer === 'biodiversity' ? 20 : 10)];
         });
-        
+
         heatmapLayer = L.heatLayer(heatmapData, {
             radius: 25,
             blur: 15,
@@ -821,7 +825,7 @@ function toggleHeatmap() {
                 1.0: 'red'
             }
         }).addTo(mainMap);
-        
+
         btn.classList.add('bg-red-600/20', 'text-red-400');
         showMapInfo('Heatmap Enabled', 'Visualizing data intensity across the region');
     } else {
@@ -830,6 +834,8 @@ function toggleHeatmap() {
             heatmapLayer = null;
         }
         btn.classList.remove('bg-red-600/20', 'text-red-400');
+        // Tampilkan kembali marker setelah heatmap dimatikan
+        addSampleData();
         showMapInfo('Heatmap Disabled', 'Returning to marker view');
     }
 }
@@ -838,11 +844,11 @@ function resetView() {
     currentRegion = 'all';
     document.getElementById('region-filter').value = 'all';
     document.getElementById('region-name').textContent = 'Indonesia';
-    
+
     if (mainMap && regionCoordinates.all) {
         mainMap.setView(regionCoordinates.all.center, regionCoordinates.all.zoom);
     }
-    
+
     addSampleData();
     showMapInfo('View Reset', 'Returned to full Indonesia view');
 }
@@ -1058,24 +1064,27 @@ function createBiodiversityLegend() {
 
 function clearMarkers() {
     if (!mainMap) return;
-    
+
     // Hapus marker individual
     currentMarkers.forEach(marker => {
         mainMap.removeLayer(marker);
     });
     currentMarkers = [];
-    
+
     // Hapus cluster group jika ada
     if (markerClusters) {
         mainMap.removeLayer(markerClusters);
         markerClusters = null;
     }
-    
+
     // Hapus heatmap jika ada
     if (heatmapLayer) {
         mainMap.removeLayer(heatmapLayer);
         heatmapLayer = null;
     }
+
+    // Jangan hapus user location marker
+    // userLocationMarker tetap ada
 }
 
 function showMapInfo(title, content) {
@@ -1112,11 +1121,32 @@ function useCurrentLocation() {
             const lng = position.coords.longitude;
 
             if (mainMap) {
+                // Hapus marker lokasi sebelumnya jika ada
+                if (userLocationMarker) {
+                    mainMap.removeLayer(userLocationMarker);
+                }
+
+                // Buat marker baru untuk lokasi pengguna
+                userLocationMarker = L.marker([lat, lng], {
+                    icon: L.divIcon({
+                        html: `
+                            <div class="relative">
+                                <div class="w-12 h-12 rounded-full border-4 border-white shadow-lg flex items-center justify-center bg-blue-500">
+                                    <i class="fas fa-user text-white text-lg"></i>
+                                </div>
+                                <div class="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white animate-ping"></div>
+                            </div>
+                        `,
+                        className: 'user-location-marker',
+                        iconSize: [48, 48],
+                        iconAnchor: [24, 24]
+                    })
+                })
+                .addTo(mainMap)
+                .bindPopup('Your current location')
+                .openPopup();
+
                 mainMap.setView([lat, lng], 12);
-                L.marker([lat, lng])
-                    .addTo(mainMap)
-                    .bindPopup('Your current location')
-                    .openPopup();
 
                 showMapInfo('Location Found', 'You are here! Explore environmental data around you.');
             }
