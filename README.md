@@ -112,13 +112,28 @@ Eco-Spheree is a comprehensive web application built with Laravel that empowers 
    php artisan key:generate
    ```
 
-5. **Database setup**
+5. **Configure Environment Variables**
+   Edit the `.env` file and configure the database settings:
+
+   ```env
+   # Database Configuration
+   DB_CONNECTION=sqlite
+   # For MySQL, use:
+   # DB_CONNECTION=mysql
+   # DB_HOST=127.0.0.1
+   # DB_PORT=3306
+   # DB_DATABASE=eco_spheree
+   # DB_USERNAME=root
+   # DB_PASSWORD=your_password
+   ```
+
+6. **Database setup**
    ```bash
    php artisan migrate
    php artisan db:seed
    ```
 
-6. **Build assets**
+7. **Build assets**
    ```bash
    npm run build
    ```
