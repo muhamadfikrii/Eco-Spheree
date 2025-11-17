@@ -6,7 +6,6 @@
                  threshold: 0.1,
                  rootMargin: '0px 0px -50px 0px'
              };
-
              const observer = new IntersectionObserver((entries) => {
                  entries.forEach(entry => {
                      if (entry.isIntersecting) {
@@ -15,7 +14,6 @@
                      }
                  });
              }, observerOptions);
-
              // Observe learn-more section elements
              const elements = [
                  this.$refs.heroSection,
@@ -25,12 +23,10 @@
                  this.$refs.storiesSection,
                  this.$refs.ctaSection
              ].filter(el => el);
-
              elements.forEach(el => observer.observe(el));
          }
      }"
      x-init="setTimeout(() => $nextTick(() => initLearnMoreAnimations()), 100)">
-
     <!-- Hero Section Learn More -->
     <section x-ref="heroSection" class="relative bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-900 overflow-hidden opacity-0 translate-y-4 transition-all duration-700 ease-out">
         <!-- Background Elements -->
@@ -39,7 +35,6 @@
             <div class="absolute top-10 right-10 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
             <div class="absolute bottom-10 left-1/2 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-white rounded-full mix-blend-overlay filter blur-xl opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
         </div>
-
         <div class="relative z-10 container mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-32">
             <div class="text-center max-w-4xl mx-auto">
                 <div class="inline-flex items-center px-4 py-2 mb-6 text-sm font-semibold text-emerald-100 bg-emerald-800/50 backdrop-blur-sm rounded-full border border-emerald-700/50">
@@ -48,16 +43,13 @@
                     </svg>
                     About Our Platform & Sustainable Living
                 </div>
-                
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                    Learn More About 
+                    Learn More About
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300">Our Mission</span>
                 </h1>
-                
                 <p class="text-lg sm:text-xl md:text-2xl text-emerald-100 mb-8 max-w-3xl mx-auto leading-relaxed">
                     Discover how our platform empowers communities to embrace eco-friendly practices that reduce environmental footprint and promote harmony with nature.
                 </p>
-                
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
                     <a href="#sustainable-living" class="px-6 py-3 bg-white text-emerald-700 font-semibold rounded-lg hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -72,7 +64,6 @@
                         Join Our Community
                     </a>
                 </div>
-                
                 <!-- Stats -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
                     <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
@@ -94,7 +85,6 @@
                 </div>
             </div>
         </div>
-        
         <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
             <div class="animate-bounce">
@@ -104,7 +94,6 @@
             </div>
         </div>
     </section>
-
     <!-- About Our Platform -->
     <section x-ref="aboutSection" class="py-16 sm:py-24 bg-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-200">
         <div class="container mx-auto px-4 sm:px-6">
@@ -120,11 +109,9 @@
                                 </div>
                                 <h3 class="text-2xl font-bold text-gray-900">About Our Platform</h3>
                             </div>
-                            
                             <p class="text-gray-700 mb-6 text-lg">
                                 Our platform is designed to empower individuals and communities to make meaningful changes toward sustainable living. We provide the tools, resources, and community support needed to reduce environmental impact and create harmony between human activities and nature.
                             </p>
-                            
                             <div class="space-y-4 mb-8">
                                 <div class="flex items-start">
                                     <svg class="w-5 h-5 text-emerald-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -151,7 +138,6 @@
                                     </p>
                                 </div>
                             </div>
-                            
                             <div class="bg-white rounded-xl p-4 border border-emerald-200">
                                 <h4 class="font-bold text-emerald-800 mb-2">Platform Impact</h4>
                                 <div class="grid grid-cols-2 gap-4">
@@ -166,7 +152,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="md:w-1/3">
                             <div class="bg-white rounded-xl p-6 shadow-md border border-emerald-100">
                                 <h4 class="font-bold text-gray-900 mb-4">Platform Features</h4>
@@ -203,7 +188,6 @@
             </div>
         </div>
     </section>
-
     <!-- Sustainable Living Section -->
     <section id="sustainable-living" class="py-16 sm:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div class="container mx-auto px-4 sm:px-6">
@@ -213,7 +197,6 @@
                     Embrace eco-friendly practices that reduce your environmental footprint and promote harmony with nature
                 </p>
             </div>
-            
             <div class="max-w-6xl mx-auto">
                 <!-- Main Sustainable Living Card -->
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-emerald-100 mb-12">
@@ -230,11 +213,9 @@
                                     <p class="text-emerald-100">Our Core Philosophy</p>
                                 </div>
                             </div>
-                            
                             <p class="text-lg mb-6 leading-relaxed">
                                 Sustainable living means making conscious choices that reduce our environmental impact while promoting harmony with nature. It's about creating a balance between meeting our needs and preserving the planet for future generations.
                             </p>
-                            
                             <div class="bg-white/20 backdrop-blur-sm rounded-xl p-4">
                                 <h4 class="font-bold mb-2">Key Principles</h4>
                                 <ul class="space-y-2 text-sm">
@@ -259,7 +240,6 @@
                                 </ul>
                             </div>
                         </div>
-                        
                         <div class="md:w-1/2 p-8">
                             <h4 class="text-xl font-bold text-gray-900 mb-4">Why Sustainable Living Matters</h4>
                             <div class="space-y-4">
@@ -274,7 +254,6 @@
                                         <p class="text-gray-600 text-sm">Reduces pollution, conserves resources, and protects biodiversity for future generations.</p>
                                     </div>
                                 </div>
-                                
                                 <div class="flex items-start">
                                     <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                                         <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -286,7 +265,6 @@
                                         <p class="text-gray-600 text-sm">Saves money through reduced consumption and supports sustainable local economies.</p>
                                     </div>
                                 </div>
-                                
                                 <div class="flex items-start">
                                     <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                                         <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -298,7 +276,6 @@
                                         <p class="text-gray-600 text-sm">Promotes healthier lifestyles through cleaner environments and mindful consumption.</p>
                                     </div>
                                 </div>
-                                
                                 <div class="flex items-start">
                                     <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center mr-3 mt-1 flex-shrink-0">
                                         <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -314,7 +291,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <!-- Sustainable Practices Grid -->
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Practice 1 -->
@@ -349,7 +325,6 @@
                             </li>
                         </ul>
                     </div>
-                    
                     <!-- Practice 2 -->
                     <div class="bg-white rounded-2xl p-6 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300">
                         <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
@@ -382,7 +357,6 @@
                             </li>
                         </ul>
                     </div>
-                    
                     <!-- Practice 3 -->
                     <div class="bg-white rounded-2xl p-6 shadow-lg border border-emerald-100 hover:shadow-xl transition-all duration-300">
                         <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4">
@@ -419,7 +393,6 @@
             </div>
         </div>
     </section>
-
     <!-- How Our Platform Helps -->
     <section x-ref="platformSection" class="py-16 sm:py-24 bg-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-400">
         <div class="container mx-auto px-4 sm:px-6">
@@ -429,7 +402,6 @@
                     We provide the tools, community, and resources to make sustainable living accessible and achievable for everyone
                 </p>
             </div>
-            
             <div class="max-w-5xl mx-auto">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Feature 1 -->
@@ -466,7 +438,6 @@
                             </li>
                         </ul>
                     </div>
-                    
                     <!-- Feature 2 -->
                     <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100">
                         <div class="flex items-center mb-4">
@@ -501,7 +472,6 @@
                             </li>
                         </ul>
                     </div>
-                    
                     <!-- Feature 3 -->
                     <div class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-6 border border-purple-100">
                         <div class="flex items-center mb-4">
@@ -536,7 +506,6 @@
                             </li>
                         </ul>
                     </div>
-                    
                     <!-- Feature 4 -->
                     <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border border-amber-100">
                         <div class="flex items-center mb-4">
@@ -575,7 +544,6 @@
             </div>
         </div>
     </section>
-
     <!-- Success Stories -->
     <section x-ref="storiesSection" class="py-16 sm:py-24 bg-gradient-to-b from-gray-50 to-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-500">
         <div class="container mx-auto px-4 sm:px-6">
@@ -585,7 +553,6 @@
                     Discover how our community members have transformed their lives through sustainable practices
                 </p>
             </div>
-            
             <div class="max-w-5xl mx-auto">
                 <div class="grid md:grid-cols-2 gap-8">
                     <!-- Story 1 -->
@@ -609,7 +576,6 @@
                             <span>40% food self-sufficiency</span>
                         </div>
                     </div>
-                    
                     <!-- Story 2 -->
                     <div class="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                         <div class="flex items-center mb-4">
@@ -632,10 +598,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="text-center mt-12">
+                    <a href="#" class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">
+                        View All Success Stories
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- CTA Section -->
     <section x-ref="ctaSection" class="py-16 sm:py-24 bg-gradient-to-r from-emerald-600 to-teal-600 text-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-600">
         <div class="container mx-auto px-4 sm:px-6 text-center">
@@ -659,23 +632,19 @@
             </div>
         </div>
     </section>
-
     <style>
         /* Custom scroll behavior for smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-
         /* Animation for stats counters */
         @keyframes countUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .count-up {
             animation: countUp 1s ease-out forwards;
         }
-
         /* Custom gradient text */
         .gradient-text {
             background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
@@ -683,14 +652,12 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
         /* Scroll-triggered animations */
         .animate-in {
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
     </style>
-
     <script>
         // Add scroll-triggered animations for stats
         document.addEventListener('DOMContentLoaded', function() {
@@ -702,7 +669,6 @@
                     offset: 100
                 });
             }
-            
             // Add intersection observer for stats animation
             const statsSection = document.querySelector('.relative.bg-gradient-to-br');
             if (statsSection && 'IntersectionObserver' in window) {
@@ -719,10 +685,8 @@
                         }
                     });
                 }, { threshold: 0.5 });
-                
                 observer.observe(statsSection);
             }
-            
             // Counter animation function
             function animateCounter(element, start, end, duration) {
                 let startTimestamp = null;
