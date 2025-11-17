@@ -613,29 +613,36 @@ function addSampleData() {
 }
 
 function createPopupContent(point) {
+    const isMobile = window.innerWidth < 768;
+    const maxWidth = isMobile ? 'max-w-[180px]' : 'max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg';
+    const padding = isMobile ? 'p-2' : 'p-4';
+    const textSize = isMobile ? 'text-xs' : 'text-sm';
+    const gap = isMobile ? 'gap-1' : 'gap-2';
+    const mb = isMobile ? 'mb-1' : 'mb-2';
+
     return `
-        <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg p-4 bg-white rounded-lg shadow-lg">
-            <div class="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
-                <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full" style="background-color: ${getImpactColor(point.impact)}"></div>
-                <strong class="text-gray-800 text-xs sm:text-sm">${point.city}</strong>
+        <div class="w-full ${maxWidth} ${padding} bg-white rounded-lg shadow-lg border border-gray-200">
+            <div class="flex items-center ${gap} ${mb}">
+                <div class="w-2 h-2 rounded-full" style="background-color: ${getImpactColor(point.impact)}"></div>
+                <strong class="text-gray-800 text-xs font-semibold truncate">${point.city}</strong>
             </div>
-            <p class="text-sm text-gray-600 mb-2">${point.description}</p>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-                <div class="flex justify-between">
-                    <span class="text-gray-500">${getValueLabel()}:</span>
-                    <span class="font-medium text-gray-700">${point.value} ${getValueUnit()}</span>
+            <p class="${textSize} text-gray-600 mb-2 leading-tight">${point.description}</p>
+            <div class="grid grid-cols-1 gap-1 text-xs">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500 text-xs">${getValueLabel()}:</span>
+                    <span class="font-medium text-gray-700 text-xs">${point.value} ${getValueUnit()}</span>
                 </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-500">Impact:</span>
-                    <span class="font-medium capitalize" style="color: ${getImpactColor(point.impact)}">${point.impact}</span>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500 text-xs">Impact:</span>
+                    <span class="font-medium capitalize text-xs" style="color: ${getImpactColor(point.impact)}">${point.impact}</span>
                 </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-500">Region:</span>
-                    <span class="font-medium text-gray-700 capitalize">${point.region}</span>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500 text-xs">Region:</span>
+                    <span class="font-medium text-gray-700 capitalize text-xs">${point.region}</span>
                 </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-500">Date:</span>
-                    <span class="font-medium text-gray-700">${point.date}</span>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-500 text-xs">Date:</span>
+                    <span class="font-medium text-gray-700 text-xs">${point.date}</span>
                 </div>
             </div>
         </div>
