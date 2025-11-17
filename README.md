@@ -133,7 +133,6 @@ composer run dev
 
 This command concurrently runs:
 - Laravel server (`http://localhost:8000`)
-- Queue worker for background jobs
 - Laravel Pail for log monitoring
 - Vite dev server for asset compilation
 
@@ -145,10 +144,6 @@ php artisan serve
 
 # Start Vite dev server only
 npm run dev
-
-# Run queue worker
-php artisan queue:work
-```
 
 ### Production
 For production deployment:
@@ -206,10 +201,6 @@ eco-spheree/
 | `/onboarding` | User onboarding wizard | Yes | `auth` |
 | `/admin/mission-reviews` | Admin panel for mission reviews | Yes | `auth`, `admin` |
 
-## 🔧 API Documentation
-
-For API endpoints documentation, refer to the Postman collection in the `docs/` directory or visit `/api/documentation` when the application is running.
-
 ## 🧪 Testing
 
 Execute the test suite:
@@ -222,6 +213,16 @@ composer run test
 [![GitHub issues](https://img.shields.io/github/issues/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/issues)
 [![GitHub stars](https://img.shields.io/github/stars/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/stargazers)
 [![GitHub license](https://img.shields.io/github/license/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/blob/main/LICENSE)
+
+## 👥 Collaborators
+
+This project is developed and maintained by:
+
+- **Muhamad Fikri** - Project Lead & Full-Stack Developer
+  - GitHub: [@muhamad-fikri](https://github.com/muhamadfikrii)
+
+- **Agistiana Nurohman** - Frontend Developer
+  - GitHub: [@sarah-johnson](https://github.com/agistiana)
 
 ## 🤝 Contributing
 
@@ -264,9 +265,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-
 **Made with ❤️ for a greener planet**
-
-[![Follow on GitHub](https://img.shields.io/github/followers/your-username?style=social)](https://github.com/your-username)
-
 </div>
