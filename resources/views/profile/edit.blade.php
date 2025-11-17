@@ -486,7 +486,7 @@
                         <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Available Rewards</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                             {{-- Reward 1 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                                     <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg sm:text-xl">🛒</span>
@@ -497,13 +497,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs md:text-md text-gray-600 dark:text-gray-400 mb-2 md:mb-3 line-clamp-2">Rp 50.000 shopping voucher for eco-friendly products</p>
-                                <button class="w-full px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-md rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 50 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 50 ? '' : 'disabled' }} onclick="redeemReward('shopping_voucher_50k')">
+                                <button class="w-full px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-md rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 50 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 50 ? '' : 'disabled' }} onclick="openRewardModal('shopping_voucher_50k', 'Shopping Voucher Rp 50.000', 50, '🛒', 'Rp 50.000 shopping voucher for eco-friendly products')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 2 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
                                     <div class="w-8 h-8 md:w-10 md:h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg md:text-xl">🎵</span>
@@ -514,13 +514,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs md:text-md text-gray-600 dark:text-gray-400 mb-2 md:mb-3 line-clamp-2">Free ticket to eco-friendly music concert</p>
-                                <button class="w-full px-3 md:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs md:text-md rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 100 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 100 ? '' : 'disabled' }} onclick="redeemReward('concert_ticket')">
+                                <button class="w-full px-3 md:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs md:text-md rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 100 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 100 ? '' : 'disabled' }} onclick="openRewardModal('concert_ticket', 'Eco-Friendly Concert Ticket', 100, '🎵', 'Free ticket to eco-friendly music concert')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 3 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 md:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-3">
                                     <div class="w-8 h-8 md:w-10 md:h-10 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg md:text-xl">🌱</span>
@@ -531,13 +531,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Entry ticket to environmental awareness event</p>
-                                <button class="w-full px-3 sm:px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 150 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 150 ? '' : 'disabled' }} onclick="redeemReward('eco_event_ticket')">
+                                <button class="w-full px-3 sm:px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 150 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 150 ? '' : 'disabled' }} onclick="openRewardModal('eco_event_ticket', 'Environmental Event Ticket', 150, '🌱', 'Entry ticket to environmental awareness event')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 4 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                                     <div class="w-8 h-8 sm:w-10 sm:h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg sm:text-xl">🎓</span>
@@ -548,13 +548,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Access to sustainability workshop session</p>
-                                <button class="w-full px-3 sm:px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 200 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 200 ? '' : 'disabled' }} onclick="redeemReward('workshop_ticket')">
+                                <button class="w-full px-3 sm:px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white text-xs sm:text-sm rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 200 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 200 ? '' : 'disabled' }} onclick="openRewardModal('workshop_ticket', 'Sustainability Workshop Ticket', 200, '🎓', 'Access to sustainability workshop session')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 5 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                                     <div class="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg sm:text-xl">🌳</span>
@@ -565,13 +565,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Participation ticket for community tree planting</p>
-                                <button class="w-full px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 250 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 250 ? '' : 'disabled' }} onclick="redeemReward('planting_event_ticket')">
+                                <button class="w-full px-3 sm:px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 250 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 250 ? '' : 'disabled' }} onclick="openRewardModal('planting_event_ticket', 'Tree Planting Event Ticket', 250, '🌳', 'Participation ticket for community tree planting')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 6 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                                     <div class="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg sm:text-xl">🏖️</span>
@@ -582,13 +582,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Entry to organized beach cleanup activity</p>
-                                <button class="w-full px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 300 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 300 ? '' : 'disabled' }} onclick="redeemReward('beach_cleanup_ticket')">
+                                <button class="w-full px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 300 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 300 ? '' : 'disabled' }} onclick="openRewardModal('beach_cleanup_ticket', 'Beach Cleanup Event Ticket', 300, '🏖️', 'Entry to organized beach cleanup activity')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 7 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                                     <div class="w-8 h-8 sm:w-10 sm:h-10 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg sm:text-xl">♻️</span>
@@ -599,13 +599,13 @@
                                     </div>
                                 </div>
                                 <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Hands-on recycling workshop participation</p>
-                                <button class="w-full px-3 sm:px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 350 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 350 ? '' : 'disabled' }} onclick="redeemReward('recycling_workshop_ticket')">
+                                <button class="w-full px-3 sm:px-4 py-2 bg-yellow-600 hover:bg-yellow-700 text-white text-xs sm:text-sm rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 350 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 350 ? '' : 'disabled' }} onclick="openRewardModal('recycling_workshop_ticket', 'Recycling Workshop Ticket', 350, '♻️', 'Hands-on recycling workshop participation')">
                                     Redeem
                                 </button>
                             </div>
 
                             {{-- Reward 8 --}}
-                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg p-3 sm:p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1">
                                 <div class="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                                     <div class="w-8 h-8 sm:w-10 sm:h-10 bg-pink-100 dark:bg-pink-900/30 rounded-full flex items-center justify-center flex-shrink-0">
                                         <span class="text-lg sm:text-xl">🛍️</span>
@@ -616,7 +616,7 @@
                                     </div>
                                 </div>
                                 <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 sm:mb-3 line-clamp-2">Access to eco-friendly products market</p>
-                                <button class="w-full px-3 sm:px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs sm:text-sm rounded-lg transition-colors {{ (Auth::user()->eco_points ?? 0) >= 400 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 400 ? '' : 'disabled' }} onclick="redeemReward('green_market_ticket')">
+                                <button class="w-full px-3 sm:px-4 py-2 bg-pink-600 hover:bg-pink-700 text-white text-xs sm:text-sm rounded-lg transition-all duration-300 transform hover:scale-105 {{ (Auth::user()->eco_points ?? 0) >= 400 ? '' : 'opacity-50 cursor-not-allowed' }}" {{ (Auth::user()->eco_points ?? 0) >= 400 ? '' : 'disabled' }} onclick="openRewardModal('green_market_ticket', 'Green Market Event Ticket', 400, '🛍️', 'Access to eco-friendly products market')">
                                     Redeem
                                 </button>
                             </div>
@@ -721,6 +721,93 @@
         </div>
     </div>
 
+    <!-- Modal for Reward Redemption -->
+    <div id="rewardModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeRewardModal()"></div>
+
+            <!-- This element is to trick the browser into centering the modal contents. -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <!-- Modal panel -->
+            <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg leading-6 font-medium text-white" id="modal-title">Redeem Reward</h3>
+                        <button type="button" class="text-white hover:text-gray-200 focus:outline-none" onclick="closeRewardModal()">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="px-6 py-5">
+                    <div class="flex items-center mb-4">
+                        <div id="modalIcon" class="w-16 h-16 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">🛒</span>
+                        </div>
+                        <div>
+                            <h4 id="modalTitle" class="text-lg font-semibold text-gray-900 dark:text-white">Reward Title</h4>
+                            <p id="modalDescription" class="text-sm text-gray-600 dark:text-gray-400">Reward Description</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 mb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Current Points:</span>
+                            <span id="currentPoints" class="text-sm font-bold text-green-600 dark:text-green-400">{{ number_format(Auth::user()->eco_points ?? 0) }}</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Required Points:</span>
+                            <span id="requiredPoints" class="text-sm font-bold text-red-600 dark:text-red-400">0</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Remaining Points:</span>
+                            <span id="remainingPoints" class="text-sm font-bold text-gray-900 dark:text-white">0</span>
+                        </div>
+                    </div>
+                    
+                    <div id="errorMessage" class="hidden mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-red-800 dark:text-red-200">You don't have enough points to redeem this reward.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="successMessage" class="hidden mb-4 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-green-800 dark:text-green-200">Reward successfully redeemed! Check your email for details.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 px-6 py-3 flex justify-end space-x-3">
+                    <button type="button" class="bg-white dark:bg-gray-600 py-2 px-4 border border-gray-300 dark:border-gray-500 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" onclick="closeRewardModal()">
+                        Cancel
+                    </button>
+                    <button id="confirmRedeem" type="button" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Redeem Reward
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Tab functionality
@@ -779,7 +866,112 @@
             });
         });
 
+        // Modal functionality
+        let currentRewardType = '';
+        let currentRewardPoints = 0;
+        let currentPoints = {{ Auth::user()->eco_points ?? 0 }};
 
+        function openRewardModal(rewardType, rewardTitle, rewardPoints, rewardIcon, rewardDescription) {
+            currentRewardType = rewardType;
+            currentRewardPoints = rewardPoints;
+            
+            // Update modal content
+            document.getElementById('modalTitle').textContent = rewardTitle;
+            document.getElementById('modalDescription').textContent = rewardDescription;
+            document.getElementById('modalIcon').innerHTML = `<span class="text-2xl">${rewardIcon}</span>`;
+            document.getElementById('requiredPoints').textContent = rewardPoints;
+            
+            const remainingPoints = currentPoints - rewardPoints;
+            document.getElementById('remainingPoints').textContent = remainingPoints;
+            
+            // Set color based on remaining points
+            const remainingPointsElement = document.getElementById('remainingPoints');
+            if (remainingPoints >= 0) {
+                remainingPointsElement.className = 'text-sm font-bold text-green-600 dark:text-green-400';
+                document.getElementById('confirmRedeem').disabled = false;
+                document.getElementById('confirmRedeem').className = 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500';
+            } else {
+                remainingPointsElement.className = 'text-sm font-bold text-red-600 dark:text-red-400';
+                document.getElementById('confirmRedeem').disabled = true;
+                document.getElementById('confirmRedeem').className = 'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-400 cursor-not-allowed';
+            }
+            
+            // Hide messages
+            document.getElementById('errorMessage').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('hidden');
+            
+            // Show modal
+            document.getElementById('rewardModal').classList.remove('hidden');
+        }
+
+        function closeRewardModal() {
+            document.getElementById('rewardModal').classList.add('hidden');
+        }
+
+        document.getElementById('confirmRedeem').addEventListener('click', function() {
+            if (currentPoints >= currentRewardPoints) {
+                // Disable button and show loading
+                this.disabled = true;
+                this.innerHTML = `
+                    <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing...
+                `;
+                
+                // Call the original redeem function
+                redeemReward(currentRewardType);
+            } else {
+                // Show error message
+                document.getElementById('errorMessage').classList.remove('hidden');
+            }
+        });
+
+        function redeemReward(rewardType) {
+            fetch("/rewards/redeem", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector("meta[name=csrf-token]").getAttribute("content")
+                },
+                body: JSON.stringify({ reward_type: rewardType })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    
+                    // Update current points display
+                    currentPoints = data.new_points;
+                    document.getElementById('currentPoints').textContent = data.new_points;
+                    
+                    // Disable redeem button
+                    document.getElementById('confirmRedeem').disabled = true;
+                    document.getElementById('confirmRedeem').innerHTML = 'Redeemed';
+                    
+                    // Close modal after delay
+                    setTimeout(() => {
+                        closeRewardModal();
+                        // Reload page to show updated points
+                        location.reload();
+                    }, 2000);
+                } else {
+                    // Show error message
+                    document.getElementById('errorMessage').classList.remove('hidden');
+                    document.getElementById('confirmRedeem').disabled = false;
+                    document.getElementById('confirmRedeem').innerHTML = 'Redeem Reward';
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                // Show error message
+                document.getElementById('errorMessage').classList.remove('hidden');
+                document.getElementById('confirmRedeem').disabled = false;
+                document.getElementById('confirmRedeem').innerHTML = 'Redeem Reward';
+            });
+        }
     </script>
 
     <style>
@@ -839,30 +1031,3 @@
         }
     </style>
 </x-app-layout>
-<script>
-function redeemReward(rewardType) {
-    if (confirm("Are you sure you want to redeem this reward?")) {
-        fetch("/rewards/redeem", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "X-CSRF-TOKEN": document.querySelector("meta[name=csrf-token]").getAttribute("content")
-            },
-            body: JSON.stringify({ reward_type: rewardType })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                location.reload();
-            } else {
-                alert(data.message);
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("An error occurred while redeeming the reward.");
-        });
-    }
-}
-</script>
