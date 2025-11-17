@@ -1,4 +1,5 @@
-<x-app-layout
+<x-app-layout>
+<div
      x-data="{
          initLearnMoreAnimations() {
              const observerOptions = {
@@ -737,4 +738,5 @@
             }
         });
     </script>
+</div>
 </x-app-layout>
