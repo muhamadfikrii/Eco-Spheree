@@ -444,13 +444,13 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-2">
-                        <button type="button" wire:click="$set('showUploadModal', false)"
-                                class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                            Cancel
-                        </button>
                         <button type="submit"
                                 class="flex-1 px-4 py-2 bg-gray-900 dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-100 text-white dark:text-gray-900 rounded-lg font-medium transition-colors">
                             Submit
+                        </button>
+                        <button type="button" wire:click="$set('showUploadModal', false)"
+                                class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                            Cancel
                         </button>
                     </div>
                 </form>
