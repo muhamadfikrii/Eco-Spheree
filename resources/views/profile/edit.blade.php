@@ -108,7 +108,7 @@
                         </div>
                         <span class="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded-full">{{ Auth::user()->daily_missions_completed ?? 0 }}/11</span>
                     </div>
-                    <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">{{ Auth::user()->daily_missions_completed ?? 0 }}/11</div>
+                    <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">{{ Auth::user()->challenges_completed ?? 0 }}/11</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Missions</div>
                 </div>
 
@@ -132,12 +132,12 @@
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8 border border-gray-200 dark:border-gray-700">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">Overall Progress</h3>
-                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{{ Auth::user()->daily_missions_completed ?? 0 }}/11 missions completed</span>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">{{ Auth::user()->challenges_completed ?? 0 }}/11 total missions completed</span>
             </div>
             <div class="relative mb-4">
                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-4">
                     <div class="bg-gradient-to-r from-green-400 to-emerald-500 h-4 rounded-full transition-all duration-500 relative overflow-hidden shadow-sm"
-                         style="width: {{ (Auth::user()->daily_missions_completed ?? 0) > 0 ? ((Auth::user()->daily_missions_completed / 11) * 100) : 0 }}%">
+                         style="width: {{ (Auth::user()->challenges_completed ?? 0) > 0 ? ((Auth::user()->challenges_completed / 11) * 100) : 0 }}%">
                         <div class="absolute inset-0 bg-white/20 animate-pulse"></div>
                     </div>
                 </div>
