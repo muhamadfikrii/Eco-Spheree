@@ -119,13 +119,6 @@
             >
                 <i class="fas fa-satellite"></i>
             </button>
-            <button 
-                onclick="downloadRegionData()"
-                class="bg-gray-900/90 backdrop-blur-md z-[998] text-white p-2 md:p-3 rounded-xl shadow-lg border border-gray-700/50 hover:bg-gray-800/90 transition-all duration-300"
-                title="Download Data"
-            >
-                <i class="fas fa-download"></i>
-            </button>
         </div>
 
         <div class="absolute bottom-20 left-4 z-10 bg-gray-900/90 backdrop-blur-md p-3 rounded-xl shadow-xl border border-gray-700/50 hidden" id="map-info">
@@ -1100,15 +1093,6 @@ function showMapInfo(title, content) {
         infoPanel.classList.add('hidden');
     }, 5000);
 }
-
-function downloadRegionData() {
-    showMapInfo('Data Export', 'Preparing regional data for download...');
-    // Simulasi download
-    setTimeout(() => {
-        showMapInfo('Data Ready', 'Regional data has been prepared for download');
-    }, 2000);
-}
-
 function useCurrentLocation() {
     if (!navigator.geolocation) {
         showMapInfo('Geolocation Error', 'Geolocation is not supported by your browser');
