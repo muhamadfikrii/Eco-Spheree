@@ -62,17 +62,17 @@
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8 mb-12 border border-gray-200 dark:border-gray-700">
             <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
                 <!-- User Info -->
-                <div class="flex items-center space-x-6">
+                <div class="flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0">
                     <div class="relative">
-                        <img src="{{ $userAvatar }}" alt="Avatar" class="w-20 h-20 rounded-full border-2 border-gray-200 dark:border-gray-600">
-                        <div class="absolute -bottom-2 -right-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm rounded-full w-8 h-8 flex items-center justify-center font-medium border-2 border-white dark:border-gray-800">
+                        <img src="{{ $userAvatar }}" alt="Avatar" class="w-16 sm:w-20 h-16 sm:h-20 rounded-full border-2 border-gray-200 dark:border-gray-600">
+                        <div class="absolute -bottom-2 -right-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm rounded-full w-6 sm:w-8 h-6 sm:h-8 flex items-center justify-center font-medium border-2 border-white dark:border-gray-800">
                             <span>{{ $userLevel[0] }}</span>
                         </div>
                     </div>
-                    <div>
-                        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">{{ $userName }}</h2>
-                        <div class="flex items-center space-x-4">
-                            <span class="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg text-sm font-medium">
+                    <div class="text-center sm:text-left">
+                        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white mb-2">{{ $userName }}</h2>
+                        <div class="flex flex-col sm:flex-row items-center sm:space-x-4 space-y-2 sm:space-y-0">
+                            <span class="px-3 sm:px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg text-sm font-medium">
                                 {{ $userLevel }}
                             </span>
                             <span class="text-gray-500 dark:text-gray-400 font-medium">Rank #{{ $currentUserRank }}</span>
@@ -81,13 +81,13 @@
                 </div>
 
                 <!-- Stats -->
-                <div class="flex items-center space-x-8">
+                <div class="flex flex-col sm:flex-row items-center sm:space-x-8 space-y-4 sm:space-y-0">
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{{ $totalPoints }}</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1">{{ $totalPoints }}</div>
                         <div class="text-sm text-gray-500 dark:text-gray-400">Total Points</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">{{ $challengesCompleted }}</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-1">{{ $challengesCompleted }}</div>
                         <div class="text-sm text-gray-500 dark:text-gray-400">Daily Missions</div>
                     </div>
                     <div>
@@ -114,33 +114,35 @@
         </div>
 
         <!-- Navigation Tabs -->
-        <div class="flex space-x-2 mb-12 bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+        <div class="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 mb-12 bg-white dark:bg-gray-800 p-2 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
             <button wire:click="$set('currentPage', 'challenges')"
-                    class="flex-1 py-3 px-6 rounded-md font-medium transition-all duration-200 {{ $currentPage === 'challenges' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white' }}">
+                    class="flex-1 py-3 px-4 sm:px-6 rounded-md font-medium transition-all duration-200 {{ $currentPage === 'challenges' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white' }}">
                 <div class="flex items-center justify-center space-x-2">
                     <span>🎯</span>
-                    <span>Challenges</span>
+                    <span class="hidden sm:inline">Challenges</span>
+                    <span class="sm:hidden">Challenges</span>
                 </div>
             </button>
             <button wire:click="$set('currentPage', 'leaderboard')"
-                    class="flex-1 py-3 px-6 rounded-md font-medium transition-all duration-200 {{ $currentPage === 'leaderboard' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white' }}">
+                    class="flex-1 py-3 px-4 sm:px-6 rounded-md font-medium transition-all duration-200 {{ $currentPage === 'leaderboard' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white' }}">
                 <div class="flex items-center justify-center space-x-2">
                     <span>🏅</span>
-                    <span>Leaderboard</span>
+                    <span class="sm:inline">Leaderboard</span>
                 </div>
             </button>
             <button wire:click="$set('currentPage', 'review')"
-                    class="flex-1 py-3 px-6 rounded-md font-medium transition-all duration-200 {{ $currentPage === 'review' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white' }}">
+                    class="flex-1 py-3 px-4 sm:px-6 rounded-md font-medium transition-all duration-200 {{ $currentPage === 'review' ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white' }}">
                 <div class="flex items-center justify-center space-x-2">
                     <span>🔍</span>
-                    <span>Review ({{ count(array_filter($pendingSubmissions, fn($s) => $s['status'] === 'pending')) }})</span>
+                    <span class="hidden sm:inline">Review ({{ count(array_filter($pendingSubmissions, fn($s) => $s['status'] === 'pending')) }})</span>
+                    <span class="sm:hidden">Review</span>
                 </div>
             </button>
         </div>
 
         <!-- Challenge Center -->
         @if($currentPage === 'challenges')
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 @foreach($missions as $mission)
                     <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow duration-200">
                         @if(isset($mission['image_url']) && $mission['image_url'])
@@ -250,13 +252,13 @@
         @if($currentPage === 'leaderboard')
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
                 <!-- Header -->
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
-                    <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
-                        <h2 class="text-2xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
+                <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
                             <span>🏅</span>
                             <span>Leaderboard</span>
                         </h2>
-                        <div class="flex items-center space-x-3">
+                        <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3">
                             <span class="text-sm text-gray-600 dark:text-gray-400">Filter:</span>
                             <select wire:model.live="selectedLocation" class="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-500">
                                 <option value="all">All Locations</option>
@@ -298,13 +300,13 @@
                                 </div>
 
                                 <!-- Stats -->
-                                <div class="flex items-center space-x-8">
+                                <div class="flex flex-col sm:flex-row items-center sm:space-x-8 space-y-2 sm:space-y-0">
                                     <div class="text-center">
-                                        <div class="text-2xl font-bold text-gray-900 dark:text-white">{{ $user['points'] }}</div>
+                                        <div class="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{{ $user['points'] }}</div>
                                         <div class="text-xs text-gray-500 dark:text-gray-400">Points</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">{{ $user['completedMissions'] }}/11</div>
+                                        <div class="text-sm sm:text-lg font-semibold text-gray-900 dark:text-white">{{ $user['completedMissions'] }}/11</div>
                                         <div class="text-xs text-gray-500 dark:text-gray-400">Missions</div>
                                     </div>
                                 </div>
@@ -318,8 +320,8 @@
         <!-- Review Section -->
         @if($currentPage === 'review')
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
-                    <h2 class="text-2xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
+                <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
+                    <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
                         <span>🔍</span>
                         <span>Review Submissions</span>
                     </h2>
@@ -328,9 +330,9 @@
 
                 <div class="divide-y divide-gray-200 dark:divide-gray-700">
                     @foreach($pendingSubmissions as $submission)
-                        <div class="p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                            <div class="flex items-start justify-between">
-                                <div class="flex-1">
+                        <div class="p-4 sm:p-6 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+                            <div class="flex flex-col sm:flex-row items-start justify-between">
+                                <div class="flex-1 w-full sm:w-auto">
                                     <div class="flex items-center space-x-3 mb-4">
                                         <img src="{{ $submission['user']['avatar'] ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-10 h-10 rounded-full">
                                         <div>
@@ -355,13 +357,13 @@
                                     </div>
                                 </div>
 
-                                <div class="ml-4">
+                                <div class="mt-4 sm:mt-0 sm:ml-4 w-full sm:w-auto">
                                     @if($submission['status'] === 'pending')
                                     <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm rounded-full font-medium">
                                             Pending
                                         </span>
                                     @elseif($submission['status'] === 'approved')
-                                    <div class="text-right">
+                                    <div class="text-center sm:text-right">
                                         <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm rounded-full font-medium">
                                             Approved
                                         </span>
@@ -372,7 +374,7 @@
                                         @endif
                                     </div>
                                     @else
-                                    <div class="text-right">
+                                    <div class="text-center sm:text-right">
                                         <span class="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 text-sm rounded-full font-medium">
                                             Rejected
                                         </span>
@@ -389,9 +391,9 @@
                     @endforeach
 
                     @if(count($pendingSubmissions) === 0)
-                        <div class="p-12 text-center">
-                            <div class="text-6xl mb-4 opacity-50">✅</div>
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">All Caught Up!</h3>
+                        <div class="p-8 sm:p-12 text-center">
+                            <div class="text-4xl sm:text-6xl mb-4 opacity-50">✅</div>
+                            <h3 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-2">All Caught Up!</h3>
                             <p class="text-gray-600 dark:text-gray-400">No pending submissions to review.</p>
                         </div>
                     @endif
@@ -403,11 +405,11 @@
     <!-- Upload Modal -->
     @if($showUploadModal)
         <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-lg w-full"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-sm sm:max-w-lg w-full mx-4"
                  wire:click.stop>
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
+                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
                             <span>📤</span>
                             <span>Submit Mission</span>
                         </h2>
@@ -420,7 +422,7 @@
                     </div>
                 </div>
 
-                <form wire:submit="submitMission" class="p-6 space-y-4">
+                <form wire:submit="submitMission" class="p-4 sm:p-6 space-y-4">
                     @if(isset($missions[array_search($selectedMission, array_column($missions, 'id'))]['requirements']['photo_required']) && $missions[array_search($selectedMission, array_column($missions, 'id'))]['requirements']['photo_required'])
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Photo Proof</label>
@@ -441,7 +443,7 @@
                         @error('completionDescription') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="flex space-x-3 pt-2">
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 pt-2">
                         <button type="button" wire:click="$set('showUploadModal', false)"
                                 class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                             Cancel
@@ -459,11 +461,11 @@
     <!-- Review Modal -->
     @if($showReviewModal)
         <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-2xl w-full"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-sm sm:max-w-2xl w-full mx-4"
                  wire:click.stop>
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
+                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
                             <span>🔍</span>
                             <span>Review Submission</span>
                         </h2>
@@ -477,7 +479,7 @@
                 </div>
 
                 @if($reviewSubmission)
-                <div class="p-6">
+                <div class="p-4 sm:p-6">
                     <!-- Submission Details -->
                     <div class="flex items-center space-x-3 mb-4">
                         <img src="{{ $reviewSubmission['user']['avatar'] ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-10 h-10 rounded-full">
@@ -517,7 +519,7 @@
                     </div>
 
                     <!-- Actions -->
-                    <div class="flex space-x-3">
+                    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
                         <button wire:click="closeReviewModal()"
                                 class="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                             Cancel
@@ -536,11 +538,11 @@
     <!-- Achievements Modal -->
     @if($showAchievementsModal)
         <div class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-2xl w-full"
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-sm sm:max-w-2xl w-full mx-4"
                  wire:click.stop>
-                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <div class="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
                     <div class="flex items-center justify-between">
-                        <h2 class="text-xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
+                        <h2 class="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white flex items-center space-x-2">
                             <span>🏆</span>
                             <span>Achievements</span>
                         </h2>
@@ -553,8 +555,8 @@
                     </div>
                 </div>
 
-                <div class="p-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 sm:p-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @foreach($achievements as $achievement)
                             <div class="p-4 rounded-lg border {{ $achievement['unlocked'] ?? false ? 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600' : 'bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-60' }}">
                                 <div class="flex items-center space-x-3">

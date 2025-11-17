@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="flex items-center gap-2">
+        {{-- <div class="flex items-center gap-2">
             <button 
                 wire:click="toggleAutoRefresh"
                 class="p-2.5 rounded-full border border-slate-200 hover:bg-slate-100 transition"
@@ -31,7 +31,7 @@
             >
                 <i class="fas fa-redo text-sm {{ $loading ? 'text-sky-600 animate-spin' : 'text-slate-600' }}"></i>
             </button>
-        </div>
+        </div> --}}
     </div>
 
     <!-- Body -->
