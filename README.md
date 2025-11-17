@@ -93,7 +93,7 @@ Eco-Spheree is a comprehensive web application built with Laravel that empowers 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/your-username/eco-spheree.git
-   cd eco-spheree
+   cd Eco-Spheree
    ```
 
 2. **Install PHP dependencies**
