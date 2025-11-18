@@ -393,6 +393,9 @@
             </div>
         </div>
     </section>
+
+    <div class="px-1 border border-black"></div>
+
     <!-- How Our Platform Helps -->
     <section x-ref="platformSection" class="py-16 sm:py-24 bg-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-400">
         <div class="container mx-auto px-4 sm:px-6">
@@ -544,6 +547,9 @@
             </div>
         </div>
     </section>
+
+    <div class="px-1 border border-black"></div>
+
     <!-- Success Stories -->
     <section x-ref="storiesSection" class="py-16 sm:py-24 bg-gradient-to-b from-gray-50 to-white opacity-0 translate-y-4 transition-all duration-700 ease-out delay-500">
         <div class="container mx-auto px-4 sm:px-6">
