@@ -1,107 +1,107 @@
 <div>
-    <section id="environmental-data" class="min-h-screen bg-grid-pattern py-4 sm:py-8 lg:py-12 relative overflow-hidden" x-data="modernEcosphere()">
-        <!-- Enhanced Animated Background -->
-        <div class="absolute inset-0">
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/10 to-slate-900"></div>
-            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
-            <div class="absolute inset-0" id="particleCanvas"></div>
-            <div class="absolute inset-0" id="floatingParticles"></div>
+<section id="environmental-data" class="min-h-screen bg-grid-pattern py-4 sm:py-8 lg:py-12 relative overflow-hidden" x-data="modernEcosphere()">
+    <!-- Enhanced Animated Background -->
+    <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-emerald-900/10 to-slate-900"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+        <div class="absolute inset-0" id="particleCanvas"></div>
+        <div class="absolute inset-0" id="floatingParticles"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Premium Header dengan Enhanced Animasi -->
+        <div class="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-100 mb-4 sm:mb-6 leading-tight">
+                <span class="text-transparent bg-clip-text bg-emerald-400">EcoSpheree</span> 
+                <span class="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-slate-400 mt-2 sm:mt-4 animate-slide-up font-light">Indonesian Ecosystem Digital Platform</span>
+            </h1>
+            <p class="text-base sm:text-lg lg:text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed animate-slide-up-delay px-4">
+                An advanced monitoring system that tracks Indonesia's biodiversity hotspots with real-time analysis, predictive modelling and conservation insights. 
+            </p>
         </div>
         
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-            
-            <!-- Premium Header dengan Enhanced Animasi -->
-            <div class="text-center mb-8 sm:mb-12 lg:mb-16 animate-fade-in">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-100 mb-4 sm:mb-6 leading-tight">
-                    <span class="text-transparent bg-clip-text bg-emerald-400">EcoSpheree</span> 
-                    <span class="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-slate-400 mt-2 sm:mt-4 animate-slide-up font-light">Indonesian Ecosystem Digital Platform</span>
-                </h1>
-                <p class="text-base sm:text-lg lg:text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed animate-slide-up-delay px-4">
-                    An advanced monitoring system that tracks Indonesia's biodiversity hotspots with real-time analysis, predictive modelling and conservation insights. 
-                </p>
-            </div>
-            
-            <!-- Advanced Control Panel -->
-            <div class="bg-slate-800/60 backdrop-blur-md rounded-3xl shadow-2xl p-4 sm:p-6 mb-6 sm:mb-8 mx-auto border border-emerald-700/30 animate-scale-in">
-                <div class="flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center gap-4 sm:gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
-                                <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-slate-100" x-text="`${connectedNodes} Systems`"></h3>
-                                <p class="text-xs sm:text-sm text-slate-400">Active Monitoring</p>
-                            </div>
+        <!-- Advanced Control Panel -->
+        <div class="bg-slate-800/60 backdrop-blur-md rounded-3xl shadow-2xl p-4 sm:p-6 mb-6 sm:mb-8 mx-auto border border-emerald-700/30 animate-scale-in">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-4 sm:gap-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                            <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-600 rounded-xl flex items-center justify-center shadow-lg">
-                                <i class="fa-solid fa-users-between-lines w-5 h-5 md:w-6 md:h-6 text-center p-[2px]"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl sm:text-2xl font-bold text-slate-100" x-text="`${totalArea}M ha`"></h3>
-                                <p class="text-xs sm:text-sm text-slate-400">Total Coverage</p>
-                            </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-100" x-text="`${connectedNodes} Systems`"></h3>
+                            <p class="text-xs sm:text-sm text-slate-400">Active Monitoring</p>
                         </div>
                     </div>
-                    
-                    <div class="flex items-center gap-2 sm:gap-3">
-                        <!-- Enhanced 3D/2D Toggle Button -->
-                        <button @click="toggleViewMode"
-                                class="px-3 sm:px-4 py-2 bg-slate-700/50 hover:bg-slate-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 border border-slate-600/50 text-xs sm:text-sm relative overflow-hidden group"
-                                :class="viewMode === '3d'
-                                ? 'bg-gradient-to-r from-purple-400/20 to-blue-400/20 text-slate-100'
-                                : 'bg-gradient-to-r from-slate-300 to-slate-400 border-slate-200/50 text-slate-700'">
-                            
-                            <!-- Animated Background Effect -->
-                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                                :class="viewMode === '3d' ? 'bg-gradient-to-r from-purple-400/20 to-blue-400/20' : 'bg-gradient-to-r from-gray-400/20 to-slate-400/20'"></div>
-                            
-                            <div class="relative flex items-center gap-2">
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7z" />
-                                </svg>
-                                <span class="font-medium">
-                                    <span x-show="viewMode === '3d'" x-transition>3D View</span>
-                                    <span x-show="viewMode === '2d'" x-transition>2D View</span>
-                                </span>
-                            </div>
-                            
-                            <div class="absolute -top-1 -right-1">
-                                <div x-show="viewMode === '3d'" x-transition:enter="transition ease-out duration-300"
-                                    x-transition:enter-start="opacity-0 scale-0"
-                                    x-transition:enter-end="opacity-100 scale-100"
-                                    class="w-2 h-2 sm:w-3 sm:h-3 bg-purple-400 rounded-full animate-pulse"></div>
-                                <div x-show="viewMode === '2d'" x-transition:enter="transition ease-out duration-300"
-                                    x-transition:enter-start="opacity-0 scale-0"
-                                    x-transition:enter-end="opacity-100 scale-100"
-                                    class="w-2 h-2 sm:w-3 sm:h-3 bg-gray-400 rounded-full animate-pulse"></div>
-                            </div>
-                        </button>
-                        
-                        <button @click="toggleAutoRotate" 
-                                class="px-3 sm:px-4 py-2 bg-slate-700/50 hover:bg-slate-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 border border-slate-600/50 text-xs sm:text-sm"
-                                :class="autoRotate ? 'bg-emerald-600/50 border-emerald-500/50' : ''">
-                            <svg x-show="!autoRotate" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                            </svg>
-                            <i x-show="autoRotate" class="fa-sharp fa-solid fa-stop"></i>
-                            <span x-text="autoRotate ? 'Stop' : 'Auto Rotate'"></span>
-                        </button>
-                        <button @click="refreshNetwork" 
-                                :disabled="refreshing"
-                                class="px-4 sm:px-6 py-2 bg-emerald-600 hover:from-emerald-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-emerald-500/25 transform hover:scale-105 text-xs sm:text-sm">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                            </svg>
-                            <span x-text="refreshing ? 'Syncing...' : 'Refresh'"></span>
-                        </button>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-green-600 rounded-xl flex items-center justify-center shadow-lg">
+                            <i class="fa-solid fa-users-between-lines w-5 h-5 md:w-6 md:h-6 text-center p-[2px]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-100" x-text="`${totalArea}M ha`"></h3>
+                            <p class="text-xs sm:text-sm text-slate-400">Total Coverage</p>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Enhanced 3D/2D Toggle Button -->
+                    <button @click="toggleViewMode" 
+                            class="px-3 sm:px-4 py-2 bg-slate-700/50 hover:bg-slate-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 border border-slate-600/50 text-xs sm:text-sm relative overflow-hidden group"
+                            :class="viewMode === '3d' 
+                            ? 'bg-gradient-to-r from-purple-400/20 to-blue-400/20 text-gray-800' 
+                            : 'bg-gradient-to-r from-gray-300 to-slate-300 border-gray-200/50 text-gray-700'">
+                        
+                        <!-- Animated Background Effect -->
+                        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                             :class="viewMode === '3d' ? 'bg-gradient-to-r from-purple-400/20 to-blue-400/20' : 'bg-gradient-to-r from-gray-400/20 to-slate-400/20'"></div>
+                        
+                        <div class="relative flex items-center gap-2">
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7z" />
+                            </svg>
+                            <span class="font-medium">
+                                <span x-show="viewMode === '3d'" x-transition>3D View</span>
+                                <span x-show="viewMode === '2d'" x-transition>2D View</span>
+                            </span>
+                        </div>
+                        
+                        <div class="absolute -top-1 -right-1">
+                            <div x-show="viewMode === '3d'" x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 scale-0"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 class="w-2 h-2 sm:w-3 sm:h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                            <div x-show="viewMode === '2d'" x-transition:enter="transition ease-out duration-300"
+                                 x-transition:enter-start="opacity-0 scale-0"
+                                 x-transition:enter-end="opacity-100 scale-100"
+                                 class="w-2 h-2 sm:w-3 sm:h-3 bg-gray-400 rounded-full animate-pulse"></div>
+                        </div>
+                    </button>
+                    
+                    <button @click="toggleAutoRotate" 
+                            class="px-3 sm:px-4 py-2 bg-slate-700/50 hover:bg-slate-700 text-white rounded-xl transition-all duration-200 flex items-center gap-2 border border-slate-600/50 text-xs sm:text-sm"
+                            :class="autoRotate ? 'bg-emerald-600/50 border-emerald-500/50' : ''">
+                        <svg x-show="!autoRotate" class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        <i x-show="autoRotate" class="fa-sharp fa-solid fa-stop"></i>
+                        <span x-text="autoRotate ? 'Stop' : 'Auto Rotate'"></span>
+                    </button>
+                    <button @click="refreshNetwork" 
+                            :disabled="refreshing"
+                            class="px-4 sm:px-6 py-2 bg-emerald-600 hover:from-emerald-500 hover:to-cyan-500 text-white rounded-xl transition-all duration-200 flex items-center gap-2 shadow-lg hover:shadow-emerald-500/25 transform hover:scale-105 text-xs sm:text-sm">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                        <span x-text="refreshing ? 'Syncing...' : 'Refresh'"></span>
+                    </button>
+                </div>
             </div>
+        </div>
 
             <!-- Advanced Ecosystem Network -->
             <div class="bg-slate-800/60 backdrop-blur-md rounded-3xl shadow-2xl p-4 sm:p-8 mb-8 sm:mb-16 mx-auto border border-emerald-700/30 animate-scale-in">

@@ -446,38 +446,6 @@ class ChallengeCenter extends Component
         session()->flash('message', "Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
     }
 
-    // Method untuk mengecek dan mengupdate daily streak
-    private function checkAndUpdateDailyStreak($user)
-    {
-        $today = Carbon::now()->format('Y-m-d');
-
-        // Hitung total challenge yang sudah diselesaikan hari ini
-        $completedToday = MissionSubmission::where('user_id', $user->id)
-            ->whereDate('submitted_at', $today)
-            ->where('status', 'approved')
-            ->count();
-
-        if ($completedToday >= $this->totalChallenges) {
-            if (! $user->completed_all_challenges_today) {
-                $user->update(['completed_all_challenges_today' => true]);
-
-                // Update flag untuk kemarin (untuk streak besok)
-                $user->update(['completed_all_challenges_yesterday' => true]);
-
-                session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
-            }
-        }
-
-        // Reload user progress
-        $this->loadUserProgress();
-
-        $this->refreshLeaderboard();
-
-        session()->flash('message', "🎉 Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
-    }
-
-
-
     private function updateUserLevel($user)
     {
         $user->eco_level = $user->getEcoLevel();
@@ -515,28 +483,7 @@ class ChallengeCenter extends Component
         $user->increment('challenges_completed', 1);
         $user->increment('daily_missions_completed', 1);
 
-        // Update last active date
-        $user->update(['last_active_date' => Carbon::now()->format('Y-m-d')]);
-
-        $today = Carbon::now()->format('Y-m-d');
-
-        // Hitung total challenge yang sudah diselesaikan hari ini
-        $completedToday = MissionSubmission::where('user_id', $user->id)
-            ->whereDate('submitted_at', $today)
-            ->where('status', 'approved')
-            ->count();
-
-        if ($completedToday >= $this->totalChallenges) {
-            if (! $user->completed_all_challenges_today) {
-                $user->update(['completed_all_challenges_today' => true]);
-
-                // Update flag untuk kemarin (untuk streak besok)
-                $user->update(['completed_all_challenges_yesterday' => true]);
-
-                session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
-            }
-        }
-
+        // Update mission status to approved in the UI
         foreach ($this->missions as &$mission) {
             if ($mission['id'] == $submission->eco_challenge_id) {
                 $mission['status'] = 'approved';
@@ -694,7 +641,6 @@ class ChallengeCenter extends Component
         $user->update([
             'daily_missions_completed' => 0,
             'daily_challenge_progress' => [],
-            'completed_all_challenges_today' => false,
         ]);
 
         // Reload progress
