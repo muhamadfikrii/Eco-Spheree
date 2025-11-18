@@ -15,7 +15,7 @@
                         <label class="block text-white font-medium mb-4 text-lg">Partnership Type *</label>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <!-- Corporate Partnership -->
-                            <div class="partnership-type-card" 
+                            <div class="partnership-type-card"
                                 @click="form.tier = 'corporate'"
                                 :class="form.tier === 'corporate' ? 'ring-2 ring-blue-500 bg-blue-900/30' : 'bg-gray-800/50 hover:bg-gray-800/70'">
                                 <div class="p-6 rounded-xl border border-gray-700/50 transition-all duration-300">
@@ -30,7 +30,7 @@
                             </div>
 
                             <!-- Research & Academia -->
-                            <div class="partnership-type-card" 
+                            <div class="partnership-type-card"
                                 @click="form.tier = 'research'"
                                 :class="form.tier === 'research' ? 'ring-2 ring-green-500 bg-green-900/30' : 'bg-gray-800/50 hover:bg-gray-800/70'">
                                 <div class="p-6 rounded-xl border border-gray-700/50 transition-all duration-300">
@@ -45,7 +45,7 @@
                             </div>
 
                             <!-- NGO & Government -->
-                            <div class="partnership-type-card" 
+                            <div class="partnership-type-card"
                                 @click="form.tier = 'ngo'"
                                 :class="form.tier === 'ngo' ? 'ring-2 ring-purple-500 bg-purple-900/30' : 'bg-gray-800/50 hover:bg-gray-800/70'">
                                 <div class="p-6 rounded-xl border border-gray-700/50 transition-all duration-300">
@@ -65,7 +65,7 @@
                         <div>
                             <label class="block text-white font-medium mb-2">Organization Name *</label>
                             <div class="relative">
-                                <input type="text" 
+                                <input type="text"
                                     x-model="form.organization"
                                     class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                                     placeholder="Your organization name">
@@ -78,7 +78,7 @@
                         <div>
                             <label class="block text-white font-medium mb-2">Contact Name *</label>
                             <div class="relative">
-                                <input type="text" 
+                                <input type="text"
                                     x-model="form.contactName"
                                     class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                                     placeholder="Your full name">
@@ -93,7 +93,7 @@
                         <div>
                             <label class="block text-white font-medium mb-2">Email Address *</label>
                             <div class="relative">
-                                <input type="email" 
+                                <input type="email"
                                     x-model="form.email"
                                     class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                                     placeholder="your@email.com">
@@ -106,7 +106,7 @@
                         <div>
                             <label class="block text-white font-medium mb-2">Phone Number</label>
                             <div class="relative">
-                                <input type="tel" 
+                                <input type="tel"
                                     x-model="form.phone"
                                     class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                                     placeholder="+1 (555) 000-0000">
@@ -131,7 +131,7 @@
                     </div>
 
                     <div class="flex items-center">
-                        <input type="checkbox" 
+                        <input type="checkbox"
                             x-model="form.agreeTerms"
                             class="w-4 h-4 text-blue-500 bg-gray-800/50 border border-gray-700/50 rounded focus:ring-2 focus:ring-blue-500">
                         <label class="ml-3 text-gray-300 text-sm">
@@ -160,7 +160,7 @@
                     </div>
 
                     <!-- Success Message -->
-                    <div x-show="success" 
+                    <div x-show="success"
                         x-transition:enter="transition ease-out duration-300"
                         x-transition:enter-start="opacity-0 transform scale-95"
                         x-transition:enter-end="opacity-100 transform scale-100"
@@ -168,6 +168,17 @@
                         <i class="fas fa-check-circle text-blue-500 text-xl mb-2"></i>
                         <div class="font-semibold">Application Submitted Successfully!</div>
                         <p class="text-sm mt-1">Our partnership team will contact you within 48 hours.</p>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div x-show="error"
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-95"
+                        x-transition:enter-end="opacity-100 transform scale-100"
+                        class="mt-6 p-6 bg-red-500/10 border border-red-500/30 rounded-xl text-white text-center">
+                        <i class="fas fa-exclamation-triangle text-red-500 text-xl mb-2"></i>
+                        <div class="font-semibold">Please fill in all required fields</div>
+                        <p class="text-sm mt-1">Make sure to select a partnership type and complete all required information.</p>
                     </div>
                 </form>
             </div>
@@ -189,9 +200,16 @@ document.addEventListener('alpine:init', () => {
         },
         submitting: false,
         success: false,
+        error: false,
 
         submitForm() {
-            if (!this.validateForm()) return;
+            if (!this.validateForm()) {
+                this.error = true;
+                setTimeout(() => {
+                    this.error = false;
+                }, 5000);
+                return;
+            }
 
             this.submitting = true;
 
@@ -199,7 +217,7 @@ document.addEventListener('alpine:init', () => {
             setTimeout(() => {
                 this.submitting = false;
                 this.success = true;
-                
+
                 // Reset form after success
                 setTimeout(() => {
                     this.form = {
@@ -228,71 +246,3 @@ document.addEventListener('alpine:init', () => {
     }));
 });
 </script>
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('partnerPage', () => ({
-                smoothScroll(targetId) {
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        const offset = 80;
-                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            }));
-
-            Alpine.data('partnershipForm', () => ({
-                form: {
-                    organization: '',
-                    organizationType: '',
-                    contactName: '',
-                    email: '',
-                    tier: '',
-                    message: '',
-                    agreeTerms: false
-                },
-                submitting: false,
-                success: false,
-
-                submitForm() {
-                    if (!this.validateForm()) return;
-
-                    this.submitting = true;
-
-                    // Simulate API call
-                    setTimeout(() => {
-                        this.submitting = false;
-                        this.success = true;
-                        
-                        // Reset form after success
-                        setTimeout(() => {
-                            this.form = {
-                                organization: '',
-                                organizationType: '',
-                                contactName: '',
-                                email: '',
-                                tier: '',
-                                message: '',
-                                agreeTerms: false
-                            };
-                            this.success = false;
-                        }, 5000);
-                    }, 2000);
-                },
-
-                validateForm() {
-                    const required = ['organization', 'organizationType', 'contactName', 'email', 'tier', 'message'];
-                    for (let field of required) {
-                        if (!this.form[field]) {
-                            return false;
-                        }
-                    }
-                    return true;
-                }
-            }));
-        });
-    </script>

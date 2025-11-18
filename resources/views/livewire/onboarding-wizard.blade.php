@@ -274,7 +274,6 @@
     </div>
 </div>
 
-<!-- Enhanced Alpine.js Logic -->
 <script>
     function onboardingWizard() {
         return {

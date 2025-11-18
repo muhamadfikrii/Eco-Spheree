@@ -303,9 +303,9 @@
                             </div>
                             
                             <div class="flex gap-3">
-                                <button class="px-4 py-2 bg-[#166534] text-white rounded-lg hover:bg-[#14532d] transition-colors">
+                                <a href="{{ route('learn_more') }}" class="px-4 py-2 bg-[#166534] text-white rounded-lg hover:bg-[#14532d] transition-colors">
                                     Learn More
-                                </button>
+                                </a>
                                 <a href="{{ route('login') }}" class="px-4 py-2 border border-[#166534] text-[#166534] rounded-lg hover:bg-[#f0fdf4] transition-colors">
                                     Get Involved
                                 </a>

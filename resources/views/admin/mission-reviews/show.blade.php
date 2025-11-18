@@ -23,7 +23,7 @@
                 <div class="p-6 border-b border-gray-200">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-4">
-                            <img src="{{ $submission->user->profile_photo_url ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-16 h-16 rounded-full">
+                            <img src="{{ $submission->user->profile_photo ?? 'https://cdn-icons-png.flaticon.com/512/219/219983.png' }}" alt="User" class="w-16 h-16 rounded-full">
                             <div>
                                 <h3 class="text-xl font-bold text-gray-900">{{ $submission->user->name }}</h3>
                                 <p class="text-gray-600">{{ $submission->user->email }}</p>

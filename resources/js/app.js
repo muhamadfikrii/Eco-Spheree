@@ -3,17 +3,57 @@ import './gsap';
 import 'animate.css';
 import Alpine from 'alpinejs';
 
-// Impor data dari file terpisah
-import { orbitingNodes, modernEcosphere } from './dataEnvironmental';
-
-// Buat Alpine.js tersedia secara global
 window.Alpine = Alpine;
 
-// Buat data `orbitingNodes` tersedia secara global agar bisa diakses oleh fungsi modernEcosphere
-window.orbitingNodes = orbitingNodes;
+// Define weatherWidget in Alpine.data before starting Alpine
+Alpine.data('weatherWidget', () => ({
+    permissionDenied: false,
 
-// Daftarkan komponen Alpine.js
-Alpine.data('modernEcosphere', modernEcosphere);
+    init() {
+        const locationDenied = localStorage.getItem('location_denied');
+        if (locationDenied === 'true') {
+            return;
+        }
 
-// Mulai Alpine.js
+        if (!navigator.geolocation) {
+            this.showLocationError('Your browser does not support location features.');
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const { latitude, longitude } = pos.coords;
+                // This will be handled by Livewire
+                console.log('Location obtained:', latitude, longitude);
+            },
+            (err) => {
+                let msg = 'Failed to detect location.';
+                if (err.code === 1) {
+                    msg = 'Location access denied. Please enable location permissions in your browser.';
+                    localStorage.setItem('location_denied', 'true');
+                } else if (err.code === 2) {
+                    msg = 'Location unavailable. Please ensure your GPS is active.';
+                }
+                this.showLocationError(msg);
+            }
+        );
+    },
+
+    showLocationError(msg) {
+        this.permissionDenied = true;
+        if (typeof Swal !== 'undefined') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Location Inactive',
+                text: msg,
+                confirmButtonText: 'OK, Got it',
+                background: '#fff',
+                color: '#1e293b'
+            });
+        } else {
+            alert(msg);
+        }
+    }
+}));
+
 Alpine.start();

@@ -193,12 +193,7 @@
 
     <!-- Mobile Navigation Menu -->
     <div x-show="open"
-         x-transition:enter="transition ease-out duration-500"
-         x-transition:enter-start="opacity-0 scale-90 -translate-y-4 rotate-1"
-         x-transition:enter-end="opacity-100 scale-100 translate-y-0 rotate-0"
-         x-transition:leave="none"
          @click.away="open = false"
-
          class="lg:hidden absolute top-full left-0 w-full bg-white text-black backdrop-blur-xl border-t border-emerald-200/50 shadow-2xl z-40 overflow-hidden">
 
         <!-- Animated Background Pattern -->
@@ -216,9 +211,9 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 translate-x-4 scale-95"
                             x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-0 translate-x-0 scale-0"
-                            x-transition:leave-end="opacity-0 translate-x-0 scale-0"
+                            x-transition:leave="transition ease-out"
+                            x-transition:leave-start="opacity-0 translate-x-0"
+                            x-transition:leave-end="opacity-0 translate-x-0"
                             style="transition-delay: 0ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
                             <x-nav-link :href="route('home')" :active="request()->routeIs('home')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
@@ -231,9 +226,9 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 translate-x-4 scale-95"
                             x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-0 translate-x-0 scale-0"
-                            x-transition:leave-end="opacity-0 translate-x-0 scale-0"
+                            x-transition:leave="transition ease-out"
+                            x-transition:leave-start="opacity-0 translate-x-0"
+                            x-transition:leave-end="opacity-0 translate-x-0"
                             style="transition-delay: 50ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
                             <x-nav-link :href="route('explore')" :active="request()->routeIs('explore')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
@@ -246,9 +241,9 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 translate-x-4 scale-95"
                             x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-0 translate-x-0 scale-0"
-                            x-transition:leave-end="opacity-0 translate-x-0 scale-0"
+                            x-transition:leave="transition ease-out"
+                            x-transition:leave-start="opacity-0 translate-x-0"
+                            x-transition:leave-end="opacity-0 translate-x-0"
                             style="transition-delay: 100ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
                             <x-nav-link :href="route('challenge')" :active="request()->routeIs('challenge')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
@@ -261,9 +256,9 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 translate-x-4 scale-95"
                             x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-0 translate-x-0 scale-0"
-                            x-transition:leave-end="opacity-0 translate-x-0 scale-0"
+                            x-transition:leave="transition ease-out"
+                            x-transition:leave-start="opacity-0 translate-x-0"
+                            x-transition:leave-end="opacity-0 translate-x-0"
                             style="transition-delay: 150ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
                             <x-nav-link :href="route('eco_track')" :active="request()->routeIs('eco_track')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
@@ -276,9 +271,9 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 translate-x-4 scale-95"
                             x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-0 translate-x-0 scale-0"
-                            x-transition:leave-end="opacity-0 translate-x-0 scale-0"
+                            x-transition:leave="transition ease-out"
+                            x-transition:leave-start="opacity-0 translate-x-0"
+                            x-transition:leave-end="opacity-0 translate-x-0"
                             style="transition-delay: 200ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
                             <x-nav-link :href="route('report')" :active="request()->routeIs('report')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">
@@ -291,9 +286,9 @@
                             x-transition:enter="transition ease-out duration-300"
                             x-transition:enter-start="opacity-0 translate-x-4 scale-95"
                             x-transition:enter-end="opacity-100 translate-x-0 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-0 translate-x-0 scale-0"
-                            x-transition:leave-end="opacity-0 translate-x-0 scale-0"
+                            x-transition:leave="transition ease-out"
+                            x-transition:leave-start="opacity-0 translate-x-0"
+                            x-transition:leave-end="opacity-0 translate-x-0"
                             style="transition-delay: 250ms"
                             class="transform hover:scale-102 transition-all duration-200 rounded-lg overflow-hidden">
                             <x-nav-link :href="route('contact')" :active="request()->routeIs('contact')" class="block py-3 px-4  bg-gradient-to-br from-green-600 to-emerald-700 w-full text-white font-medium">

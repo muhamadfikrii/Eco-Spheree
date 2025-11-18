@@ -4,75 +4,79 @@ import { TextPlugin } from "gsap/TextPlugin";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
-    
-    // Background Animation
+
+// GSAP Animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Background Animation - hanya jalankan jika canvas ada
     const canvas = document.getElementById('bg-animation');
-    const ctx = canvas.getContext('2d');
-    
-    // Set canvas size
-    function setCanvasSize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
-    
-    // Create subtle particles for background
-    const particles = [];
-    const particleCount = 20;
-    
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 2 + 1;
-            this.speedX = Math.random() * 0.3 - 0.15;
-            this.speedY = Math.random() * 0.3 - 0.15;
-            this.color = `rgba(5, 150, 105, ${Math.random() * 0.1})`;
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
         
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
+        setCanvasSize();
+        window.addEventListener('resize', setCanvasSize);
+        
+        // Create subtle particles for background
+        const particles = [];
+        const particleCount = 20;
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.3 - 0.15;
+                this.speedY = Math.random() * 0.3 - 0.15;
+                this.color = `rgba(5, 150, 105, ${Math.random() * 0.1})`;
+            }
             
-            if (this.x > canvas.width) this.x = 0;
-            if (this.x < 0) this.x = canvas.width;
-            if (this.y > canvas.height) this.y = 0;
-            if (this.y < 0) this.y = canvas.height;
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
         
-        draw() {
-            ctx.fillStyle = this.color;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-    
-    function initParticles() {
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-    }
-    
-    function animateParticles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        for (let i = 0; i < particles.length; i++) {
-            particles[i].update();
-            particles[i].draw();
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
         }
         
-        requestAnimationFrame(animateParticles);
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        initParticles();
+        animateParticles();
     }
     
-    initParticles();
-    animateParticles();
-    
-    // GSAP Animations
-    document.addEventListener('DOMContentLoaded', function() {
-        // Animate main elements on scroll
+    // Animate main elements on scroll - hanya jika elemen ada
+    const gsapItems = document.querySelectorAll('.gsap-item');
+    if (gsapItems.length > 0) {
         gsap.utils.toArray('.gsap-item').forEach(item => {
             gsap.to(item, {
                 opacity: 1,
@@ -88,8 +92,11 @@ gsap.registerPlugin(TextPlugin);
                 }
             });
         });
-        
-        // Stagger animation for feature items
+    }
+    
+    // Stagger animation for feature items - hanya jika elemen ada
+    const featureItems = document.querySelectorAll('.feature-item');
+    if (featureItems.length > 0) {
         gsap.to('.feature-item', {
             opacity: 1,
             x: 0,
@@ -103,8 +110,11 @@ gsap.registerPlugin(TextPlugin);
                 toggleActions: 'play none none reverse'
             }
         });
-        
-        // Subtle floating animation for icons
+    }
+    
+    // Subtle floating animation for icons - hanya jika elemen ada
+    const iconFloats = document.querySelectorAll('.icon-float');
+    if (iconFloats.length > 0) {
         gsap.to('.icon-float', {
             y: -5,
             duration: 2,
@@ -112,11 +122,13 @@ gsap.registerPlugin(TextPlugin);
             yoyo: true,
             ease: 'sine.inOut'
         });
-        
-        // Animate the "About Us" section details on hover
-        const aboutTrigger = document.querySelector('.about-trigger');
-        const aboutDetails = document.querySelector('.about-details');
-        
+    }
+    
+    // Animate the "About Us" section details on hover - hanya jika elemen ada
+    const aboutTrigger = document.querySelector('.about-trigger');
+    const aboutDetails = document.querySelector('.about-details');
+    
+    if (aboutTrigger && aboutDetails) {
         aboutTrigger.addEventListener('mouseenter', () => {
             gsap.to(aboutDetails, {
                 height: 'auto',
@@ -137,10 +149,13 @@ gsap.registerPlugin(TextPlugin);
         
         // Initially hide about details
         gsap.set(aboutDetails, { height: 0, opacity: 0 });
-        
-        // Animate impact numbers counting up
-        const impactNumbers = document.querySelectorAll('.impact-number');
-        
+    }
+    
+    // Animate impact numbers counting up - hanya jika elemen ada
+    const impactNumbers = document.querySelectorAll('.impact-number');
+    const impactStats = document.querySelector('.impact-stats');
+    
+    if (impactNumbers.length > 0 && impactStats) {
         impactNumbers.forEach(number => {
             const targetValue = parseFloat(number.getAttribute('data-value'));
             const suffix = number.textContent.includes('%') ? '%' : '';
@@ -158,4 +173,5 @@ gsap.registerPlugin(TextPlugin);
                 snap: { innerText: 0.1 }
             });
         });
-    });
+    }
+});
