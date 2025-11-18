@@ -433,7 +433,10 @@ class ChallengeCenter extends Component
         // Update last active date
         $user->update(['last_active_date' => Carbon::now()->format('Y-m-d')]);
 
-        // Check dan update daily streak jika semua challenge sudah diselesaikan
+    }
+    // Method untuk mengecek dan mengupdate daily streak
+    private function checkAndUpdateDailyStreak($user)
+    {
         $today = Carbon::now()->format('Y-m-d');
 
         // Hitung total challenge yang sudah diselesaikan hari ini
