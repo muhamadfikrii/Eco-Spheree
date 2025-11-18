@@ -1,59 +1,284 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Eco-Spheree 🌍
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
+[![Livewire](https://img.shields.io/badge/Livewire-3.6-green.svg)](https://livewire.laravel.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## About Laravel
+![Eco-Spheree Banner](public/assets/home/hero.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Eco-Spheree is a comprehensive web application built with Laravel that empowers users to engage in environmental challenges, track their ecological impact, and redeem rewards for sustainable actions. The platform promotes eco-friendly living through interactive challenges, progress tracking, and community-driven initiatives.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Table of Contents
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [🖼️ Screenshots](#-screenshots)
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🚀 Installation](#-installation)
+- [🎯 Usage](#-usage)
+- [👨‍💼 Admin Access](#-admin-access)
+- [📁 Project Structure](#-project-structure)
+- [🛣️ Key Routes](#️-key-routes)
+- [🧪 Testing](#-testing)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [🙏 Acknowledgments](#-acknowledgments)
 
-## Learning Laravel
+## 🖼️ Screenshots
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Homepage
+![Homepage](public/assets/home/maps.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Explore Page
+![Explore Page](public/assets/explore/visualecosystem.png.png)
+![Explore Page](public/assets/explore/marvel.png)
+![Explore Page](public/assets/explore/natureconservation.png)
 
-## Laravel Sponsors
+### Challenge Center
+![Challenge Center](public/assets/challenge/center.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Eco-Track
+![Eco-Track Dashboard](public/assets/ecoTrack/ecoTrack.png)
 
-### Premium Partners
+### Report Page
+![Report Page](public/assets/reports/report.png)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### User Profile
+![User Profile](public/assets/profile/profile.png)
 
-## Contributing
+### Admin Dashboard
+![Admin Dashboard](public/assets/dashboard/dashboard.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ✨ Features
 
-## Code of Conduct
+- **🔐 User Authentication**: Secure login and registration system with Laravel Breeze
+- **🌱 Environmental Challenges**: Participate in various eco-challenges to earn points and levels
+- **📊 Eco-Tracking**: Monitor personal environmental impact and progress
+- **🎁 Reward System**: Redeem earned points for rewards and incentives
+- **👨‍💼 Admin Panel**: Administrative interface for managing challenges, reviewing submissions, and overseeing user activities
+- **🗺️ Interactive Maps**: Explore environmental data and conservation areas
+- **🌤️ Weather Integration**: Real-time weather information for outdoor activities
+- **📞 Contact System**: User support and partnership inquiries
+- **📱 Responsive Design**: Mobile-friendly interface with dark mode support
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🛠️ Tech Stack
 
-## Security Vulnerabilities
+### Backend
+- **Laravel 12** - PHP web framework
+- **PHP 8.2+** - Server-side scripting
+- **Livewire 3.6** - Full-stack framework for Laravel
+- **Laravel Breeze Middleware** - Authentication and session management
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Frontend
+- **Tailwind CSS** - Utility-first CSS framework
+- **Alpine.js** - Minimal framework for composing JavaScript behavior
+- **Vite** - Fast build tool and dev server
 
-## License
+### Database & Tools
+- **MySQL/SQLite** - Database systems
+- **Laravel Breeze** - Authentication scaffolding
+- **PHPUnit** - Testing framework
+- **Composer** - PHP dependency manager
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🚀 Installation
+
+### Prerequisites
+- PHP 8.2 or higher
+- Composer
+- Node.js & npm
+- MySQL or SQLite
+
+### Setup Steps
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/muhamadfikrii/Eco-Spheree.git
+   cd Eco-Spheree
+   ```
+
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
+
+3. **Install Node.js dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Environment configuration**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+
+5. **Configure Environment Variables**
+   Edit the `.env` file and configure the database settings:
+
+   ```env
+   # Database Configuration
+   DB_CONNECTION=sqlite
+   # For MySQL, use:
+   # DB_CONNECTION=mysql
+   # DB_HOST=127.0.0.1
+   # DB_PORT=3306
+   # DB_DATABASE=eco_spheree
+   # DB_USERNAME=root
+   # DB_PASSWORD=your_password
+   ```
+
+6. **Database setup**
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
+
+7. **Build assets**
+   ```bash
+   npm run build
+   ```
+
+## 🎯 Usage
+
+### Development
+Start the development environment with all services:
+```bash
+composer run dev
+```
+
+This command concurrently runs:
+- Laravel server (`http://localhost:8000`)
+- Laravel Pail for log monitoring
+- Vite dev server for asset compilation
+
+### Alternative Development Commands
+You can also run services individually:
+```bash
+# Start Laravel server only
+php artisan serve
+
+# Start Vite dev server only
+npm run dev
+
+### Production
+For production deployment:
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+npm run build
+```
+
+## 👨‍💼 Admin Access
+
+A default admin account is pre-configured:
+- **Email**: `admin@ecosphere.com`
+- **Password**: `password`
+
+Use this account to access administrative features including mission reviews and user management.
+
+## 📁 Project Structure
+
+```
+eco-spheree/
+├── app/                          # Application code
+│   ├── Http/Controllers/         # HTTP controllers
+│   ├── Livewire/                 # Livewire components
+│   ├── Models/                   # Eloquent models
+│   └── Providers/                # Service providers
+├── database/
+│   ├── migrations/               # Database migrations
+│   └── seeders/                  # Database seeders
+├── public/                       # Public assets
+├── resources/
+│   ├── css/                      # Stylesheets
+│   ├── js/                       # JavaScript files
+│   └── views/                    # Blade templates
+├── routes/
+│   └── web.php                   # Web routes
+├── storage/                      # File storage
+├── tests/                        # Test files
+└── vendor/                       # Composer dependencies
+```
+
+## 🛣️ Key Routes
+
+| Route | Description | Auth Required | Middleware |
+|-------|-------------|---------------|------------|
+| `/` | Homepage | No | - |
+| `/explore` | Exploration features and environmental maps | No | - |
+| `/challenge` | Challenge listing and overview | No | - |
+| `/challenge-center` | Interactive challenge center with Livewire components | Yes | `auth` |
+| `/eco_track` | Environmental tracking dashboard | No | - |
+| `/report` | Impact reports and analytics | Yes | `auth` |
+| `/contact` | Contact form and partnership inquiries | No | - |
+| `/profile` | User profile management | Yes | `auth` |
+| `/onboarding` | User onboarding wizard | Yes | `auth` |
+| `/admin/mission-reviews` | Admin panel for mission reviews | Yes | `auth`, `admin` |
+
+## 🧪 Testing
+
+Execute the test suite:
+```bash
+composer run test
+```
+
+## 📊 Project Metrics
+
+[![GitHub issues](https://img.shields.io/github/issues/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/issues)
+[![GitHub stars](https://img.shields.io/github/stars/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/stargazers)
+[![GitHub license](https://img.shields.io/github/license/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/blob/main/LICENSE)
+
+## 👥 Collaborators
+
+This project is developed and maintained by:
+
+- **Muhamad Fikri** - Project Lead & Full-Stack Developer
+  - GitHub: [@muhamad-fikri](https://github.com/muhamadfikrii)
+
+- **Agistiana Nurohman** - Frontend Developer
+  - GitHub: [@sarah-johnson](https://github.com/agistiana)
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Open a Pull Request
+
+### Development Guidelines
+- Follow PSR-12 coding standards
+- Write tests for new features
+- Update documentation as needed
+- Ensure responsive design for all new components
+
+## 🐛 Issue Reporting
+
+Found a bug? Please report it by opening an issue on GitHub with:
+- Clear title and description
+- Steps to reproduce
+- Expected vs actual behavior
+- Screenshots if applicable
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **Laravel Framework** - The PHP framework powering the application
+- **Livewire** - For reactive components and seamless UX
+- **Tailwind CSS** - For beautiful and responsive styling
+- **Alpine.js** - For lightweight JavaScript interactions
+- **Laravel Breeze** - For authentication scaffolding
+- Environmental data providers and APIs
+- Open-source community for inspiration and tools
+
+---
+
+<div align="center">
+**Made with ❤️ for a greener planet**
+</div>

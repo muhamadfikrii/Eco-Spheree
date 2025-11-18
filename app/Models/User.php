@@ -29,7 +29,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'challenges_completed',
         'challenge_progress',
         'achievements_unlocked',
+        'eco_impact',
         'profile_photo',
+        'today_earned_points',
+        'daily_streak',
+        'daily_missions_completed',
+        'last_mission_reset',
+        'daily_challenge_progress',
+        'completed_all_challenges_today',
+        'completed_all_challenges_yesterday',
     ];
 
     /**
@@ -52,6 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'password' => 'hashed',
         'challenge_progress' => 'array',
         'achievements_unlocked' => 'array',
+        'daily_challenge_progress' => 'array',
+        'completed_all_challenges_today' => 'boolean',
+        'completed_all_challenges_yesterday' => 'boolean',
+        'eco_impact' => 'decimal:2',
     ];
 
     public function getProfilePhotoUrlAttribute()
@@ -65,6 +77,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function challengeParticipations(): HasMany
     {
         return $this->hasMany(UserChallengeParticipation::class);
+    }
+
+    // Relasi ke reward redemptions
+    public function rewardRedemptions(): HasMany
+    {
+        return $this->hasMany(RewardRedemption::class);
     }
 
     // Relasi ke challenges yang diikuti user
@@ -132,13 +150,36 @@ class User extends Authenticatable implements MustVerifyEmail
         // Update level
         $this->eco_level = $this->getEcoLevel();
 
+        // Update eco impact (composite score based on points and challenges)
+        $this->eco_impact = $this->calculateEcoImpact();
+
         // Check achievements
         $this->updateAchievements();
 
         $this->save();
     }
 
-    public function updateAchievements()
+    // Calculate eco impact score (CO2 emissions reduced in kg)
+    public function calculateEcoImpact()
+    {
+        $points = $this->eco_points;
+        $challenges = $this->challenges_completed;
+        $streak = $this->daily_streak ?? 0;
+
+        // CO2 impact from points earned (assuming each point represents ~0.1kg CO2 saved)
+        $pointsImpact = $points * 0.1; // 0.1kg CO2 per point
+
+        // CO2 impact from completed challenges (each challenge saves ~2kg CO2)
+        $challengeImpact = $challenges * 2.0; // 2kg CO2 per challenge
+
+        // CO2 impact from daily streak (consistent behavior saves additional CO2)
+        $streakImpact = min($streak * 0.5, 5.0); // Up to 5kg CO2 for long streaks
+
+        // Total CO2 emissions reduced in kg
+        return round($pointsImpact + $challengeImpact + $streakImpact, 2);
+    }
+
+    public function updateAchievements($currentRank = null)
     {
         $achievements = $this->achievements_unlocked ?? [];
 
@@ -157,15 +198,18 @@ class User extends Authenticatable implements MustVerifyEmail
             $achievements['eco_warrior'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
-        // Achievement 4: Complete all missions (6 missions)
-        if ($this->challenges_completed >= 6 && ! isset($achievements['eco_master'])) {
+        // Achievement 4: Complete all missions (11 missions)
+        if ($this->challenges_completed >= 11 && ! isset($achievements['eco_master'])) {
             $achievements['eco_master'] = ['unlocked_at' => now()->toDateTimeString()];
         }
 
-        // Achievement 5: Reach top 10 in leaderboard (this would need leaderboard logic)
-        // For now, we'll skip this one
+        // Achievement 5: Reach top 10 in leaderboard
+        if ($currentRank !== null && $currentRank <= 10 && ! isset($achievements['community_leader'])) {
+            $achievements['community_leader'] = ['unlocked_at' => now()->toDateTimeString()];
+        }
 
         $this->achievements_unlocked = $achievements;
+        $this->save();
     }
 
     // Get challenge progress for a specific mission

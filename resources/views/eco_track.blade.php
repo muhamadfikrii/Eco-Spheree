@@ -30,6 +30,7 @@
             <span class="block bg-gradient-to-r from-green-400 via-emerald-400 to-green-500 bg-clip-text text-transparent drop-shadow-lg">
               Track Your Carbon
             </span>
+
             <span class="block mt-2 bg-gradient-to-r from-gray-300 to-emerald-200 bg-clip-text text-transparent">
               For a Sustainable Future
             </span>
@@ -150,7 +151,7 @@
 
       <!-- Progress Indicator -->
       <div class="mt-8 max-w-md mx-auto">
-        <div class="flex items-center justify-between text-sm text-gray-400 mb-2">
+        <div class="flex items-center justify-between text-sm text-gray-400   d-2">
           <span>Environmental Impact</span>
           <span x-text="totalCarbon > 0 ? totalCarbon.toFixed(1) + ' kg CO₂' : 'Not Calculated'"></span>
         </div>
@@ -169,7 +170,7 @@
         <!-- Card Background with Gradient Border -->
         <div class="absolute inset-0 bg-gradient-to-r from-green-500 to-emerald-400 rounded-2xl blur-sm opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
         
-        <div class="relative bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-slate-700/50 hover:border-green-500/30 transition-all duration-500 hover:shadow-green-500/10">
+        <div class="relative bg-slate-800/80 h-full backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-slate-700/50 hover:border-green-500/30 transition-all duration-500 hover:shadow-green-500/10 flex flex-col">
           <!-- Card Header -->
           <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-400 rounded-2xl mb-4 shadow-lg">
@@ -182,7 +183,7 @@
           </div>
 
           <!-- Enhanced Form -->
-          <form @submit.prevent="calculateFootprint" class="space-y-6">
+          <form @submit.prevent="calculateFootprint" class="space-y-6 flex-1 flex flex-col justify-between">
             <!-- Transportation Input -->
             <div class="group/input">
               <label class="block text-gray-300 mb-3 text-lg font-medium">🚗 Daily Transportation</label>
@@ -245,9 +246,9 @@
             </div>
 
             <!-- Calculate Button -->
-            <button 
-              type="submit" 
-              class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl pulse-glow flex items-center justify-center gap-3 text-lg group/btn mt-8"
+            <button
+              type="submit"
+              class="w-full bg-gradient-to-r from-green-600 to-emerald-500 hover:from-green-500 hover:to-emerald-400 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg hover:shadow-xl pulse-glow flex items-center justify-center gap-3 text-lg group/btn mt-10"
               x-ref="calculateButton">
               <span class="group-hover/btn:scale-110 transition-transform duration-300">🌱</span>
               <span>Calculate Carbon Footprint</span>
@@ -435,13 +436,12 @@
         footprintMessage: '',
 
         init() {
-          console.log('🚀 Eco-Track initialized');
           // Load saved data if exists
           this.loadSavedData();
         },
 
+
         calculateFootprint() {
-          console.log('📊 Calculating footprint...', this.inputs);
           
           // Calculate carbon for each category
           const transportCarbon = this.inputs.transport * 10; // Weekly to monthly
@@ -499,7 +499,7 @@
           // Save results to localStorage
           this.saveToLocalStorage();
           
-          console.log('✅ Calculation complete:', this.totalCarbon);
+
         },
 
         saveToLocalStorage() {
