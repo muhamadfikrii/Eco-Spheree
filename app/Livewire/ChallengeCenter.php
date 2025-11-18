@@ -434,21 +434,6 @@ class ChallengeCenter extends Component
         $user->update(['last_active_date' => Carbon::now()->format('Y-m-d')]);
 
         // Check dan update daily streak jika semua challenge sudah diselesaikan
-        $this->checkAndUpdateDailyStreak($user);
-
-        // Reload user progress
-        $this->loadUserProgress();
-
-        // Update leaderboard
-        $this->refreshLeaderboard();
-
-        // Show success message
-        session()->flash('message', "🎉 Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
-    }
-
-    // Method untuk mengecek dan mengupdate daily streak
-    private function checkAndUpdateDailyStreak($user)
-    {
         $today = Carbon::now()->format('Y-m-d');
 
         // Hitung total challenge yang sudah diselesaikan hari ini
@@ -457,21 +442,26 @@ class ChallengeCenter extends Component
             ->where('status', 'approved')
             ->count();
 
-        // Jika semua challenge sudah diselesaikan (11 challenge)
         if ($completedToday >= $this->totalChallenges) {
-            // Cek apakah flag sudah diset
             if (! $user->completed_all_challenges_today) {
-                // Update flag untuk menandai semua challenge sudah diselesaikan hari ini
                 $user->update(['completed_all_challenges_today' => true]);
 
                 // Update flag untuk kemarin (untuk streak besok)
                 $user->update(['completed_all_challenges_yesterday' => true]);
 
-                // Tampilkan pesan sukses
                 session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
             }
         }
+
+        // Reload user progress
+        $this->loadUserProgress();
+
+        $this->refreshLeaderboard();
+
+        session()->flash('message', "🎉 Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
     }
+
+
 
     private function updateUserLevel($user)
     {
@@ -479,7 +469,6 @@ class ChallengeCenter extends Component
         $user->save();
     }
 
-    // Method baru untuk submit review (selalu approve)
     public function submitReview()
     {
         if (! $this->reviewSubmissionId) {
@@ -514,10 +503,25 @@ class ChallengeCenter extends Component
         // Update last active date
         $user->update(['last_active_date' => Carbon::now()->format('Y-m-d')]);
 
-        // Check dan update daily streak jika semua challenge sudah diselesaikan
-        $this->checkAndUpdateDailyStreak($user);
+        $today = Carbon::now()->format('Y-m-d');
 
-        // Update mission status to approved in UI
+        // Hitung total challenge yang sudah diselesaikan hari ini
+        $completedToday = MissionSubmission::where('user_id', $user->id)
+            ->whereDate('submitted_at', $today)
+            ->where('status', 'approved')
+            ->count();
+
+        if ($completedToday >= $this->totalChallenges) {
+            if (! $user->completed_all_challenges_today) {
+                $user->update(['completed_all_challenges_today' => true]);
+
+                // Update flag untuk kemarin (untuk streak besok)
+                $user->update(['completed_all_challenges_yesterday' => true]);
+
+                session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
+            }
+        }
+
         foreach ($this->missions as &$mission) {
             if ($mission['id'] == $submission->eco_challenge_id) {
                 $mission['status'] = 'approved';
@@ -539,17 +543,14 @@ class ChallengeCenter extends Component
         session()->flash('message', 'Submission reviewed and approved successfully! Points awarded. Thank you for your environmental efforts!');
     }
 
-    // Method reviewSubmission lama bisa dihapus atau dibiarkan untuk backward compatibility
     public function reviewSubmission($submissionId, $action)
     {
-        // Method ini tidak digunakan lagi, tapi dibiarkan untuk mencegah error
         if ($action === 'approve') {
             $this->reviewSubmissionId = $submissionId;
             $this->submitReview();
         }
     }
 
-    // Perbaikan: Menambahkan pengaturan reviewSubmissionId
     public function openReviewModal($submissionId)
     {
         $submission = MissionSubmission::with(['ecoChallenge', 'user'])->find($submissionId);
@@ -568,17 +569,15 @@ class ChallengeCenter extends Component
         $this->reviewSubmission = null;
         $this->reviewSubmissionId = null; // Reset ID
         $this->reviewNotes = '';
-        $this->submissionRating = 5; // Reset rating ke default
+        $this->submissionRating = 5;
     }
 
     public function initializeLeaderboard()
     {
-        // Get real users from database with their eco progress
         $users = \App\Models\User::with('challengeParticipations')
             ->where('id', '!=', auth()->id())
             ->get()
             ->map(function ($user) {
-                // Hitung approved submissions hari ini untuk user lain
                 $today = Carbon::now()->format('Y-m-d');
                 $approvedToday = MissionSubmission::where('user_id', $user->id)
                     ->whereDate('submitted_at', $today)
@@ -612,7 +611,6 @@ class ChallengeCenter extends Component
             'dailyStreak' => $this->dailyStreak,
         ];
 
-        // Combine and sort by points (descending)
         $this->leaderboard = collect(array_merge([$currentUser], $users))
             ->sortByDesc('points')
             ->values()
@@ -637,7 +635,6 @@ class ChallengeCenter extends Component
 
     public function refreshLeaderboard()
     {
-        // Update current user data in leaderboard
         foreach ($this->leaderboard as &$user) {
             if ($user['id'] == auth()->id()) {
                 $user['points'] = $this->totalPoints;
@@ -648,7 +645,6 @@ class ChallengeCenter extends Component
             }
         }
 
-        // Update other users' completed missions
         $today = Carbon::now()->format('Y-m-d');
         foreach ($this->leaderboard as &$user) {
             if ($user['id'] != auth()->id()) {
@@ -665,7 +661,6 @@ class ChallengeCenter extends Component
         $this->filterLeaderboard();
     }
 
-    // Ubah method resetProgress untuk reset manual
     public function resetProgress()
     {
         if (! auth()->check()) {
@@ -674,7 +669,7 @@ class ChallengeCenter extends Component
 
         $user = auth()->user();
 
-        // Reset status misi saja, jangan reset poin
+        // Reset status misi 
         foreach ($this->missions as &$mission) {
             $mission['status'] = 'pending';
             $mission['completedDate'] = null;
@@ -684,7 +679,7 @@ class ChallengeCenter extends Component
         $user->update([
             'daily_missions_completed' => 0,
             'daily_challenge_progress' => [],
-            'completed_all_challenges_today' => false, // Reset flag
+            'completed_all_challenges_today' => false,
         ]);
 
         // Reload progress
