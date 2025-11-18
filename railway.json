@@ -1,9 +1,20 @@
 {
   "build": {
-    "builder": "nixpacks",
-    "buildCommand": "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
-  },
-  "start": {
-    "command": "php artisan migrate --force && php artisan optimize && vendor/bin/heroku-php-apache2 public/"
+    "builder": "NIXPACKS",
+    "nixpacksPlan": {
+      "phases": {
+        "build": {
+          "cmds": [
+            "composer install --no-dev --optimize-autoloader",
+            "npm install",
+            "npm run build",
+            "php artisan config:clear",
+            "php artisan route:clear",
+            "php artisan view:clear",
+            "php artisan storage:link"
+          ]
+        }
+      }
+    }
   }
 }
