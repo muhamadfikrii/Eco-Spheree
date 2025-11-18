@@ -473,6 +473,33 @@ class ChallengeCenter extends Component
         }
     }
 
+    // Method untuk mengecek dan mengupdate daily streak
+    private function checkAndUpdateDailyStreak($user)
+    {
+        $today = Carbon::now()->format('Y-m-d');
+
+        // Hitung total challenge yang sudah diselesaikan hari ini
+        $completedToday = MissionSubmission::where('user_id', $user->id)
+            ->whereDate('submitted_at', $today)
+            ->where('status', 'approved')
+            ->count();
+
+        // Jika semua challenge sudah diselesaikan (11 challenge)
+        if ($completedToday >= $this->totalChallenges) {
+            // Cek apakah flag sudah diset
+            if (! $user->completed_all_challenges_today) {
+                // Update flag untuk menandai semua challenge sudah diselesaikan hari ini
+                $user->update(['completed_all_challenges_today' => true]);
+
+                // Update flag untuk kemarin (untuk streak besok)
+                $user->update(['completed_all_challenges_yesterday' => true]);
+
+                // Tampilkan pesan sukses
+                session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
+            }
+        }
+    }
+
     private function updateUserLevel($user)
     {
         $user->eco_level = $user->getEcoLevel();
