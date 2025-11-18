@@ -443,7 +443,7 @@ class ChallengeCenter extends Component
         $this->refreshLeaderboard();
 
         // Show success message
-        session()->flash('message', "🎉 Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
+        session()->flash('message', "Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
     }
 
     // Method untuk mengecek dan mengupdate daily streak
