@@ -106,7 +106,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>
                         </div>
-                        <span class="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded-full">{{ Auth::user()->daily_missions_completed ?? 0 }}/11</span>
+                        <span class="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-800 px-2 py-1 rounded-full">{{ Auth::user()->challenges_completed ?? 0 }}/11</span>
                     </div>
                     <div class="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-1">{{ Auth::user()->challenges_completed ?? 0 }}/11</div>
                     <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">Missions</div>
