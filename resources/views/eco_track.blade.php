@@ -557,18 +557,57 @@
         },
 
         showNotification(message, type = 'info') {
-          // Simple notification implementation
+          const colors = {
+            success: 'from-green-600 to-emerald-500',
+            warning: 'from-yellow-500 to-orange-500',
+            info: 'from-blue-600 to-cyan-500'
+          };
+
+          const icons = {
+            success: '✅',
+            warning: '⚠️',
+            info: 'ℹ️'
+          };
+
           const notification = document.createElement('div');
-          notification.className = `fixed top-6 right-6 px-6 py-4 rounded-xl shadow-lg z-50 transform transition-all duration-300 ${
-            type === 'success' ? 'bg-green-600' : 
-            type === 'warning' ? 'bg-yellow-600' : 'bg-blue-600'
-          }`;
-          notification.textContent = message;
+
+          notification.className = `
+            fixed top-20 right-6 z-50
+            min-w-[320px] max-w-sm
+            bg-gradient-to-r ${colors[type]}
+            text-white
+            px-5 py-4
+            rounded-2xl
+            shadow-2xl
+            border border-white/10
+            backdrop-blur-md
+            flex items-center gap-3
+            transform translate-x-full opacity-0
+            transition-all duration-500
+          `;
+
+          notification.innerHTML = `
+            <div class="text-2xl">${icons[type]}</div>
+            <div class="flex-1">
+              <p class="font-semibold">${message}</p>
+            </div>
+          `;
+
           document.body.appendChild(notification);
-          
+
+          // trigger animation
           setTimeout(() => {
-            notification.classList.add('opacity-0', 'translate-x-full');
-            setTimeout(() => notification.remove(), 300);
+            notification.classList.remove('translate-x-full', 'opacity-0');
+          }, 100);
+
+          // hide notification
+          setTimeout(() => {
+            notification.classList.add('translate-x-full', 'opacity-0');
+
+            setTimeout(() => {
+              notification.remove();
+            }, 500);
+
           }, 3000);
         }
       }));
