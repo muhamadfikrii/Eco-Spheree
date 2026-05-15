@@ -103,14 +103,25 @@
     left: 100%;
 }
 
+.industrial-badge {
+    background: linear-gradient(135deg, rgba(34,211,238,0.95) 0%, rgba(100,116,139,0.95) 100%);
+    box-shadow: 0 4px 18px 0 rgba(34,211,238,0.25);
+}
+
+.industrial-gradient {
+    background: linear-gradient(135deg, rgba(34,211,238,0.9) 0%, rgba(100,116,139,0.9) 100%);
+}
+
+/* Keep legacy class names for backward compatibility (UI refactor uses new classes). */
 .eco-badge {
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-    box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, rgba(34,211,238,0.95) 0%, rgba(100,116,139,0.95) 100%);
+    box-shadow: 0 4px 18px 0 rgba(34,211,238,0.25);
 }
 
 .eco-gradient {
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    background: linear-gradient(135deg, rgba(34,211,238,0.9) 0%, rgba(100,116,139,0.9) 100%);
 }
+
 
 .stats-counter {
     font-family: 'Playfair Display', serif;
@@ -404,10 +415,19 @@ transform: translateZ(0);
 /* Environmental data Explore */
 .bg-grid-pattern {
     background-image: 
-        linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+        linear-gradient(rgba(34, 211, 238, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34, 211, 238, 0.12) 1px, transparent 1px);
     background-size: 50px 50px;
 }
+
+.industrial-grid {
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.18) 0%, transparent 35%),
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px, 42px 42px, 42px 42px;
+}
+
 
 /* Enhanced Animations */
 @keyframes gradient-shift {

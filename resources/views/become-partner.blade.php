@@ -90,7 +90,7 @@
                     
                     <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight font-display">
                         <span class="block text-white">Partner With</span>
-                        <span class="block bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">EcoSphere</span>
+                        <span class="block bg-gradient-to-r from-accent to-accent-light bg-clip-text text-transparent">NovaForge</span>
                     </h1>
                     
                     <p class="text-xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
@@ -227,7 +227,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-white mb-4">Recognition</h3>
                         <p class="text-gray-300 leading-relaxed">
-                            Receive official EcoSphere partnership certification and be featured in our annual impact reports.
+                            Receive official NovaForge partnership certification and be featured in our annual impact reports.
                         </p>
                     </div>
                 </div>
@@ -473,7 +473,7 @@
                             </div>
                         </div>
                         <p class="text-gray-300 italic">
-                            "EcoSphere's data platform has revolutionized our conservation efforts. The partnership has enabled us to make data-driven decisions that directly impact wildlife protection."
+                            "NovaForge's data platform has revolutionized our conservation efforts. The partnership has enabled us to make data-driven decisions that directly impact wildlife protection."
                         </p>
                         <div class="mt-4 flex items-center">
                             <i class="fas fa-star text-accent"></i>
@@ -495,7 +495,7 @@
                             </div>
                         </div>
                         <p class="text-gray-300 italic">
-                            "The collaboration with EcoSphere has provided our researchers with unprecedented access to environmental data, accelerating our climate change research significantly."
+                            "The collaboration with NovaForge has provided our researchers with unprecedented access to environmental data, accelerating our climate change research significantly."
                         </p>
                         <div class="mt-4 flex items-center">
                             <i class="fas fa-star text-accent"></i>
@@ -517,7 +517,7 @@
                             </div>
                         </div>
                         <p class="text-gray-300 italic">
-                            "EcoSphere's platform has revolutionized our environmental monitoring capabilities and public engagement efforts."
+                            "NovaForge's platform has revolutionized our environmental monitoring capabilities and public engagement efforts."
                         </p>
                         <div class="mt-4 flex items-center">
                             <i class="fas fa-star text-accent"></i>
