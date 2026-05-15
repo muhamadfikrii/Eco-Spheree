@@ -38,7 +38,7 @@
 
           <!-- Description -->
           <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            Eco-Track helps you understand, manage, and reduce your carbon footprint with intelligent analysis tools and actionable recommendations for a more sustainable lifestyle.
+            Nova-Track helps you understand, manage, and reduce your carbon footprint with intelligent analysis tools and actionable recommendations for a more sustainable lifestyle.
           </p>
 
           <!-- Stats -->

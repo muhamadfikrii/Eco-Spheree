@@ -123,7 +123,7 @@
                             <textarea x-model="form.message"
                                     rows="4"
                                     class="w-full px-4 py-3 bg-gray-800/50 border border-gray-700/50 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                                    placeholder="Describe your organization's mission and how you envision collaborating with EcoSphere..."></textarea>
+                                    placeholder="Describe your organization's mission and how you envision collaborating with NovaForge..."></textarea>
                             <div class="absolute top-3 right-3 text-gray-500 pointer-events-none">
                                 <i class="fas fa-comment-alt"></i>
                             </div>

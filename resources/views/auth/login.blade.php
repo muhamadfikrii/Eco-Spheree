@@ -17,8 +17,8 @@
 
                 <!-- Welcome -->
                 <div class="text-center mb-8">
-                    <h1 class="text-3xl font-bold text-white mb-2">Welcome Back to EcoTrack</h1>
-                    <p class="text-gray-400">Sign in to continue your eco-journey</p>
+Welcome Back to NovaForge
+step into smart industry automation
                 </div>
 
                 <!-- Session Status -->

@@ -6,10 +6,10 @@
                 <span class="inline-block bg-emerald-100 text-emerald-800 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
                     Success Stories
                 </span>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-300 mb-4">
                     Impact Stories
                 </h2>
-                <p class="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+                <p class="text-base sm:text-lg text-gray-100 max-w-3xl mx-auto">
                     Discover how EcoTrack is making a difference across Indonesia through real success stories and environmental achievements.
                 </p>
             </div>

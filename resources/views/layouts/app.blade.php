@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Eco-Spheree') }}</title>
+  <title>{{ config('app.name', 'NovaForge') }}</title>
 
   <!-- Fonts -->
   <link href="https://fonts.bunny.net/css?family=inter:400,600&display=swap" rel="stylesheet" />
@@ -31,14 +31,14 @@
   @livewireStyles()
 </head>
 
-<body class="font-sans antialiased text-slate-100 bg-slate-900">
+<body class="font-sans antialiased text-slate-100 bg-slate-900 selection:bg-orange-500/30 selection:text-white">
 
   @include('layouts.navigation')
 
   <main class="-z-10">
     <div class="absolute inset-0">
       <div class="absolute inset-0"></div>
-      <div class="absolute inset-0 bg-grid-pattern opacity-70"></div>
+      <div class="absolute inset-0 bg-grid-pattern industrial-grid opacity-70"></div>
     </div>
     {{ $slot }}
   </main>
@@ -70,4 +70,3 @@
   @livewireScripts()
 </body>
 </html>
-<meta name="csrf-token" content="{{ csrf_token() }}">
