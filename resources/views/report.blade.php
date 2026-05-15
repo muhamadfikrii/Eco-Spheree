@@ -49,7 +49,6 @@
 
         <!-- Forum Section -->
         <div x-show="tab === 'forum'" x-cloak class="flex flex-col md:flex-row h-[70vh] md:h-[75vh] bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-lg" style="pointer-events: auto; position: relative; z-index: 1;">
-            <!-- Sidebar (Channels) - Mobile Collapsible -->
             <div class="md:w-64 bg-slate-850 border-b md:border-r border-slate-700 p-4 flex flex-col">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold">🌿 Channels</h2>
@@ -66,7 +65,7 @@
                 <div class="flex flex-col" :class="{'hidden md:flex': !mobileSidebarOpen}">
                     <template x-for="(ch, i) in channels" :key="i">
                         <button 
-                            class="w-full text-left py-2 px-3 mb-1 rounded-lg hover:bg-slate-700 transition text-sm md:text-base"
+                            class="w-full text-left py-2 capitalize px-3 mb-1 rounded-lg hover:bg-slate-700 transition text-sm md:text-base"
                             :class="activeChannel === ch.name ? 'bg-slate-700 font-semibold' : ''"
                             @click="setChannel(ch.name); mobileSidebarOpen = false">
                             # <span x-text="ch.name"></span>
@@ -78,11 +77,10 @@
             <!-- Chat Area -->
             <div class="flex-1 flex flex-col">
                 <div class="px-4 md:px-5 py-3 border-b border-slate-700 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                    <h3 class="text-lg font-bold"># <span x-text="activeChannel"></span></h3>
+                    <h3 class="text-lg capitalize font-bold"># <span x-text="activeChannel"></span></h3>
                     <p class="text-slate-400 text-xs md:text-sm">Discussion and latest updates</p>
                 </div>
 
-                <!-- Chat Messages -->
                 <div class="flex-1 overflow-y-auto p-4 md:p-5 space-y-4" id="chat-scroll">
                     <template x-for="(msg, index) in messages[activeChannel]" :key="index">
                         <div class="flex items-start space-x-3">
@@ -94,7 +92,10 @@
                                 </p>
                                 <p x-text="msg.text" class="text-slate-200 text-sm md:text-base break-words"></p>
                                 <template x-if="msg.image">
-                                    <img :src="msg.image" class="mt-2 max-w-full md:w-56 rounded-lg border border-slate-700">
+                                    <img 
+                                        :src="msg.image"
+                                        @click="selectedImage = msg.image"
+                                        class="mt-2 w-40 md:w-56 rounded-xl border border-slate-700 cursor-pointer hover:scale-105 transition duration-300 object-cover shadow-lg">
                                 </template>
                             </div>
                         </div>
@@ -170,7 +171,11 @@
                     <label class="block text-slate-300 mb-2 text-sm md:text-base">Upload Photo (optional)</label>
                     <input type="file" x-ref="reportImage" @change="uploadReportImage" class="w-full text-slate-300 text-sm md:text-base" style="pointer-events: auto;" accept="image/*">
                     <template x-if="report.image">
-                        <img :src="report.image" class="mt-3 max-w-full md:w-56 rounded-lg border border-slate-700">
+                        <img 
+                            :src="report.image"
+                            @click="selectedImage = report.image"
+                            class="mt-3 w-40 md:w-56 rounded-xl border border-slate-700 cursor-pointer hover:scale-105 transition duration-300 object-cover shadow-lg"
+                        >
                     </template>
                 </div>
 
@@ -178,6 +183,30 @@
                     Submit Report
                 </button>
             </form>
+        </div>
+
+        <!-- Image Preview Modal -->
+        <div
+            x-show="selectedImage"
+            x-transition.opacity
+            class="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-6"
+            @click.self="selectedImage = null"
+            x-cloak
+        >
+
+            <!-- Close Button -->
+            <button
+                @click="selectedImage = null"
+                class="absolute top-5 right-5 text-white text-4xl hover:scale-110 transition"
+            >
+                ✕
+            </button>
+
+            <!-- Preview Image -->
+            <img
+                :src="selectedImage"
+                class="max-w-5xl max-h-[90vh] rounded-2xl shadow-2xl border border-slate-700 animate-fade-in"
+            >
         </div>
     </div>
 
@@ -189,11 +218,14 @@
                 mobileSidebarOpen: false,
                 username: @json(Auth::user()->name ?? 'Guest'),
                 channels: [
-                    { name: 'waste' },
+                    { name: 'general' },
+                    { name: 'climate' },
                     { name: 'water' },
-                    { name: 'air' },
                     { name: 'energy' },
-                    { name: 'education' }
+                    { name: 'waste' },
+                    { name: 'wildlife' },
+                    { name: 'community-action' },
+                    { name: 'report-condition' }
                 ],
                 activeChannel: 'waste',
                 messages: {
@@ -208,6 +240,7 @@
                 },
                 newMessage: '',
                 newImage: null,
+                selectedImage: null,
                 report: { title: '', desc: '', location: '', category: '', image: null },
 
                 init() {
@@ -220,19 +253,16 @@
                         this.showIntro = false;
                     }
                     
-                    // Auto-close mobile sidebar on desktop
                     if (window.innerWidth >= 768) {
                         this.mobileSidebarOpen = true;
                     }
                     
-                    // Handle window resize
                     window.addEventListener('resize', () => {
                         if (window.innerWidth >= 768) {
                             this.mobileSidebarOpen = true;
                         }
                     });
                     
-                    // Force enable pointer events setelah Alpine selesai init
                     this.$nextTick(() => {
                         document.querySelectorAll('input, textarea, select').forEach(el => {
                             el.style.pointerEvents = 'auto';
@@ -244,7 +274,6 @@
                     this.showIntro = false;
                     localStorage.setItem('ecoReportIntroShown', 'true');
                     
-                    // Pastikan semua input bisa diklik setelah modal tertutup
                     this.$nextTick(() => {
                         document.querySelectorAll('input, textarea, select').forEach(el => {
                             el.style.pointerEvents = 'auto';
@@ -321,7 +350,6 @@
             pointer-events: auto !important;
         }
         
-        /* Custom scrollbar untuk mobile */
         #chat-scroll::-webkit-scrollbar {
             width: 4px;
         }
@@ -333,14 +361,12 @@
             border-radius: 2px;
         }
         
-        /* Improve touch targets on mobile */
         @media (max-width: 768px) {
             button, input, select, textarea {
                 min-height: 44px;
             }
         }
         
-        /* Animasi untuk modal */
         .modal-enter {
             opacity: 0;
             transform: scale(0.95);
@@ -351,4 +377,6 @@
             transition: opacity 200ms ease-out, transform 200ms ease-out;
         }
     </style>
+
+    
 </x-app-layout>
