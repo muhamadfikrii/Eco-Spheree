@@ -17,8 +17,8 @@
 
                 <!-- Welcome Message -->
                 <div class="text-center mb-8">
-                    <h1 class="text-3xl font-bold text-white mb-2">Join EcoTrack</h1>
-                    <p class="text-gray-400">Create your account to start your eco-journey</p>
+Join NovaForge
+launch your smart industry profile
                 </div>
 
                 <form method="POST" action="{{ route('register') }}" x-data="registerForm()">

@@ -6,7 +6,7 @@
                 <i class="fas fa-leaf text-white"></i>
             </div>
             <div>
-                <h2 class="text-xl sm:text-2xl md:text-3xl">Eco-Track Indonesia Map</h2>
+                <h2 class="text-xl sm:text-2xl md:text-3xl">Nova-Track Indonesia Map</h2>
                 <p class="text-sm text-gray-400">Environmental data across Indonesia</p>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <button 
                     onclick="switchLayer('biodiversity')"
                     id="biodiversity-btn"
-                    class="layer-btn flex-1 px-3 py-1.5 text-xs rounded-md font-medium transition-colors text-gray-400 hover:text-white"
+                    class="layer-btn flex-1 px-3 py-1.5 text-xs text-center rounded-md font-medium transition-colors text-gray-400 hover:text-white"
                 >
                     Biodiversity
                 </button>

@@ -12,8 +12,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/explore', function () {
-    return view('explore');
-})->name('explore');
+    return view('analytics');
+})->name('analytics');
 
 Route::get('/explore/deeper', function () {
     return view('explore-deeper');
