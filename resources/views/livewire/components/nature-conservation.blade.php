@@ -36,7 +36,7 @@
                         <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Forest Conservation</h3>
                         <p class="text-gray-400 mb-4 text-sm sm:text-base">Protect vital ecosystems and biodiversity through sustainable forest management and reforestation efforts.</p>
                         <div class="flex items-center text-emerald-400 font-medium">
-                            <span><a href="{{ route('protect') }}">Protect</a></span>
+                            <span><a href="">Protect</a></span>
                             <svg class="w-4 h-4 ml-2 transform transition-transform" :class="{'translate-x-1': card1Hover}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
@@ -406,7 +406,7 @@
                     <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Join Our Conservation Mission</h3>
                     <p class="text-lg sm:text-xl opacity-90 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">Together we can protect our natural heritage and create a sustainable future for all living beings.</p>
                     <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
-                        <a href="{{ route('register') }}" class="px-6 sm:px-8 py-3 bg-white text-emerald-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center">
+                        <a href="" class="px-6 sm:px-8 py-3 bg-white text-emerald-700 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                             </svg>

@@ -1,7 +1,7 @@
 <div class="bg-slate-50" id="purpose">
     <div x-data="industrialApp()">
         <!-- Hero Section -->
-        <section class="pt-20 pb-16 px-6 lg:px-12 z-0 eco-gradient text-white">
+        <section class="pt-20 pb-16 px-6 lg:px-12 z-0 industrial-hero-gradient text-white">
             <div class="max-w-[1300px] mx-auto">
                 <div class="flex flex-col lg:flex-row items-center justify-between">
                     <div class="lg:w-1/2 mb-10 lg:mb-0">
@@ -12,9 +12,9 @@
                             IndustrialTrack transforms manufacturing data into a living digital twin — visualizing machine telemetry, energy efficiency, and supply chain health in real time.
                         </p>
                         <div class="flex flex-wrap gap-4">
-                            <a href="{{ route('analytics') }}" 
+                        <a href="{{ route('insights') }}" 
                                 class="px-6 py-3 bg-[#2563eb] text-white border border-white hover:bg-transparent font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                                Launch Industrial Dashboard
+                                Open Industrial Dashboard
                             </a>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
         </section>
 
         <!-- Features Section -->
-        <section class="py-16 px-6 lg:px-12" id="features-section">
+        <section class="py-16 px-6 lg:px-12" id="features">
             <div class="max-w-[1300px] mx-auto">
                 <div class="text-center mb-16">
                     <span class="inline-block industrial-badge text-white px-4 py-2 rounded-full text-sm font-mono font-semibold mb-4">
@@ -306,20 +306,6 @@
                                 <a href="{{ route('learn_more') }}" class="px-4 py-2 bg-[#2563eb] text-white rounded-lg hover:bg-[#1d4ed8] transition-colors">
                                     Learn More
                                 </a>
-                                <a href="{{ route('login') }}" class="px-4 py-2 border border-[#2563eb] text-[#2563eb] rounded-lg hover:bg-slate-50 transition-colors">
-                                    Request Demo
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- CTA Card -->
-                        <div class="industrial-hero-gradient text-white rounded-2xl shadow-lg p-8 text-center">
-                            <h3 class="text-2xl font-bold mb-4">Ready to Digitalize Your Factory?</h3>
-                            <p class="mb-6 opacity-90">Join 1,200+ manufacturers already improving OEE with IndustrialTrack.</p>
-                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="{{ route('register') }}" class="px-6 py-3 bg-white text-[#2563eb] font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                                    Start Free Trial
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -361,99 +347,98 @@
         font-feature-settings: "tnum";
         font-variant-numeric: tabular-nums;
     }
-</style>
+    </style>
 
-<script>
-    function industrialApp() {
-        return {
-            activeFeature: null,
-            aboutExpanded: false,
-            showDashboard: false,
-            features: [
-                {
-                    title: "Real-Time Machine Telemetry",
-                    icon: "fas fa-chart-line text-blue-600",
-                    colorClass: "bg-blue-50 border-l-4 border-blue-500",
-                    fullDescription: "Our IIoT platform captures vibration, temperature, pressure, and power consumption data from over 1,200 industrial sensors with sub-second latency. Gain real-time visibility into every asset on your factory floor.",
-                    stats: [
-                        { icon: "fas fa-microchip", value: "1,200+", label: "Active Sensors" },
-                        { icon: "fas fa-clock", value: "< 100ms", label: "Latency" },
-                        { icon: "fas fa-chart-line", value: "24/7", label: "Streaming" },
-                        { icon: "fas fa-database", value: "PB-scale", label: "Data Historian" }
-                    ],
-                    benefits: [
-                        "Instant anomaly detection and alerts",
-                        "Centralized dashboard for all assets",
-                        "Seamless integration with existing SCADA",
-                        "Mobile access for floor managers"
-                    ]
+    <script>
+        function industrialApp() {
+            return {
+                activeFeature: null,
+                aboutExpanded: false,
+                showDashboard: false,
+                features: [
+                    {
+                        title: "Real-Time Machine Telemetry",
+                        icon: "fas fa-chart-line text-blue-600",
+                        colorClass: "bg-blue-50 border-l-4 border-blue-500",
+                        fullDescription: "Our IIoT platform captures vibration, temperature, pressure, and power consumption data from over 1,200 industrial sensors with sub-second latency. Gain real-time visibility into every asset on your factory floor.",
+                        stats: [
+                            { icon: "fas fa-microchip", value: "1,200+", label: "Active Sensors" },
+                            { icon: "fas fa-clock", value: "< 100ms", label: "Latency" },
+                            { icon: "fas fa-chart-line", value: "24/7", label: "Streaming" },
+                            { icon: "fas fa-database", value: "PB-scale", label: "Data Historian" }
+                        ],
+                        benefits: [
+                            "Instant anomaly detection and alerts",
+                            "Centralized dashboard for all assets",
+                            "Seamless integration with existing SCADA",
+                            "Mobile access for floor managers"
+                        ]
+                    },
+                    {
+                        title: "Energy & Emissions Optimization",
+                        icon: "fas fa-charging-station text-green-600",
+                        colorClass: "bg-green-50 border-l-4 border-green-500",
+                        fullDescription: "AI-driven analytics identify energy waste patterns, optimize HVAC and motor usage, and help you meet carbon reduction targets without sacrificing production output.",
+                        stats: [
+                            { icon: "fas fa-leaf", value: "-23%", label: "Avg. Energy Reduction" },
+                            { icon: "fas fa-cloud-sun", value: "1,200 tCO2", label: "Saved Annually" },
+                            { icon: "fas fa-chart-simple", value: "15%", label: "Peak Demand Cut" },
+                            { icon: "fas fa-solar-panel", value: "40+", label: "Green Projects" }
+                        ],
+                        benefits: [
+                            "Automated energy audits",
+                            "Real-time carbon footprint tracking",
+                            "ROI-focused recommendations",
+                            "Support for ESG reporting"
+                        ]
+                    },
+                    {
+                        title: "Predictive Maintenance & AI",
+                        icon: "fas fa-brain text-purple-600",
+                        colorClass: "bg-purple-50 border-l-4 border-purple-500",
+                        fullDescription: "Machine learning models trained on historical failure patterns predict breakdowns up to 48 hours in advance, reducing unplanned downtime by up to 45% and extending equipment lifespan by 30%.",
+                        stats: [
+                            { icon: "fas fa-chart-simple", value: "94%", label: "Prediction Accuracy" },
+                            { icon: "fas fa-tools", value: "45%", label: "Less Downtime" },
+                            { icon: "fas fa-calendar-week", value: "48h", label: "Advance Warning" },
+                            { icon: "fas fa-clock", value: "30%", label: "Longer Asset Life" }
+                        ],
+                        benefits: [
+                            "Reduced maintenance costs",
+                            "Optimized spare parts inventory",
+                            "Condition-based maintenance scheduling",
+                            "Integration with CMMS"
+                        ]
+                    },
+                    {
+                        title: "Supply Chain Digital Twin",
+                        icon: "fas fa-truck-fast text-amber-600",
+                        colorClass: "bg-amber-50 border-l-4 border-amber-500",
+                        fullDescription: "Create a virtual replica of your entire supply chain — from raw material to customer delivery. Simulate disruptions, optimize routes, and maintain 99.5% on-time delivery even during volatility.",
+                        stats: [
+                            { icon: "fas fa-chart-line", value: "99.5%", label: "On-Time Delivery" },
+                            { icon: "fas fa-boxes", value: "-18%", label: "Inventory Cost" },
+                            { icon: "fas fa-route", value: "22%", label: "Logistics Efficiency" },
+                            { icon: "fas fa-chart-pie", value: "100%", label: "Visibility" }
+                        ],
+                        benefits: [
+                            "End-to-end real-time tracking",
+                            "What-if scenario simulation",
+                            "Automated replenishment",
+                            "Risk mitigation dashboards"
+                        ]
+                    }
+                ],
+                showFeature(index) {
+                    this.activeFeature = index;
+                    this.showDashboard = false;
                 },
-                {
-                    title: "Energy & Emissions Optimization",
-                    icon: "fas fa-charging-station text-green-600",
-                    colorClass: "bg-green-50 border-l-4 border-green-500",
-                    fullDescription: "AI-driven analytics identify energy waste patterns, optimize HVAC and motor usage, and help you meet carbon reduction targets without sacrificing production output.",
-                    stats: [
-                        { icon: "fas fa-leaf", value: "-23%", label: "Avg. Energy Reduction" },
-                        { icon: "fas fa-cloud-sun", value: "1,200 tCO2", label: "Saved Annually" },
-                        { icon: "fas fa-chart-simple", value: "15%", label: "Peak Demand Cut" },
-                        { icon: "fas fa-solar-panel", value: "40+", label: "Green Projects" }
-                    ],
-                    benefits: [
-                        "Automated energy audits",
-                        "Real-time carbon footprint tracking",
-                        "ROI-focused recommendations",
-                        "Support for ESG reporting"
-                    ]
-                },
-                {
-                    title: "Predictive Maintenance & AI",
-                    icon: "fas fa-brain text-purple-600",
-                    colorClass: "bg-purple-50 border-l-4 border-purple-500",
-                    fullDescription: "Machine learning models trained on historical failure patterns predict breakdowns up to 48 hours in advance, reducing unplanned downtime by up to 45% and extending equipment lifespan by 30%.",
-                    stats: [
-                        { icon: "fas fa-chart-simple", value: "94%", label: "Prediction Accuracy" },
-                        { icon: "fas fa-tools", value: "45%", label: "Less Downtime" },
-                        { icon: "fas fa-calendar-week", value: "48h", label: "Advance Warning" },
-                        { icon: "fas fa-clock", value: "30%", label: "Longer Asset Life" }
-                    ],
-                    benefits: [
-                        "Reduced maintenance costs",
-                        "Optimized spare parts inventory",
-                        "Condition-based maintenance scheduling",
-                        "Integration with CMMS"
-                    ]
-                },
-                {
-                    title: "Supply Chain Digital Twin",
-                    icon: "fas fa-truck-fast text-amber-600",
-                    colorClass: "bg-amber-50 border-l-4 border-amber-500",
-                    fullDescription: "Create a virtual replica of your entire supply chain — from raw material to customer delivery. Simulate disruptions, optimize routes, and maintain 99.5% on-time delivery even during volatility.",
-                    stats: [
-                        { icon: "fas fa-chart-line", value: "99.5%", label: "On-Time Delivery" },
-                        { icon: "fas fa-boxes", value: "-18%", label: "Inventory Cost" },
-                        { icon: "fas fa-route", value: "22%", label: "Logistics Efficiency" },
-                        { icon: "fas fa-chart-pie", value: "100%", label: "Visibility" }
-                    ],
-                    benefits: [
-                        "End-to-end real-time tracking",
-                        "What-if scenario simulation",
-                        "Automated replenishment",
-                        "Risk mitigation dashboards"
-                    ]
+                scrollToFeatures() {
+                    document.getElementById('features-section').scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
                 }
-            ],
-            showFeature(index) {
-                this.activeFeature = index;
-                this.showDashboard = false;
-            },
-            scrollToFeatures() {
-                document.getElementById('features-section').scrollIntoView({ 
-                    behavior: 'smooth' 
-                });
             }
         }
-    }
-</script>
+    </script>
 </div>
-
