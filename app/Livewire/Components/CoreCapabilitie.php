@@ -4,10 +4,10 @@ namespace App\Livewire\Components;
 
 use Livewire\Component;
 
-class ImpactStories extends Component
+class CoreCapabilitie extends Component
 {
     public function render()
     {
-        return view('livewire.components.impact-stories');
+        return view('livewire.components.core-capabilitie');
     }
 }
