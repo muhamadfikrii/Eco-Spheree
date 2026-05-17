@@ -30,7 +30,7 @@
                 <a href="{{ route('insights') }}" 
                    :class="active === 'insights' ? 'bg-cyan-500/10 text-cyan-400' : 'text-gray-300 hover:text-white hover:bg-white/5'"
                    class="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200">Insights</a>
-                <a href="#" 
+                <a href="{{ route('health') }}" 
                    :class="active === 'health' ? 'bg-cyan-500/10 text-cyan-400' : 'text-gray-300 hover:text-white hover:bg-white/5'"
                    class="px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200">Health</a>
                 <a href="#" 
