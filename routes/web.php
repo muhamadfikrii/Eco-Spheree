@@ -15,17 +15,13 @@ Route::get('/insights', function () {
     return view('insights');
 })->name('insights');
 
-Route::get('/explore/deeper', function () {
-    return view('explore-deeper');
-})->name('deeper');
-
 Route::get('/challenge', function () {
     return view('challenge');
-})->name('challenge');  
+})->name('challenge');
 
-Route::get('/eco_track', function () {
-    return view('eco_track');
-})->name('eco_track');
+Route::get('/health', function () {
+    return view('health');
+})->name('health');
 
 Route::get('/contact', function () {
     return view('contact');
