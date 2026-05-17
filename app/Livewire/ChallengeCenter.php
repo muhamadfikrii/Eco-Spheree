@@ -445,6 +445,37 @@ class ChallengeCenter extends Component
         // Show success message
         session()->flash('message', "Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
     }
+    // Method untuk mengecek dan mengupdate daily streak
+    private function checkAndUpdateDailyStreak($user)
+    {
+        $today = Carbon::now()->format('Y-m-d');
+
+        // Hitung total challenge yang sudah diselesaikan hari ini
+        $completedToday = MissionSubmission::where('user_id', $user->id)
+            ->whereDate('submitted_at', $today)
+            ->where('status', 'approved')
+            ->count();
+
+        if ($completedToday >= $this->totalChallenges) {
+            if (! $user->completed_all_challenges_today) {
+                $user->update(['completed_all_challenges_today' => true]);
+
+                // Update flag untuk kemarin (untuk streak besok)
+                $user->update(['completed_all_challenges_yesterday' => true]);
+
+                session()->flash('streak_message', '🔥 Congratulations! You\'ve completed all challenges today! Your daily streak will increase tomorrow.');
+            }
+        }
+
+        // Reload user progress
+        $this->loadUserProgress();
+
+        $this->refreshLeaderboard();
+
+        session()->flash('message', "🎉 Mission \"{$mission['title']}\" completed! +{$mission['points']} pts");
+    }
+
+
 
     private function updateUserLevel($user)
     {
@@ -631,7 +662,7 @@ class ChallengeCenter extends Component
 
         $user = auth()->user();
 
-        // Reset status misi 
+        // Reset status misi
         foreach ($this->missions as &$mission) {
             $mission['status'] = 'pending';
             $mission['completedDate'] = null;
