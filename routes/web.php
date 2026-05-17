@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('Home');
 })->name('home');
 
-Route::get('/explore', function () {
-    return view('analytics');
-})->name('analytics');
+Route::get('/insights', function () {
+    return view('insights');
+})->name('insights');
 
 Route::get('/explore/deeper', function () {
     return view('explore-deeper');
@@ -21,7 +21,7 @@ Route::get('/explore/deeper', function () {
 
 Route::get('/challenge', function () {
     return view('challenge');
-})->name('challenge');
+})->name('challenge');  
 
 Route::get('/eco_track', function () {
     return view('eco_track');
@@ -46,9 +46,9 @@ Route::get('/learn/contact', function () {
 })->name('contact-partner');
 
 // Legacy routes (consider removing if not used)
-Route::get('/protect', function () {
-    return view('livewire.components.protect');
-})->name('protect');
+Route::get('/core-capabilitie', function () {
+    return view('livewire.components.core-capabilitie');
+})->name('core-capabilitie');
 
 Route::get('/learn_more', function () {
     return view('livewire.components.learn-more');
@@ -89,9 +89,3 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/mission-reviews/{submission}/approve', [App\Http\Controllers\Admin\MissionReviewController::class, 'approve'])->name('admin.mission-reviews.approve');
     Route::post('/admin/mission-reviews/{submission}/reject', [App\Http\Controllers\Admin\MissionReviewController::class, 'reject'])->name('admin.mission-reviews.reject');
 });
-
-// ==================================
-// AUTH ROUTES (LOGIN/REGISTER)
-// ==================================
-
-require __DIR__.'/auth.php';
