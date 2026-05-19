@@ -1,26 +1,52 @@
+<style>
+    /* Soft pulse animation for live indicator */
+    @keyframes soft-pulse {
+        0% {
+            opacity: 0.5;
+            transform: scale(0.8);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+        }
+        70% {
+            opacity: 1;
+            transform: scale(1.2);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+        }
+        100% {
+            opacity: 0.5;
+            transform: scale(0.8);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
+    }
+    .live-dot {
+        animation: soft-pulse 2s ease-in-out infinite;
+        background-color: #10b981;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
+
 <nav
     x-data="{ open: false, scrolled: false, active: '' }"
     x-init="
         window.addEventListener('scroll', () => {
             scrolled = window.scrollY > 10;
         });
-        // Set active berdasarkan URL
         let path = window.location.pathname;
         if (path === '/' || path === '/home') active = 'dashboard';
-        else if (path === '/insights' || path === '/insights')
-            active = 'insights';
+        else if (path === '/insights') active = 'insights';
         else if (path === '/health') active = 'health';
         else if (path === '/resources') active = 'resources';
         else if (path === '/contact') active = 'contact';
         else active = 'dashboard';
     "
     :class="scrolled
-        ? 'bg-slate-900/80 backdrop-blur-lg border-b border-slate-800 shadow-lg py-3'
+        ? 'bg-slate-900/80 backdrop-blur-lg border-b border-slate-800/80 shadow-xl py-3'
         : 'bg-transparent py-5'"
     class="fixed left-0 top-0 z-50 w-full transition-all duration-300"
 >
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="flex items-center justify-between">
+            <!-- Logo -->
             <a href="{{ route('home') }}" class="group flex items-center gap-2">
                 <div
                     class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 shadow-lg shadow-cyan-500/20"
@@ -32,6 +58,7 @@
                 >
             </a>
 
+            <!-- Menu Desktop -->
             <div class="hidden items-center gap-1 md:flex">
                 <a
                     href="{{ route('home') }}"
@@ -75,34 +102,18 @@
                 >
             </div>
 
+            <!-- Indikator dengan dot hidup -->
             <div class="hidden items-center gap-4 md:flex">
-                <div
-                    class="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1.5 backdrop-blur-sm"
-                >
-                    <span class="relative flex h-2 w-2"
-                        ><span
-                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"
-                        ></span
-                        ><span
-                            class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"
-                        ></span
-                    ></span>
-                    <span class="font-mono text-xs text-emerald-400">LIVE</span>
-                    <span class="hidden text-xs text-gray-400 lg:inline"
-                        >|</span
-                    >
-                    <span class="hidden text-xs text-cyan-400 lg:inline"
-                        >98.7% OEE</span
-                    >
+                <div class="flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-800/40 px-3 py-1.5 backdrop-blur-sm">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="live-dot absolute h-full w-full"></span>
+                    </span>
+                    <span class="text-xs font-medium text-gray-300">Live System</span>
                 </div>
-                <a
-                    href="#"
-                    class="relative inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-4 py-2 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                    <i class="fas fa-chart-line text-xs"></i> Demo
-                </a>
+                <!-- Tidak ada tombol demo -->
             </div>
 
+            <!-- Mobile menu button -->
             <button
                 @click="open = !open"
                 class="rounded-lg border border-slate-700 bg-white/5 p-2 text-white md:hidden"
@@ -113,6 +124,7 @@
         </div>
     </div>
 
+    <!-- Mobile menu -->
     <div
         x-show="open"
         @click.away="open = false"
@@ -137,7 +149,7 @@
                 >Insights</a
             >
             <a
-                href="#"
+                href="{{ route('health') }}"
                 class="block rounded-lg px-4 py-3"
                 :class="active === 'health'
                     ? 'text-cyan-400 bg-cyan-500/10'
@@ -145,7 +157,7 @@
                 >Health</a
             >
             <a
-                href="#"
+                href="{{ route('resources') }}"
                 class="block rounded-lg px-4 py-3"
                 :class="active === 'resources'
                     ? 'text-cyan-400 bg-cyan-500/10'
@@ -153,20 +165,13 @@
                 >Resources</a
             >
             <a
-                href="#"
+                href="{{ route('contact') }}"
                 class="block rounded-lg px-4 py-3"
                 :class="active === 'contact'
                     ? 'text-cyan-400 bg-cyan-500/10'
                     : 'text-gray-300 hover:bg-white/5'"
                 >Contact</a
             >
-            <div class="mt-2 border-t border-slate-800 pt-4">
-                <a
-                    href="#"
-                    class="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 py-2.5 text-sm font-medium text-white"
-                    >Live Demo</a
-                >
-            </div>
         </div>
     </div>
 </nav>

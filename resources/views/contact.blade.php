@@ -1,13 +1,11 @@
 <x-app-layout>
     <div class="min-h-screen bg-slate-950 pb-24">
-        <!-- Background pattern -->
         <div class="pointer-events-none fixed inset-0 z-0 opacity-10">
             <div
                 class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDgiIGQ9Ik0wIDQwTDQwIDBNNDAgODBMODAgNDBNODAgNDBMMTAgNzAiLz48L3N2Zz4=')]"
             ></div>
         </div>
 
-        <!-- Hero -->
         <section class="relative z-10 pb-16 pt-24 lg:pt-32">
             <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
                 <div
@@ -28,7 +26,6 @@
             </div>
         </section>
 
-        <!-- Contact Info & Form -->
         <section class="relative z-10 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid gap-12 lg:grid-cols-2">
@@ -197,18 +194,21 @@
                                     : 'hover:shadow-lg'"
                                 class="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 font-semibold text-white transition md:w-auto"
                             >
-                            <i class="fa-solid fa-paper-plane"></i>
-                                <template x-if="submitting"
-                                    ><>
-                                    <div
-                                        class="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"
-                                    ></div>
-                                    Sending...</>
-                                >
-                                <template x-if="!submitting"
-                                    ><><i class="fas fa-paper-plane"></i> Send
-                                    Message</>
-                                >
+                                <template x-if="submitting">
+                                    <div class="flex items-center gap-2">
+                                        <div
+                                            class="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"
+                                        ></div>
+                                        <span>Sending...</span>
+                                    </div>
+                                </template>
+
+                                <template x-if="!submitting">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Send Message</span>
+                                    </div>
+                                </template>
                             </button>
                             <div
                                 x-show="success"
@@ -230,7 +230,6 @@
             </div>
         </section>
 
-        <!-- Map -->
         <section class="relative z-10 py-12">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div
