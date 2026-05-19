@@ -20,18 +20,24 @@
                             '100%': { opacity: '1' },
                         },
                         slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(30px)',
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)',
+                            },
                         },
                         countUp: {
                             '0%': { opacity: '0', transform: 'scale(0.8)' },
                             '50%': { opacity: '1', transform: 'scale(1.1)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
-                        }
-                    }
-                }
-            }
-        }
+                        },
+                    },
+                },
+            },
+        };
     </script>
 <div class="bg-[#0f2a3d] text-[#e8f4f0]" x-data="{
     activeFeature: 0,
@@ -85,7 +91,7 @@
     }
 }">
     <!-- Learn More Hero Section -->
-    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700" data-aos="fade-up">
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700">
         <!-- Background Elements -->
         <div class="absolute inset-0 overflow-hidden ">
             <div class="absolute top-20 left-10 w-56 h-60 bg-[#4a8c6d]/10 rounded-full filter blur-3xl animate-float-slow"></div>
@@ -93,41 +99,61 @@
             <div class="absolute top-1/2 left-1/3 w-96 h-96 bg-[#0f2a3d]/20 rounded-full filter blur-3xl animate-float-slow"></div>
         </div>
 
-        <div class="relative z-10 max-w-6xl mx-auto px-6 py-16 mt-16 text-center">
-            <div class="inline-flex items-center bg-[#4a8c6d]/20 text-[#e6b325] px-4 py-2 rounded-full text-sm font-medium mb-6 border border-[#4a8c6d]/30 animate-fade-in">
-                <i class="fas fa-leaf mr-2"></i>
-                Digital Innovation for Sustainable Nature
+            <div
+                class="relative z-10 mx-auto mt-16 max-w-6xl px-6 py-16 text-center"
+            >
+                <div
+                    class="mb-6 inline-flex animate-fade-in items-center rounded-full border border-[#4a8c6d]/30 bg-[#4a8c6d]/20 px-4 py-2 text-sm font-medium text-[#e6b325]"
+                >
+                    <i class="fas fa-leaf mr-2"></i>
+                    Digital Innovation for Sustainable Nature
+                </div>
+
+                <h1
+                    class="mb-6 animate-slide-up text-4xl font-light leading-tight md:text-5xl lg:text-6xl"
+                >
+                    Transforming Environmental Data
+                    <span class="mt-2 block font-normal text-[#e6b325]"
+                        >Into Actionable Insights</span
+                    >
+                </h1>
+
+                <p class="mx-auto mb-10 max-w-3xl animate-slide-up text-xl leading-relaxed text-[#a0b8b0]" style="
+                        animation-delay: 0.2s;
+                    ">Eco-Sphere is an innovative platform that transforms complex environmental data into interactive visualizations that are easy to understand, driving real action for nature sustainability.</p>
+
+                <div
+                    class="flex animate-slide-up flex-col justify-center gap-4 sm:flex-row"
+                    style="animation-delay: 0.4s"
+                >
+                    <button
+                        @click="scrollToSection('features')"
+                        class="group flex transform items-center justify-center rounded-lg bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-[#e6b325] hover:to-[#d4a320] hover:shadow-xl"
+                    >
+                        <i
+                            class="fas fa-feather-alt mr-3 transition-transform group-hover:scale-110"
+                        ></i>
+                        Explore Features
+                    </button>
+                    <button
+                        @click="scrollToSection('how-it-works')"
+                        class="text-text-[#e8f4f0] group flex items-center justify-center rounded-lg border-2 border-[#4a8c6d] bg-transparent px-8 py-4 font-semibold transition-all duration-300 hover:border-[#e6b325] hover:bg-[#4a8c6d]/10"
+                    >
+                        <i
+                            class="fa-solid fa-briefcase mr-3 transition-transform group-hover:scale-110"
+                        ></i>
+                        How It Works
+                    </button>
+                </div>
             </div>
-            
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-light mb-6 leading-tight animate-slide-up">
-                Transforming Environmental Data
-                <span class="block font-normal text-[#e6b325] mt-2">Into Actionable Insights</span>
-            </h1>
-            
-            <p class="text-xl text-[#a0b8b0] max-w-3xl mx-auto mb-10 leading-relaxed animate-slide-up" style="animation-delay: 0.2s">
-                Eco-Sphere is an innovative platform that transforms complex environmental data into 
-                interactive visualizations that are easy to understand, driving real action for nature sustainability.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 0.4s">
-                <button @click="scrollToSection('features')" class="px-8 py-4 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center group">
-                    <i class="fas fa-feather-alt mr-3 group-hover:scale-110 transition-transform"></i>
-                    Explore Features
-                </button>
-                <button @click="scrollToSection('how-it-works')" class="px-8 py-4 bg-transparent border-2 border-[#4a8c6d] hover:border-[#e6b325] text-text-[#e8f4f0] rounded-lg transition-all duration-300 font-semibold hover:bg-[#4a8c6d]/10 flex items-center justify-center group">
-                    <i class="fa-solid fa-briefcase mr-3 group-hover:scale-110 transition-transform"></i>
-                    How It Works
-                </button>
-            </div>
-        </div>
-    </section>
+        </section>
 
    <!-- Mission & Vision Section -->
-    <section x-data="{
-        expanded: null,
-        activeFeature: 0,
-        setActiveFeature(index) { this.activeFeature = index; }
-    }" class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]/80" data-aos="fade-up" data-aos-delay="200">
+    <section x-data="{ 
+        expanded: null, 
+        activeFeature: 0, 
+        setActiveFeature(index) { this.activeFeature = index; } 
+    }" class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]/80">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <!-- Left Column: Text and Accordion -->
@@ -173,54 +199,109 @@
                             <p>Through our platform, environmental actions have led to measurable improvements in conservation areas, reduced pollution levels, and increased community engagement.</p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Right Column: Feature Cards Grid -->
-                <div class="bg-emerald-500 rounded-2xl p-4 sm:p-6 lg:p-8 border border-[#4a8c6d]/20">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                        <!-- Mission Card -->
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(0)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 0}">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-bullseye text-[#e6b325] text-xl sm:text-2xl"></i>
+
+                    
+                    <div
+                        class="rounded-2xl border border-[#4a8c6d]/20 bg-emerald-500 p-4 sm:p-6 lg:p-8"
+                    >
+                        <div
+                            class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6"
+                        >
+                            
+                            <div
+                                class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
+                                @click="setActiveFeature(0)"
+                                :class="{
+                                    'ring-2 ring-[#e6b325]':
+                                        activeFeature === 0,
+                                }"
+                            >
+                                <div
+                                    class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20 sm:h-16 sm:w-16"
+                                >
+                                    <i
+                                        class="fas fa-bullseye text-xl text-[#e6b325] sm:text-2xl"
+                                    ></i>
+                                </div>
+                                <h3 class="mb-2 font-bold text-[#e8f4f0]">
+                                    Mission
+                                </h3>
+                                <p class="text-sm text-gray-300">To democratize access to environmental data through an interactive and user-friendly digital platform.</p>
                             </div>
-                            <h3 class="font-bold text-[#e8f4f0] mb-2">Mission</h3>
-                            <p class="text-gray-300 text-sm">To democratize access to environmental data through an interactive and user-friendly digital platform.</p>
-                        </div>
-                        
-                        <!-- Vision Card -->
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(1)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 1}">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-eye text-[#e6b325] text-xl sm:text-2xl"></i>
+
+                            
+                            <div
+                                class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
+                                @click="setActiveFeature(1)"
+                                :class="{
+                                    'ring-2 ring-[#e6b325]':
+                                        activeFeature === 1,
+                                }"
+                            >
+                                <div
+                                    class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20 sm:h-16 sm:w-16"
+                                >
+                                    <i
+                                        class="fas fa-eye text-xl text-[#e6b325] sm:text-2xl"
+                                    ></i>
+                                </div>
+                                <h3 class="mb-2 font-bold text-[#e8f4f0]">
+                                    Vision
+                                </h3>
+                                <p class="text-sm text-gray-300">To create an environmentally conscious society with tools to monitor and protect biodiversity.</p>
                             </div>
-                            <h3 class="font-bold text-[#e8f4f0] mb-2">Vision</h3>
-                            <p class="text-gray-300 text-sm">To create an environmentally conscious society with tools to monitor and protect biodiversity.</p>
-                        </div>
-                        
-                        <!-- Values Card -->
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(2)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 2}">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-hand-holding-heart text-[#e6b325] text-xl sm:text-2xl"></i>
+
+                            
+                            <div
+                                class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
+                                @click="setActiveFeature(2)"
+                                :class="{
+                                    'ring-2 ring-[#e6b325]':
+                                        activeFeature === 2,
+                                }"
+                            >
+                                <div
+                                    class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20 sm:h-16 sm:w-16"
+                                >
+                                    <i
+                                        class="fas fa-hand-holding-heart text-xl text-[#e6b325] sm:text-2xl"
+                                    ></i>
+                                </div>
+                                <h3 class="mb-2 font-bold text-[#e8f4f0]">
+                                    Values
+                                </h3>
+                                <p class="text-sm text-gray-300">Transparency, collaboration, innovation, and sustainability in every aspect of our platform.</p>
                             </div>
-                            <h3 class="font-bold text-[#e8f4f0] mb-2">Values</h3>
-                            <p class="text-gray-300 text-sm">Transparency, collaboration, innovation, and sustainability in every aspect of our platform.</p>
-                        </div>
-                        
-                        <!-- Impact Card -->
-                        <div class="bg-[#0f2a3d]/60 rounded-xl p-4 sm:p-6 text-center border border-[#4a8c6d]/10 group hover:border-[#e6b325]/30 transition-all duration-300 cursor-pointer" @click="setActiveFeature(3)" :class="{'ring-2 ring-[#e6b325]': activeFeature === 3}">
-                            <div class="w-12 h-12 sm:w-16 sm:h-16 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                                <i class="fas fa-chart-line text-[#e6b325] text-xl sm:text-2xl"></i>
+
+                            
+                            <div
+                                class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
+                                @click="setActiveFeature(3)"
+                                :class="{
+                                    'ring-2 ring-[#e6b325]':
+                                        activeFeature === 3,
+                                }"
+                            >
+                                <div
+                                    class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20 sm:h-16 sm:w-16"
+                                >
+                                    <i
+                                        class="fas fa-chart-line text-xl text-[#e6b325] sm:text-2xl"
+                                    ></i>
+                                </div>
+                                <h3 class="mb-2 font-bold text-[#e8f4f0]">
+                                    Impact
+                                </h3>
+                                <p class="text-sm text-gray-300">Driving policy changes and community actions based on accurate data.</p>
                             </div>
-                            <h3 class="font-bold text-[#e8f4f0] mb-2">Impact</h3>
-                            <p class="text-gray-300 text-sm">Driving policy changes and community actions based on accurate data.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-[#1a3c34]/30" data-aos="fade-up" data-aos-delay="400">
+    <section id="features" class="py-20 bg-[#1a3c34]/30">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 text-text-[#e8f4f0]">Innovative Features</h2>
@@ -257,97 +338,142 @@
                             <span>Satellite & Direct Sensor Data</span>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="bg-[#0f2a3d]/60 rounded-2xl p-8 border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                    <div class="flex items-start mb-6">
-                        <div class="w-14 h-14 bg-[#4a8c6d]/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                            <i class="fas fa-flag text-[#e6b325] text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-text-[#e8f4f0] mb-2">My Loca-Report</h3>
-                            <p class="text-white">Report environmental issues around you with photos and location.</p>
-                        </div>
-                    </div>
+
                     
-                    <div class="space-y-4">
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-camera text-[#4a8c6d] mr-3"></i>
-                            <span>Visual Reports with Photos</span>
+                    <div
+                        class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
+                    >
+                        <div class="mb-6 flex items-start">
+                            <div
+                                class="mr-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <i
+                                    class="fas fa-flag text-2xl text-[#e6b325]"
+                                ></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-text-[#e8f4f0] mb-2 text-xl font-bold"
+                                >
+                                    My Loca-Report
+                                </h3>
+                                <p class="text-white">Report environmental issues around you with photos and location.</p>
+                            </div>
                         </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-map-pin text-[#4a8c6d] mr-3"></i>
-                            <span>Automatic Location Tagging</span>
-                        </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-users text-[#4a8c6d] mr-3"></i>
-                            <span>Crowdsourcing System</span>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-camera mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Visual Reports with Photos</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-map-pin mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Automatic Location Tagging</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i class="fas fa-users mr-3 text-[#4a8c6d]"></i>
+                                <span>Crowdsourcing System</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="bg-[#0f2a3d]/60 rounded-2xl p-8 border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                    <div class="flex items-start mb-6">
-                        <div class="w-14 h-14 bg-[#4a8c6d]/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                            <i class="fas fa-chart-line text-[#e6b325] text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-text-[#e8f4f0] mb-2">Regional Sustainability Score</h3>
-                            <p class="text-white">Sustainability score that compares environmental performance between regions.</p>
-                        </div>
-                    </div>
+
                     
-                    <div class="space-y-4">
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-calculator text-[#4a8c6d] mr-3"></i>
-                            <span>Multi-Factor Calculation</span>
+                    <div
+                        class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
+                    >
+                        <div class="mb-6 flex items-start">
+                            <div
+                                class="mr-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <i
+                                    class="fas fa-chart-line text-2xl text-[#e6b325]"
+                                ></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-text-[#e8f4f0] mb-2 text-xl font-bold"
+                                >
+                                    Regional Sustainability Score
+                                </h3>
+                                <p class="text-white">Sustainability score that compares environmental performance between regions.</p>
+                            </div>
                         </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-trophy text-[#4a8c6d] mr-3"></i>
-                            <span>Healthy Competition Between Regions</span>
-                        </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-chart-bar text-[#4a8c6d] mr-3"></i>
-                            <span>Engaging Data Visualization</span>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-calculator mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Multi-Factor Calculation</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-trophy mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Healthy Competition Between Regions</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-chart-bar mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Engaging Data Visualization</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="bg-[#0f2a3d]/60 rounded-2xl p-8 border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                    <div class="flex items-start mb-6">
-                        <div class="w-14 h-14 bg-[#4a8c6d]/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                            <i class="fas fa-book-open text-[#e6b325] text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-text-[#e8f4f0] mb-2">Impact Stories</h3>
-                            <p class="text-white">Environmental education with immersive scrollytelling techniques.</p>
-                        </div>
-                    </div>
+
                     
-                    <div class="space-y-4">
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-scroll text-[#4a8c6d] mr-3"></i>
-                            <span>Interactive Scrollytelling Techniques</span>
+                    <div
+                        class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
+                    >
+                        <div class="mb-6 flex items-start">
+                            <div
+                                class="mr-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <i
+                                    class="fas fa-book-open text-2xl text-[#e6b325]"
+                                ></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-text-[#e8f4f0] mb-2 text-xl font-bold"
+                                >
+                                    Impact Stories
+                                </h3>
+                                <p class="text-white">Environmental education with immersive scrollytelling techniques.</p>
+                            </div>
                         </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-image text-[#4a8c6d] mr-3"></i>
-                            <span>Immersive Motion Graphics</span>
-                        </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-graduation-cap text-[#4a8c6d] mr-3"></i>
-                            <span>Story-Based Educational Content</span>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-scroll mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span
+                                    >Interactive Scrollytelling Techniques</span
+                                >
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i class="fas fa-image mr-3 text-[#4a8c6d]"></i>
+                                <span>Immersive Motion Graphics</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-graduation-cap mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Story-Based Educational Content</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-[#0f2a3d]/80" data-aos="fade-up" data-aos-delay="600">
+    <section id="how-it-works" class="py-20 bg-[#0f2a3d]/80">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold mb-4 text-text-[#e8f4f0]">How Eco-Sphere Works</h2>
@@ -376,103 +502,143 @@
                         </div>
                     </div>
 
-                    
-                    <!-- Step 2 -->
-                    <div class="bg-[#1a3c34]/40 rounded-2xl p-8 text-center border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                        <div class="w-20 h-20 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#e6b325]/20 transition-colors relative">
-                            <span class="text-2xl font-bold text-[#e6b325]">2</span>
+                        
+                        <div
+                            class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
+                        >
+                            <div
+                                class="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <span class="text-2xl font-bold text-[#e6b325]"
+                                    >2</span
+                                >
+                            </div>
+                            <h3 class="mb-4 text-xl font-bold text-[#e8f4f0]">
+                                Data Processing
+                            </h3>
+                            <p class="mb-6 text-[#a0b8b0]">Processing and analyzing data using advanced algorithms to generate actionable insights.</p>
+                            <div
+                                class="flex justify-center space-x-4 text-white"
+                            >
+                                <i class="fas fa-cogs"></i>
+                                <i class="fas fa-brain"></i>
+                                <i class="fas fa-filter"></i>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#e8f4f0] mb-4">Data Processing</h3>
-                        <p class="text-[#a0b8b0] mb-6">
-                            Processing and analyzing data using advanced algorithms to 
-                            generate actionable insights.
-                        </p>
-                        <div class="flex justify-center space-x-4 text-white">
-                            <i class="fas fa-cogs"></i>
-                            <i class="fas fa-brain"></i>
-                            <i class="fas fa-filter"></i>
+
+                        
+                        <div
+                            class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
+                        >
+                            <div
+                                class="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <span class="text-2xl font-bold text-[#e6b325]"
+                                    >3</span
+                                >
+                            </div>
+                            <h3 class="mb-4 text-xl font-bold text-[#e8f4f0]">
+                                Visualization & Action
+                            </h3>
+                            <p class="mb-6 text-[#a0b8b0]">Presenting data in an attractive and easy-to-understand visual format, encouraging users to take real action.</p>
+                            <div
+                                class="flex justify-center space-x-4 text-white"
+                            >
+                                <i class="fas fa-map"></i>
+                                <i class="fas fa-chart-pie"></i>
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Step 3 -->
-                    <div class="bg-[#1a3c34]/40 rounded-2xl p-8 text-center border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                        <div class="w-20 h-20 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#e6b325]/20 transition-colors relative">
-                            <span class="text-2xl font-bold text-[#e6b325]">3</span>
+                
+                <div
+                    class="mt-16 rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8"
+                >
+                    <h3
+                        class="text-text-[#e8f4f0] mb-6 text-center text-xl font-bold"
+                    >
+                        Data Ecosystem Flow
+                    </h3>
+                    <div
+                        class="flex flex-col items-center justify-between space-y-6 md:flex-row md:space-y-0"
+                    >
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#4a8c6d]/20"
+                            >
+                                <i class="fas fa-database text-[#e6b325]"></i>
+                            </div>
+                            <p class="text-sm text-[#a0b8b0]">Data Sources</p>
                         </div>
-                        <h3 class="text-xl font-bold text-[#e8f4f0] mb-4">Visualization & Action</h3>
-                        <p class="text-[#a0b8b0] mb-6">
-                            Presenting data in an attractive and easy-to-understand visual format, 
-                            encouraging users to take real action.
-                        </p>
-                        <div class="flex justify-center space-x-4 text-white">
-                            <i class="fas fa-map"></i>
-                            <i class="fas fa-chart-pie"></i>
-                            <i class="fas fa-hands-helping"></i>
+
+                        <div class="hidden md:block">
+                            <i
+                                class="fas fa-arrow-right text-xl text-[#4a8c6d]"
+                            ></i>
+                        </div>
+                        <div class="md:hidden">
+                            <i
+                                class="fas fa-arrow-down text-xl text-[#4a8c6d]"
+                            ></i>
+                        </div>
+
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#4a8c6d]/20"
+                            >
+                                <i class="fas fa-server text-[#e6b325]"></i>
+                            </div>
+                            <p class="text-sm text-[#a0b8b0]">Processing</p>
+                        </div>
+
+                        <div class="hidden md:block">
+                            <i
+                                class="fas fa-arrow-right text-xl text-[#4a8c6d]"
+                            ></i>
+                        </div>
+                        <div class="md:hidden">
+                            <i
+                                class="fas fa-arrow-down text-xl text-[#4a8c6d]"
+                            ></i>
+                        </div>
+
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#4a8c6d]/20"
+                            >
+                                <i class="fas fa-chart-bar text-[#e6b325]"></i>
+                            </div>
+                            <p class="text-sm text-[#a0b8b0]">Visualization</p>
+                        </div>
+
+                        <div class="hidden md:block">
+                            <i
+                                class="fas fa-arrow-right text-xl text-[#4a8c6d]"
+                            ></i>
+                        </div>
+                        <div class="md:hidden">
+                            <i
+                                class="fas fa-arrow-down text-xl text-[#4a8c6d]"
+                            ></i>
+                        </div>
+
+                        <div class="text-center">
+                            <div
+                                class="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#4a8c6d]/20"
+                            >
+                                <i class="fas fa-users text-[#e6b325]"></i>
+                            </div>
+                            <p class="text-sm text-[#a0b8b0]">Community Action</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            
-            <!-- Data Flow Visualization -->
-            <div class="mt-16 bg-[#0f2a3d]/60 rounded-2xl p-8 border border-emerald-400">
-                <h3 class="text-xl font-bold text-text-[#e8f4f0] mb-6 text-center">Data Ecosystem Flow</h3>
-                <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-database text-[#e6b325]"></i>
-                        </div>
-                        <p class="text-[#a0b8b0] text-sm">Data Sources</p>
-                    </div>
-                    
-                    <div class="hidden md:block">
-                        <i class="fas fa-arrow-right text-[#4a8c6d] text-xl"></i>
-                    </div>
-                    <div class="md:hidden">
-                        <i class="fas fa-arrow-down text-[#4a8c6d] text-xl"></i>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-server text-[#e6b325]"></i>
-                        </div>
-                        <p class="text-[#a0b8b0] text-sm">Processing</p>
-                    </div>
-                    
-                    <div class="hidden md:block">
-                        <i class="fas fa-arrow-right text-[#4a8c6d] text-xl"></i>
-                    </div>
-                    <div class="md:hidden">
-                        <i class="fas fa-arrow-down text-[#4a8c6d] text-xl"></i>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-chart-bar text-[#e6b325]"></i>
-                        </div>
-                        <p class="text-[#a0b8b0] text-sm">Visualization</p>
-                    </div>
-                    
-                    <div class="hidden md:block">
-                        <i class="fas fa-arrow-right text-[#4a8c6d] text-xl"></i>
-                    </div>
-                    <div class="md:hidden">
-                        <i class="fas fa-arrow-down text-[#4a8c6d] text-xl"></i>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-[#4a8c6d]/20 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-users text-[#e6b325]"></i>
-                        </div>
-                        <p class="text-[#a0b8b0] text-sm">Community Action</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Impact & Call to Action -->
-    <section class="py-20 bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34]" data-aos="fade-up" data-aos-delay="800">
+    <section class="py-20 bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34]">
         <div class="max-w-6xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6 text-text-[#e8f4f0]">Join the Movement for Sustainable Nature</h2>
             <p class="text-[#a0b8b0] text-lg max-w-2xl mx-auto mb-10">

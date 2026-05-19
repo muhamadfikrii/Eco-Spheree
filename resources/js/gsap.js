@@ -1,30 +1,30 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TextPlugin } from "gsap/TextPlugin";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TextPlugin } from 'gsap/TextPlugin';
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
 // GSAP Animations
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Background Animation - hanya jalankan jika canvas ada
     const canvas = document.getElementById('bg-animation');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        
+
         // Set canvas size
         function setCanvasSize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-        
+
         setCanvasSize();
         window.addEventListener('resize', setCanvasSize);
-        
+
         // Create subtle particles for background
         const particles = [];
         const particleCount = 20;
-        
+
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -34,17 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.speedY = Math.random() * 0.3 - 0.15;
                 this.color = `rgba(5, 150, 105, ${Math.random() * 0.1})`;
             }
-            
+
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                
+
                 if (this.x > canvas.width) this.x = 0;
                 if (this.x < 0) this.x = canvas.width;
                 if (this.y > canvas.height) this.y = 0;
                 if (this.y < 0) this.y = canvas.height;
             }
-            
+
             draw() {
                 ctx.fillStyle = this.color;
                 ctx.beginPath();
@@ -52,32 +52,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 ctx.fill();
             }
         }
-        
+
         function initParticles() {
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
         }
-        
+
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
             }
-            
+
             requestAnimationFrame(animateParticles);
         }
-        
+
         initParticles();
         animateParticles();
     }
-    
+
     // Animate main elements on scroll - hanya jika elemen ada
     const gsapItems = document.querySelectorAll('.gsap-item');
     if (gsapItems.length > 0) {
-        gsap.utils.toArray('.gsap-item').forEach(item => {
+        gsap.utils.toArray('.gsap-item').forEach((item) => {
             gsap.to(item, {
                 opacity: 1,
                 x: 0,
@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     trigger: item,
                     start: 'top 85%',
                     end: 'bottom 20%',
-                    toggleActions: 'play none none reverse'
-                }
+                    toggleActions: 'play none none reverse',
+                },
             });
         });
     }
-    
+
     // Stagger animation for feature items - hanya jika elemen ada
     const featureItems = document.querySelectorAll('.feature-item');
     if (featureItems.length > 0) {
@@ -107,11 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 trigger: '.feature-item',
                 start: 'top 90%',
                 end: 'bottom 20%',
-                toggleActions: 'play none none reverse'
-            }
+                toggleActions: 'play none none reverse',
+            },
         });
     }
-    
+
     // Subtle floating animation for icons - hanya jika elemen ada
     const iconFloats = document.querySelectorAll('.icon-float');
     if (iconFloats.length > 0) {
@@ -120,46 +120,46 @@ document.addEventListener('DOMContentLoaded', function() {
             duration: 2,
             repeat: -1,
             yoyo: true,
-            ease: 'sine.inOut'
+            ease: 'sine.inOut',
         });
     }
-    
+
     // Animate the "About Us" section details on hover - hanya jika elemen ada
     const aboutTrigger = document.querySelector('.about-trigger');
     const aboutDetails = document.querySelector('.about-details');
-    
+
     if (aboutTrigger && aboutDetails) {
         aboutTrigger.addEventListener('mouseenter', () => {
             gsap.to(aboutDetails, {
                 height: 'auto',
                 opacity: 1,
                 duration: 0.4,
-                ease: 'power2.out'
+                ease: 'power2.out',
             });
         });
-        
+
         aboutTrigger.addEventListener('mouseleave', () => {
             gsap.to(aboutDetails, {
                 height: 0,
                 opacity: 0,
                 duration: 0.3,
-                ease: 'power2.in'
+                ease: 'power2.in',
             });
         });
-        
+
         // Initially hide about details
         gsap.set(aboutDetails, { height: 0, opacity: 0 });
     }
-    
+
     // Animate impact numbers counting up - hanya jika elemen ada
     const impactNumbers = document.querySelectorAll('.impact-number');
     const impactStats = document.querySelector('.impact-stats');
-    
+
     if (impactNumbers.length > 0 && impactStats) {
-        impactNumbers.forEach(number => {
+        impactNumbers.forEach((number) => {
             const targetValue = parseFloat(number.getAttribute('data-value'));
             const suffix = number.textContent.includes('%') ? '%' : '';
-            
+
             gsap.to(number, {
                 innerText: targetValue + suffix,
                 duration: 2,
@@ -168,9 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     trigger: '.impact-stats',
                     start: 'top 80%',
                     end: 'bottom 20%',
-                    toggleActions: 'play none none reverse'
+                    toggleActions: 'play none none reverse',
                 },
-                snap: { innerText: 0.1 }
+                snap: { innerText: 0.1 },
             });
         });
     }
