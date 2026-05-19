@@ -1,163 +1,267 @@
 <x-app-layout>
-    <div class="min-h-screen bg-slate-900 text-white pt-20 md:pt-24 px-4 md:px-6" x-data="reportPage">
-
-        <!-- 🌍 Introduction Modal -->
+    <div
+        class="min-h-screen bg-slate-900 px-4 pt-20 text-white md:px-6 md:pt-24"
+        x-data="reportPage"
+    >
+        
         <template x-if="showIntro">
-            <div 
-                x-show="showIntro" 
-                x-transition.opacity 
-                class="fixed inset-0 bg-slate-950/70 flex items-center justify-center z-50"
-                style="pointer-events: auto; display: none;"
-                x-cloak>
-                <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 md:p-8 max-w-lg mx-4 text-center shadow-2xl">
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-green-400">Welcome to Eco-Report Hub 🌿</h2>
-                    <p class="text-slate-300 mb-6 leading-relaxed text-sm md:text-base">
-                        Join our mission to protect the environment!  
-                        You can discuss issues in the <strong>Community Forum</strong>  
-                        or directly report real-world conditions through the <strong>Report Form</strong>.
-                    </p>
-                    <button 
-                        @click="closeIntro" 
-                        class="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold w-full md:w-auto transition-colors">
+            <div
+                x-show="showIntro"
+                x-transition.opacity
+                class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70"
+                style="pointer-events: auto; display: none"
+                x-cloak
+            >
+                <div
+                    class="mx-4 max-w-lg rounded-2xl border border-slate-700 bg-slate-800 p-6 text-center shadow-2xl md:p-8"
+                >
+                    <h2
+                        class="mb-4 text-2xl font-bold text-green-400 md:text-3xl"
+                    >
+                        Welcome to Eco-Report Hub 🌿
+                    </h2>
+                    <p class="mb-6 text-sm leading-relaxed text-slate-300 md:text-base">Join our mission to protect the environment! You can discuss issues in the <strong>Community Forum</strong> or directly report real-world conditions through the <strong>Report Form</strong>.</p>
+                    <button
+                        @click="closeIntro"
+                        class="w-full rounded-lg bg-green-600 px-6 py-2 font-semibold transition-colors hover:bg-green-500 md:w-auto"
+                    >
                         Let's Get Started
                     </button>
                 </div>
             </div>
         </template>
 
-        <!-- Header -->
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-6 gap-4 relative z-10">
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-center md:text-left">📢 Eco-Report Hub</h1>
-            <p class="text-slate-400 text-center md:text-left text-sm md:text-base">Together we protect the Earth 🌍</p>
+        
+        <div
+            class="relative z-10 mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+        >
+            <h1
+                class="text-center text-3xl font-extrabold tracking-tight md:text-left md:text-4xl"
+            >
+                📢 Eco-Report Hub
+            </h1>
+            <p class="text-center text-sm text-slate-400 md:text-left md:text-base">Together we protect the Earth 🌍</p>
         </div>
 
-        <!-- Tab Switch -->
-        <div class="flex space-x-2 md:space-x-4 mb-6 md:mb-8 border-b border-slate-700 pb-2 overflow-x-auto relative z-10">
-            <button 
-                class="px-3 py-2 md:px-4 md:py-2 rounded-t-lg font-semibold transition whitespace-nowrap text-sm md:text-base"
-                :class="tab === 'forum' ? 'bg-slate-800 text-green-400' : 'text-slate-400 hover:text-white'"
-                @click="tab = 'forum'">
+        
+        <div
+            class="relative z-10 mb-6 flex space-x-2 overflow-x-auto border-b border-slate-700 pb-2 md:mb-8 md:space-x-4"
+        >
+            <button
+                class="whitespace-nowrap rounded-t-lg px-3 py-2 text-sm font-semibold transition md:px-4 md:py-2 md:text-base"
+                :class="tab === 'forum'
+                    ? 'bg-slate-800 text-green-400'
+                    : 'text-slate-400 hover:text-white'"
+                @click="tab = 'forum'"
+            >
                 💬 Community Forum
             </button>
-            <button 
-                class="px-3 py-2 md:px-4 md:py-2 rounded-t-lg font-semibold transition whitespace-nowrap text-sm md:text-base"
-                :class="tab === 'report' ? 'bg-slate-800 text-green-400' : 'text-slate-400 hover:text-white'"
-                @click="tab = 'report'">
+            <button
+                class="whitespace-nowrap rounded-t-lg px-3 py-2 text-sm font-semibold transition md:px-4 md:py-2 md:text-base"
+                :class="tab === 'report'
+                    ? 'bg-slate-800 text-green-400'
+                    : 'text-slate-400 hover:text-white'"
+                @click="tab = 'report'"
+            >
                 📸 Report Condition
             </button>
         </div>
 
-        <!-- Forum Section -->
-        <div x-show="tab === 'forum'" x-cloak class="flex flex-col md:flex-row h-[70vh] md:h-[75vh] bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-lg" style="pointer-events: auto; position: relative; z-index: 1;">
-            <div class="md:w-64 bg-slate-850 border-b md:border-r border-slate-700 p-4 flex flex-col">
-                <div class="flex justify-between items-center mb-4">
+        
+        <div
+            x-show="tab === 'forum'"
+            x-cloak
+            class="flex h-[70vh] flex-col overflow-hidden rounded-2xl border border-slate-700 bg-slate-800 shadow-lg md:h-[75vh] md:flex-row"
+            style="pointer-events: auto; position: relative; z-index: 1"
+        >
+            <div
+                class="bg-slate-850 flex flex-col border-b border-slate-700 p-4 md:w-64 md:border-r"
+            >
+                <div class="mb-4 flex items-center justify-between">
                     <h2 class="text-xl font-bold">🌿 Channels</h2>
-                    <button @click="mobileSidebarOpen = !mobileSidebarOpen" class="md:hidden text-slate-400">
-                        <svg x-show="!mobileSidebarOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button
+                        @click="mobileSidebarOpen = !mobileSidebarOpen"
+                        class="text-slate-400 md:hidden"
+                    >
+                        <svg x-show="
+                                !mobileSidebarOpen
+                            " class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                         </svg>
-                        <svg x-show="mobileSidebarOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg x-show="
+                                mobileSidebarOpen
+                            " class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                     </button>
                 </div>
-                
-                <div class="flex flex-col" :class="{'hidden md:flex': !mobileSidebarOpen}">
+
+                <div
+                    class="flex flex-col"
+                    :class="{ 'hidden md:flex': !mobileSidebarOpen }"
+                >
                     <template x-for="(ch, i) in channels" :key="i">
-                        <button 
-                            class="w-full text-left py-2 capitalize px-3 mb-1 rounded-lg hover:bg-slate-700 transition text-sm md:text-base"
-                            :class="activeChannel === ch.name ? 'bg-slate-700 font-semibold' : ''"
-                            @click="setChannel(ch.name); mobileSidebarOpen = false">
+                        <button
+                            class="mb-1 w-full rounded-lg px-3 py-2 text-left text-sm capitalize transition hover:bg-slate-700 md:text-base"
+                            :class="activeChannel === ch.name
+                                ? 'bg-slate-700 font-semibold'
+                                : ''"
+                            @click="
+                                setChannel(ch.name);
+                                mobileSidebarOpen = false;
+                            "
+                        >
                             # <span x-text="ch.name"></span>
                         </button>
                     </template>
                 </div>
             </div>
 
-            <!-- Chat Area -->
-            <div class="flex-1 flex flex-col">
-                <div class="px-4 md:px-5 py-3 border-b border-slate-700 flex flex-col md:flex-row md:justify-between md:items-center gap-2">
-                    <h3 class="text-lg capitalize font-bold"># <span x-text="activeChannel"></span></h3>
-                    <p class="text-slate-400 text-xs md:text-sm">Discussion and latest updates</p>
+            
+            <div class="flex flex-1 flex-col">
+                <div
+                    class="flex flex-col gap-2 border-b border-slate-700 px-4 py-3 md:flex-row md:items-center md:justify-between md:px-5"
+                >
+                    <h3 class="text-lg font-bold capitalize">
+                        # <span x-text="activeChannel"></span>
+                    </h3>
+                    <p class="text-xs text-slate-400 md:text-sm">Discussion and latest updates</p>
                 </div>
 
-                <div class="flex-1 overflow-y-auto p-4 md:p-5 space-y-4" id="chat-scroll">
-                    <template x-for="(msg, index) in messages[activeChannel]" :key="index">
+                <div
+                    class="flex-1 space-y-4 overflow-y-auto p-4 md:p-5"
+                    id="chat-scroll"
+                >
+                    <template
+                        x-for="(msg, index) in messages[activeChannel]"
+                        :key="index"
+                    >
                         <div class="flex items-start space-x-3">
-                            <img :src="msg.avatar" class="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover">
-                            <div class="flex-1 min-w-0">
-                                <p class="font-semibold text-sm md:text-base">
+                            <img
+                                :src="msg.avatar"
+                                class="h-8 w-8 rounded-full object-cover md:h-10 md:w-10"
+                            />
+                            <div class="min-w-0 flex-1">
+                                <p class="text-sm font-semibold md:text-base">
                                     <span x-text="msg.user"></span>
-                                    <span class="text-xs text-slate-400 ml-2" x-text="msg.time"></span>
+                                    <span
+                                        class="ml-2 text-xs text-slate-400"
+                                        x-text="msg.time"
+                                    ></span>
                                 </p>
-                                <p x-text="msg.text" class="text-slate-200 text-sm md:text-base break-words"></p>
+                                <p x-text="
+                                        msg.text
+                                    " class="break-words text-sm text-slate-200 md:text-base"></p>
                                 <template x-if="msg.image">
-                                    <img 
+                                    <img
                                         :src="msg.image"
                                         @click="selectedImage = msg.image"
-                                        class="mt-2 w-40 md:w-56 rounded-xl border border-slate-700 cursor-pointer hover:scale-105 transition duration-300 object-cover shadow-lg">
+                                        class="mt-2 w-40 cursor-pointer rounded-xl border border-slate-700 object-cover shadow-lg transition duration-300 hover:scale-105 md:w-56"
+                                    />
                                 </template>
                             </div>
                         </div>
                     </template>
                 </div>
 
-                <!-- Input -->
-                <div class="border-t border-slate-700 p-3 md:p-4 flex items-center space-x-2 md:space-x-3">
-                    <input 
-                        type="text" 
-                        placeholder="Type your message..." 
-                        class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-green-500 focus:outline-none text-sm md:text-base"
-                        style="pointer-events: auto;"
-                        x-model="newMessage" 
-                        @keydown.enter="sendMessage">
-                    <input type="file" x-ref="imageUpload" class="hidden" @change="uploadImage" accept="image/*">
-                    <button @click="$refs.imageUpload.click()" class="p-2 hover:bg-slate-700 rounded-lg flex-shrink-0">📎</button>
-                    <button @click="sendMessage" class="bg-green-600 px-3 md:px-4 py-2 rounded-lg hover:bg-green-500 text-sm md:text-base flex-shrink-0">Send</button>
+                
+                <div
+                    class="flex items-center space-x-2 border-t border-slate-700 p-3 md:space-x-3 md:p-4"
+                >
+                    <input
+                        type="text"
+                        placeholder="Type your message..."
+                        class="flex-1 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-green-500 md:text-base"
+                        style="pointer-events: auto"
+                        x-model="newMessage"
+                        @keydown.enter="sendMessage"
+                    />
+                    <input
+                        type="file"
+                        x-ref="imageUpload"
+                        class="hidden"
+                        @change="uploadImage"
+                        accept="image/*"
+                    />
+                    <button
+                        @click="$refs.imageUpload.click()"
+                        class="flex-shrink-0 rounded-lg p-2 hover:bg-slate-700"
+                    >
+                        📎
+                    </button>
+                    <button
+                        @click="sendMessage"
+                        class="flex-shrink-0 rounded-lg bg-green-600 px-3 py-2 text-sm hover:bg-green-500 md:px-4 md:text-base"
+                    >
+                        Send
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Report Form Section -->
-        <div x-show="tab === 'report'" x-cloak class="bg-slate-800 rounded-2xl p-4 md:p-8 border border-slate-700 shadow-lg mb-6" style="pointer-events: auto; position: relative; z-index: 1;">
-            <h2 class="text-xl md:text-2xl font-bold mb-4 md:mb-6">📝 Report Environmental Condition</h2>
+        
+        <div
+            x-show="tab === 'report'"
+            x-cloak
+            class="mb-6 rounded-2xl border border-slate-700 bg-slate-800 p-4 shadow-lg md:p-8"
+            style="pointer-events: auto; position: relative; z-index: 1"
+        >
+            <h2 class="mb-4 text-xl font-bold md:mb-6 md:text-2xl">
+                📝 Report Environmental Condition
+            </h2>
             <form @submit.prevent="submitReport" class="space-y-4 md:space-y-5">
                 <div>
-                    <label class="block text-slate-300 mb-2 text-sm md:text-base">Report Title</label>
-                    <input 
-                        type="text" 
-                        x-model="report.title" 
-                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-green-500 focus:outline-none text-sm md:text-base"
-                        style="pointer-events: auto;"
-                        placeholder="Enter report title">
+                    <label
+                        class="mb-2 block text-sm text-slate-300 md:text-base"
+                        >Report Title</label
+                    >
+                    <input
+                        type="text"
+                        x-model="report.title"
+                        class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-green-500 md:text-base"
+                        style="pointer-events: auto"
+                        placeholder="Enter report title"
+                    />
                 </div>
 
                 <div>
-                    <label class="block text-slate-300 mb-2 text-sm md:text-base">Description</label>
-                    <textarea 
-                        x-model="report.desc" 
-                        rows="4" 
-                        class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-green-500 focus:outline-none text-sm md:text-base"
-                        style="pointer-events: auto;"
-                        placeholder="Describe the environmental issue"></textarea>
+                    <label
+                        class="mb-2 block text-sm text-slate-300 md:text-base"
+                        >Description</label
+                    >
+                    <textarea
+                        x-model="report.desc"
+                        rows="4"
+                        class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-green-500 md:text-base"
+                        style="pointer-events: auto"
+                        placeholder="Describe the environmental issue"
+                    ></textarea>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
                     <div>
-                        <label class="block text-slate-300 mb-2 text-sm md:text-base">Location (Coordinates / Address)</label>
-                        <input 
-                            type="text" 
-                            x-model="report.location" 
-                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-green-500 focus:outline-none text-sm md:text-base"
-                            style="pointer-events: auto;"
-                            placeholder="Enter location">
+                        <label
+                            class="mb-2 block text-sm text-slate-300 md:text-base"
+                            >Location (Coordinates / Address)</label
+                        >
+                        <input
+                            type="text"
+                            x-model="report.location"
+                            class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-green-500 md:text-base"
+                            style="pointer-events: auto"
+                            placeholder="Enter location"
+                        />
                     </div>
                     <div>
-                        <label class="block text-slate-300 mb-2 text-sm md:text-base">Category</label>
-                        <select 
-                            x-model="report.category" 
-                            class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-green-500 focus:outline-none text-sm md:text-base"
-                            style="pointer-events: auto;">
+                        <label
+                            class="mb-2 block text-sm text-slate-300 md:text-base"
+                            >Category</label
+                        >
+                        <select
+                            x-model="report.category"
+                            class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-green-500 md:text-base"
+                            style="pointer-events: auto"
+                        >
                             <option value="">Select category...</option>
                             <option value="Waste">Waste</option>
                             <option value="Water">Water</option>
@@ -168,45 +272,57 @@
                 </div>
 
                 <div>
-                    <label class="block text-slate-300 mb-2 text-sm md:text-base">Upload Photo (optional)</label>
-                    <input type="file" x-ref="reportImage" @change="uploadReportImage" class="w-full text-slate-300 text-sm md:text-base" style="pointer-events: auto;" accept="image/*">
+                    <label
+                        class="mb-2 block text-sm text-slate-300 md:text-base"
+                        >Upload Photo (optional)</label
+                    >
+                    <input
+                        type="file"
+                        x-ref="reportImage"
+                        @change="uploadReportImage"
+                        class="w-full text-sm text-slate-300 md:text-base"
+                        style="pointer-events: auto"
+                        accept="image/*"
+                    />
                     <template x-if="report.image">
-                        <img 
+                        <img
                             :src="report.image"
                             @click="selectedImage = report.image"
-                            class="mt-3 w-40 md:w-56 rounded-xl border border-slate-700 cursor-pointer hover:scale-105 transition duration-300 object-cover shadow-lg"
-                        >
+                            class="mt-3 w-40 cursor-pointer rounded-xl border border-slate-700 object-cover shadow-lg transition duration-300 hover:scale-105 md:w-56"
+                        />
                     </template>
                 </div>
 
-                <button type="submit" class="bg-green-600 hover:bg-green-500 px-6 py-2 rounded-lg font-semibold w-full md:w-auto text-sm md:text-base">
+                <button
+                    type="submit"
+                    class="w-full rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold hover:bg-green-500 md:w-auto md:text-base"
+                >
                     Submit Report
                 </button>
             </form>
         </div>
 
-        <!-- Image Preview Modal -->
+        
         <div
             x-show="selectedImage"
             x-transition.opacity
-            class="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-6"
+            class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-6 backdrop-blur-sm"
             @click.self="selectedImage = null"
             x-cloak
         >
-
-            <!-- Close Button -->
+            
             <button
                 @click="selectedImage = null"
-                class="absolute top-5 right-5 text-white text-4xl hover:scale-110 transition"
+                class="absolute right-5 top-5 text-4xl text-white transition hover:scale-110"
             >
                 ✕
             </button>
 
-            <!-- Preview Image -->
+            
             <img
                 :src="selectedImage"
-                class="max-w-5xl max-h-[90vh] rounded-2xl shadow-2xl border border-slate-700 animate-fade-in"
-            >
+                class="max-h-[90vh] max-w-5xl animate-fade-in rounded-2xl border border-slate-700 shadow-2xl"
+            />
         </div>
     </div>
 
@@ -216,7 +332,7 @@
                 showIntro: false,
                 tab: 'forum',
                 mobileSidebarOpen: false,
-                username: @json(Auth::user()->name ?? 'Guest'),
+                username: @json (Auth::user()->name ?? 'Guest'),
                 channels: [
                     { name: 'general' },
                     { name: 'climate' },
@@ -225,65 +341,84 @@
                     { name: 'waste' },
                     { name: 'wildlife' },
                     { name: 'community-action' },
-                    { name: 'report-condition' }
+                    { name: 'report-condition' },
                 ],
                 activeChannel: 'waste',
                 messages: {
                     waste: [
-                        { user: 'Fikri', text: 'Plastic waste is piling up in the river 😢', time: '09:10', avatar: 'https://i.pravatar.cc/100?img=12' },
-                        { user: 'Mia', text: 'We should organize a cleanup next week!', time: '09:15', avatar: 'https://i.pravatar.cc/100?img=5' }
+                        {
+                            user: 'Fikri',
+                            text: 'Plastic waste is piling up in the river 😢',
+                            time: '09:10',
+                            avatar: 'https://i.pravatar.cc/100?img=12',
+                        },
+                        {
+                            user: 'Mia',
+                            text: 'We should organize a cleanup next week!',
+                            time: '09:15',
+                            avatar: 'https://i.pravatar.cc/100?img=5',
+                        },
                     ],
                     water: [],
                     air: [],
                     energy: [],
-                    education: []
+                    education: [],
                 },
                 newMessage: '',
                 newImage: null,
                 selectedImage: null,
-                report: { title: '', desc: '', location: '', category: '', image: null },
+                report: {
+                    title: '',
+                    desc: '',
+                    location: '',
+                    category: '',
+                    image: null,
+                },
 
                 init() {
                     if (!localStorage.getItem('ecoReportIntroShown')) {
-
                         setTimeout(() => {
                             this.showIntro = true;
                         }, 500);
                     } else {
                         this.showIntro = false;
                     }
-                    
+
                     if (window.innerWidth >= 768) {
                         this.mobileSidebarOpen = true;
                     }
-                    
+
                     window.addEventListener('resize', () => {
                         if (window.innerWidth >= 768) {
                             this.mobileSidebarOpen = true;
                         }
                     });
-                    
+
                     this.$nextTick(() => {
-                        document.querySelectorAll('input, textarea, select').forEach(el => {
-                            el.style.pointerEvents = 'auto';
-                        });
+                        document
+                            .querySelectorAll('input, textarea, select')
+                            .forEach((el) => {
+                                el.style.pointerEvents = 'auto';
+                            });
                     });
                 },
 
                 closeIntro() {
                     this.showIntro = false;
                     localStorage.setItem('ecoReportIntroShown', 'true');
-                    
+
                     this.$nextTick(() => {
-                        document.querySelectorAll('input, textarea, select').forEach(el => {
-                            el.style.pointerEvents = 'auto';
-                            el.disabled = false;
-                        });
+                        document
+                            .querySelectorAll('input, textarea, select')
+                            .forEach((el) => {
+                                el.style.pointerEvents = 'auto';
+                                el.disabled = false;
+                            });
                     });
                 },
 
-                setChannel(name) { 
-                    this.activeChannel = name; 
+                setChannel(name) {
+                    this.activeChannel = name;
                 },
 
                 sendMessage() {
@@ -291,9 +426,12 @@
                     this.messages[this.activeChannel].push({
                         user: this.username,
                         text: this.newMessage,
-                        time: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                        time: new Date().toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit',
+                        }),
                         avatar: 'https://i.pravatar.cc/100?u=' + this.username,
-                        image: this.newImage
+                        image: this.newImage,
                     });
                     this.newMessage = '';
                     this.newImage = null;
@@ -322,34 +460,41 @@
                     if (!this.report.title || !this.report.desc) {
                         return;
                     }
-                    this.report = { title: '', desc: '', location: '', category: '', image: null };
+                    this.report = {
+                        title: '',
+                        desc: '',
+                        location: '',
+                        category: '',
+                        image: null,
+                    };
                     if (this.$refs.reportImage) {
                         this.$refs.reportImage.value = '';
                     }
-                }
-            }))
+                },
+            }));
         });
     </script>
 
     <style>
-        [x-cloak] { 
-            display: none !important; 
+        [x-cloak] {
+            display: none !important;
         }
-        
-        
+
         .relative.z-10 {
             position: relative;
             z-index: 10 !important;
         }
 
-        .fixed[style*="display: none"] {
+        .fixed[style*='display: none'] {
             display: none !important;
         }
-        
-        input, textarea, select {
+
+        input,
+        textarea,
+        select {
             pointer-events: auto !important;
         }
-        
+
         #chat-scroll::-webkit-scrollbar {
             width: 4px;
         }
@@ -360,13 +505,16 @@
             background: #64748b;
             border-radius: 2px;
         }
-        
+
         @media (max-width: 768px) {
-            button, input, select, textarea {
+            button,
+            input,
+            select,
+            textarea {
                 min-height: 44px;
             }
         }
-        
+
         .modal-enter {
             opacity: 0;
             transform: scale(0.95);
@@ -374,9 +522,9 @@
         .modal-enter-active {
             opacity: 1;
             transform: scale(1);
-            transition: opacity 200ms ease-out, transform 200ms ease-out;
+            transition:
+                opacity 200ms ease-out,
+                transform 200ms ease-out;
         }
     </style>
-
-    
 </x-app-layout>

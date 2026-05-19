@@ -1,5 +1,7 @@
 <div class="inline-flex items-center justify-center">
-    <div class="w-10 h-10 bg-gradient-to-br from-cyan-500/90 to-zinc-700 rounded-full flex items-center justify-center shadow-lg border border-cyan-300/30">
-        <i class="fas fa-gear text-white text-2xl"></i>
+    <div
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-300/30 bg-gradient-to-br from-cyan-500/90 to-zinc-700 shadow-lg"
+    >
+        <i class="fas fa-gear text-2xl text-white"></i>
     </div>
 </div>
