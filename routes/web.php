@@ -15,9 +15,9 @@ Route::get('/insights', function () {
     return view('insights');
 })->name('insights');
 
-Route::get('/challenge', function () {
-    return view('challenge');
-})->name('challenge');
+Route::get('/resources', function () {
+    return view('resources');
+})->name('resources');
 
 Route::get('/health', function () {
     return view('health');

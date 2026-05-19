@@ -17,26 +17,38 @@
                 <p class="text-sm leading-relaxed text-gray-400">Real-time IIoT platform for smart manufacturing. AI-powered predictive maintenance, digital twin, and operational intelligence for Industry 4.0.</p>
                 <div class="flex space-x-4 pt-2">
                     <a
-                        href="#"
+                        href="https://www.linkedin.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="transform text-gray-500 transition-all duration-300 hover:scale-110 hover:text-cyan-400"
+                        aria-label="LinkedIn"
                     >
                         <i class="fab fa-linkedin-in text-lg"></i>
                     </a>
                     <a
-                        href="#"
+                        href="https://github.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="transform text-gray-500 transition-all duration-300 hover:scale-110 hover:text-cyan-400"
+                        aria-label="GitHub"
                     >
                         <i class="fab fa-github text-lg"></i>
                     </a>
                     <a
-                        href="#"
+                        href="https://twitter.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="transform text-gray-500 transition-all duration-300 hover:scale-110 hover:text-cyan-400"
+                        aria-label="Twitter"
                     >
                         <i class="fab fa-twitter text-lg"></i>
                     </a>
                     <a
-                        href="#"
+                        href="https://www.youtube.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="transform text-gray-500 transition-all duration-300 hover:scale-110 hover:text-cyan-400"
+                        aria-label="YouTube"
                     >
                         <i class="fab fa-youtube text-lg"></i>
                     </a>
@@ -51,10 +63,10 @@
                 </div>
                 <ul class="space-y-3">
                     <li>
-                        <a
-                            href="#"
-                            class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
-                        >
+                    <a
+                        href="{{ route('insights') }}"
+                        class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
+                    >
                             <i
                                 class="fas fa-chart-line mr-3 text-cyan-500/70 transition-transform group-hover:scale-110"
                             ></i>
@@ -66,7 +78,7 @@
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="{{ route('resources') }}"
                             class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
                         >
                             <i
@@ -74,13 +86,13 @@
                             ></i>
                             <span
                                 class="transition-transform group-hover:translate-x-1"
-                                >Predictive Analytics AI</span
+                                >Resources</span
                             >
                         </a>
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="{{ route('health') }}"
                             class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
                         >
                             <i
@@ -88,13 +100,13 @@
                             ></i>
                             <span
                                 class="transition-transform group-hover:translate-x-1"
-                                >Energy Optimization</span
+                                >Health</span
                             >
                         </a>
                     </li>
                     <li>
                         <a
-                            href="#"
+                            href="{{ route('contact') }}"
                             class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
                         >
                             <i
@@ -102,7 +114,7 @@
                             ></i>
                             <span
                                 class="transition-transform group-hover:translate-x-1"
-                                >Digital Twin</span
+                                >Contact</span
                             >
                         </a>
                     </li>
@@ -215,27 +227,27 @@
                     class="flex flex-wrap justify-center gap-4 text-sm text-gray-500 sm:gap-6"
                 >
                     <a
-                        href="#"
+                        href="{{ route('contact') }}"
                         class="flex items-center transition-colors hover:text-cyan-400"
                     >
                         <i class="fas fa-shield-alt mr-1 text-xs"></i> Privacy
                         Policy
                     </a>
                     <a
-                        href="#"
+                        href="{{ route('resources') }}"
                         class="flex items-center transition-colors hover:text-cyan-400"
                     >
                         <i class="fas fa-file-contract mr-1 text-xs"></i> Terms
                         of Service
                     </a>
                     <a
-                        href="#"
+                        href="{{ route('learnmore') }}"
                         class="flex items-center transition-colors hover:text-cyan-400"
                     >
                         <i class="fas fa-sitemap mr-1 text-xs"></i> Sitemap
                     </a>
                     <a
-                        href="#"
+                        href="{{ route('contact') }}"
                         class="flex items-center transition-colors hover:text-cyan-400"
                     >
                         <i class="fas fa-headset mr-1 text-xs"></i> Support
