@@ -60,7 +60,7 @@
                     >Health</a
                 >
                 <a
-                    href="#"
+                    href="{{ route('resources') }}"
                     :class="active === 'resources'
                         ? 'bg-cyan-500/10 text-cyan-400'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'"
@@ -68,7 +68,7 @@
                     >Resources</a
                 >
                 <a
-                    href="#"
+                    href="{{ route('contact') }}"
                     :class="active === 'contact'
                         ? 'bg-cyan-500/10 text-cyan-400'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'"
