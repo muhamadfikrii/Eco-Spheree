@@ -16,7 +16,9 @@ Alpine.data('weatherWidget', () => ({
         }
 
         if (!navigator.geolocation) {
-            this.showLocationError('Your browser does not support location features.');
+            this.showLocationError(
+                'Your browser does not support location features.',
+            );
             return;
         }
 
@@ -29,13 +31,15 @@ Alpine.data('weatherWidget', () => ({
             (err) => {
                 let msg = 'Failed to detect location.';
                 if (err.code === 1) {
-                    msg = 'Location access denied. Please enable location permissions in your browser.';
+                    msg =
+                        'Location access denied. Please enable location permissions in your browser.';
                     localStorage.setItem('location_denied', 'true');
                 } else if (err.code === 2) {
-                    msg = 'Location unavailable. Please ensure your GPS is active.';
+                    msg =
+                        'Location unavailable. Please ensure your GPS is active.';
                 }
                 this.showLocationError(msg);
-            }
+            },
         );
     },
 
@@ -48,12 +52,12 @@ Alpine.data('weatherWidget', () => ({
                 text: msg,
                 confirmButtonText: 'OK, Got it',
                 background: '#fff',
-                color: '#1e293b'
+                color: '#1e293b',
             });
         } else {
             alert(msg);
         }
-    }
+    },
 }));
 
 Alpine.start();
