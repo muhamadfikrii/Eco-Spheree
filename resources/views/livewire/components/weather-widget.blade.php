@@ -3,7 +3,6 @@
     x-init="init()"
     class="weather-widget mb-3 rounded-2xl border border-slate-200 bg-white p-6 text-slate-800 shadow-lg transition-all duration-300 sm:p-8"
 >
-    
     <div
         class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
     >
@@ -38,7 +37,6 @@
         </div> --}}
     </div>
 
-    
     @if ($loading)
         <div class="py-10 text-center">
             <i class="fas fa-spinner fa-spin mb-3 text-3xl text-slate-500"></i>

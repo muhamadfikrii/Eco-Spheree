@@ -21,7 +21,6 @@
 >
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="flex items-center justify-between">
-            
             <a href="{{ route('home') }}" class="group flex items-center gap-2">
                 <div
                     class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 shadow-lg shadow-cyan-500/20"
@@ -33,7 +32,6 @@
                 >
             </a>
 
-            
             <div class="hidden items-center gap-1 md:flex">
                 <a
                     href="{{ route('home') }}"
@@ -77,7 +75,6 @@
                 >
             </div>
 
-            
             <div class="hidden items-center gap-4 md:flex">
                 <div
                     class="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1.5 backdrop-blur-sm"
@@ -106,7 +103,6 @@
                 </a>
             </div>
 
-            
             <button
                 @click="open = !open"
                 class="rounded-lg border border-slate-700 bg-white/5 p-2 text-white md:hidden"
@@ -117,7 +113,6 @@
         </div>
     </div>
 
-    
     <div
         x-show="open"
         @click.away="open = false"

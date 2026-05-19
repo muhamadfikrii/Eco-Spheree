@@ -13,7 +13,6 @@
             <p class="mx-auto max-w-2xl text-base text-gray-400">We collaborate with world-class manufacturers, technology providers, and industrial organizations.</p>
         </div>
 
-        
         <div
             class="mb-12 rounded-2xl border border-gray-700 bg-slate-800/50 p-6 sm:p-8 lg:p-12"
         >
@@ -60,7 +59,7 @@
                     </div>
                     <p class="text-sm text-gray-300">Microsoft</p>
                 </div>
-                
+
                 <div
                     class="group flex flex-col items-center rounded-xl border border-gray-600 bg-slate-700/30 p-4 transition hover:border-cyan-400/50"
                 >

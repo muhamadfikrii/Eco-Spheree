@@ -5,7 +5,6 @@
         class="nature-pattern relative overflow-hidden py-12 sm:py-16 lg:py-20"
         x-data="natureConservation()"
     >
-        
         <div class="absolute left-0 top-0 h-full w-full opacity-10">
             <div
                 class="floating absolute left-10 top-10 h-40 w-40 rounded-full bg-emerald-600 opacity-20 mix-blend-multiply blur-xl filter sm:h-56 sm:w-56 lg:h-72 lg:w-72"
@@ -39,11 +38,9 @@
                 <p class="mx-auto max-w-3xl px-4 text-lg text-gray-300 sm:text-xl">Discover the beauty of our planet and learn how we can work together to preserve it for future generations.</p>
             </div>
 
-            
             <div
                 class="mb-12 grid grid-cols-1 gap-6 sm:mb-16 sm:gap-8 md:grid-cols-2 lg:grid-cols-3"
             >
-                
                 <div
                     class="card-hover overflow-hidden rounded-2xl border border-gray-700 bg-gray-800 shadow-2xl"
                     data-aos="fade-up"
@@ -69,9 +66,15 @@
                             class="flex items-center font-medium text-emerald-400"
                         >
                             <span><a href="">Protect</a></span>
-                            <svg class="ml-2 h-4 w-4 transform transition-transform" :class="{
+                            <svg
+                                class="ml-2 h-4 w-4 transform transition-transform"
+                                :class="{
                                     'translate-x-1': card1Hover,
-                                }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                }"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -82,7 +85,6 @@
                     ></div>
                 </div>
 
-                
                 <div
                     class="card-hover overflow-hidden rounded-2xl border border-gray-700 bg-gray-800 shadow-2xl"
                     data-aos="fade-up"
@@ -113,9 +115,15 @@
                                     >Discover</a
                                 ></span
                             >
-                            <svg class="ml-2 h-4 w-4 transform transition-transform" :class="{
+                            <svg
+                                class="ml-2 h-4 w-4 transform transition-transform"
+                                :class="{
                                     'translate-x-1': card2Hover,
-                                }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                }"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -126,7 +134,6 @@
                     ></div>
                 </div>
 
-                
                 <div
                     class="card-hover overflow-hidden rounded-2xl border border-gray-700 bg-gray-800 shadow-2xl"
                     data-aos="fade-up"
@@ -157,9 +164,15 @@
                                     >Learn More</a
                                 ></span
                             >
-                            <svg class="ml-2 h-4 w-4 transform transition-transform" :class="{
+                            <svg
+                                class="ml-2 h-4 w-4 transform transition-transform"
+                                :class="{
                                     'translate-x-1': card3Hover,
-                                }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                }"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </div>
@@ -171,7 +184,6 @@
                 </div>
             </div>
 
-            
             <div
                 class="mb-8 rounded-2xl border border-gray-700 bg-gray-800 p-4 shadow-2xl sm:p-6 md:mb-12"
                 data-aos="fade-up"
@@ -198,14 +210,12 @@
                     </button>
                 </div>
 
-                
                 <div
                     class="dashboard-container custom-scrollbar overflow-x-auto overflow-y-auto"
                 >
                     <div
                         class="dashboard-content flex flex-col gap-6 lg:gap-8 xl:flex-row"
                     >
-                        
                         <div class="space-y-4 sm:space-y-6 xl:w-1/3">
                             <div>
                                 <div class="mb-2 flex justify-between">
@@ -270,7 +280,6 @@
                                 <p class="mt-1 text-sm text-gray-400">Local communities are essential for conservation success</p>
                             </div>
 
-                            
                             <div
                                 class="mt-6 rounded-lg border border-gray-600 bg-gray-700 p-4"
                             >
@@ -306,7 +315,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             class="mb-4 overflow-hidden rounded-xl border border-gray-600 bg-gradient-to-br from-gray-700 to-gray-600 p-1 sm:p-5 xl:w-2/3"
                         >
@@ -324,15 +332,12 @@
                                 ></span>
                             </div>
 
-                            
                             <div
                                 class="relative h-72 overflow-hidden rounded-xl bg-gradient-to-b from-sky-300/20 via-sky-400/10 to-transparent shadow-inner sm:h-80 lg:h-96"
                             >
-                                
                                 <div
                                     class="absolute inset-0 rounded-t-xl bg-gradient-to-b from-sky-400/30 via-blue-300/20 to-transparent"
                                 >
-                                    
                                     <div
                                         class="absolute right-8 top-6 transition-all duration-700"
                                         :style="`opacity: ${0.6 + conservationScore / 250}; transform: scale(${0.7 + conservationScore / 150})`"
@@ -348,7 +353,6 @@
                                         </div>
                                     </div>
 
-                                    
                                     <template x-for="i in 4" :key="i">
                                         <div
                                             class="absolute transition-all duration-1000"
@@ -369,53 +373,46 @@
                                     </template>
                                 </div>
 
-                                
                                 <div
                                     class="absolute bottom-0 left-0 right-0 transition-all duration-700"
                                     :style="'height: ' +
                                     forestCover * 0.65 +
                                     '%;'"
                                 >
-                                    
                                     <div
                                         class="absolute inset-0 rounded-t-xl bg-gradient-to-t from-emerald-800 via-emerald-700 to-emerald-600"
                                     ></div>
 
-                                    
                                     <div
                                         class="absolute inset-0 rounded-t-xl bg-gradient-to-t from-emerald-900/50 via-transparent to-transparent"
                                     ></div>
 
-                                    
                                     <template x-for="i in treeCount" :key="i">
                                         <div
                                             class="absolute bottom-0 transition-all duration-500"
                                             :style="`left: ${Math.random() * 90 + 5}%; z-index: ${Math.floor(Math.random() * 10)}`"
                                         >
                                             <div class="relative">
-                                                
                                                 <div
                                                     class="mx-auto h-12 w-3 rounded-t-sm bg-gradient-to-t from-amber-900 to-amber-700"
                                                 ></div>
 
-                                                
                                                 <div
                                                     class="absolute -top-10 left-1/2 -translate-x-1/2 transform"
                                                 >
                                                     <div class="relative">
-                                                        
                                                         <div
                                                             class="h-14 w-14 rounded-full bg-emerald-700 opacity-80"
                                                         ></div>
-                                                        
+
                                                         <div
                                                             class="absolute left-1 top-1 h-12 w-12 rounded-full bg-emerald-600 opacity-90"
                                                         ></div>
-                                                        
+
                                                         <div
                                                             class="absolute left-2 top-2 h-10 w-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 shadow-md"
                                                         ></div>
-                                                        
+
                                                         <div
                                                             class="absolute left-3 top-3 h-3 w-3 rounded-full bg-emerald-400/40 blur-sm"
                                                         ></div>
@@ -430,9 +427,7 @@
                                     ></div>
                                 </div>
 
-                                
                                 <div class="absolute inset-0 overflow-hidden">
-                                    
                                     <template
                                         x-for="
                                             i in Math.ceil(wildlifeCount / 2)
@@ -444,21 +439,19 @@
                                             :style="`left: ${Math.random() * 80 + 10}%; top: ${Math.random() * 30 + 10}%; opacity: ${0.7 + wildlifePopulation / 300}; transform: translateX(${Math.sin(Date.now() / 2000 + i) * 20}px)`"
                                         >
                                             <div class="relative">
-                                                
                                                 <div class="relative h-7 w-10">
-                                                    
                                                     <div
                                                         class="absolute left-2 top-2 h-4 w-5 rounded-full bg-gray-800"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute left-6 top-1.5 h-3 w-3 rounded-full bg-gray-800"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute left-8 top-2 h-0.5 w-1 rotate-45 transform bg-orange-500"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute left-1 top-1.5 h-5 w-4 origin-right rounded-t-full bg-gray-700 transition-transform duration-200"
                                                         :style="`transform: rotate(${Math.sin(Date.now() / 200 + i) * 30}deg)`"
@@ -472,7 +465,6 @@
                                         </div>
                                     </template>
 
-                                    
                                     <template
                                         x-for="i in wildlifeCount"
                                         :key="`animal-${i}`"
@@ -482,21 +474,19 @@
                                             :style="`left: ${Math.random() * 80 + 10}%; bottom: ${forestCover * 0.65 + 2}%; opacity: ${0.7 + wildlifePopulation / 300}`"
                                             x-show="wildlifePopulation > i * 10"
                                         >
-                                            
                                             <div
                                                 x-show="i % 3 === 1"
                                                 class="relative"
                                             >
                                                 <div class="relative h-10 w-12">
-                                                    
                                                     <div
                                                         class="absolute bottom-0 left-1 h-5 w-8 rounded-lg bg-amber-700"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-4 left-7 h-4 w-4 rounded-full bg-amber-700"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-0 left-2 h-3 w-1 bg-amber-800"
                                                     ></div>
@@ -509,42 +499,40 @@
                                                     <div
                                                         class="left-7.5 absolute bottom-0 h-3 w-1 bg-amber-800"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="left-7.5 absolute bottom-7 h-2 w-1 -rotate-12 transform bg-amber-900"
                                                     ></div>
                                                     <div
                                                         class="left-8.5 absolute bottom-7 h-2 w-1 rotate-12 transform bg-amber-900"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-2 left-0 h-1.5 w-1.5 rounded-full bg-white/70"
                                                     ></div>
                                                 </div>
                                             </div>
 
-                                            
                                             <div
                                                 x-show="i % 3 === 2"
                                                 class="relative"
                                             >
                                                 <div class="relative h-9 w-11">
-                                                    
                                                     <div
                                                         class="absolute bottom-0 left-1 h-6 w-7 rounded-lg bg-amber-800"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-4 left-7 h-4 w-4 rounded-full bg-amber-800"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-6 left-7 h-1 w-1 rounded-full bg-amber-900"
                                                     ></div>
                                                     <div
                                                         class="absolute bottom-6 left-9 h-1 w-1 rounded-full bg-amber-900"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-0 left-2 h-3 w-1 rounded-b bg-amber-900"
                                                     ></div>
@@ -557,46 +545,44 @@
                                                     <div
                                                         class="absolute bottom-0 left-7 h-3 w-1 rounded-b bg-amber-900"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="bottom-4.5 absolute left-10 h-0.5 w-1 rounded-full bg-amber-900"
                                                     ></div>
                                                 </div>
                                             </div>
 
-                                            
                                             <div
                                                 x-show="i % 3 === 0"
                                                 class="relative"
                                             >
                                                 <div class="relative h-10 w-10">
-                                                    
                                                     <div
                                                         class="absolute bottom-0 left-2.5 h-4 w-5 rounded-lg bg-gray-400"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-3 left-4 h-4 w-4 rounded-full bg-gray-400"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="left-4.5 absolute bottom-6 h-4 w-1 rounded-t bg-gray-400"
                                                     ></div>
                                                     <div
                                                         class="absolute bottom-6 left-6 h-4 w-1 rounded-t bg-gray-400"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-1.5 left-1 h-2 w-2 rounded-full bg-white"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="absolute bottom-0 left-3 h-3 w-1 bg-gray-500"
                                                     ></div>
                                                     <div
                                                         class="left-5.5 absolute bottom-0 h-3 w-1 bg-gray-500"
                                                     ></div>
-                                                    
+
                                                     <div
                                                         class="left-6.5 absolute bottom-4 h-1 w-1 rounded-full bg-black"
                                                     ></div>
@@ -606,7 +592,6 @@
                                     </template>
                                 </div>
 
-                                
                                 <div
                                     class="absolute left-6 top-6 transition-all duration-700"
                                     x-show="communityEngagement > 50"
@@ -629,7 +614,6 @@
                                     </div>
                                 </div>
 
-                                
                                 <div
                                     class="absolute bottom-0 left-1/4 h-12 w-1/2 overflow-hidden rounded-t-lg transition-all duration-700"
                                 >
@@ -637,7 +621,6 @@
                                         class="absolute inset-0 bg-gradient-to-t from-blue-600/80 via-blue-500/60 to-blue-400/40"
                                     ></div>
 
-                                    
                                     <div
                                         class="absolute inset-0 overflow-hidden"
                                     >
@@ -659,7 +642,6 @@
                                 </div>
                             </div>
 
-                            
                             <div
                                 class="mt-4 flex flex-wrap justify-center gap-x-2 gap-y-1 text-sm text-gray-400"
                             >
@@ -697,7 +679,6 @@
                     </div>
                 </div>
 
-                
                 <div class="mb-12 grid gap-4 sm:mb-16 sm:gap-6 md:grid-cols-3">
                     <div
                         class="rounded-xl border border-gray-700 bg-gray-800 p-4 text-center shadow-2xl sm:p-6"
@@ -754,12 +735,10 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="gradient-bg glow relative overflow-hidden rounded-2xl p-6 text-center text-white sm:p-8 md:p-12"
                     data-aos="fade-up"
                 >
-                    
                     <div
                         class="absolute right-0 top-0 -mr-20 -mt-20 h-40 w-40 rounded-full bg-white opacity-10 sm:-mr-28 sm:-mt-28 sm:h-56 sm:w-56 lg:-mr-32 lg:-mt-32 lg:h-64 lg:w-64"
                     ></div>
