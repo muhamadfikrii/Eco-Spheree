@@ -17,7 +17,6 @@
         </div>
 
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
-            
             <div
                 class="flex w-full rounded-lg border border-gray-700 bg-gray-800/70 p-1 backdrop-blur-md sm:w-auto"
             >
@@ -36,7 +35,6 @@
                 </select>
             </div>
 
-            
             <div
                 class="flex w-full gap-5 rounded-lg border border-gray-700 bg-gray-800/70 p-1 text-center backdrop-blur-md sm:w-full"
             >
@@ -70,7 +68,6 @@
                 </button>
             </div>
 
-            
             <div
                 class="flex w-full rounded-lg border border-gray-700 bg-gray-800/70 p-1 backdrop-blur-md sm:w-auto"
             >
@@ -86,11 +83,9 @@
         </div>
     </div>
 
-    
     <div
         class="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gray-800/30 shadow-xl"
     >
-        
         <div
             class="absolute left-4 top-4 z-[998] min-w-[150px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-4 shadow-xl backdrop-blur-md sm:min-w-[200px]"
         >
@@ -103,7 +98,6 @@
             <div id="legend-content"></div>
         </div>
 
-        
         <div
             class="absolute right-4 top-4 z-[998] min-w-[160px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md sm:min-w-[220px] sm:p-4"
         >
@@ -151,7 +145,6 @@
             </div>
         </div>
 
-        
         <div
             class="absolute top-20 flex flex-col space-y-2 pl-3 sm:right-2 md:top-56"
         >
@@ -178,7 +171,6 @@
             </div>
         </div>
 
-        
         <div
             id="industrialMap"
             class="h-[300px] w-full rounded-xl bg-gray-700 sm:h-[400px] md:h-[500px] lg:h-[600px]"
@@ -218,7 +210,6 @@
             </button>
         </div>
 
-        
         <div
             class="absolute bottom-4 left-4 z-[998] rounded-xl border border-gray-700/50 bg-gray-900/90 px-2 py-1.5 shadow-xl backdrop-blur-md sm:px-3 sm:py-2"
         >
@@ -228,7 +219,6 @@
         </div>
     </div>
 
-    
     <div
         class="m-5 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-2"
     >

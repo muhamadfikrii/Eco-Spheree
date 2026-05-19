@@ -23,11 +23,11 @@
         "
     @endif
 >
-    {{ $slot }} 
+    {{ $slot }}
     <span
         class="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-cyan-400 transition-transform duration-300 group-hover:scale-x-100"
     ></span>
-    
+
     <div
         class="absolute inset-0 origin-left scale-x-0 transform rounded-lg bg-gradient-to-r from-cyan-500/20 to-blue-600/20 transition-transform duration-300 group-hover:scale-x-100"
     ></div>

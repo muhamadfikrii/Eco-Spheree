@@ -2,11 +2,9 @@
     class="border-t border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 px-4 pb-10 pt-14 text-gray-300 md:px-8"
 >
     <div class="mx-auto max-w-7xl">
-        
         <div
             class="mb-14 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10"
         >
-            
             <div class="space-y-4">
                 <div class="mb-2 flex items-center space-x-2">
                     <i class="fas fa-microchip text-xl text-cyan-400"></i>
@@ -55,7 +53,6 @@
                 </div>
             </div>
 
-            
             <div>
                 <div class="mb-4 flex items-center space-x-2">
                     <i class="fas fa-cogs text-cyan-400"></i>
@@ -63,10 +60,10 @@
                 </div>
                 <ul class="space-y-3">
                     <li>
-                    <a
-                        href="{{ route('insights') }}"
-                        class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
-                    >
+                        <a
+                            href="{{ route('insights') }}"
+                            class="group flex items-center text-gray-400 transition-all hover:text-cyan-400"
+                        >
                             <i
                                 class="fas fa-chart-line mr-3 text-cyan-500/70 transition-transform group-hover:scale-110"
                             ></i>
@@ -121,7 +118,6 @@
                 </ul>
             </div>
 
-            
             <div>
                 <div class="mb-4 flex items-center space-x-2">
                     <i class="fas fa-plug text-cyan-400"></i>
@@ -159,7 +155,6 @@
                 </ul>
             </div>
 
-            
             <div>
                 <div class="mb-4 flex items-center space-x-2">
                     <i class="fas fa-chart-simple text-cyan-400"></i>
@@ -210,19 +205,15 @@
             </div>
         </div>
 
-        
         <div class="space-y-6 border-t border-slate-800 pt-8">
-            
             <div
                 class="flex flex-col items-center justify-between gap-4 lg:flex-row"
             >
-                
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-microchip text-cyan-500/70"></i>
                     <p class="text-sm text-gray-500">&copy; 2025 IndustrialTrack. All rights reserved.</p>
                 </div>
 
-                
                 <div
                     class="flex flex-wrap justify-center gap-4 text-sm text-gray-500 sm:gap-6"
                 >
@@ -255,7 +246,6 @@
                 </div>
             </div>
 
-            
             <div class="border-t border-slate-800/50 pt-4 text-center">
                 <p class="mx-auto max-w-2xl text-xs leading-relaxed text-gray-500">
                     <i class="fas fa-industry mr-1 text-cyan-400"></i>
@@ -263,7 +253,6 @@
                     edge-to-cloud architecture.
                 </p>
 
-                
                 <div class="mt-4 flex flex-wrap justify-center gap-4 sm:gap-6">
                     <div class="flex items-center text-xs text-gray-500">
                         <i class="fas fa-microchip mr-1 text-cyan-500/70"></i>

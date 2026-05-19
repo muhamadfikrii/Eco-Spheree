@@ -31,7 +31,6 @@
             setTimeout(() => $nextTick(() => initLearnMoreAnimations()), 100)
         "
     >
-        
         <section
             x-ref="heroSection"
             class="relative translate-y-4 overflow-hidden border-b border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-900/95 to-slate-950 opacity-0 transition-all duration-700 ease-out"
@@ -134,7 +133,6 @@
             </div>
         </section>
 
-        
         <section
             x-ref="aboutSection"
             class="translate-y-4 bg-slate-900 py-16 opacity-0 transition-all delay-200 duration-700 ease-out md:py-24"
@@ -253,7 +251,6 @@
             </div>
         </section>
 
-        
         <section
             id="features"
             x-ref="featuresSection"
@@ -272,7 +269,6 @@
                     <p class="mx-auto max-w-2xl text-gray-400">Industry 4.0 solutions powered by IIoT, AI, and edge analytics.</p>
                 </div>
                 <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
-                    
                     <div
                         class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
@@ -298,7 +294,7 @@
                             >
                         </div>
                     </div>
-                    
+
                     <div
                         class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
@@ -324,7 +320,7 @@
                             >
                         </div>
                     </div>
-                    
+
                     <div
                         class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
@@ -348,7 +344,7 @@
                             >
                         </div>
                     </div>
-                    
+
                     <div
                         class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
@@ -375,7 +371,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div
                     class="mx-auto mt-12 max-w-5xl rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm"
                 >
@@ -436,7 +432,6 @@
             </div>
         </section>
 
-        
         <section
             x-ref="platformSection"
             class="delay-400 translate-y-4 bg-slate-900 py-16 opacity-0 transition-all duration-700 ease-out md:py-24"

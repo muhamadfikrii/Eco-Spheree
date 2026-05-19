@@ -99,11 +99,9 @@
             },
         }"
     >
-        
         <section
             class="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700"
         >
-            
             <div class="absolute inset-0 overflow-hidden">
                 <div
                     class="absolute left-10 top-20 h-60 w-56 animate-float-slow rounded-full bg-[#4a8c6d]/10 blur-3xl filter"
@@ -135,9 +133,10 @@
                     >
                 </h1>
 
-                <p class="mx-auto mb-10 max-w-3xl animate-slide-up text-xl leading-relaxed text-[#a0b8b0]" style="
-                        animation-delay: 0.2s;
-                    ">Eco-Sphere is an innovative platform that transforms complex environmental data into interactive visualizations that are easy to understand, driving real action for nature sustainability.</p>
+                <p
+                    class="mx-auto mb-10 max-w-3xl animate-slide-up text-xl leading-relaxed text-[#a0b8b0]"
+                    style="animation-delay: 0.2s"
+                >Eco-Sphere is an innovative platform that transforms complex environmental data into interactive visualizations that are easy to understand, driving real action for nature sustainability.</p>
 
                 <div
                     class="flex animate-slide-up flex-col justify-center gap-4 sm:flex-row"
@@ -165,7 +164,6 @@
             </div>
         </section>
 
-        
         <section
             x-data="{
                 expanded: null,
@@ -178,7 +176,6 @@
         >
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-                    
                     <div>
                         <h2 class="mb-6 text-3xl font-bold text-[#e8f4f0]">
                             Our Mission & Vision
@@ -186,7 +183,6 @@
                         <p class="mb-6 text-base leading-relaxed text-[#a0b8b0] sm:text-lg">Eco-Sphere exists to bridge the gap between complex environmental data and the general public who want to contribute to nature conservation.</p>
                         <p class="mb-8 text-base leading-relaxed text-[#a0b8b0] sm:text-lg">We believe that by presenting environmental information in an accessible and engaging format, we can encourage more people to get involved in real actions to protect biodiversity.</p>
 
-                        
                         <div
                             class="flex flex-col items-start space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
                         >
@@ -230,7 +226,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             x-show="expanded"
                             x-transition:enter="transition ease-out duration-300"
@@ -262,14 +257,12 @@
                         </div>
                     </div>
 
-                    
                     <div
                         class="rounded-2xl border border-[#4a8c6d]/20 bg-emerald-500 p-4 sm:p-6 lg:p-8"
                     >
                         <div
                             class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6"
                         >
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(0)"
@@ -291,7 +284,6 @@
                                 <p class="text-sm text-gray-300">To democratize access to environmental data through an interactive and user-friendly digital platform.</p>
                             </div>
 
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(1)"
@@ -313,7 +305,6 @@
                                 <p class="text-sm text-gray-300">To create an environmentally conscious society with tools to monitor and protect biodiversity.</p>
                             </div>
 
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(2)"
@@ -335,7 +326,6 @@
                                 <p class="text-sm text-gray-300">Transparency, collaboration, innovation, and sustainability in every aspect of our platform.</p>
                             </div>
 
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(3)"
@@ -362,7 +352,6 @@
             </div>
         </section>
 
-        
         <section id="features" class="bg-[#1a3c34]/30 py-20">
             <div class="mx-auto max-w-6xl px-6">
                 <div class="mb-16 text-center">
@@ -373,7 +362,6 @@
                 </div>
 
                 <div class="grid gap-10 md:grid-cols-2">
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -419,7 +407,6 @@
                         </div>
                     </div>
 
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -461,7 +448,6 @@
                         </div>
                     </div>
 
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -505,7 +491,6 @@
                         </div>
                     </div>
 
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -552,7 +537,6 @@
             </div>
         </section>
 
-        
         <section id="how-it-works" class="bg-[#0f2a3d]/80 py-20">
             <div class="mx-auto max-w-6xl px-6">
                 <div class="mb-16 text-center">
@@ -564,7 +548,6 @@
 
                 <div class="relative">
                     <div class="relative z-10 grid gap-8 md:grid-cols-3">
-                        
                         <div
                             class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
                         >
@@ -588,7 +571,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
                         >
@@ -612,7 +594,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
                         >
@@ -638,7 +619,6 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="mt-16 rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8"
                 >
@@ -723,7 +703,6 @@
             </div>
         </section>
 
-        
         <section class="bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34] py-20">
             <div class="mx-auto max-w-6xl px-6 text-center">
                 <h2 class="text-text-[#e8f4f0] mb-6 text-3xl font-bold">

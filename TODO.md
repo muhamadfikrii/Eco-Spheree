@@ -1,12 +1,8 @@
-# TODO: Add Completed Challenges Flags to Users Table
+# TODO - Pesawat kertas icon di halaman contact
 
-## Tasks
+- [ ] Identifikasi penyebab icon pesawat kertas (paper plane) tidak muncul di `resources/views/contact.blade.php`.
+- [ ] Perbaiki render icon: pastikan FontAwesome sudah termuat dan ikon tidak hilang karena CSS/konflik.
+- [ ] Tambahkan fallback jika FontAwesome gagal (mis. ganti dengan SVG inline).
+- [ ] Jalankan build/dev & validasi tampilan di halaman `/contact`.
+- [ ] Commit perubahan (jika perlu) dan pastikan tidak mengganggu halaman lain.
 
-- [ ] Create migration to add `completed_all_challenges_today` and `completed_all_challenges_yesterday` boolean fields, and remove unused `total_lifetime_points` field
-- [ ] Update User model to include new fields in fillable and casts, remove total_lifetime_points from fillable
-- [ ] Run the migration to apply database changes
-
-## Notes
-
-- The fields `completed_all_challenges_today` and `completed_all_challenges_yesterday` are referenced in ChallengeCenter.php but not yet in the database
-- `total_lifetime_points` appears to be unused as the code uses `eco_points` for total points

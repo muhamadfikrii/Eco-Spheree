@@ -29,9 +29,7 @@
                 <p class="mx-auto mt-6 max-w-3xl text-lg text-gray-400">From real-time telemetry to predictive AI — our platform delivers the intelligence your factory needs to thrive in Industry 4.0.</p>
             </div>
 
-            
             <div class="grid auto-rows-min gap-6 lg:grid-cols-12">
-                
                 <div
                     class="group relative overflow-hidden rounded-2xl bg-slate-800 lg:col-span-7 lg:row-span-2"
                 >
@@ -81,7 +79,6 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="group relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-800 lg:col-span-5"
                 >
@@ -110,7 +107,6 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="group relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-800 lg:col-span-5"
                 >
@@ -139,7 +135,6 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="group relative min-h-[320px] overflow-hidden rounded-2xl bg-slate-800 lg:col-span-7 lg:row-span-1"
                 >

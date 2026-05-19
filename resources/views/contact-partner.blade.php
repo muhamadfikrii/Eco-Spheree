@@ -1,6 +1,5 @@
 <x-app-layout>
     <div class="min-h-screen bg-slate-950">
-        
         <div class="pointer-events-none fixed inset-0 z-0 opacity-20">
             <div
                 class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDgiIGQ9Ik0wIDQwTDQwIDBNNDAgNDBMMCAwIi8+PC9zdmc+')]"
@@ -11,7 +10,6 @@
             class="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
         >
             <div class="mx-auto max-w-4xl">
-                
                 <div class="mb-10 text-center">
                     <div
                         class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
@@ -25,7 +23,6 @@
                     <p class="mx-auto max-w-2xl text-lg text-gray-400">Fill out this form to start your partnership journey. Our team will contact you within 48 hours.</p>
                 </div>
 
-                
                 <div
                     class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 shadow-xl backdrop-blur-md md:p-8"
                 >
@@ -35,7 +32,6 @@
                         @submit.prevent="submitForm"
                         class="space-y-6"
                     >
-                        
                         <div>
                             <label class="mb-3 block font-semibold text-white"
                                 >Partnership Type *</label
@@ -163,7 +159,6 @@
                             </div>
                         </div>
 
-                        
                         <div class="grid gap-5 md:grid-cols-2">
                             <div>
                                 <label
@@ -191,7 +186,6 @@
                             </div>
                         </div>
 
-                        
                         <div class="grid gap-5 md:grid-cols-2">
                             <div>
                                 <label
@@ -219,7 +213,6 @@
                             </div>
                         </div>
 
-                        
                         <div class="grid gap-5 md:grid-cols-2">
                             <div>
                                 <label
@@ -245,7 +238,6 @@
                             </div>
                         </div>
 
-                        
                         <div class="grid gap-5 md:grid-cols-2">
                             <div>
                                 <label
@@ -376,17 +368,18 @@
                                     : 'hover:shadow-lg hover:-translate-y-0.5'"
                                 class="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 font-semibold text-white transition-all duration-200 md:w-auto"
                             >
+                            <i class="fa-solid fa-paper-plane"></i>
                                 <template x-if="submitting"
                                     ><>
                                     <div
                                         class="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"
                                     ></div>
                                     Submitting...</>
-                                >
-                                <template x-if="!submitting"
-                                    ><><i class="fas fa-paper-plane"></i> Submit
-                                    Partnership Request</>
-                                >
+                                    >
+                                    <template x-if="!submitting"
+                                        ><><i class="fas fa-paper-plane"></i>
+                                        Submit Partnership Request</>
+                                        >
                             </button>
                             <button class="rounded-lg bg-gray-500 px-4 py-2">
                                 <a href="{{ route('become') }}">Back</a>
