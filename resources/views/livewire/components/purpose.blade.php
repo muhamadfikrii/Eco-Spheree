@@ -51,7 +51,6 @@
             </div>
         </section>
 
-        
         <section class="px-6 py-16 lg:px-12" id="features">
             <div class="mx-auto max-w-[1300px]">
                 <div class="mb-16 text-center">
@@ -69,9 +68,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-                    
                     <div class="space-y-6">
-                        
                         <div
                             @click="showFeature(0)"
                             :class="{
@@ -125,7 +122,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             @click="showFeature(1)"
                             :class="{
@@ -179,7 +175,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             @click="showFeature(2)"
                             :class="{
@@ -233,7 +228,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             @click="showFeature(3)"
                             :class="{
@@ -367,9 +361,7 @@
                         </div>
                     </div>
 
-                    
                     <div class="space-y-8">
-                        
                         <div
                             x-show="!activeFeature && !showDashboard"
                             class="rounded-2xl bg-white p-8 shadow-lg"
@@ -432,7 +424,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             x-show="activeFeature !== null"
                             x-transition:enter="feature-detail-enter"
@@ -461,9 +452,12 @@
                                     :class="features[activeFeature]?.icon"
                                     class="mb-3 text-4xl"
                                 ></i>
-                                <p class="text-slate-700" x-text="
+                                <p
+                                    class="text-slate-700"
+                                    x-text="
                                         features[activeFeature]?.fullDescription
-                                    "></p>
+                                    "
+                                ></p>
                             </div>
 
                             <div
@@ -485,9 +479,10 @@
                                                 x-text="stat.value"
                                             ></span>
                                         </div>
-                                        <p class="mt-1 text-sm text-slate-600" x-text="
-                                                stat.label
-                                            "></p>
+                                        <p
+                                            class="mt-1 text-sm text-slate-600"
+                                            x-text="stat.label"
+                                        ></p>
                                     </div>
                                 </template>
                             </div>

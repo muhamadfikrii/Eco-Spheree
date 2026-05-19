@@ -8,20 +8,16 @@
             background-attachment: fixed;
         "
     >
-        
         <div class="absolute inset-0 z-10 bg-slate-900/50"></div>
 
-        
         <div
             class="absolute inset-0 z-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMTUiIGQ9Ik0wIDQwTDQwIDBNNDAgNDBMMCAwIi8+PC9zdmc+')] opacity-20"
         ></div>
 
-        
         <div
             class="absolute inset-0 z-10 bg-gradient-to-b from-black/30 via-transparent to-black/30"
         ></div>
 
-        
         <div class="relative z-20 mx-auto max-w-7xl px-6 text-center">
             <div
                 class="mb-4 inline-block rounded-full border border-cyan-400/30 bg-cyan-500/20 px-4 py-1 font-mono text-sm tracking-wider text-cyan-400 backdrop-blur-sm"
@@ -71,7 +67,6 @@
             </div>
         </div>
 
-        
         <div
             class="absolute bottom-8 left-1/2 z-20 -translate-x-1/2 transform animate-bounce"
         >

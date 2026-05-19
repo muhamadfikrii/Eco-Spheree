@@ -9,14 +9,12 @@
             },
         }"
     >
-        
         <div class="pointer-events-none fixed inset-0 z-0 opacity-10">
             <div
                 class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDgiIGQ9Ik0wIDQwTDQwIDBNNDAgODBMODAgNDBNODAgNDBMMTAgNzAiLz48L3N2Zz4=')]"
             ></div>
         </div>
 
-        
         <section
             class="relative z-10 overflow-hidden border-b border-cyan-500/20 pb-16 pt-24 lg:pt-32"
         >
@@ -123,7 +121,6 @@
             </div>
         </section>
 
-        
         <section class="relative z-10 border-b border-slate-800 py-12">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="mb-8 text-center">
@@ -211,7 +208,6 @@
             </div>
         </section>
 
-        
         <section id="benefits" class="relative z-10 py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="mb-12 text-center">
@@ -316,7 +312,6 @@
             </div>
         </section>
 
-        
         <section
             id="options"
             class="relative z-10 border-t border-slate-800 py-20"
@@ -336,7 +331,6 @@
                 <div
                     class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
                 >
-                    
                     <div
                         class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
@@ -375,7 +369,7 @@
                             >Get Started →</a
                         >
                     </div>
-                    
+
                     <div
                         class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
@@ -414,7 +408,7 @@
                             >Get Started →</a
                         >
                     </div>
-                    
+
                     <div
                         class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
@@ -455,7 +449,7 @@
                             >Get Started →</a
                         >
                     </div>
-                    
+
                     <div
                         class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
@@ -496,7 +490,7 @@
                             >Get Started →</a
                         >
                     </div>
-                    
+
                     <div
                         class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
@@ -539,7 +533,6 @@
             </div>
         </section>
 
-        
         <section
             id="contact"
             class="relative z-10 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 py-20"

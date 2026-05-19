@@ -39,65 +39,82 @@
             },
         };
     </script>
-<div class="bg-[#0f2a3d] text-[#e8f4f0]" x-data="{
-    activeFeature: 0,
-    stats: {
-        reports: 0,
-        trees: 0,
-        users: 0
-    },
-    init() {
-        // Animate stats when visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    this.animateStats();
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        
-        setTimeout(() => {
-            const statsSection = document.getElementById('stats-section');
-            if (statsSection) observer.observe(statsSection);
-        }, 1000);
-    },
-    animateStats() {
-        const animateValue = (element, start, end, duration) => {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                element.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-                if (progress < 1) {
+    <div
+        class="bg-[#0f2a3d] text-[#e8f4f0]"
+        x-data="{
+            activeFeature: 0,
+            stats: {
+                reports: 0,
+                trees: 0,
+                users: 0,
+            },
+            init() {
+                // Animate stats when visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            this.animateStats();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                setTimeout(() => {
+                    const statsSection =
+                        document.getElementById('stats-section');
+                    if (statsSection) observer.observe(statsSection);
+                }, 1000);
+            },
+            animateStats() {
+                const animateValue = (element, start, end, duration) => {
+                    let startTimestamp = null;
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min(
+                            (timestamp - startTimestamp) / duration,
+                            1,
+                        );
+                        element.innerHTML = Math.floor(
+                            progress * (end - start) + start,
+                        ).toLocaleString();
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        }
+                    };
                     window.requestAnimationFrame(step);
+                };
+
+                animateValue(this.$refs.reports, 0, 50000, 2000);
+                animateValue(this.$refs.trees, 0, 1200000, 2000);
+                animateValue(this.$refs.users, 0, 15000, 2000);
+            },
+            scrollToSection(sectionId) {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
                 }
-            };
-            window.requestAnimationFrame(step);
-        };
+            },
+            setActiveFeature(index) {
+                this.activeFeature = index;
+            },
+        }"
+    >
         
-        animateValue(this.$refs.reports, 0, 50000, 2000);
-        animateValue(this.$refs.trees, 0, 1200000, 2000);
-        animateValue(this.$refs.users, 0, 15000, 2000);
-    },
-    scrollToSection(sectionId) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
-    },
-    setActiveFeature(index) {
-        this.activeFeature = index;
-    }
-}">
-    <!-- Learn More Hero Section -->
-    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700">
-        <!-- Background Elements -->
-        <div class="absolute inset-0 overflow-hidden ">
-            <div class="absolute top-20 left-10 w-56 h-60 bg-[#4a8c6d]/10 rounded-full filter blur-3xl animate-float-slow"></div>
-            <div class="absolute bottom-24 right-10 w-72 h-72 bg-[#e6b325]/5 rounded-full filter blur-3xl animate-float-medium"></div>
-            <div class="absolute top-1/2 left-1/3 w-96 h-96 bg-[#0f2a3d]/20 rounded-full filter blur-3xl animate-float-slow"></div>
-        </div>
+        <section
+            class="relative flex min-h-[70vh] items-center justify-center overflow-hidden bg-gradient-to-br from-[#0f2a3d] to-emerald-700"
+        >
+            
+            <div class="absolute inset-0 overflow-hidden">
+                <div
+                    class="absolute left-10 top-20 h-60 w-56 animate-float-slow rounded-full bg-[#4a8c6d]/10 blur-3xl filter"
+                ></div>
+                <div
+                    class="absolute bottom-24 right-10 h-72 w-72 animate-float-medium rounded-full bg-[#e6b325]/5 blur-3xl filter"
+                ></div>
+                <div
+                    class="absolute left-1/3 top-1/2 h-96 w-96 animate-float-slow rounded-full bg-[#0f2a3d]/20 blur-3xl filter"
+                ></div>
+            </div>
 
             <div
                 class="relative z-10 mx-auto mt-16 max-w-6xl px-6 py-16 text-center"
@@ -118,9 +135,10 @@
                     >
                 </h1>
 
-                <p class="mx-auto mb-10 max-w-3xl animate-slide-up text-xl leading-relaxed text-[#a0b8b0]" style="
-                        animation-delay: 0.2s;
-                    ">Eco-Sphere is an innovative platform that transforms complex environmental data into interactive visualizations that are easy to understand, driving real action for nature sustainability.</p>
+                <p
+                    class="mx-auto mb-10 max-w-3xl animate-slide-up text-xl leading-relaxed text-[#a0b8b0]"
+                    style="animation-delay: 0.2s"
+                >Eco-Sphere is an innovative platform that transforms complex environmental data into interactive visualizations that are easy to understand, driving real action for nature sustainability.</p>
 
                 <div
                     class="flex animate-slide-up flex-col justify-center gap-4 sm:flex-row"
@@ -148,66 +166,109 @@
             </div>
         </section>
 
-   <!-- Mission & Vision Section -->
-    <section x-data="{ 
-        expanded: null, 
-        activeFeature: 0, 
-        setActiveFeature(index) { this.activeFeature = index; } 
-    }" class="py-12 sm:py-16 lg:py-20 bg-[#0f2a3d]/80">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-                <!-- Left Column: Text and Accordion -->
-                <div>
-                    <h2 class="text-3xl font-bold mb-6 text-[#e8f4f0]">Our Mission & Vision</h2>
-                    <p class="text-[#a0b8b0] text-base sm:text-lg mb-6 leading-relaxed">
-                        Eco-Sphere exists to bridge the gap between complex environmental data and the general public 
-                        who want to contribute to nature conservation.
-                    </p>
-                    <p class="text-[#a0b8b0] text-base sm:text-lg mb-8 leading-relaxed">
-                        We believe that by presenting environmental information in an accessible and engaging format, 
-                        we can encourage more people to get involved in real actions to protect biodiversity.
-                    </p>
+        
+        <section
+            x-data="{
+                expanded: null,
+                activeFeature: 0,
+                setActiveFeature(index) {
+                    this.activeFeature = index;
+                },
+            }"
+            class="bg-[#0f2a3d]/80 py-12 sm:py-16 lg:py-20"
+        >
+            <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                <div class="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
                     
-                    <!-- Accordion Triggers -->
-                    <div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
-                        <div class="flex items-center text-[#a0b8b0] cursor-pointer hover:text-[#e6b325] transition-colors" @click="expanded = expanded === 'realtime' ? null : 'realtime'">
-                            <i class="fas fa-check-circle text-[#e6b325] mr-2"></i>
-                            <span>Real-Time Data</span>
+                    <div>
+                        <h2 class="mb-6 text-3xl font-bold text-[#e8f4f0]">
+                            Our Mission & Vision
+                        </h2>
+                        <p class="mb-6 text-base leading-relaxed text-[#a0b8b0] sm:text-lg">Eco-Sphere exists to bridge the gap between complex environmental data and the general public who want to contribute to nature conservation.</p>
+                        <p class="mb-8 text-base leading-relaxed text-[#a0b8b0] sm:text-lg">We believe that by presenting environmental information in an accessible and engaging format, we can encourage more people to get involved in real actions to protect biodiversity.</p>
+
+                        
+                        <div
+                            class="flex flex-col items-start space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+                        >
+                            <div
+                                class="flex cursor-pointer items-center text-[#a0b8b0] transition-colors hover:text-[#e6b325]"
+                                @click="
+                                    expanded =
+                                        expanded === 'realtime'
+                                            ? null
+                                            : 'realtime'
+                                "
+                            >
+                                <i
+                                    class="fas fa-check-circle mr-2 text-[#e6b325]"
+                                ></i>
+                                <span>Real-Time Data</span>
+                            </div>
+                            <div
+                                class="flex cursor-pointer items-center text-[#a0b8b0] transition-colors hover:text-[#e6b325]"
+                                @click="
+                                    expanded =
+                                        expanded === 'access' ? null : 'access'
+                                "
+                            >
+                                <i
+                                    class="fas fa-check-circle mr-2 text-[#e6b325]"
+                                ></i>
+                                <span>Open Access</span>
+                            </div>
+                            <div
+                                class="flex cursor-pointer items-center text-[#a0b8b0] transition-colors hover:text-[#e6b325]"
+                                @click="
+                                    expanded =
+                                        expanded === 'impact' ? null : 'impact'
+                                "
+                            >
+                                <i
+                                    class="fas fa-check-circle mr-2 text-[#e6b325]"
+                                ></i>
+                                <span>Real Impact</span>
+                            </div>
                         </div>
-                        <div class="flex items-center text-[#a0b8b0] cursor-pointer hover:text-[#e6b325] transition-colors" @click="expanded = expanded === 'access' ? null : 'access'">
-                            <i class="fas fa-check-circle text-[#e6b325] mr-2"></i>
-                            <span>Open Access</span>
-                        </div>
-                        <div class="flex items-center text-[#a0b8b0] cursor-pointer hover:text-[#e6b325] transition-colors" @click="expanded = expanded === 'impact' ? null : 'impact'">
-                            <i class="fas fa-check-circle text-[#e6b325] mr-2"></i>
-                            <span>Real Impact</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Accordion Content -->
-                    <div x-show="expanded" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" class="mt-4 p-4 bg-[#1a3c34]/50 rounded-lg border border-[#4a8c6d]/20">
-                        <div x-show="expanded === 'realtime'" class="text-[#a0b8b0]">
-                            <p class="font-semibold text-[#e8f4f0] mb-2">Real-Time Data</p>
-                            <p>Our platform provides up-to-the-minute environmental data from thousands of sensors across Indonesia, ensuring you always have the latest information at your fingertips.</p>
-                        </div>
-                        <div x-show="expanded === 'access'" class="text-[#a0b8b0]">
-                            <p class="font-semibold text-[#e8f4f0] mb-2">Open Access</p>
-                            <p>We believe environmental data should be accessible to everyone. Our platform is free to use and open to contributions from researchers, communities, and concerned citizens.</p>
-                        </div>
-                        <div x-show="expanded === 'impact'" class="text-[#a0b8b0]">
-                            <p class="font-semibold text-[#e8f4f0] mb-2">Real Impact</p>
-                            <p>Through our platform, environmental actions have led to measurable improvements in conservation areas, reduced pollution levels, and increased community engagement.</p>
+
+                        
+                        <div
+                            x-show="expanded"
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 transform -translate-y-2"
+                            x-transition:enter-end="opacity-100 transform translate-y-0"
+                            class="mt-4 rounded-lg border border-[#4a8c6d]/20 bg-[#1a3c34]/50 p-4"
+                        >
+                            <div
+                                x-show="expanded === 'realtime'"
+                                class="text-[#a0b8b0]"
+                            >
+                                <p class="mb-2 font-semibold text-[#e8f4f0]">Real-Time Data</p>
+                                <p>Our platform provides up-to-the-minute environmental data from thousands of sensors across Indonesia, ensuring you always have the latest information at your fingertips.</p>
+                            </div>
+                            <div
+                                x-show="expanded === 'access'"
+                                class="text-[#a0b8b0]"
+                            >
+                                <p class="mb-2 font-semibold text-[#e8f4f0]">Open Access</p>
+                                <p>We believe environmental data should be accessible to everyone. Our platform is free to use and open to contributions from researchers, communities, and concerned citizens.</p>
+                            </div>
+                            <div
+                                x-show="expanded === 'impact'"
+                                class="text-[#a0b8b0]"
+                            >
+                                <p class="mb-2 font-semibold text-[#e8f4f0]">Real Impact</p>
+                                <p>Through our platform, environmental actions have led to measurable improvements in conservation areas, reduced pollution levels, and increased community engagement.</p>
+                            </div>
                         </div>
                     </div>
 
-                    
                     <div
                         class="rounded-2xl border border-[#4a8c6d]/20 bg-emerald-500 p-4 sm:p-6 lg:p-8"
                     >
                         <div
                             class="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6"
                         >
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(0)"
@@ -229,7 +290,6 @@
                                 <p class="text-sm text-gray-300">To democratize access to environmental data through an interactive and user-friendly digital platform.</p>
                             </div>
 
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(1)"
@@ -251,7 +311,6 @@
                                 <p class="text-sm text-gray-300">To create an environmentally conscious society with tools to monitor and protect biodiversity.</p>
                             </div>
 
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(2)"
@@ -273,7 +332,6 @@
                                 <p class="text-sm text-gray-300">Transparency, collaboration, innovation, and sustainability in every aspect of our platform.</p>
                             </div>
 
-                            
                             <div
                                 class="group cursor-pointer rounded-xl border border-[#4a8c6d]/10 bg-[#0f2a3d]/60 p-4 text-center transition-all duration-300 hover:border-[#e6b325]/30 sm:p-6"
                                 @click="setActiveFeature(3)"
@@ -300,46 +358,63 @@
             </div>
         </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-[#1a3c34]/30">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 text-text-[#e8f4f0]">Innovative Features</h2>
-                <p class="text-[#a0b8b0] text-lg max-w-2xl mx-auto">
-                    The Eco-Sphere platform is equipped with innovative features designed to 
-                    facilitate environmental monitoring and encourage active participation.
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-10">
-                <!-- Feature 1 -->
-                <div class="bg-[#0f2a3d]/60 rounded-2xl p-8 border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                    <div class="flex items-start mb-6">
-                        <div class="w-14 h-14 bg-[#4a8c6d]/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-[#e6b325]/20 transition-colors">
-                            <i class="fas fa-globe-americas text-[#e6b325] text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-text-[#e8f4f0] mb-2">Real-Time Interactive Map</h3>
-                            <p class="text-white">Interactive map with customizable real-time environmental data layers.</p>
-                        </div>
-                    </div>
+        
+        <section id="features" class="bg-[#1a3c34]/30 py-20">
+            <div class="mx-auto max-w-6xl px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-text-[#e8f4f0] mb-4 text-3xl font-bold">
+                        Innovative Features
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-[#a0b8b0]">The Eco-Sphere platform is equipped with innovative features designed to facilitate environmental monitoring and encourage active participation.</p>
+                </div>
+
+                <div class="grid gap-10 md:grid-cols-2">
                     
-                    <div class="space-y-4">
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-layer-group text-[#4a8c6d] mr-3"></i>
-                            <span>Air Quality, Hotspots, Water Quality</span>
+                    <div
+                        class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
+                    >
+                        <div class="mb-6 flex items-start">
+                            <div
+                                class="mr-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <i
+                                    class="fas fa-globe-americas text-2xl text-[#e6b325]"
+                                ></i>
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-text-[#e8f4f0] mb-2 text-xl font-bold"
+                                >
+                                    Real-Time Interactive Map
+                                </h3>
+                                <p class="text-white">Interactive map with customizable real-time environmental data layers.</p>
+                            </div>
                         </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-recycle text-[#4a8c6d] mr-3"></i>
-                            <span>Waste Bank & Recycling Locations</span>
-                        </div>
-                        <div class="flex items-center text-white">
-                            <i class="fas fa-satellite text-[#4a8c6d] mr-3"></i>
-                            <span>Satellite & Direct Sensor Data</span>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-layer-group mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span
+                                    >Air Quality, Hotspots, Water Quality</span
+                                >
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-recycle mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Waste Bank & Recycling Locations</span>
+                            </div>
+                            <div class="flex items-center text-white">
+                                <i
+                                    class="fas fa-satellite mr-3 text-[#4a8c6d]"
+                                ></i>
+                                <span>Satellite & Direct Sensor Data</span>
+                            </div>
                         </div>
                     </div>
 
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -381,7 +456,6 @@
                         </div>
                     </div>
 
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -425,7 +499,6 @@
                         </div>
                     </div>
 
-                    
                     <div
                         class="group rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8 transition-all duration-300 hover:border-[#e6b325]/90"
                     >
@@ -472,35 +545,41 @@
             </div>
         </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-[#0f2a3d]/80">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 text-text-[#e8f4f0]">How Eco-Sphere Works</h2>
-                <p class="text-white text-lg max-w-2xl mx-auto">
-                    Our platform collects, processes, and visualizes environmental data 
-                    through an integrated and transparent process.
-                </p>
-            </div>
-            
-            <div class="relative">
-                <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                    <!-- Step 1 -->
-                    <div class="bg-[#1a3c34]/40 rounded-2xl p-8 text-center border border-emerald-400 group hover:border-[#e6b325]/90 transition-all duration-300">
-                        <div class="w-20 h-20 bg-[#4a8c6d]/20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#e6b325]/20 transition-colors relative">
-                            <span class="text-2xl font-bold text-[#e6b325]">1</span>
+        
+        <section id="how-it-works" class="bg-[#0f2a3d]/80 py-20">
+            <div class="mx-auto max-w-6xl px-6">
+                <div class="mb-16 text-center">
+                    <h2 class="text-text-[#e8f4f0] mb-4 text-3xl font-bold">
+                        How Eco-Sphere Works
+                    </h2>
+                    <p class="mx-auto max-w-2xl text-lg text-white">Our platform collects, processes, and visualizes environmental data through an integrated and transparent process.</p>
+                </div>
+
+                <div class="relative">
+                    <div class="relative z-10 grid gap-8 md:grid-cols-3">
+                        
+                        <div
+                            class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
+                        >
+                            <div
+                                class="relative mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#4a8c6d]/20 transition-colors group-hover:bg-[#e6b325]/20"
+                            >
+                                <span class="text-2xl font-bold text-[#e6b325]"
+                                    >1</span
+                                >
+                            </div>
+                            <h3 class="mb-4 text-xl font-bold text-[#e8f4f0]">
+                                Data Collection
+                            </h3>
+                            <p class="mb-6 text-[#a0b8b0]">Collecting data from various sources including environmental sensors, satellites, weather APIs, and community reports.</p>
+                            <div
+                                class="flex justify-center space-x-4 text-white"
+                            >
+                                <i class="fas fa-satellite-dish"></i>
+                                <i class="fas fa-microchip"></i>
+                                <i class="fas fa-cloud-download-alt"></i>
+                            </div>
                         </div>
-                        <h3 class="text-xl font-bold text-[#e8f4f0] mb-4">Data Collection</h3>
-                        <p class="text-[#a0b8b0] mb-6">
-                            Collecting data from various sources including environmental sensors, satellites, 
-                            weather APIs, and community reports.
-                        </p>
-                        <div class="flex justify-center space-x-4 text-white">
-                            <i class="fas fa-satellite-dish"></i>
-                            <i class="fas fa-microchip"></i>
-                            <i class="fas fa-cloud-download-alt"></i>
-                        </div>
-                    </div>
 
                         
                         <div
@@ -526,7 +605,6 @@
                             </div>
                         </div>
 
-                        
                         <div
                             class="group rounded-2xl border border-emerald-400 bg-[#1a3c34]/40 p-8 text-center transition-all duration-300 hover:border-[#e6b325]/90"
                         >
@@ -552,7 +630,6 @@
                     </div>
                 </div>
 
-                
                 <div
                     class="mt-16 rounded-2xl border border-emerald-400 bg-[#0f2a3d]/60 p-8"
                 >
@@ -637,41 +714,69 @@
             </div>
         </section>
 
-    <!-- Impact & Call to Action -->
-    <section class="py-20 bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34]">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-text-[#e8f4f0]">Join the Movement for Sustainable Nature</h2>
-            <p class="text-[#a0b8b0] text-lg max-w-2xl mx-auto mb-10">
-                Join thousands of users who have contributed to protecting 
-                biodiversity through the Eco-Sphere platform.
-            </p>
-            
-            <div id="stats-section" class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="bg-[#0f2a3d]/40 rounded-xl p-6 border border-[#4a8c6d]/20">
-                    <div class="text-3xl font-bold text-[#e6b325] mb-2 animate-count-up" x-ref="reports">0</div>
-                    <div class="text-[#a0b8b0]">Environmental Reports</div>
+        
+        <section class="bg-gradient-to-br from-[#0f2a3d] to-[#1a3c34] py-20">
+            <div class="mx-auto max-w-6xl px-6 text-center">
+                <h2 class="text-text-[#e8f4f0] mb-6 text-3xl font-bold">
+                    Join the Movement for Sustainable Nature
+                </h2>
+                <p class="mx-auto mb-10 max-w-2xl text-lg text-[#a0b8b0]">Join thousands of users who have contributed to protecting biodiversity through the Eco-Sphere platform.</p>
+
+                <div id="stats-section" class="mb-12 grid gap-8 md:grid-cols-3">
+                    <div
+                        class="rounded-xl border border-[#4a8c6d]/20 bg-[#0f2a3d]/40 p-6"
+                    >
+                        <div
+                            class="animate-count-up mb-2 text-3xl font-bold text-[#e6b325]"
+                            x-ref="reports"
+                        >
+                            0
+                        </div>
+                        <div class="text-[#a0b8b0]">Environmental Reports</div>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#4a8c6d]/20 bg-[#0f2a3d]/40 p-6"
+                    >
+                        <div
+                            class="animate-count-up mb-2 text-3xl font-bold text-[#e6b325]"
+                            x-ref="trees"
+                        >
+                            0
+                        </div>
+                        <div class="text-[#a0b8b0]">Trees Monitored</div>
+                    </div>
+                    <div
+                        class="rounded-xl border border-[#4a8c6d]/20 bg-[#0f2a3d]/40 p-6"
+                    >
+                        <div
+                            class="animate-count-up mb-2 text-3xl font-bold text-[#e6b325]"
+                            x-ref="users"
+                        >
+                            0
+                        </div>
+                        <div class="text-[#a0b8b0]">Active Users</div>
+                    </div>
                 </div>
-                <div class="bg-[#0f2a3d]/40 rounded-xl p-6 border border-[#4a8c6d]/20">
-                    <div class="text-3xl font-bold text-[#e6b325] mb-2 animate-count-up" x-ref="trees">0</div>
-                    <div class="text-[#a0b8b0]">Trees Monitored</div>
-                </div>
-                <div class="bg-[#0f2a3d]/40 rounded-xl p-6 border border-[#4a8c6d]/20">
-                    <div class="text-3xl font-bold text-[#e6b325] mb-2 animate-count-up" x-ref="users">0</div>
-                    <div class="text-[#a0b8b0]">Active Users</div>
+
+                <div class="flex flex-col justify-center gap-4 sm:flex-row">
+                    <button
+                        class="group flex transform items-center justify-center rounded-lg bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:from-[#e6b325] hover:to-[#d4a320] hover:shadow-xl"
+                    >
+                        <i
+                            class="fas fa-user-plus mr-3 transition-transform group-hover:scale-110"
+                        ></i>
+                        Sign Up Now
+                    </button>
+                    <button
+                        class="text-text-[#e8f4f0] group flex items-center justify-center rounded-lg border-2 border-[#4a8c6d] bg-transparent px-8 py-4 font-semibold transition-all duration-300 hover:border-[#e6b325] hover:bg-[#4a8c6d]/10"
+                    >
+                        <i
+                            class="fas fa-question-circle mr-3 transition-transform group-hover:scale-110"
+                        ></i>
+                        Contact Us
+                    </button>
                 </div>
             </div>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="px-8 py-4 bg-gradient-to-r from-[#4a8c6d] to-[#3a7a5d] hover:from-[#e6b325] hover:to-[#d4a320] text-white rounded-lg transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center group">
-                    <i class="fas fa-user-plus mr-3 group-hover:scale-110 transition-transform"></i>
-                    Sign Up Now
-                </button>
-                <button class="px-8 py-4 bg-transparent border-2 border-[#4a8c6d] hover:border-[#e6b325] text-text-[#e8f4f0] rounded-lg transition-all duration-300 font-semibold hover:bg-[#4a8c6d]/10 flex items-center justify-center group">
-                    <i class="fas fa-question-circle mr-3 group-hover:scale-110 transition-transform"></i>
-                    Contact Us
-                </button>
-            </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 </x-app-layout>
