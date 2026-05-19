@@ -27,8 +27,6 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
 Route::get('/learn', function () {
     return view('learn-more');
 })->name('learnmore');
@@ -49,39 +47,3 @@ Route::get('/core-capabilitie', function () {
 Route::get('/learn_more', function () {
     return view('livewire.components.learn-more');
 })->name('learn_more');
-
-Route::get('/discover', function () {
-    return view('livewire.components.discover');
-})->name('discover');
-
-// ==================================
-// AUTHENTICATED ROUTES
-// ==================================
-
-Route::middleware('auth')->group(function () {
-    Route::get('/report', function () {
-        return view('report');
-    })->name('report');
-
-    Route::get('/challenge-center', ChallengeCenter::class)
-        ->name('challenge.center');
-
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::post('/rewards/redeem', [RewardController::class, 'redeem'])->name('rewards.redeem');
-
-    Route::get('/onboarding', OnboardingWizard::class)->name('onboarding');
-});
-
-// ==================================
-// ADMIN ROUTES
-// ==================================
-
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/mission-reviews', [App\Http\Controllers\Admin\MissionReviewController::class, 'index'])->name('admin.mission-reviews.index');
-    Route::get('/admin/mission-reviews/{submission}', [App\Http\Controllers\Admin\MissionReviewController::class, 'show'])->name('admin.mission-reviews.show');
-    Route::post('/admin/mission-reviews/{submission}/approve', [App\Http\Controllers\Admin\MissionReviewController::class, 'approve'])->name('admin.mission-reviews.approve');
-    Route::post('/admin/mission-reviews/{submission}/reject', [App\Http\Controllers\Admin\MissionReviewController::class, 'reject'])->name('admin.mission-reviews.reject');
-});
