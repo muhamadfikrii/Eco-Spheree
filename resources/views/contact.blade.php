@@ -1,208 +1,105 @@
 <x-app-layout>
-    <div
-        class="relative min-h-screen w-full bg-slate-900 px-6 py-10 pt-28 sm:px-8 lg:px-10"
-    >
-        <div class="mx-auto max-w-6xl">
-            
-            <div class="mb-12 text-center">
-                <h1
-                    class="mb-4 text-5xl font-extrabold tracking-tight text-white"
-                >
-                    📞 Contact Us
-                </h1>
-                <p class="mx-auto max-w-2xl text-lg text-gray-400">Have questions about our eco-friendly initiatives? Want to partner with us for a greener future? We'd love to hear from you!</p>
+<div class="min-h-screen bg-slate-950 pb-24">
+    <!-- Background pattern -->
+    <div class="fixed inset-0 z-0 opacity-10 pointer-events-none">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjAuNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMDgiIGQ9Ik0wIDQwTDQwIDBNNDAgODBMODAgNDBNODAgNDBMMTAgNzAiLz48L3N2Zz4=')]"></div>
+    </div>
+
+    <!-- Hero -->
+    <section class="relative z-10 pt-24 lg:pt-32 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono tracking-wider mb-6">
+                <i class="fas fa-envelope text-xs"></i> GET IN TOUCH
             </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                Let’s Talk 
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Industrial Solutions</span>
+            </h1>
+            <p class="text-gray-300 text-lg mt-6 max-w-2xl mx-auto">
+                Have a question about our platform, need support, or want to discuss a custom project? Our team is ready to help.
+            </p>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 gap-12 lg:grid-cols-2">
-                
-                <div class="eco-card p-8">
-                    <h2 class="mb-6 text-2xl font-bold text-teal-400">
-                        Send us a Message
-                    </h2>
-
-                    @if (session('success'))
-                        <div
-                            class="mb-6 rounded-lg border border-green-600 bg-green-800 px-4 py-3 text-green-200"
-                        >
-                            {{ session('success') }}
+    <!-- Contact Info & Form -->
+    <section class="relative z-10 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info Cards -->
+                <div class="space-y-6">
+                    <div class="bg-slate-800/40 backdrop-blur-md rounded-2xl p-6 border border-slate-700">
+                        <h3 class="text-xl font-bold text-white mb-5 flex items-center gap-2"><i class="fas fa-address-card text-cyan-400"></i> Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-map-marker-alt text-cyan-400"></i></div><div><p class="text-white font-medium">Headquarters</p><p class="text-gray-400 text-sm">NovaForge Tower, Jl. Sudirman No. 45, Jakarta 12910, Indonesia</p></div></div>
+                            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-phone-alt text-cyan-400"></i></div><div><p class="text-white font-medium">Phone</p><p class="text-gray-400 text-sm">+62 21 1234 5678</p></div></div>
+                            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-envelope text-cyan-400"></i></div><div><p class="text-white font-medium">Email</p><p class="text-gray-400 text-sm">hello@novaforge.com</p></div></div>
+                            <div class="flex items-start gap-3"><div class="w-10 h-10 bg-cyan-500/20 rounded-lg flex items-center justify-center"><i class="fas fa-clock text-cyan-400"></i></div><div><p class="text-white font-medium">Support Hours</p><p class="text-gray-400 text-sm">Monday - Friday: 9:00 AM - 6:00 PM (WIB)</p></div></div>
                         </div>
-                    @endif
-
-                    @if ($errors->any())
-                        <div
-                            class="mb-6 rounded-lg border border-red-600 bg-red-800 px-4 py-3 text-red-200"
-                        >
-                            <ul class="list-inside list-disc">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                    </div>
+                    <div class="bg-slate-800/40 backdrop-blur-md rounded-2xl p-6 border border-slate-700">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2"><i class="fas fa-share-alt text-cyan-400"></i> Connect With Us</h3>
+                        <div class="flex gap-4">
+                            <a href="https://linkedin.com/company/novaforge" target="_blank" class="w-10 h-10 bg-slate-700/50 rounded-full flex items-center justify-center text-gray-300 hover:bg-cyan-500 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://twitter.com/novaforge" target="_blank" class="w-10 h-10 bg-slate-700/50 rounded-full flex items-center justify-center text-gray-300 hover:bg-cyan-500 hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+                            <a href="https://github.com/novaforge" target="_blank" class="w-10 h-10 bg-slate-700/50 rounded-full flex items-center justify-center text-gray-300 hover:bg-cyan-500 hover:text-white transition"><i class="fab fa-github"></i></a>
                         </div>
-                    @endif
-
-                    <form action="{{ route('contact.store') }}" method="POST">
-                        @csrf
-                        <div class="space-y-6">
-                            <div>
-                                <label
-                                    for="name"
-                                    class="mb-2 block text-sm font-medium text-gray-300"
-                                    >Full Name</label
-                                >
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    class="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-3 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-500"
-                                    placeholder="Your full name"
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label
-                                    for="email"
-                                    class="mb-2 block text-sm font-medium text-gray-300"
-                                    >Email Address</label
-                                >
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    class="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-3 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-500"
-                                    placeholder="your.email@example.com"
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <label
-                                    for="message"
-                                    class="mb-2 block text-sm font-medium text-gray-300"
-                                    >Message</label
-                                >
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    rows="6"
-                                    class="resize-vertical w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-3 text-white placeholder-gray-400 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal-500"
-                                    placeholder="Tell us how we can help you..."
-                                    required
-                                ></textarea>
-                            </div>
-
-                            <button
-                                type="submit"
-                                class="w-full rounded-lg bg-teal-600 px-6 py-3 font-semibold text-white transition duration-200 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
-                            >
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
 
-                
-                <div class="space-y-8">
-                    
-                    <div class="eco-card p-8">
-                        <h2 class="mb-6 text-2xl font-bold text-teal-400">
-                            Get in Touch
-                        </h2>
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="flex h-12 w-12 items-center justify-center rounded-lg bg-teal-600"
-                                >
-                                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-white">
-                                        Email
-                                    </h3>
-                                    <p class="text-gray-400">contact@ecoapp.com</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="flex h-12 w-12 items-center justify-center rounded-lg bg-teal-600"
-                                >
-                                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-white">
-                                        Phone
-                                    </h3>
-                                    <p class="text-gray-400">+1 (555) 123-4567</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center space-x-4">
-                                <div
-                                    class="flex h-12 w-12 items-center justify-center rounded-lg bg-teal-600"
-                                >
-                                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h3 class="font-semibold text-white">
-                                        Address
-                                    </h3>
-                                    <p class="text-gray-400">123 Green Street<br />Eco City, EC 12345</p>
-                                </div>
-                            </div>
+                <!-- Contact Form -->
+                <div class="bg-slate-800/40 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-slate-700">
+                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2"><i class="fas fa-paper-plane text-cyan-400"></i> Send us a message</h2>
+                    <form x-data="contactForm()" @submit.prevent="submitForm" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div><label class="block text-gray-300 text-sm font-medium mb-2">Full Name *</label><input type="text" x-model="form.name" class="w-full px-4 py-2.5 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-cyan-500"></div>
+                            <div><label class="block text-gray-300 text-sm font-medium mb-2">Email *</label><input type="email" x-model="form.email" class="w-full px-4 py-2.5 bg-slate-900/50 border border-slate-700 rounded-lg text-white"></div>
                         </div>
-                    </div>
-
-                    
-                    <div class="eco-card p-8">
-                        <h2 class="mb-6 text-2xl font-bold text-teal-400">
-                            Follow Us
-                        </h2>
-                        <p class="mb-6 text-gray-400">Stay connected and follow our journey towards a sustainable future.</p>
-                        <div class="flex space-x-4">
-                            <a
-                                href="#"
-                                class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 transition duration-200 hover:bg-teal-600"
-                            >
-                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 transition duration-200 hover:bg-teal-600"
-                            >
-                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 transition duration-200 hover:bg-teal-600"
-                            >
-                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                class="flex h-12 w-12 items-center justify-center rounded-lg bg-gray-800 transition duration-200 hover:bg-teal-600"
-                            >
-                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.749.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.987C24.007 5.367 18.641.001.012.017z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+                        <div><label class="block text-gray-300 text-sm font-medium mb-2">Subject *</label><input type="text" x-model="form.subject" class="w-full px-4 py-2.5 bg-slate-900/50 border border-slate-700 rounded-lg text-white"></div>
+                        <div><label class="block text-gray-300 text-sm font-medium mb-2">Message *</label><textarea x-model="form.message" rows="4" class="w-full px-4 py-2.5 bg-slate-900/50 border border-slate-700 rounded-lg text-white"></textarea></div>
+                        <button type="submit" :disabled="submitting" :class="submitting ? 'opacity-70 cursor-not-allowed' : 'hover:shadow-lg'" class="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold transition flex items-center justify-center gap-2">
+                            <template x-if="submitting"><><div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Sending...</></template>
+                            <template x-if="!submitting"><><i class="fas fa-paper-plane"></i> Send Message</></template>
+                        </button>
+                        <div x-show="success" x-transition class="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-400 text-center text-sm">✓ Message sent! We'll reply within 24 hours.</div>
+                        <div x-show="error" x-transition class="p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-center text-sm">⚠️ Please fill all required fields.</div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Map -->
+    <section class="relative z-10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="rounded-2xl overflow-hidden border border-slate-700">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521758078341!2d106.822105!3d-6.217544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f1b2b5b5b5%3A0x0!2sSudirman%2C%20Jakarta!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" class="opacity-80 hover:opacity-100 transition"></iframe>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function contactForm() {
+        return {
+            form: { name: '', email: '', subject: '', message: '' },
+            submitting: false,
+            success: false,
+            error: false,
+            submitForm() {
+                if (!this.form.name || !this.form.email || !this.form.subject || !this.form.message) {
+                    this.error = true;
+                    setTimeout(() => this.error = false, 4000);
+                    return;
+                }
+                this.submitting = true;
+                setTimeout(() => {
+                    this.submitting = false;
+                    this.success = true;
+                    this.form = { name: '', email: '', subject: '', message: '' };
+                    setTimeout(() => this.success = false, 5000);
+                }, 1500);
+            }
+        };
+    }
+</script>
 </x-app-layout>
