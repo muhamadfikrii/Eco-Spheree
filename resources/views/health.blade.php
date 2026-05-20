@@ -39,10 +39,13 @@
                                 >Healthy, Productive, and Reliable</span
                             >
                         </h1>
-                        <p class="scroll-reveal mt-6 text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
-                            Unplanned downtime costs manufacturers an average of <span class="font-semibold text-cyan-400">$260,000 per hour</span>. Our AI-powered health monitoring predicts failures up to 48 hours in advance — so you can act before production stops.
-                        </p>
-                        <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
+                        <p class="scroll-reveal mt-6 text-lg leading-relaxed text-gray-300" style="
+                                transition-delay: 0.2s;
+                            ">Unplanned downtime costs manufacturers an average of <span class="font-semibold text-cyan-400">$260,000 per hour</span>. Our AI-powered health monitoring predicts failures up to 48 hours in advance — so you can act before production stops.</p>
+                        <div
+                            class="scroll-reveal mt-8 flex flex-wrap gap-4"
+                            style="transition-delay: 0.3s"
+                        >
                             <a
                                 href="#how-it-works"
                                 class="transform rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-500/50"
@@ -77,7 +80,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative scroll-reveal" style="transition-delay: 0.2s">
+                    <div
+                        class="scroll-reveal relative"
+                        style="transition-delay: 0.2s"
+                    >
                         <div
                             class="overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/40 p-6 shadow-2xl backdrop-blur-xl"
                         >
@@ -254,7 +260,7 @@
                     <p class="mx-auto max-w-2xl text-gray-400">Our platform continuously learns from your machines, turning raw data into actionable insights.</p>
                 </div>
                 <div class="grid gap-8 md:grid-cols-3">
-                    <div class="relative h-full scroll-reveal">
+                    <div class="scroll-reveal relative h-full">
                         <div
                             class="absolute -left-4 -top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-xl font-bold text-white"
                         >
@@ -276,7 +282,7 @@
                             <p class="flex-1 text-gray-400">IIoT sensors continuously monitor vibration, temperature, pressure, and power consumption across your production line.</p>
                         </div>
                     </div>
-                    <div class="relative h-full scroll-reveal">
+                    <div class="scroll-reveal relative h-full">
                         <div
                             class="absolute -left-4 -top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-xl font-bold text-white"
                         >
@@ -298,7 +304,7 @@
                             <p class="flex-1 text-gray-400">Machine learning models detect anomalies, identify patterns, and predict remaining useful life (RUL) with 94% accuracy.</p>
                         </div>
                     </div>
-                    <div class="relative h-full scroll-reveal">
+                    <div class="scroll-reveal relative h-full">
                         <div
                             class="absolute -left-4 -top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-xl font-bold text-white"
                         >
@@ -497,7 +503,10 @@
             opacity: 0;
             transform: translateY(30px);
             filter: blur(5px);
-            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease,
+                filter 0.6s ease;
         }
         .scroll-reveal.animated {
             opacity: 1 !important;
@@ -519,7 +528,9 @@
             // Animate all scroll-reveal elements
             const revealElements = document.querySelectorAll('.scroll-reveal');
             revealElements.forEach((el) => {
-                const delay = el.style.transitionDelay ? parseFloat(el.style.transitionDelay) : 0;
+                const delay = el.style.transitionDelay
+                    ? parseFloat(el.style.transitionDelay)
+                    : 0;
                 gsap.to(el, {
                     scrollTrigger: {
                         trigger: el,
@@ -563,11 +574,21 @@
             });
 
             // Chart initialization (unchanged)
-            const ctx = document.getElementById('caseVibrationChart').getContext('2d');
+            const ctx = document
+                .getElementById('caseVibrationChart')
+                .getContext('2d');
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Day 1', 'Day 3', 'Day 5', 'Day 7', 'Day 8', 'Day 9', 'Day 10 (Predicted)'],
+                    labels: [
+                        'Day 1',
+                        'Day 3',
+                        'Day 5',
+                        'Day 7',
+                        'Day 8',
+                        'Day 9',
+                        'Day 10 (Predicted)',
+                    ],
                     datasets: [
                         {
                             label: 'Actual Vibration (mm/s)',
@@ -594,7 +615,10 @@
                     maintainAspectRatio: true,
                     plugins: { legend: { labels: { color: '#9ca3af' } } },
                     scales: {
-                        y: { grid: { color: '#1e293b' }, ticks: { color: '#9ca3af' } },
+                        y: {
+                            grid: { color: '#1e293b' },
+                            ticks: { color: '#9ca3af' },
+                        },
                         x: { ticks: { color: '#9ca3af' } },
                     },
                 },

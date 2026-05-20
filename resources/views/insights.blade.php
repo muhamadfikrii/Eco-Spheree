@@ -39,10 +39,13 @@
                                     >Actionable Intelligence</span
                                 >
                             </h1>
-                            <p class="scroll-reveal mt-6 max-w-lg text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
-                                Go beyond dashboards. Get clear, prioritized recommendations to improve OEE, reduce downtime, and cut energy costs — all driven by real-time AI analysis.
-                            </p>
-                            <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
+                            <p class="scroll-reveal mt-6 max-w-lg text-lg leading-relaxed text-gray-300" style="
+                                    transition-delay: 0.2s;
+                                ">Go beyond dashboards. Get clear, prioritized recommendations to improve OEE, reduce downtime, and cut energy costs — all driven by real-time AI analysis.</p>
+                            <div
+                                class="scroll-reveal mt-8 flex flex-wrap gap-4"
+                                style="transition-delay: 0.3s"
+                            >
                                 <a
                                     href="#OEE"
                                     class="transform rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-500/50"
@@ -73,7 +76,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="relative scroll-reveal" style="transition-delay: 0.2s">
+                        <div
+                            class="scroll-reveal relative"
+                            style="transition-delay: 0.2s"
+                        >
                             <div
                                 class="rounded-2xl border border-slate-700 bg-slate-800/40 p-4 shadow-2xl backdrop-blur-xl"
                             >
@@ -660,7 +666,10 @@
             opacity: 0;
             transform: translateY(30px);
             filter: blur(5px);
-            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease,
+                filter 0.6s ease;
         }
         .scroll-reveal.animated {
             opacity: 1 !important;
@@ -680,7 +689,9 @@
 
             const revealElements = document.querySelectorAll('.scroll-reveal');
             revealElements.forEach((el) => {
-                const delay = el.style.transitionDelay ? parseFloat(el.style.transitionDelay) : 0;
+                const delay = el.style.transitionDelay
+                    ? parseFloat(el.style.transitionDelay)
+                    : 0;
                 gsap.to(el, {
                     scrollTrigger: {
                         trigger: el,
@@ -729,74 +740,161 @@
             const oeeChart = new Chart(oeeCtx, {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul (est)'],
-                    datasets: [{
-                        label: 'OEE (%)',
-                        data: [78, 81, 83, 85, 86, 87.3, 88.1],
-                        borderColor: '#06b6d4',
-                        backgroundColor: 'rgba(6,182,212,0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointBackgroundColor: '#38bdf8',
-                        pointBorderColor: '#fff',
-                        pointRadius: 4,
-                    }],
+                    labels: [
+                        'Jan',
+                        'Feb',
+                        'Mar',
+                        'Apr',
+                        'May',
+                        'Jun',
+                        'Jul (est)',
+                    ],
+                    datasets: [
+                        {
+                            label: 'OEE (%)',
+                            data: [78, 81, 83, 85, 86, 87.3, 88.1],
+                            borderColor: '#06b6d4',
+                            backgroundColor: 'rgba(6,182,212,0.1)',
+                            tension: 0.4,
+                            fill: true,
+                            pointBackgroundColor: '#38bdf8',
+                            pointBorderColor: '#fff',
+                            pointRadius: 4,
+                        },
+                    ],
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: { legend: { labels: { color: '#9ca3af' } } },
                     scales: {
-                        y: { grid: { color: '#1e293b' }, ticks: { color: '#9ca3af', callback: (v) => v + '%' } },
+                        y: {
+                            grid: { color: '#1e293b' },
+                            ticks: {
+                                color: '#9ca3af',
+                                callback: (v) => v + '%',
+                            },
+                        },
                         x: { ticks: { color: '#9ca3af' } },
                     },
                 },
             });
             // Downtime Chart
-            new Chart(document.getElementById('downtimeChart').getContext('2d'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['Mechanical', 'Electrical', 'Operator', 'Material', 'Scheduled'],
-                    datasets: [{
-                        data: [42, 23, 18, 10, 7],
-                        backgroundColor: ['#ef4444', '#f97316', '#eab308', '#3b82f6', '#10b981'],
-                        borderWidth: 0,
-                    }],
+            new Chart(
+                document.getElementById('downtimeChart').getContext('2d'),
+                {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            'Mechanical',
+                            'Electrical',
+                            'Operator',
+                            'Material',
+                            'Scheduled',
+                        ],
+                        datasets: [
+                            {
+                                data: [42, 23, 18, 10, 7],
+                                backgroundColor: [
+                                    '#ef4444',
+                                    '#f97316',
+                                    '#eab308',
+                                    '#3b82f6',
+                                    '#10b981',
+                                ],
+                                borderWidth: 0,
+                            },
+                        ],
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { color: '#9ca3af' },
+                            },
+                        },
+                    },
                 },
-                options: {
-                    responsive: true,
-                    plugins: { legend: { position: 'bottom', labels: { color: '#9ca3af' } } },
-                },
-            });
+            );
             // Production Chart
-            new Chart(document.getElementById('productionChart').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
-                    datasets: [
-                        { label: 'Actual Output', data: [23800, 24500, 25800, 26400, 27100, 27800, 28200, 28600], backgroundColor: '#06b6d4', borderRadius: 6 },
-                        { label: 'Target', data: [25000, 25000, 26000, 26000, 27000, 27500, 28000, 28500], backgroundColor: '#475569', borderRadius: 6 },
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: { labels: { color: '#9ca3af' } },
-                        tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.raw.toLocaleString()} units` } },
+            new Chart(
+                document.getElementById('productionChart').getContext('2d'),
+                {
+                    type: 'bar',
+                    data: {
+                        labels: [
+                            'Week 1',
+                            'Week 2',
+                            'Week 3',
+                            'Week 4',
+                            'Week 5',
+                            'Week 6',
+                            'Week 7',
+                            'Week 8',
+                        ],
+                        datasets: [
+                            {
+                                label: 'Actual Output',
+                                data: [
+                                    23800, 24500, 25800, 26400, 27100, 27800,
+                                    28200, 28600,
+                                ],
+                                backgroundColor: '#06b6d4',
+                                borderRadius: 6,
+                            },
+                            {
+                                label: 'Target',
+                                data: [
+                                    25000, 25000, 26000, 26000, 27000, 27500,
+                                    28000, 28500,
+                                ],
+                                backgroundColor: '#475569',
+                                borderRadius: 6,
+                            },
+                        ],
                     },
-                    scales: {
-                        y: { grid: { color: '#1e293b' }, ticks: { color: '#9ca3af', callback: (v) => (v / 1000).toFixed(0) + 'k' }, title: { display: true, text: 'Units (thousands)', color: '#9ca3af' } },
-                        x: { ticks: { color: '#9ca3af' } },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: { labels: { color: '#9ca3af' } },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ctx) =>
+                                        `${ctx.dataset.label}: ${ctx.raw.toLocaleString()} units`,
+                                },
+                            },
+                        },
+                        scales: {
+                            y: {
+                                grid: { color: '#1e293b' },
+                                ticks: {
+                                    color: '#9ca3af',
+                                    callback: (v) =>
+                                        (v / 1000).toFixed(0) + 'k',
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Units (thousands)',
+                                    color: '#9ca3af',
+                                },
+                            },
+                            x: { ticks: { color: '#9ca3af' } },
+                        },
                     },
                 },
-            });
+            );
             // Simulate OEE live update every 15 seconds
             setInterval(() => {
                 const newOEE = 87.5 + (Math.random() * 1.0 - 0.5);
-                oeeChart.data.datasets[0].data[6] = parseFloat(newOEE.toFixed(1));
+                oeeChart.data.datasets[0].data[6] = parseFloat(
+                    newOEE.toFixed(1),
+                );
                 oeeChart.update('none');
                 const updateElem = document.getElementById('oeeLastUpdate');
-                if (updateElem) updateElem.textContent = 'Last update: ' + new Date().toLocaleTimeString();
+                if (updateElem)
+                    updateElem.textContent =
+                        'Last update: ' + new Date().toLocaleTimeString();
             }, 15000);
         });
     </script>

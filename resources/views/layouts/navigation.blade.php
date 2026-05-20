@@ -39,6 +39,7 @@
         else if (path === '/contact') active = 'contact';
         else active = 'dashboard';
     "
+    @keydown.escape.window="open = false"
     :class="scrolled
         ? 'bg-slate-900/80 backdrop-blur-lg border-b border-slate-800/80 shadow-xl py-3'
         : 'bg-transparent py-5'"
@@ -104,11 +105,15 @@
 
             <!-- Indikator dengan dot hidup -->
             <div class="hidden items-center gap-4 md:flex">
-                <div class="flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-800/40 px-3 py-1.5 backdrop-blur-sm">
+                <div
+                    class="flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-800/40 px-3 py-1.5 backdrop-blur-sm"
+                >
                     <span class="relative flex h-2.5 w-2.5">
                         <span class="live-dot absolute h-full w-full"></span>
                     </span>
-                    <span class="text-xs font-medium text-gray-300">Live System</span>
+                    <span class="text-xs font-medium text-gray-300"
+                        >Live System</span
+                    >
                 </div>
                 <!-- Tidak ada tombol demo -->
             </div>
@@ -116,7 +121,8 @@
             <!-- Mobile menu button -->
             <button
                 @click="open = !open"
-                class="rounded-lg border border-slate-700 bg-white/5 p-2 text-white md:hidden"
+                class="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-white/5 p-2 text-white md:hidden"
+                aria-label="Open menu"
             >
                 <svg x-show="!open" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 <svg x-show="open" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
