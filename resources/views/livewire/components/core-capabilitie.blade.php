@@ -188,38 +188,40 @@
         </div>
     </section>
 
-<!-- CSS untuk animasi -->
-<style>
-    /* Initial state untuk konten yang akan dianimasi */
-    .industrial-headline {
-        opacity: 0;
-        transform: translateY(30px);
-        filter: blur(5px);
-    }
-    .industrial-card {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    /* Saat animasi selesai */
-    .industrial-headline.animated {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-        filter: blur(0) !important;
-        transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1),
-                    transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1),
-                    filter 0.8s ease;
-    }
-    .industrial-card.animated-card {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-        transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1),
-                    transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-    }
-</style>
+    <!-- CSS untuk animasi -->
+    <style>
+        /* Initial state untuk konten yang akan dianimasi */
+        .industrial-headline {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+        }
+        .industrial-card {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        /* Saat animasi selesai */
+        .industrial-headline.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            filter: blur(0) !important;
+            transition:
+                opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                filter 0.8s ease;
+        }
+        .industrial-card.animated-card {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition:
+                opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+    </style>
 </div>
 
 <script>
-    (function() {
+    (function () {
         // Tunggu hingga DOM siap
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', init);
@@ -231,35 +233,46 @@
             gsap.registerPlugin(ScrollTrigger);
 
             // Pilih elemen yang akan dianimasi
-            const headlineContainer = document.querySelector('#industrial-showcase .mb-16.text-center');
-            const allCards = document.querySelectorAll('#industrial-showcase .grid > div');
+            const headlineContainer = document.querySelector(
+                '#industrial-showcase .mb-16.text-center',
+            );
+            const allCards = document.querySelectorAll(
+                '#industrial-showcase .grid > div',
+            );
 
             if (!headlineContainer) return;
 
             // Tambahkan class untuk animasi
             headlineContainer.classList.add('industrial-headline');
-            allCards.forEach(card => card.classList.add('industrial-card'));
+            allCards.forEach((card) => card.classList.add('industrial-card'));
 
             // Animasi Headline (badge, judul, paragraf) muncul bertahap
             const headlineElements = [
                 headlineContainer.querySelector('.inline-flex'), // badge
                 headlineContainer.querySelector('h2'),
-                headlineContainer.querySelector('p')
-            ].filter(el => el !== null);
+                headlineContainer.querySelector('p'),
+            ].filter((el) => el !== null);
 
             // Urutan: badge, judul, paragraf dengan delay bertahap
             let tlHeadline = gsap.timeline({
                 scrollTrigger: {
                     trigger: '#industrial-showcase',
                     start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                }
+                    toggleActions: 'play none none reverse',
+                },
             });
             headlineElements.forEach((el, idx) => {
-                tlHeadline.fromTo(el,
+                tlHeadline.fromTo(
+                    el,
                     { opacity: 0, y: 25, filter: 'blur(6px)' },
-                    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' },
-                    idx * 0.12
+                    {
+                        opacity: 1,
+                        y: 0,
+                        filter: 'blur(0px)',
+                        duration: 0.7,
+                        ease: 'power2.out',
+                    },
+                    idx * 0.12,
                 );
             });
             // Tandai headline container sebagai animated setelah selesai
@@ -269,13 +282,14 @@
 
             // Animasi cards dengan stagger (muncul berurutan)
             if (allCards.length) {
-                gsap.fromTo(allCards,
+                gsap.fromTo(
+                    allCards,
                     { opacity: 0, y: 50 },
                     {
                         scrollTrigger: {
                             trigger: '#industrial-showcase .grid',
                             start: 'top 80%',
-                            toggleActions: 'play none none none'
+                            toggleActions: 'play none none none',
                         },
                         opacity: 1,
                         y: 0,
@@ -283,14 +297,16 @@
                         stagger: 0.12,
                         ease: 'back.out(0.6)',
                         onComplete: () => {
-                            allCards.forEach(card => card.classList.add('animated-card'));
-                        }
-                    }
+                            allCards.forEach((card) =>
+                                card.classList.add('animated-card'),
+                            );
+                        },
+                    },
                 );
             }
 
             // Efek parallax ringan pada gambar (opsional, menambah kedalaman)
-            allCards.forEach(card => {
+            allCards.forEach((card) => {
                 const img = card.querySelector('img');
                 if (img) {
                     gsap.to(img, {
@@ -298,11 +314,11 @@
                             trigger: card,
                             start: 'top bottom',
                             end: 'bottom top',
-                            scrub: 0.3
+                            scrub: 0.3,
                         },
                         y: 15,
                         scale: 1.03,
-                        ease: 'none'
+                        ease: 'none',
                     });
                 }
             });

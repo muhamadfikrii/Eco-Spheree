@@ -1,6 +1,6 @@
 <div class="w-full" wire:ignore>
     <div
-        class="mb-6 flex flex-col flex-wrap gap-4 overflow-x-auto p-2 lg:flex-row lg:items-center lg:justify-between"
+        class="mb-6 flex flex-col gap-4 overflow-x-auto p-2 lg:flex-row lg:items-center lg:justify-between"
     >
         <div class="flex items-center">
             <div
@@ -84,23 +84,24 @@
     </div>
 
     <div
-        class="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gray-800/30 shadow-xl">
+        class="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gray-800/30 shadow-xl"
+    >
         <div
-            class="absolute left-2 top-2 z-[998] min-w-[120px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md sm:left-4 sm:top-4 sm:min-w-[200px]"
+            class="absolute left-2 top-2 z-[998] max-w-[180px] overflow-hidden rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md sm:left-4 sm:top-4 sm:max-w-[240px]"
         >
             <h3
                 class="mb-3 flex items-center gap-2 text-sm font-semibold text-white"
             >
-                <i class="fas fa-chart-line text-cyan-400"></i>
                 <span id="legend-title">OEE Performance</span>
             </h3>
             <div id="legend-content"></div>
         </div>
 
         <div
-            class="absolute right-2 top-2 z-[998] min-w-[140px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-2.5 shadow-xl backdrop-blur-md sm:right-4 sm:top-4 sm:min-w-[220px] sm:p-4">
+            class="absolute right-2 top-2 z-[998] min-w-[140px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-2.5 shadow-xl backdrop-blur-md sm:right-4 sm:top-4 sm:min-w-[220px] sm:p-4"
+        >
             <div
-                class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+                class="mb-3 flex w-full flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
             >
                 <span class="truncate text-sm text-gray-300" id="region-name"
                     >Indonesia</span
@@ -218,7 +219,7 @@
     </div>
 
     <div
-        class="m-5 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-2"
+        class="m-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-2"
     >
         <div
             class="cursor-pointer rounded-xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-600/10 p-4 backdrop-blur-sm transition-all duration-300 hover:border-cyan-400/40"
@@ -576,7 +577,6 @@
     }
 
     function createPopupContent(point) {
-        const isMobile = window.innerWidth < 768;
         const unit =
             activeLayer === 'oee'
                 ? '%'
@@ -607,7 +607,6 @@
             color = '#06b6d4';
         }
 
-        // Ukuran marker besar (20px)
         const size = 20;
         const iconHtml = `
             <div class="relative" style="width: ${size}px; height: ${size}px;">

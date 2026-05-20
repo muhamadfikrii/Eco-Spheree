@@ -35,10 +35,13 @@
                                 >Resources</span
                             >
                         </h1>
-                        <p class="scroll-reveal mt-6 text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
-                            Dive into a curated collection of industry insights, technical docs, and actionable guides. Whether you’re a plant manager, engineer, or developer, you'll find practical knowledge to help you excel.
-                        </p>
-                        <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
+                        <p class="scroll-reveal mt-6 text-lg leading-relaxed text-gray-300" style="
+                                transition-delay: 0.2s;
+                            ">Dive into a curated collection of industry insights, technical docs, and actionable guides. Whether you’re a plant manager, engineer, or developer, you'll find practical knowledge to help you excel.</p>
+                        <div
+                            class="scroll-reveal mt-8 flex flex-wrap gap-4"
+                            style="transition-delay: 0.3s"
+                        >
                             <a
                                 href="#featured"
                                 class="transform rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-500/50"
@@ -54,7 +57,10 @@
                             </a>
                         </div>
                     </div>
-                    <div class="relative flex justify-center scroll-reveal" style="transition-delay: 0.2s">
+                    <div
+                        class="scroll-reveal relative flex justify-center"
+                        style="transition-delay: 0.2s"
+                    >
                         <div
                             class="group relative flex h-64 w-64 items-center justify-center rounded-full border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 p-4 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
                         >
@@ -101,7 +107,10 @@
                         <div class="flex items-center gap-4">
                             <select
                                 x-model="sortBy"
-                                @change="currentPage = 1; refreshAnimations()"
+                                @change="
+                                    currentPage = 1;
+                                    refreshAnimations();
+                                "
                                 class="rounded-full border border-slate-700 bg-slate-800/50 px-4 py-2 text-sm text-gray-300 focus:border-cyan-500 focus:outline-none"
                             >
                                 <option value="newest">Newest</option>
@@ -115,7 +124,10 @@
                                 <input
                                     type="text"
                                     x-model="searchQuery"
-                                    @input="currentPage = 1; refreshAnimations()"
+                                    @input="
+                                        currentPage = 1;
+                                        refreshAnimations();
+                                    "
                                     placeholder="Search resources..."
                                     class="w-full rounded-full border border-slate-700 bg-slate-800/50 py-2 pl-10 pr-4 text-white placeholder-gray-400 backdrop-blur-sm focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
                                 />
@@ -205,12 +217,20 @@
                     </h2>
                     <p class="mx-auto mt-2 max-w-2xl text-gray-400">Handpicked insights to accelerate your industrial journey.</p>
                 </div>
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" x-ref="gridContainer">
-                    <template x-for="(resource, index) in paginatedResources" :key="resource.id">
+                <div
+                    class="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+                    x-ref="gridContainer"
+                >
+                    <template
+                        x-for="(resource, index) in paginatedResources"
+                        :key="resource.id"
+                    >
                         <div
                             x-data="{ revealed: false }"
                             x-init="revealed = true"
-                            :class="revealed ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'"
+                            :class="revealed
+                                ? 'opacity-100 translate-y-0 blur-0'
+                                : 'opacity-0 translate-y-8 blur-sm'"
                             class="resource-card group overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/30 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/50 hover:shadow-2xl"
                         >
                             <div class="mb-4 flex items-center justify-between">
@@ -234,9 +254,10 @@
                                 class="mb-2 text-xl font-bold text-white transition-colors duration-300 group-hover:text-cyan-400"
                                 x-text="resource.title"
                             ></h3>
-                            <p class="mb-4 text-gray-400" x-text="
-                                    resource.description
-                                "></p>
+                            <p
+                                class="mb-4 text-gray-400"
+                                x-text="resource.description"
+                            ></p>
                             <div
                                 class="mt-auto flex items-center justify-between"
                             >
@@ -270,7 +291,10 @@
                     x-show="totalPages > 1"
                 >
                     <button
-                        @click="currentPage = Math.max(1, currentPage - 1); refreshAnimations()"
+                        @click="
+                            currentPage = Math.max(1, currentPage - 1);
+                            refreshAnimations();
+                        "
                         :disabled="currentPage === 1"
                         :class="currentPage === 1
                             ? 'opacity-50 cursor-not-allowed'
@@ -281,7 +305,10 @@
                     </button>
                     <template x-for="p in totalPages" :key="p">
                         <button
-                            @click="currentPage = p; refreshAnimations()"
+                            @click="
+                                currentPage = p;
+                                refreshAnimations();
+                            "
                             :class="currentPage === p
                                 ? 'bg-cyan-500 text-white'
                                 : 'hover:bg-cyan-500/20'"
@@ -415,16 +442,20 @@
                             class="text-xl font-bold text-white"
                             x-text="previewResourceData?.title"
                         ></h3>
-                        <p class="text-sm text-gray-400" x-text="
-                                previewResourceData?.category
-                            "></p>
+                        <p
+                            class="text-sm text-gray-400"
+                            x-text="previewResourceData?.category"
+                        ></p>
                     </div>
                 </div>
                 <div class="prose prose-invert max-w-none">
-                    <p class="text-gray-300" x-text="
+                    <p
+                        class="text-gray-300"
+                        x-text="
                             previewResourceData?.previewContent ||
                             'No preview content available.'
-                        "></p>
+                        "
+                    ></p>
                     <div class="mt-4 flex gap-2 text-sm text-gray-400">
                         <i class="fas fa-clock mr-1"></i>
                         <span x-text="previewResourceData?.duration"></span>
@@ -472,7 +503,10 @@
             opacity: 0;
             transform: translateY(30px);
             filter: blur(5px);
-            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            transition:
+                opacity 0.6s ease,
+                transform 0.6s ease,
+                filter 0.6s ease;
         }
         .scroll-reveal.animated {
             opacity: 1 !important;
@@ -481,7 +515,10 @@
         }
         /* Resource card initial animation (handled by x-init, but fallback) */
         .resource-card {
-            transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s ease,
+                filter 0.5s ease;
         }
     </style>
 
@@ -741,10 +778,13 @@
                 },
                 initScrollAnimations() {
                     // Animate static scroll-reveal elements
-                    const revealElements = document.querySelectorAll('.scroll-reveal');
+                    const revealElements =
+                        document.querySelectorAll('.scroll-reveal');
                     revealElements.forEach((el) => {
                         if (el.classList.contains('animated')) return;
-                        const delay = el.style.transitionDelay ? parseFloat(el.style.transitionDelay) : 0;
+                        const delay = el.style.transitionDelay
+                            ? parseFloat(el.style.transitionDelay)
+                            : 0;
                         gsap.to(el, {
                             scrollTrigger: {
                                 trigger: el,
@@ -765,7 +805,8 @@
                     // Animate resource cards with stagger (for newly added cards)
                     const cards = document.querySelectorAll('.resource-card');
                     if (cards.length) {
-                        gsap.fromTo(cards,
+                        gsap.fromTo(
+                            cards,
                             { opacity: 0, y: 30, filter: 'blur(5px)' },
                             {
                                 scrollTrigger: {
@@ -779,7 +820,7 @@
                                 stagger: 0.08,
                                 duration: 0.6,
                                 ease: 'back.out(0.6)',
-                            }
+                            },
                         );
                     }
                 },

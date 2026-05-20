@@ -368,7 +368,7 @@
                                     : 'hover:shadow-lg hover:-translate-y-0.5'"
                                 class="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 font-semibold text-white transition-all duration-200 md:w-auto"
                             >
-                            <i class="fa-solid fa-paper-plane"></i>
+                                <i class="fa-solid fa-paper-plane"></i>
                                 <template x-if="submitting"
                                     ><>
                                     <div
