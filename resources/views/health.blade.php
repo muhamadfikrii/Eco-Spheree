@@ -24,13 +24,14 @@
                 <div class="grid items-center gap-12 lg:grid-cols-2">
                     <div>
                         <div
-                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400 backdrop-blur-sm"
+                            class="scroll-reveal mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400 backdrop-blur-sm"
                         >
                             <i class="fas fa-heartbeat text-xs"></i> MACHINE
                             HEALTH INTELLIGENCE
                         </div>
                         <h1
-                            class="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                            class="scroll-reveal text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                            style="transition-delay: 0.1s"
                         >
                             Keep Your Machines
                             <span
@@ -38,8 +39,10 @@
                                 >Healthy, Productive, and Reliable</span
                             >
                         </h1>
-                        <p class="mt-6 text-lg leading-relaxed text-gray-300">Unplanned downtime costs manufacturers an average of <span class="font-semibold text-cyan-400">$260,000 per hour</span>. Our AI-powered health monitoring predicts failures up to 48 hours in advance — so you can act before production stops.</p>
-                        <div class="mt-8 flex flex-wrap gap-4">
+                        <p class="scroll-reveal mt-6 text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
+                            Unplanned downtime costs manufacturers an average of <span class="font-semibold text-cyan-400">$260,000 per hour</span>. Our AI-powered health monitoring predicts failures up to 48 hours in advance — so you can act before production stops.
+                        </p>
+                        <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
                             <a
                                 href="#how-it-works"
                                 class="transform rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-500/50"
@@ -55,7 +58,8 @@
                             </a>
                         </div>
                         <div
-                            class="mt-10 flex flex-wrap gap-6 text-sm text-gray-400"
+                            class="scroll-reveal mt-10 flex flex-wrap gap-6 text-sm text-gray-400"
+                            style="transition-delay: 0.4s"
                         >
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-chart-line text-cyan-400"></i>
@@ -73,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative">
+                    <div class="relative scroll-reveal" style="transition-delay: 0.2s">
                         <div
                             class="overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/40 p-6 shadow-2xl backdrop-blur-xl"
                         >
@@ -178,7 +182,7 @@
         <!-- Why Machine Health Matters -->
         <section class="relative z-10 border-y border-slate-800 py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <div
                         class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                     >
@@ -191,7 +195,7 @@
                 </div>
                 <div class="grid gap-8 md:grid-cols-3">
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/30 p-6 text-center"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/30 p-6 text-center"
                     >
                         <div
                             class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-red-500/20"
@@ -204,7 +208,7 @@
                         <p class="text-gray-400">Fix after failure. High emergency repair costs, unplanned downtime, and rushed part replacements.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/30 p-6 text-center"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/30 p-6 text-center"
                     >
                         <div
                             class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-yellow-500/20"
@@ -219,7 +223,7 @@
                         <p class="text-gray-400">Replace parts on schedule — often too early (waste) or too late (failure). Inefficient and costly.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/30 p-6 text-center"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/30 p-6 text-center"
                     >
                         <div
                             class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -238,7 +242,7 @@
         <!-- How It Works -->
         <section id="how-it-works" class="relative z-10 py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <div
                         class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                     >
@@ -250,7 +254,7 @@
                     <p class="mx-auto max-w-2xl text-gray-400">Our platform continuously learns from your machines, turning raw data into actionable insights.</p>
                 </div>
                 <div class="grid gap-8 md:grid-cols-3">
-                    <div class="relative h-full">
+                    <div class="relative h-full scroll-reveal">
                         <div
                             class="absolute -left-4 -top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-xl font-bold text-white"
                         >
@@ -272,7 +276,7 @@
                             <p class="flex-1 text-gray-400">IIoT sensors continuously monitor vibration, temperature, pressure, and power consumption across your production line.</p>
                         </div>
                     </div>
-                    <div class="relative h-full">
+                    <div class="relative h-full scroll-reveal">
                         <div
                             class="absolute -left-4 -top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-xl font-bold text-white"
                         >
@@ -294,7 +298,7 @@
                             <p class="flex-1 text-gray-400">Machine learning models detect anomalies, identify patterns, and predict remaining useful life (RUL) with 94% accuracy.</p>
                         </div>
                     </div>
-                    <div class="relative h-full">
+                    <div class="relative h-full scroll-reveal">
                         <div
                             class="absolute -left-4 -top-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500 text-xl font-bold text-white"
                         >
@@ -327,7 +331,7 @@
         >
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid items-center gap-12 lg:grid-cols-2">
-                    <div>
+                    <div class="scroll-reveal">
                         <div
                             class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                         >
@@ -371,7 +375,7 @@
                         </div>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6"
                     >
                         <div class="mb-4 flex items-center gap-3">
                             <div
@@ -395,7 +399,7 @@
         <!-- What You Get -->
         <section class="relative z-10 py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <h2 class="mb-4 text-3xl font-bold text-white lg:text-4xl">
                         What You Get with NovaForge Health
                     </h2>
@@ -404,7 +408,7 @@
                 <div
                     class="mx-auto grid max-w-4xl gap-x-12 gap-y-6 md:grid-cols-2"
                 >
-                    <div class="flex items-start gap-3">
+                    <div class="scroll-reveal flex items-start gap-3">
                         <div
                             class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20"
                         >
@@ -417,7 +421,7 @@
                             <p class="text-sm text-gray-400">Live health scores for every asset, anywhere in the world.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
+                    <div class="scroll-reveal flex items-start gap-3">
                         <div
                             class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20"
                         >
@@ -430,7 +434,7 @@
                             <p class="text-sm text-gray-400">94% accurate, 48-hour advance warnings with recommended actions.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
+                    <div class="scroll-reveal flex items-start gap-3">
                         <div
                             class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20"
                         >
@@ -443,7 +447,7 @@
                             <p class="text-sm text-gray-400">Automatically generate work orders based on asset health.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
+                    <div class="scroll-reveal flex items-start gap-3">
                         <div
                             class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20"
                         >
@@ -456,7 +460,7 @@
                             <p class="text-sm text-gray-400">Understand why failures happen and prevent recurrence.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
+                    <div class="scroll-reveal flex items-start gap-3">
                         <div
                             class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20"
                         >
@@ -469,7 +473,7 @@
                             <p class="text-sm text-gray-400">Get push notifications on your phone, even when away from the control room.</p>
                         </div>
                     </div>
-                    <div class="flex items-start gap-3">
+                    <div class="scroll-reveal flex items-start gap-3">
                         <div
                             class="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/20"
                         >
@@ -487,24 +491,83 @@
         </section>
     </div>
 
+    <style>
+        /* Initial state for scroll reveal animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+        }
+        .scroll-reveal.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            filter: blur(0) !important;
+        }
+    </style>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const ctx = document
-                .getElementById('caseVibrationChart')
-                .getContext('2d');
+            // Register ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animate all scroll-reveal elements
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            revealElements.forEach((el) => {
+                const delay = el.style.transitionDelay ? parseFloat(el.style.transitionDelay) : 0;
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse',
+                        once: false,
+                    },
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    duration: 0.8,
+                    delay: delay,
+                    ease: 'power2.out',
+                    onComplete: () => el.classList.add('animated'),
+                });
+            });
+
+            // Optional: subtle parallax on background blobs (if any)
+            gsap.to('.absolute.-left-20', {
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                },
+                x: 30,
+                y: 30,
+                ease: 'none',
+            });
+            gsap.to('.absolute.-right-20', {
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                },
+                x: -30,
+                y: -30,
+                ease: 'none',
+            });
+
+            // Chart initialization (unchanged)
+            const ctx = document.getElementById('caseVibrationChart').getContext('2d');
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: [
-                        'Day 1',
-                        'Day 3',
-                        'Day 5',
-                        'Day 7',
-                        'Day 8',
-                        'Day 9',
-                        'Day 10 (Predicted)',
-                    ],
+                    labels: ['Day 1', 'Day 3', 'Day 5', 'Day 7', 'Day 8', 'Day 9', 'Day 10 (Predicted)'],
                     datasets: [
                         {
                             label: 'Actual Vibration (mm/s)',
@@ -531,10 +594,7 @@
                     maintainAspectRatio: true,
                     plugins: { legend: { labels: { color: '#9ca3af' } } },
                     scales: {
-                        y: {
-                            grid: { color: '#1e293b' },
-                            ticks: { color: '#9ca3af' },
-                        },
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#9ca3af' } },
                         x: { ticks: { color: '#9ca3af' } },
                     },
                 },

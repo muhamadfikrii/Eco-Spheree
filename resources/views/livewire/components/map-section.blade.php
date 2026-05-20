@@ -84,10 +84,9 @@
     </div>
 
     <div
-        class="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gray-800/30 shadow-xl"
-    >
+        class="relative overflow-hidden rounded-2xl border border-gray-700/50 bg-gray-800/30 shadow-xl">
         <div
-            class="absolute left-4 top-4 z-[998] min-w-[150px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-4 shadow-xl backdrop-blur-md sm:min-w-[200px]"
+            class="absolute left-2 top-2 z-[998] min-w-[120px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md sm:left-4 sm:top-4 sm:min-w-[200px]"
         >
             <h3
                 class="mb-3 flex items-center gap-2 text-sm font-semibold text-white"
@@ -99,8 +98,7 @@
         </div>
 
         <div
-            class="absolute right-4 top-4 z-[998] min-w-[160px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md sm:min-w-[220px] sm:p-4"
-        >
+            class="absolute right-2 top-2 z-[998] min-w-[140px] rounded-xl border border-gray-700/50 bg-gray-900/90 p-2.5 shadow-xl backdrop-blur-md sm:right-4 sm:top-4 sm:min-w-[220px] sm:p-4">
             <div
                 class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
             >
@@ -159,7 +157,7 @@
         </div>
 
         <div
-            class="absolute bottom-20 left-4 z-10 hidden rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md"
+            class="absolute bottom-6 left-2 z-10 hidden rounded-xl border border-gray-700/50 bg-gray-900/90 p-3 shadow-xl backdrop-blur-md sm:bottom-20 sm:left-4"
             id="map-info"
         >
             <div class="text-xs text-gray-300">
@@ -177,7 +175,7 @@
         ></div>
 
         <div
-            class="absolute bottom-4 right-4 z-[998] flex flex-wrap justify-end gap-2 px-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:transform sm:justify-center"
+            class="absolute bottom-3 right-3 z-[998] flex flex-wrap justify-end gap-2 px-3 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 sm:transform sm:justify-center"
         >
             <button
                 onclick="useCurrentLocation()"

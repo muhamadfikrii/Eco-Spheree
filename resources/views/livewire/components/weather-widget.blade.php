@@ -66,7 +66,7 @@
             <div class="flex justify-center">
                 <div
                     id="weather-animation-{{ $componentId }}"
-                    class="h-24 w-24"
+                    class="h-20 w-20 sm:h-24 sm:w-24"
                 ></div>
             </div>
 
