@@ -108,7 +108,8 @@ Then open a Pull Request.
 
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                                                                             │
-│   ⚙️  NovaForge – Intelligence for Industry 4.0  ⚙️                         │
-│   "Predict before failure. Optimize before waste."                         │
+    │   ⚙️  NovaForge – Intelligence for Industry 4.0  ⚙️                     |
+│   "Predict before failure. Optimize before waste."                          │
 │                                                                             │
+|                                                                             |
 └─────────────────────────────────────────────────────────────────────────────┘
