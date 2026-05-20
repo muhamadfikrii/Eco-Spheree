@@ -1,22 +1,26 @@
-# Eco-Spheree 🌍
+erikut adalah README yang sudah disesuaikan dengan tema NovaForge – Industrial Intelligence Platform (smart manufacturing, IIoT, predictive maintenance, dan asset health). Semua referensi lingkungan, eco, challenge, report, dll telah dihapus dan diganti dengan fitur industri modern sesuai website yang telah kita bangun.
+markdown
+
+# NovaForge – Industrial Intelligence Platform 🏭
 
 [![Laravel](https://img.shields.io/badge/Laravel-12-red.svg)](https://laravel.com)
 [![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)](https://php.net)
 [![Livewire](https://img.shields.io/badge/Livewire-3.6-green.svg)](https://livewire.laravel.com)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-38BDF8)](https://tailwindcss.com)
+[![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-77C1FF)](https://alpinejs.dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![Eco-Spheree Banner](public/assets/home/hero.png)
+**NovaForge** is a cutting‑edge industrial web platform that helps manufacturers monitor machine health, predict failures, optimize energy consumption, and access actionable resources. Built with Laravel, Livewire, Tailwind CSS, and Alpine.js, it delivers a modern, real‑time dashboard for Industry 4.0 operations.
 
-Eco-Spheree is a comprehensive web application built with Laravel that empowers users to engage in environmental challenges, track their ecological impact, and redeem rewards for sustainable actions. The platform promotes eco-friendly living through interactive challenges, progress tracking, and community-driven initiatives.
+![NovaForge Banner](public/assets/home/hero.png)
 
 ## 📋 Table of Contents
 
-- [🖼️ Screenshots](#-screenshots)
 - [✨ Features](#-features)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [🚀 Installation](#-installation)
 - [🎯 Usage](#-usage)
-- [👨‍💼 Admin Access](#-admin-access)
+- [👨‍💼 Admin Access (if applicable)](#-admin-access-if-applicable)
 - [📁 Project Structure](#-project-structure)
 - [🛣️ Key Routes](#️-key-routes)
 - [🧪 Testing](#-testing)
@@ -24,286 +28,216 @@ Eco-Spheree is a comprehensive web application built with Laravel that empowers 
 - [📄 License](#-license)
 - [🙏 Acknowledgments](#-acknowledgments)
 
-## 🖼️ Screenshots
-
-### Homepage
-
-![Homepage](public/assets/home/maps.png)
-
-### Explore Page
-
-![Explore Page](public/assets/explore/visualecosystem.png.png)
-![Explore Page](public/assets/explore/marvel.png)
-![Explore Page](public/assets/explore/natureconservation.png)
-
-### Challenge Center
-
-![Challenge Center](public/assets/challenge/center.png)
-
-### Eco-Track
-
-![Eco-Track Dashboard](public/assets/ecoTrack/ecoTrack.png)
-
-### Report Page
-
-![Report Page](public/assets/reports/report.png)
-
-### User Profile
-
-![User Profile](public/assets/profile/profile.png)
-
-### Admin Dashboard
-
-![Admin Dashboard](public/assets/dashboard/dashboard.png)
-
 ## ✨ Features
 
-- **🔐 User Authentication**: Secure login and registration system with Laravel Breeze
-- **🌱 Environmental Challenges**: Participate in various eco-challenges to earn points and levels
-- **📊 Eco-Tracking**: Monitor personal environmental impact and progress
-- **🎁 Reward System**: Redeem earned points for rewards and incentives
-- **👨‍💼 Admin Panel**: Administrative interface for managing challenges, reviewing submissions, and overseeing user activities
-- **🗺️ Interactive Maps**: Explore environmental data and conservation areas
-- **🌤️ Weather Integration**: Real-time weather information for outdoor activities
-- **📞 Contact System**: User support and partnership inquiries
-- **📱 Responsive Design**: Mobile-friendly interface with dark mode support
+- **Real‑time Industrial Dashboard** – Overview of OEE, uptime, energy savings, and production metrics.
+- **Machine Health & Predictive Maintenance** – AI‑powered alerts, vibration/temperature trends, remaining useful life (RUL) predictions.
+- **Advanced Analytics (Insights)** – OEE trends, downtime root cause, production vs target charts, and AI‑generated operational insights.
+- **Resource Hub** – Searchable library of whitepapers, case studies, tech docs, webinars, and tools with preview & download.
+- **Partnership Portal** – Corporate, technology, research, NGO, and government partnership options with inquiry forms.
+- **Industrial Map (demo)** – Interactive map showing key plant locations and performance indicators.
+- **Interactive AI Demo** – Live vibration‑based health prediction (threshold simulation).
+- **Responsive & Modern UI** – Dark/light‑optimized palette (slate + cyan/blue), glassmorphism, smooth animations (GSAP/ScrollTrigger).
+- **Admin Panel** – Manage missions, reviews, and platform content (if configured).
 
 ## 🛠️ Tech Stack
 
 ### Backend
-
-- **Laravel 12** - PHP web framework
-- **PHP 8.2+** - Server-side scripting
-- **Livewire 3.6** - Full-stack framework for Laravel
-- **Laravel Breeze Middleware** - Authentication and session management
+- **Laravel 12** – PHP framework
+- **PHP 8.2+**
+- **Livewire 3.6** – Reactive components without writing JavaScript
+- **Laravel Breeze** – Authentication scaffolding
 
 ### Frontend
-
-- **Tailwind CSS** - Utility-first CSS framework
-- **Alpine.js** - Minimal framework for composing JavaScript behavior
-- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** – Utility‑first styling
+- **Alpine.js** – Lightweight interactivity
+- **Chart.js** – Data visualizations (OEE, downtime, production)
+- **GSAP + ScrollTrigger** – Advanced scroll animations
+- **Vite** – Build tool
 
 ### Database & Tools
-
-- **MySQL/SQLite** - Database systems
-- **Laravel Breeze** - Authentication scaffolding
-- **PHPUnit** - Testing framework
-- **Composer** - PHP dependency manager
+- **MySQL / SQLite**
+- **Composer**
+- **NPM / Node.js**
 
 ## 🚀 Installation
 
 ### Prerequisites
-
-- PHP 8.2 or higher
+- PHP 8.2+
 - Composer
-- Node.js & npm
+- Node.js & NPM
 - MySQL or SQLite
 
 ### Setup Steps
 
-1. **Clone the repository**
+1. **Clone repository**
+   ```bash
+   git clone https://github.com/your-org/NovaForge.git
+   cd NovaForge
 
-    ```bash
-    git clone https://github.com/muhamadfikrii/Eco-Spheree.git
-    cd Eco-Spheree
-    ```
+    Install PHP dependencies
+    bash
 
-2. **Install PHP dependencies**
-
-    ```bash
     composer install
-    ```
 
-3. **Install Node.js dependencies**
+    Install Node dependencies
+    bash
 
-    ```bash
     npm install
-    ```
 
-4. **Environment configuration**
+    Environment configuration
+    bash
 
-    ```bash
     cp .env.example .env
     php artisan key:generate
-    ```
 
-5. **Configure Environment Variables**
-   Edit the `.env` file and configure the database settings:
+    Configure database in .env (example for MySQL):
+    env
 
-    ```env
-    # Database Configuration
-    DB_CONNECTION=sqlite
-    # For MySQL, use:
-    # DB_CONNECTION=mysql
-    # DB_HOST=127.0.0.1
-    # DB_PORT=3306
-    # DB_DATABASE=eco_spheree
-    # DB_USERNAME=root
-    # DB_PASSWORD=your_password
-    ```
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=novaforge
+    DB_USERNAME=root
+    DB_PASSWORD=
 
-6. **Database setup**
+    Run migrations & seeders
+    bash
 
-    ```bash
-    php artisan migrate
-    php artisan db:seed
-    ```
+    php artisan migrate --seed
 
-7. **Build assets**
-    ```bash
+    Build frontend assets
+    bash
+
     npm run build
-    ```
 
-## 🎯 Usage
+🎯 Usage
+Development (with hot reload)
+bash
 
-### Development
-
-Start the development environment with all services:
-
-```bash
 composer run dev
-```
 
-This command concurrently runs:
+This starts:
 
-- Laravel server (`http://localhost:8000`)
-- Laravel Pail for log monitoring
-- Vite dev server for asset compilation
+    Laravel server at http://localhost:8000
 
-### Alternative Development Commands
+    Vite dev server for asset compilation
 
-You can also run services individually:
+Production
+bash
 
-````bash
-# Start Laravel server only
-php artisan serve
-
-# Start Vite dev server only
-npm run dev
-
-### Production
-For production deployment:
-```bash
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 npm run build
-````
 
-## 👨‍💼 Admin Access
+👨‍💼 Admin Access (if applicable)
 
-A default admin account is pre-configured:
+If the default seeder includes an admin user:
 
-- **Email**: `admin@ecosphere.com`
-- **Password**: `password`
+    Email: admin@novaforge.com
 
-Use this account to access administrative features including mission reviews and user management.
+    Password: password
 
-## 📁 Project Structure
+Admin routes (e.g., mission reviews) are protected by auth and admin middleware.
+📁 Project Structure (relevant sections)
+text
 
-```
-eco-spheree/
-├── app/                          # Application code
-│   ├── Http/Controllers/         # HTTP controllers
-│   ├── Livewire/                 # Livewire components
-│   ├── Models/                   # Eloquent models
-│   └── Providers/                # Service providers
+novaforge/
+├── app/
+│   ├── Http/Controllers/
+│   ├── Livewire/            # Livewire components for dashboard, insights, etc.
+│   └── Models/
 ├── database/
-│   ├── migrations/               # Database migrations
-│   └── seeders/                  # Database seeders
-├── public/                       # Public assets
+│   ├── migrations/
+│   └── seeders/
 ├── resources/
-│   ├── css/                      # Stylesheets
-│   ├── js/                       # JavaScript files
-│   └── views/                    # Blade templates
-├── routes/
-│   └── web.php                   # Web routes
-├── storage/                      # File storage
-├── tests/                        # Test files
-└── vendor/                       # Composer dependencies
-```
+│   ├── css/
+│   ├── js/
+│   └── views/
+│       ├── home.blade.php
+│       ├── insights.blade.php
+│       ├── health.blade.php
+│       ├── resources.blade.php
+│       ├── become-partner.blade.php
+│       ├── contact-partner.blade.php
+│       └── ...
+├── routes/web.php
+└── ...
 
-## 🛣️ Key Routes
+🛣️ Key Routes
+Route	Description	Auth Required
+/	Home / Dashboard overview	No
+/insights	Analytics & OEE insights	No
+/health	Machine health monitoring & predictions	No
+/resources	Resource hub (whitepapers, case studies, etc.)	No
+/become-partner	Partnership options & information	No
+/contact-partner	Partnership inquiry form	No
+/contact	General contact form	No
+/admin/*	Admin panel (if implemented)	Yes (admin)
+🧪 Testing
 
-| Route                    | Description                                           | Auth Required | Middleware      |
-| ------------------------ | ----------------------------------------------------- | ------------- | --------------- |
-| `/`                      | Homepage                                              | No            | -               |
-| `/explore`               | Exploration features and environmental maps           | No            | -               |
-| `/challenge`             | Challenge listing and overview                        | No            | -               |
-| `/challenge-center`      | Interactive challenge center with Livewire components | Yes           | `auth`          |
-| `/eco_track`             | Environmental tracking dashboard                      | No            | -               |
-| `/report`                | Impact reports and analytics                          | Yes           | `auth`          |
-| `/contact`               | Contact form and partnership inquiries                | No            | -               |
-| `/profile`               | User profile management                               | Yes           | `auth`          |
-| `/onboarding`            | User onboarding wizard                                | Yes           | `auth`          |
-| `/admin/mission-reviews` | Admin panel for mission reviews                       | Yes           | `auth`, `admin` |
+Run PHPUnit tests:
+bash
 
-## 🧪 Testing
-
-Execute the test suite:
-
-```bash
 composer run test
-```
 
-## 📊 Project Metrics
+📊 Project Metrics
 
-[![GitHub issues](https://img.shields.io/github/issues/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/issues)
-[![GitHub stars](https://img.shields.io/github/stars/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/stargazers)
-[![GitHub license](https://img.shields.io/github/license/your-username/eco-spheree)](https://github.com/your-username/eco-spheree/blob/main/LICENSE)
+https://img.shields.io/github/issues/your-org/NovaForge
+https://img.shields.io/github/stars/your-org/NovaForge
+https://img.shields.io/github/license/your-org/NovaForge
+👥 Collaborators
 
-## 👥 Collaborators
+    Muhamad Fikri – Project Lead & Full‑Stack Developer
 
-This project is developed and maintained by:
+    Agistiana Nurohman – Frontend Developer & UI/UX
 
-- **Muhamad Fikri** - Project Lead & Full-Stack Developer
-    - GitHub: [@muhamad-fikri](https://github.com/muhamadfikrii)
+🤝 Contributing
 
-- **Agistiana Nurohman** - Frontend Developer
-    - GitHub: [@sarah-johnson](https://github.com/agistiana)
+Contributions are welcome! Please follow standard GitHub flow:
 
-## 🤝 Contributing
+    Fork the repo
 
-We welcome contributions! Please follow these steps:
+    Create a feature branch (git checkout -b feature/amazing-feature)
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes: `git commit -m 'Add amazing feature'`
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+    Commit changes (git commit -m 'Add amazing feature')
 
-### Development Guidelines
+    Push to branch (git push origin feature/amazing-feature)
 
-- Follow PSR-12 coding standards
-- Write tests for new features
-- Update documentation as needed
-- Ensure responsive design for all new components
+    Open a Pull Request
 
-## 🐛 Issue Reporting
+Development Guidelines
 
-Found a bug? Please report it by opening an issue on GitHub with:
+    Follow PSR‑12 coding standards
 
-- Clear title and description
-- Steps to reproduce
-- Expected vs actual behavior
-- Screenshots if applicable
+    Ensure responsive design
 
-## 📄 License
+    Write tests for new features
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+🐛 Issue Reporting
 
-## 🙏 Acknowledgments
+Open an issue on GitHub with:
 
-- **Laravel Framework** - The PHP framework powering the application
-- **Livewire** - For reactive components and seamless UX
-- **Tailwind CSS** - For beautiful and responsive styling
-- **Alpine.js** - For lightweight JavaScript interactions
-- **Laravel Breeze** - For authentication scaffolding
-- Environmental data providers and APIs
-- Open-source community for inspiration and tools
+    Clear description
 
----
+    Steps to reproduce
 
-<div align="center">
-**Made with ❤️ for a greener planet**
-</div>
+    Expected vs actual behavior
+
+    Screenshots (if applicable)
+
+📄 License
+
+This project is licensed under the MIT License – see the LICENSE file.
+🙏 Acknowledgments
+
+    Laravel – The PHP framework
+
+    Livewire – Reactive components
+
+    Tailwind CSS & Alpine.js – Modern frontend tools
+
+    Chart.js & GSAP – Visualizations and animations
+
+    All open‑source contributors
