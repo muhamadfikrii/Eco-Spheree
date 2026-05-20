@@ -24,13 +24,14 @@
                     <div class="grid items-center gap-12 lg:grid-cols-2">
                         <div>
                             <div
-                                class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
+                                class="scroll-reveal mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                             >
                                 <i class="fas fa-lightbulb text-xs"></i>
                                 AI-POWERED INSIGHTS
                             </div>
                             <h1
-                                class="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                                class="scroll-reveal text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                                style="transition-delay: 0.1s"
                             >
                                 Turn Data into
                                 <span
@@ -38,8 +39,10 @@
                                     >Actionable Intelligence</span
                                 >
                             </h1>
-                            <p class="mt-6 max-w-lg text-lg leading-relaxed text-gray-300">Go beyond dashboards. Get clear, prioritized recommendations to improve OEE, reduce downtime, and cut energy costs — all driven by real-time AI analysis.</p>
-                            <div class="mt-8 flex flex-wrap gap-4">
+                            <p class="scroll-reveal mt-6 max-w-lg text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
+                                Go beyond dashboards. Get clear, prioritized recommendations to improve OEE, reduce downtime, and cut energy costs — all driven by real-time AI analysis.
+                            </p>
+                            <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
                                 <a
                                     href="#OEE"
                                     class="transform rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-500/50"
@@ -49,7 +52,8 @@
                                 </a>
                             </div>
                             <div
-                                class="mt-10 flex flex-wrap gap-6 text-sm text-gray-400"
+                                class="scroll-reveal mt-10 flex flex-wrap gap-6 text-sm text-gray-400"
+                                style="transition-delay: 0.4s"
                             >
                                 <div class="flex items-center gap-2">
                                     <i
@@ -69,7 +73,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="relative">
+                        <div class="relative scroll-reveal" style="transition-delay: 0.2s">
                             <div
                                 class="rounded-2xl border border-slate-700 bg-slate-800/40 p-4 shadow-2xl backdrop-blur-xl"
                             >
@@ -157,7 +161,7 @@
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="OEE">
                 <div class="mb-12 grid gap-6 lg:grid-cols-2">
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md transition hover:border-cyan-500/30"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md transition hover:border-cyan-500/30"
                     >
                         <div class="mb-4 flex items-center justify-between">
                             <div class="flex items-center gap-2">
@@ -195,7 +199,7 @@
                         </div>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md"
                     >
                         <h3 class="mb-4 font-semibold text-white">
                             <i class="fas fa-chart-pie mr-2 text-cyan-400"></i>
@@ -208,7 +212,7 @@
 
                 <div class="mb-12 grid gap-6 lg:grid-cols-3">
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md lg:col-span-2"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md lg:col-span-2"
                     >
                         <div class="mb-4 flex items-center justify-between">
                             <div class="flex items-center gap-2">
@@ -252,7 +256,7 @@
                         </div>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-md"
                     >
                         <h3 class="mb-3 font-semibold text-white">
                             <i class="fas fa-bell mr-2 text-cyan-400"></i>
@@ -310,7 +314,7 @@
                 </div>
 
                 <div class="mb-12">
-                    <div class="mb-5 flex items-center gap-3">
+                    <div class="scroll-reveal mb-5 flex items-center gap-3">
                         <i class="fas fa-lightbulb text-xl text-cyan-400"></i>
                         <h2 class="text-2xl font-bold text-white">
                             Key Operational Insights
@@ -322,7 +326,7 @@
                     </div>
                     <div class="grid gap-5 md:grid-cols-2">
                         <div
-                            class="group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
+                            class="scroll-reveal group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
                         >
                             <div class="flex items-start gap-3">
                                 <div class="rounded-lg bg-cyan-500/20 p-2">
@@ -345,7 +349,7 @@
                             </div>
                         </div>
                         <div
-                            class="group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
+                            class="scroll-reveal group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
                         >
                             <div class="flex items-start gap-3">
                                 <div class="rounded-lg bg-red-500/20 p-2">
@@ -368,7 +372,7 @@
                             </div>
                         </div>
                         <div
-                            class="group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
+                            class="scroll-reveal group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
                         >
                             <div class="flex items-start gap-3">
                                 <div class="rounded-lg bg-emerald-500/20 p-2">
@@ -389,7 +393,7 @@
                             </div>
                         </div>
                         <div
-                            class="group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
+                            class="scroll-reveal group rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm transition hover:border-cyan-500/40"
                         >
                             <div class="flex items-start gap-3">
                                 <div class="rounded-lg bg-yellow-500/20 p-2">
@@ -419,7 +423,7 @@
                 </div>
 
                 <div class="mb-12">
-                    <div class="mb-5 flex items-center gap-3">
+                    <div class="scroll-reveal mb-5 flex items-center gap-3">
                         <i class="fas fa-brain text-xl text-cyan-400"></i>
                         <h2 class="text-2xl font-bold text-white">
                             Predictive Maintenance Details
@@ -431,7 +435,7 @@
                     </div>
                     <div class="grid gap-5 md:grid-cols-2">
                         <div
-                            class="rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm"
+                            class="scroll-reveal rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm"
                         >
                             <div class="flex items-start gap-4">
                                 <div class="rounded-lg bg-red-500/20 p-2">
@@ -457,7 +461,7 @@
                             </div>
                         </div>
                         <div
-                            class="rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm"
+                            class="scroll-reveal rounded-xl border border-slate-700 bg-slate-800/40 p-5 backdrop-blur-sm"
                         >
                             <div class="flex items-start gap-4">
                                 <div class="rounded-lg bg-yellow-500/20 p-2">
@@ -485,7 +489,7 @@
             </div>
 
             <div
-                class="mx-auto mt-8 max-w-7xl border-t border-slate-800 px-4 py-12 sm:px-6 lg:px-8"
+                class="scroll-reveal mx-auto mt-8 max-w-7xl border-t border-slate-800 px-4 py-12 sm:px-6 lg:px-8"
             >
                 <div class="mb-10 text-center">
                     <h2 class="mb-3 text-3xl font-bold text-white md:text-4xl">
@@ -498,7 +502,7 @@
                     <p class="mx-auto max-w-2xl text-gray-400">IIoT, predictive AI, digital twin, and energy optimization — one platform for total control.</p>
                 </div>
                 <div class="grid gap-5 text-center md:grid-cols-4">
-                    <div>
+                    <div class="scroll-reveal">
                         <i
                             class="fas fa-microchip mb-3 block text-3xl text-cyan-400"
                         ></i>
@@ -507,21 +511,21 @@
                         </h3>
                         <p class="text-sm text-gray-400">1,200+ assets, sub-100ms latency</p>
                     </div>
-                    <div>
+                    <div class="scroll-reveal">
                         <i
                             class="fas fa-brain mb-3 block text-3xl text-cyan-400"
                         ></i>
                         <h3 class="font-semibold text-white">Predictive AI</h3>
                         <p class="text-sm text-gray-400">94% accuracy, 48h warnings</p>
                     </div>
-                    <div>
+                    <div class="scroll-reveal">
                         <i
                             class="fas fa-cube mb-3 block text-3xl text-cyan-400"
                         ></i>
                         <h3 class="font-semibold text-white">Digital Twin</h3>
                         <p class="text-sm text-gray-400">Simulate without risk</p>
                     </div>
-                    <div>
+                    <div class="scroll-reveal">
                         <i
                             class="fas fa-charging-station mb-3 block text-3xl text-cyan-400"
                         ></i>
@@ -532,7 +536,7 @@
             </div>
 
             <div
-                class="mx-auto max-w-7xl border-t border-slate-800 px-4 py-12 sm:px-6 lg:px-8"
+                class="scroll-reveal mx-auto max-w-7xl border-t border-slate-800 px-4 py-12 sm:px-6 lg:px-8"
             >
                 <div class="grid items-center gap-12 lg:grid-cols-2">
                     <div>
@@ -650,171 +654,149 @@
         .animate-gradient {
             animation: gradient 6s ease infinite;
         }
+
+        /* Scroll reveal initial state */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+        }
+        .scroll-reveal.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            filter: blur(0) !important;
+        }
     </style>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            revealElements.forEach((el) => {
+                const delay = el.style.transitionDelay ? parseFloat(el.style.transitionDelay) : 0;
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse',
+                        once: false,
+                    },
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    duration: 0.8,
+                    delay: delay,
+                    ease: 'power2.out',
+                    onComplete: () => el.classList.add('animated'),
+                });
+            });
+
+            // Optional: subtle parallax on background blobs
+            gsap.to('.absolute.-left-20.top-1\\/4', {
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                },
+                x: 30,
+                y: 30,
+                ease: 'none',
+            });
+            gsap.to('.absolute.-right-20.bottom-1\\/4', {
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                },
+                x: -30,
+                y: -30,
+                ease: 'none',
+            });
+
+            // ========== CHART INITIALIZATION ==========
             // OEE Chart
             const oeeCtx = document.getElementById('oeeChart').getContext('2d');
             const oeeChart = new Chart(oeeCtx, {
                 type: 'line',
                 data: {
-                    labels: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'May',
-                        'Jun',
-                        'Jul (est)',
-                    ],
-                    datasets: [
-                        {
-                            label: 'OEE (%)',
-                            data: [78, 81, 83, 85, 86, 87.3, 88.1],
-                            borderColor: '#06b6d4',
-                            backgroundColor: 'rgba(6,182,212,0.1)',
-                            tension: 0.4,
-                            fill: true,
-                            pointBackgroundColor: '#38bdf8',
-                            pointBorderColor: '#fff',
-                            pointRadius: 4,
-                        },
-                    ],
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul (est)'],
+                    datasets: [{
+                        label: 'OEE (%)',
+                        data: [78, 81, 83, 85, 86, 87.3, 88.1],
+                        borderColor: '#06b6d4',
+                        backgroundColor: 'rgba(6,182,212,0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#38bdf8',
+                        pointBorderColor: '#fff',
+                        pointRadius: 4,
+                    }],
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: true,
                     plugins: { legend: { labels: { color: '#9ca3af' } } },
                     scales: {
-                        y: {
-                            grid: { color: '#1e293b' },
-                            ticks: {
-                                color: '#9ca3af',
-                                callback: (v) => v + '%',
-                            },
-                        },
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#9ca3af', callback: (v) => v + '%' } },
                         x: { ticks: { color: '#9ca3af' } },
                     },
                 },
             });
             // Downtime Chart
-            new Chart(
-                document.getElementById('downtimeChart').getContext('2d'),
-                {
-                    type: 'doughnut',
-                    data: {
-                        labels: [
-                            'Mechanical',
-                            'Electrical',
-                            'Operator',
-                            'Material',
-                            'Scheduled',
-                        ],
-                        datasets: [
-                            {
-                                data: [42, 23, 18, 10, 7],
-                                backgroundColor: [
-                                    '#ef4444',
-                                    '#f97316',
-                                    '#eab308',
-                                    '#3b82f6',
-                                    '#10b981',
-                                ],
-                                borderWidth: 0,
-                            },
-                        ],
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: { color: '#9ca3af' },
-                            },
-                        },
-                    },
+            new Chart(document.getElementById('downtimeChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Mechanical', 'Electrical', 'Operator', 'Material', 'Scheduled'],
+                    datasets: [{
+                        data: [42, 23, 18, 10, 7],
+                        backgroundColor: ['#ef4444', '#f97316', '#eab308', '#3b82f6', '#10b981'],
+                        borderWidth: 0,
+                    }],
                 },
-            );
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'bottom', labels: { color: '#9ca3af' } } },
+                },
+            });
             // Production Chart
-            new Chart(
-                document.getElementById('productionChart').getContext('2d'),
-                {
-                    type: 'bar',
-                    data: {
-                        labels: [
-                            'Week 1',
-                            'Week 2',
-                            'Week 3',
-                            'Week 4',
-                            'Week 5',
-                            'Week 6',
-                            'Week 7',
-                            'Week 8',
-                        ],
-                        datasets: [
-                            {
-                                label: 'Actual Output',
-                                data: [
-                                    23800, 24500, 25800, 26400, 27100, 27800,
-                                    28200, 28600,
-                                ],
-                                backgroundColor: '#06b6d4',
-                                borderRadius: 6,
-                            },
-                            {
-                                label: 'Target',
-                                data: [
-                                    25000, 25000, 26000, 26000, 27000, 27500,
-                                    28000, 28500,
-                                ],
-                                backgroundColor: '#475569',
-                                borderRadius: 6,
-                            },
-                        ],
+            new Chart(document.getElementById('productionChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+                    datasets: [
+                        { label: 'Actual Output', data: [23800, 24500, 25800, 26400, 27100, 27800, 28200, 28600], backgroundColor: '#06b6d4', borderRadius: 6 },
+                        { label: 'Target', data: [25000, 25000, 26000, 26000, 27000, 27500, 28000, 28500], backgroundColor: '#475569', borderRadius: 6 },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { labels: { color: '#9ca3af' } },
+                        tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${ctx.raw.toLocaleString()} units` } },
                     },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { labels: { color: '#9ca3af' } },
-                            tooltip: {
-                                callbacks: {
-                                    label: (ctx) =>
-                                        `${ctx.dataset.label}: ${ctx.raw.toLocaleString()} units`,
-                                },
-                            },
-                        },
-                        scales: {
-                            y: {
-                                grid: { color: '#1e293b' },
-                                ticks: {
-                                    color: '#9ca3af',
-                                    callback: (v) =>
-                                        (v / 1000).toFixed(0) + 'k',
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Units (thousands)',
-                                    color: '#9ca3af',
-                                },
-                            },
-                            x: { ticks: { color: '#9ca3af' } },
-                        },
+                    scales: {
+                        y: { grid: { color: '#1e293b' }, ticks: { color: '#9ca3af', callback: (v) => (v / 1000).toFixed(0) + 'k' }, title: { display: true, text: 'Units (thousands)', color: '#9ca3af' } },
+                        x: { ticks: { color: '#9ca3af' } },
                     },
                 },
-            );
-            // Simulasi update OEE setiap 15 detik
+            });
+            // Simulate OEE live update every 15 seconds
             setInterval(() => {
                 const newOEE = 87.5 + (Math.random() * 1.0 - 0.5);
-                oeeChart.data.datasets[0].data[6] = parseFloat(
-                    newOEE.toFixed(1),
-                );
+                oeeChart.data.datasets[0].data[6] = parseFloat(newOEE.toFixed(1));
                 oeeChart.update('none');
                 const updateElem = document.getElementById('oeeLastUpdate');
-                if (updateElem)
-                    updateElem.textContent =
-                        'Last update: ' + new Date().toLocaleTimeString();
+                if (updateElem) updateElem.textContent = 'Last update: ' + new Date().toLocaleTimeString();
             }, 15000);
         });
     </script>

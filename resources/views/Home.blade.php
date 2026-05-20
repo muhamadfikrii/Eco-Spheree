@@ -16,7 +16,7 @@
 
         <livewire:components.purpose />
 
-        <div class="relative mx-4 mt-10 sm:mx-10 lg:mx-20">
+        <div class="relative mx-4 mt-8 sm:mx-6 lg:mx-20">
             <div class="absolute inset-0 flex items-center">
                 <div class="w-full border-t border-cyan-500/30"></div>
             </div>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <div class="mx-auto pb-10">
+        <div class="mx-auto pb-8">
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8 lg:p-5">
                 <section class="w-full space-y-6 lg:col-span-2" id="dashboard">
                     <livewire:components.map-section />
@@ -38,7 +38,7 @@
                     <livewire:components.weather-widget />
                 </aside>
             </div>
-            <div class="relative mx-4 mt-10 sm:mx-10 lg:mx-20">
+            <div class="relative mx-4 mt-8 sm:mx-10 lg:mx-20">
                 <div class="absolute inset-0 flex items-center">
                     <div class="w-full border-t border-cyan-500/30"></div>
                 </div>

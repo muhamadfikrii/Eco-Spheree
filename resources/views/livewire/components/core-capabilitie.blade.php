@@ -30,6 +30,7 @@
             </div>
 
             <div class="grid auto-rows-min gap-6 lg:grid-cols-12">
+                <!-- Card 1 -->
                 <div
                     class="group relative overflow-hidden rounded-2xl bg-slate-800 lg:col-span-7 lg:row-span-2"
                 >
@@ -79,6 +80,7 @@
                     </div>
                 </div>
 
+                <!-- Card 2 -->
                 <div
                     class="group relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-800 lg:col-span-5"
                 >
@@ -107,6 +109,7 @@
                     </div>
                 </div>
 
+                <!-- Card 3 -->
                 <div
                     class="group relative min-h-[280px] overflow-hidden rounded-2xl bg-slate-800 lg:col-span-5"
                 >
@@ -135,6 +138,7 @@
                     </div>
                 </div>
 
+                <!-- Card 4 -->
                 <div
                     class="group relative min-h-[320px] overflow-hidden rounded-2xl bg-slate-800 lg:col-span-7 lg:row-span-1"
                 >
@@ -183,4 +187,125 @@
             </div>
         </div>
     </section>
+
+<!-- CSS untuk animasi -->
+<style>
+    /* Initial state untuk konten yang akan dianimasi */
+    .industrial-headline {
+        opacity: 0;
+        transform: translateY(30px);
+        filter: blur(5px);
+    }
+    .industrial-card {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    /* Saat animasi selesai */
+    .industrial-headline.animated {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        filter: blur(0) !important;
+        transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                    transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                    filter 0.8s ease;
+    }
+    .industrial-card.animated-card {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                    transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+</style>
 </div>
+
+<script>
+    (function() {
+        // Tunggu hingga DOM siap
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+
+        function init() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Pilih elemen yang akan dianimasi
+            const headlineContainer = document.querySelector('#industrial-showcase .mb-16.text-center');
+            const allCards = document.querySelectorAll('#industrial-showcase .grid > div');
+
+            if (!headlineContainer) return;
+
+            // Tambahkan class untuk animasi
+            headlineContainer.classList.add('industrial-headline');
+            allCards.forEach(card => card.classList.add('industrial-card'));
+
+            // Animasi Headline (badge, judul, paragraf) muncul bertahap
+            const headlineElements = [
+                headlineContainer.querySelector('.inline-flex'), // badge
+                headlineContainer.querySelector('h2'),
+                headlineContainer.querySelector('p')
+            ].filter(el => el !== null);
+
+            // Urutan: badge, judul, paragraf dengan delay bertahap
+            let tlHeadline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '#industrial-showcase',
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+            headlineElements.forEach((el, idx) => {
+                tlHeadline.fromTo(el,
+                    { opacity: 0, y: 25, filter: 'blur(6px)' },
+                    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.7, ease: 'power2.out' },
+                    idx * 0.12
+                );
+            });
+            // Tandai headline container sebagai animated setelah selesai
+            tlHeadline.call(() => {
+                headlineContainer.classList.add('animated');
+            });
+
+            // Animasi cards dengan stagger (muncul berurutan)
+            if (allCards.length) {
+                gsap.fromTo(allCards,
+                    { opacity: 0, y: 50 },
+                    {
+                        scrollTrigger: {
+                            trigger: '#industrial-showcase .grid',
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        },
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        stagger: 0.12,
+                        ease: 'back.out(0.6)',
+                        onComplete: () => {
+                            allCards.forEach(card => card.classList.add('animated-card'));
+                        }
+                    }
+                );
+            }
+
+            // Efek parallax ringan pada gambar (opsional, menambah kedalaman)
+            allCards.forEach(card => {
+                const img = card.querySelector('img');
+                if (img) {
+                    gsap.to(img, {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top bottom',
+                            end: 'bottom top',
+                            scrub: 0.3
+                        },
+                        y: 15,
+                        scale: 1.03,
+                        ease: 'none'
+                    });
+                }
+            });
+        }
+    })();
+</script>
