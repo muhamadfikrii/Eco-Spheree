@@ -14,19 +14,20 @@
             ></div>
         </div>
 
-        <!-- Hero Section (sama) -->
+        <!-- Hero Section -->
         <section class="relative z-10 pb-16 pt-24 lg:pt-32">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid items-center gap-12 lg:grid-cols-2">
                     <div>
                         <div
-                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400 backdrop-blur-sm"
+                            class="scroll-reveal mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400 backdrop-blur-sm"
                         >
                             <i class="fas fa-chart-line text-xs"></i> KNOWLEDGE
                             HUB
                         </div>
                         <h1
-                            class="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                            class="scroll-reveal text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
+                            style="transition-delay: 0.1s"
                         >
                             Explore Our
                             <span
@@ -34,8 +35,10 @@
                                 >Resources</span
                             >
                         </h1>
-                        <p class="mt-6 text-lg leading-relaxed text-gray-300">Dive into a curated collection of industry insights, technical docs, and actionable guides. Whether you’re a plant manager, engineer, or developer, you'll find practical knowledge to help you excel.</p>
-                        <div class="mt-8 flex flex-wrap gap-4">
+                        <p class="scroll-reveal mt-6 text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
+                            Dive into a curated collection of industry insights, technical docs, and actionable guides. Whether you’re a plant manager, engineer, or developer, you'll find practical knowledge to help you excel.
+                        </p>
+                        <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
                             <a
                                 href="#featured"
                                 class="transform rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:-translate-y-1 hover:shadow-cyan-500/50"
@@ -51,7 +54,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="relative flex justify-center">
+                    <div class="relative flex justify-center scroll-reveal" style="transition-delay: 0.2s">
                         <div
                             class="group relative flex h-64 w-64 items-center justify-center rounded-full border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 p-4 transition-all duration-500 hover:scale-105 hover:shadow-2xl"
                         >
@@ -71,9 +74,8 @@
         <section class="relative z-10 py-8">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col gap-6">
-                    <!-- Baris 1: Filter + Search -->
                     <div
-                        class="flex flex-col items-center justify-between gap-6 md:flex-row"
+                        class="scroll-reveal flex flex-col items-center justify-between gap-6 md:flex-row"
                     >
                         <div class="flex flex-wrap gap-2">
                             <template x-for="cat in categories" :key="cat">
@@ -81,6 +83,7 @@
                                     @click="
                                         activeCategory = cat;
                                         currentPage = 1;
+                                        refreshAnimations();
                                     "
                                     :class="activeCategory === cat
                                         ? 'bg-cyan-500 text-white'
@@ -96,17 +99,15 @@
                             </template>
                         </div>
                         <div class="flex items-center gap-4">
-                            <!-- Sorting Dropdown -->
                             <select
                                 x-model="sortBy"
-                                @change="currentPage = 1"
+                                @change="currentPage = 1; refreshAnimations()"
                                 class="rounded-full border border-slate-700 bg-slate-800/50 px-4 py-2 text-sm text-gray-300 focus:border-cyan-500 focus:outline-none"
                             >
                                 <option value="newest">Newest</option>
                                 <option value="a-z">Title A-Z</option>
                                 <option value="z-a">Title Z-A</option>
                             </select>
-                            <!-- Search Box -->
                             <div class="relative w-full max-w-xs">
                                 <i
                                     class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -114,16 +115,15 @@
                                 <input
                                     type="text"
                                     x-model="searchQuery"
-                                    @input="currentPage = 1"
+                                    @input="currentPage = 1; refreshAnimations()"
                                     placeholder="Search resources..."
                                     class="w-full rounded-full border border-slate-700 bg-slate-800/50 py-2 pl-10 pr-4 text-white placeholder-gray-400 backdrop-blur-sm focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
                                 />
                             </div>
                         </div>
                     </div>
-                    <!-- Result Count -->
                     <div
-                        class="text-center text-sm text-gray-400"
+                        class="scroll-reveal text-center text-sm text-gray-400"
                         x-show="filteredResources.length > 0"
                     >
                         Showing
@@ -146,11 +146,11 @@
             </div>
         </section>
 
-        <!-- Featured Resource (sama) -->
+        <!-- Featured Resource -->
         <section id="featured" class="relative z-10 py-12">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div
-                    class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 p-6 backdrop-blur-sm md:p-10"
+                    class="scroll-reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 p-6 backdrop-blur-sm md:p-10"
                 >
                     <div
                         class="relative grid items-center gap-8 md:grid-cols-2"
@@ -199,19 +199,19 @@
         <!-- Resource Grid dengan Pagination -->
         <section class="relative z-10 py-16">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <h2 class="text-3xl font-bold text-white lg:text-4xl">
                         All Resources
                     </h2>
                     <p class="mx-auto mt-2 max-w-2xl text-gray-400">Handpicked insights to accelerate your industrial journey.</p>
                 </div>
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <template
-                        x-for="resource in paginatedResources"
-                        :key="resource.id"
-                    >
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" x-ref="gridContainer">
+                    <template x-for="(resource, index) in paginatedResources" :key="resource.id">
                         <div
-                            class="group overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/30 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/50 hover:shadow-2xl"
+                            x-data="{ revealed: false }"
+                            x-init="revealed = true"
+                            :class="revealed ? 'opacity-100 translate-y-0 blur-0' : 'opacity-0 translate-y-8 blur-sm'"
+                            class="resource-card group overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/30 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-cyan-500/50 hover:shadow-2xl"
                         >
                             <div class="mb-4 flex items-center justify-between">
                                 <div
@@ -266,11 +266,11 @@
                 </div>
                 <!-- Pagination Controls -->
                 <div
-                    class="mt-12 flex justify-center gap-2"
+                    class="scroll-reveal mt-12 flex justify-center gap-2"
                     x-show="totalPages > 1"
                 >
                     <button
-                        @click="currentPage = Math.max(1, currentPage - 1)"
+                        @click="currentPage = Math.max(1, currentPage - 1); refreshAnimations()"
                         :disabled="currentPage === 1"
                         :class="currentPage === 1
                             ? 'opacity-50 cursor-not-allowed'
@@ -281,7 +281,7 @@
                     </button>
                     <template x-for="p in totalPages" :key="p">
                         <button
-                            @click="currentPage = p"
+                            @click="currentPage = p; refreshAnimations()"
                             :class="currentPage === p
                                 ? 'bg-cyan-500 text-white'
                                 : 'hover:bg-cyan-500/20'"
@@ -291,7 +291,8 @@
                     </template>
                     <button
                         @click="
-                            currentPage = Math.min(totalPages, currentPage + 1)
+                            currentPage = Math.min(totalPages, currentPage + 1);
+                            refreshAnimations();
                         "
                         :disabled="currentPage === totalPages"
                         :class="currentPage === totalPages
@@ -303,7 +304,7 @@
                     </button>
                 </div>
                 <div
-                    class="mt-12 text-center"
+                    class="scroll-reveal mt-12 text-center"
                     x-show="filteredResources.length === 0"
                 >
                     <p class="text-gray-400">No resources match your criteria. Try adjusting the filters.</p>
@@ -311,13 +312,13 @@
             </div>
         </section>
 
-        <!-- Live Demo (sama) -->
+        <!-- Live Demo -->
         <section
             id="demo"
             class="relative z-10 border-y border-slate-800 py-20"
         >
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <div
                         class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                     >
@@ -329,7 +330,7 @@
                     <p class="mx-auto max-w-2xl text-gray-400">See how our predictive AI works. Enter a vibration value (mm/s) and get an instant health prediction.</p>
                 </div>
                 <div
-                    class="mx-auto max-w-2xl rounded-2xl border border-slate-700 bg-slate-800/40 p-8 backdrop-blur-sm"
+                    class="scroll-reveal mx-auto max-w-2xl rounded-2xl border border-slate-700 bg-slate-800/40 p-8 backdrop-blur-sm"
                 >
                     <div
                         class="flex flex-col items-center justify-between gap-6 md:flex-row"
@@ -461,6 +462,32 @@
             <span class="text-sm text-white" x-text="toast.message"></span>
         </div>
     </div>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+        /* Scroll reveal initial state for static elements */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+        }
+        .scroll-reveal.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            filter: blur(0) !important;
+        }
+        /* Resource card initial animation (handled by x-init, but fallback) */
+        .resource-card {
+            transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
+        }
+    </style>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
         function resourcesApp() {
@@ -631,7 +658,6 @@
                                 .includes(this.searchQuery.toLowerCase());
                         return matchCat && matchSearch;
                     });
-                    // Sorting
                     if (this.sortBy === 'a-z')
                         filtered.sort((a, b) => a.title.localeCompare(b.title));
                     else if (this.sortBy === 'z-a')
@@ -713,15 +739,76 @@
                     }
                     this.demoResult = true;
                 },
+                initScrollAnimations() {
+                    // Animate static scroll-reveal elements
+                    const revealElements = document.querySelectorAll('.scroll-reveal');
+                    revealElements.forEach((el) => {
+                        if (el.classList.contains('animated')) return;
+                        const delay = el.style.transitionDelay ? parseFloat(el.style.transitionDelay) : 0;
+                        gsap.to(el, {
+                            scrollTrigger: {
+                                trigger: el,
+                                start: 'top 85%',
+                                end: 'bottom 20%',
+                                toggleActions: 'play none none reverse',
+                                once: false,
+                            },
+                            opacity: 1,
+                            y: 0,
+                            filter: 'blur(0px)',
+                            duration: 0.8,
+                            delay: delay,
+                            ease: 'power2.out',
+                            onComplete: () => el.classList.add('animated'),
+                        });
+                    });
+                    // Animate resource cards with stagger (for newly added cards)
+                    const cards = document.querySelectorAll('.resource-card');
+                    if (cards.length) {
+                        gsap.fromTo(cards,
+                            { opacity: 0, y: 30, filter: 'blur(5px)' },
+                            {
+                                scrollTrigger: {
+                                    trigger: cards[0].parentElement,
+                                    start: 'top 80%',
+                                    toggleActions: 'play none none none',
+                                },
+                                opacity: 1,
+                                y: 0,
+                                filter: 'blur(0px)',
+                                stagger: 0.08,
+                                duration: 0.6,
+                                ease: 'back.out(0.6)',
+                            }
+                        );
+                    }
+                },
+                refreshAnimations() {
+                    // Refresh after dynamic content changes
+                    this.$nextTick(() => {
+                        ScrollTrigger.refresh();
+                        this.initScrollAnimations();
+                    });
+                },
                 init() {
                     this.runDemo();
+                    // Register ScrollTrigger and init animations
+                    gsap.registerPlugin(ScrollTrigger);
+                    this.initScrollAnimations();
+                    // Parallax effect on background pattern (optional)
+                    gsap.to('.pointer-events-none.fixed', {
+                        scrollTrigger: {
+                            trigger: 'body',
+                            start: 'top top',
+                            end: 'bottom bottom',
+                            scrub: 1,
+                        },
+                        y: 50,
+                        opacity: 0.1,
+                        ease: 'none',
+                    });
                 },
             };
         }
     </script>
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
 </x-app-layout>

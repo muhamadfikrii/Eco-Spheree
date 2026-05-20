@@ -23,15 +23,16 @@
             ></div>
             <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="grid items-center gap-12 lg:grid-cols-2">
-                    <div>
+                    <div class="hero-content">
                         <div
-                            class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400 backdrop-blur-sm"
+                            class="scroll-reveal mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400 backdrop-blur-sm"
                         >
                             <i class="fas fa-handshake text-xs"></i> STRATEGIC
                             PARTNERSHIPS
                         </div>
                         <h1
-                            class="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+                            class="scroll-reveal text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl"
+                            style="transition-delay: 0.1s"
                         >
                             Partner with
                             <span
@@ -39,8 +40,10 @@
                                 >NovaForge</span
                             >
                         </h1>
-                        <p class="mt-6 max-w-lg text-lg leading-relaxed text-gray-300">Join the leading industrial IoT ecosystem. Accelerate digital transformation, co-innovate with industry leaders, and shape the future of smart manufacturing.</p>
-                        <div class="mt-8 flex flex-wrap gap-4">
+                        <p class="scroll-reveal mt-6 max-w-lg text-lg leading-relaxed text-gray-300" style="transition-delay: 0.2s">
+                            Join the leading industrial IoT ecosystem. Accelerate digital transformation, co-innovate with industry leaders, and shape the future of smart manufacturing.
+                        </p>
+                        <div class="scroll-reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 0.3s">
                             <a
                                 href="#contact"
                                 @click.prevent="smoothScroll('contact')"
@@ -50,7 +53,8 @@
                             </a>
                         </div>
                         <div
-                            class="mt-8 flex flex-wrap gap-6 text-sm text-gray-400"
+                            class="scroll-reveal mt-8 flex flex-wrap gap-6 text-sm text-gray-400"
+                            style="transition-delay: 0.4s"
                         >
                             <div class="flex items-center gap-2">
                                 <i class="fas fa-microchip text-cyan-400"></i>
@@ -62,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative">
+                    <div class="relative scroll-reveal" style="transition-delay: 0.2s">
                         <div
                             class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-xl"
                         >
@@ -123,7 +127,7 @@
 
         <section class="relative z-10 border-b border-slate-800 py-12">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-8 text-center">
+                <div class="scroll-reveal mb-8 text-center">
                     <h2 class="mb-2 text-2xl font-semibold text-white">
                         Trusted by Industry Leaders
                     </h2>
@@ -133,7 +137,7 @@
                     class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6"
                 >
                     <div
-                        class="flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm"
+                        class="scroll-reveal flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <img
                             src="{{ asset('image/siemens.png') }}"
@@ -145,7 +149,7 @@
                         />
                     </div>
                     <div
-                        class="flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm"
+                        class="scroll-reveal flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <img
                             src="{{ asset('image/abb.png') }}"
@@ -157,7 +161,7 @@
                         />
                     </div>
                     <div
-                        class="flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm"
+                        class="scroll-reveal flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <img
                             src="{{ asset('image/microsoft.png') }}"
@@ -169,7 +173,7 @@
                         />
                     </div>
                     <div
-                        class="flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm"
+                        class="scroll-reveal flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <img
                             src="{{ asset('image/aws.png') }}"
@@ -181,7 +185,7 @@
                         />
                     </div>
                     <div
-                        class="flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm"
+                        class="scroll-reveal flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <img
                             src="{{ asset('image/toyota.png') }}"
@@ -193,7 +197,7 @@
                         />
                     </div>
                     <div
-                        class="flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm"
+                        class="scroll-reveal flex h-20 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/40 p-4 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <img
                             src="{{ asset('image/honda.png') }}"
@@ -210,7 +214,7 @@
 
         <section id="benefits" class="relative z-10 py-20">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <div
                         class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                     >
@@ -223,7 +227,7 @@
                 </div>
                 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -238,7 +242,7 @@
                         <p class="text-sm text-gray-400">Real-time industrial data streams, historical datasets, and analytics APIs for your solutions.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -253,7 +257,7 @@
                         <p class="text-sm text-gray-400">Joint R&D, pilot programs, and innovation labs to co-create next-gen industrial solutions.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -268,7 +272,7 @@
                         <p class="text-sm text-gray-400">Co-marketing, joint events, and access to 1,200+ manufacturing clients.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -281,7 +285,7 @@
                         <p class="text-sm text-gray-400">Dedicated technical account manager, SLA-backed API support, and integration assistance.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -296,7 +300,7 @@
                         <p class="text-sm text-gray-400">ISO 27001 certified, GDPR compliant, and end-to-end encryption for all data exchange.</p>
                     </div>
                     <div
-                        class="rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
+                        class="scroll-reveal rounded-2xl border border-slate-700 bg-slate-800/40 p-6 backdrop-blur-sm transition hover:border-cyan-500/40"
                     >
                         <div
                             class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/20"
@@ -317,7 +321,7 @@
             class="relative z-10 border-t border-slate-800 py-20"
         >
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-12 text-center">
+                <div class="scroll-reveal mb-12 text-center">
                     <div
                         class="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 font-mono text-xs tracking-wider text-cyan-400"
                     >
@@ -332,7 +336,7 @@
                     class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
                 >
                     <div
-                        class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
+                        class="scroll-reveal group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
                         <div
                             class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600"
@@ -371,7 +375,7 @@
                     </div>
 
                     <div
-                        class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
+                        class="scroll-reveal group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
                         <div
                             class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600"
@@ -410,7 +414,7 @@
                     </div>
 
                     <div
-                        class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
+                        class="scroll-reveal group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
                         <div
                             class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600"
@@ -451,7 +455,7 @@
                     </div>
 
                     <div
-                        class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
+                        class="scroll-reveal group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
                         <div
                             class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600"
@@ -492,7 +496,7 @@
                     </div>
 
                     <div
-                        class="group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
+                        class="scroll-reveal group rounded-2xl border border-slate-700 bg-slate-800/30 p-5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/50"
                     >
                         <div
                             class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600"
@@ -535,7 +539,7 @@
 
         <section
             id="contact"
-            class="relative z-10 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 py-20"
+            class="scroll-reveal relative z-10 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 py-20"
         >
             <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
                 <h2 class="mb-4 text-3xl font-bold text-white lg:text-4xl">
@@ -551,4 +555,82 @@
             </div>
         </section>
     </div>
+
+    <style>
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(5px);
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+        }
+
+        .scroll-reveal.animated {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            filter: blur(0) !important;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+            
+            revealElements.forEach((element, index) => {
+                if (element.dataset.animated) return;
+                
+                const delay = element.style.transitionDelay ? parseFloat(element.style.transitionDelay) : 0;
+                
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',      
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse', 
+                    },
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    duration: 0.8,
+                    delay: delay,
+                    ease: 'power2.out',
+                    onComplete: function() {
+                        element.classList.add('animated');
+                    }
+                });
+            });
+
+            gsap.to('.pointer-events-none.fixed', {
+                scrollTrigger: {
+                    trigger: 'body',
+                    start: 'top top',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                },
+                y: 100,
+                opacity: 0.05,
+                ease: 'none'
+            });
+
+            const partnerLogos = document.querySelectorAll('.partner-logo');
+            if (partnerLogos.length) {
+                gsap.fromTo(partnerLogos, 
+                    { opacity: 0, scale: 0.8 },
+                    {
+                        scrollTrigger: {
+                            trigger: '.grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-6',
+                            start: 'top 80%',
+                            toggleActions: 'play none none none',
+                        },
+                        opacity: 1,
+                        scale: 1,
+                        stagger: 0.1,
+                        duration: 0.6,
+                        ease: 'back.out(0.7)'
+                    }
+                );
+            }
+        });
+    </script>
 </x-app-layout>

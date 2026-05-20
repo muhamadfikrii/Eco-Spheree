@@ -93,11 +93,17 @@
                     });
                 });
             });
-            AOS.init({ duration: 800, easing: 'ease-out', once: true });
+            AOS.init(
+                {   offset: 80,       
+                    duration: 800,    
+                    easing: 'ease-out-cubic',
+
+                }
+            );
         });
     </script>
 
-  @stack('scripts')
-  @livewireScripts()
+    @stack ('scripts')
+    @livewireScripts ()
 </body>
 </html>

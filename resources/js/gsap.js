@@ -74,6 +74,36 @@ document.addEventListener('DOMContentLoaded', function () {
         animateParticles();
     }
 
+    // Generic: scroll blur -> clear (untuk semua halaman, tinggal tambahin class)
+    const blurItems = document.querySelectorAll('.scroll-blur-item');
+    if (blurItems.length > 0) {
+        blurItems.forEach((item, idx) => {
+            gsap.fromTo(
+                item,
+                {
+                    opacity: 0,
+                    y: 30,
+                    filter: 'blur(18px)'
+                },
+                {
+                    opacity: 1,
+                    y: 0,
+                    filter: 'blur(0px)',
+                    duration: 0.9,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 95%',
+                        end: 'bottom 10%',
+                        toggleActions: 'play none none reverse',
+                        once: true,
+                    },
+                    delay: idx * 0.03,
+                },
+            );
+        });
+    }
+
     // Animate main elements on scroll - hanya jika elemen ada
     const gsapItems = document.querySelectorAll('.gsap-item');
     if (gsapItems.length > 0) {
